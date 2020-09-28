@@ -28,7 +28,7 @@
 
   #exercise_div {
     width: 70%;
-    margin: 0px auto;
+    margin: 70px auto;
     /* width 가 지정되어있어서 가운데정렬이 먹히는것임. */
     background-color: yellow;
   }
@@ -52,13 +52,13 @@
   </nav>
 
   <br><br><br>
-  <div class="card" style="margin : 0 auto; width: 80%;">
+  <div class="card" style="margin : 0 auto; width: 70%;">
     <div class="card-header">
       오늘의 운동
     </div>
     <div class="card-body">
       <div class="container">
-        <div style="height:100px;">
+        <div style="height:100px; text-align:center;">
           <div>
             <i class="fas fa-walking" style="font-size:30px; margin: 0 0 0 20%; float:left;"></i>
             <p style="font-size:20px; font-weight:bold; float:left; margin: 0 40px;">걷기</p>
@@ -66,7 +66,7 @@
           </div>
           <div>
             <i class="fas fa-swimmer" style="font-size:30px; margin: 0 0 0 20%; float:left;"></i>
-            <p style="font-size:20px; font-weight:bold; float:left; margin: 0 20px;">수영</p>
+            <p style="font-size:20px; font-weight:bold; float:left; margin: 0 30px;">수영</p>
             <p> 2분 / 130 Kcal </p>
           </div>
           <div>
@@ -84,35 +84,51 @@
     </div>
   </div>
 
-  <div>
-    <div class="progress">
-      <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:40%"></div>
-    </div>
-    <p align="right"> 섭취칼로리 / 권장칼로리 </p>
-  </div>
-  <div id="notification_div">
-    <i class="fas fa-exclamation-circle" style="color:red; float:left;"></i>
-    <p>총 278 Kcal 초과</p>
-  </div>
-  <div id="exercise_div">
-    <div id="exercise">
-      <h3>걷기</h3>
-      <p> 70 분 / 278 Kcal</p>
-    </div>
-    <div id="exercise">
-      <h3>걷기</h3>
-      <p> 70 분 / 278 Kcal</p>
-    </div>
-    <div id="exercise">
-      <h3>걷기</h3>
-      <p> 70 분 / 278 Kcal</p>
-    </div>
-    <div id="exercise">
-      <h3>걷기</h3>
-      <p> 70 분 / 278 Kcal</p>
-    </div>
 
+
+  <div class="container" style="margin:5% 0 0 15%;">
+    <div class="progress rounded-pill" style="height:20px; float:left; width: 80%; margin-top:1%;">
+      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 50%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
+      </div>
+    </div>
+    <div class="container" style="width:20%; display:inline-block;">
+      <p style="font-size:17px; margin-left:10%; "> 800/1400 Kcal</p>
+    </div>
   </div>
+
+  <div id="notification_div" style="position:absolute; right:10%; width:150px;">
+    <i class="fas fa-exclamation-circle" style="color:red; float:left; font-size: 20px;"></i>
+    <p style="font-size:15px;">총 278 Kcal 초과</p>
+  </div>
+
+  <div class="card" style="margin : 60px auto; width: 70%;">
+    <div class="card-header">
+      추천 운동
+    </div>
+    <div class="card-body">
+      <div class="container">
+        <div style="height:600px; text-align:center;">
+          <div id="exercise">
+            <h2 style="font-weight:bold;">걷기</h2>
+            <p style="font-size:20px;"> 70 분 / 278 Kcal</p>
+          </div>
+          <div id="exercise">
+            <h3 style="font-weight:bold;">수영</h3>
+            <p style="font-size:20px;"> 70 분 / 278 Kcal</p>
+          </div>
+          <div id="exercise">
+            <h3 style="font-weight:bold;">자전거</h3>
+            <p style="font-size:20px;"> 70 분 / 278 Kcal</p>
+          </div>
+          <div id="exercise">
+            <h3 style="font-weight:bold;">줄넘기</h3>
+            <p style="font-size:20px;"> 70 분 / 278 Kcal</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   </div>
   <script>
 
