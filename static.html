@@ -29,13 +29,17 @@
 		<i class="fa fa-user-circle" style="font-size:100px; color:white;"></i>
 	</nav>
 
-	<br><br><br>	
-	<div style="width:100%">
-		<canvas id="myChart"></canvas>
-	</div>
-	<script>
+<br><br>
+<div clas="container" style="text-align: center;">
+	<i class="fa fa-pie-chart" aria-hidden="true" style="font-size:500px; color:black;"><h2>Report</h2></i>
+</div>
+		<br><br><br>	
+		<div style="width:100%">
+			<canvas id="Kcal"></canvas>
+		</div>
+		<script>
 				// 우선 컨텍스트를 가져옵니다. 
-				var ctx = document.getElementById("myChart").getContext('2d');
+				var ctx = document.getElementById("Kcal").getContext('2d');
 /*
 	- Chart를 생성하면서, 
 	- ctx를 첫번째 argument로 넘겨주고, 
@@ -44,25 +48,27 @@
 	var myChart = new Chart(ctx, {
 		type: 'bar',
 		data: {
-			labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+			labels: ['1일차', '2일차', '3일차', '4일차', '5일차', '6일차', '7일차'],
 			datasets: [{
-				label: '# of Votes',
-				data: [12, 19, 3, 5, 2, 3],
+				label: 'Daily Kcal',
+				data: [12, 19, 3, 5, 2, 3,7],
 				backgroundColor: [
-				'rgba(255, 99, 132, 0.2)',
 				'rgba(54, 162, 235, 0.2)',
-				'rgba(255, 206, 86, 0.2)',
-				'rgba(75, 192, 192, 0.2)',
-				'rgba(153, 102, 255, 0.2)',
-				'rgba(255,159,64,0.2)'
+				'rgba(54, 162, 235, 0.2)',
+				'rgba(54, 162, 235, 0.2)',
+				'rgba(54, 162, 235, 0.2)',
+				'rgba(54, 162, 235, 0.2)',
+				'rgba(54, 162, 235, 0.2)',
+				'rgba(54, 162, 235, 0.2)'
 				],
 				borderColor: [
-				'rgba(255,99,132,1)',
 				'rgba(54, 162, 235, 1)',
-				'rgba(255, 206, 86, 1)',
-				'rgba(75, 192, 192, 1)',
-				'rgba(153, 102, 255, 1)',
-				'rgba(255, 159, 64, 1)'
+				'rgba(54, 162, 235, 1)',
+				'rgba(54, 162, 235, 1)',
+				'rgba(54, 162, 235, 1)',
+				'rgba(54, 162, 235, 1)',
+				'rgba(54, 162, 235, 1)',
+				'rgba(54, 162, 235, 1)'
 				],
 				borderWidth: 1
 			}]
@@ -81,6 +87,67 @@
 
 			</script>
 
+			<br><br>
+
+
+
+			<br><br><br>	
+			<div style="width:100%">
+				<canvas id="Kg"></canvas>
+			</div>
+			<script>
+				// 우선 컨텍스트를 가져옵니다. 
+				var ctx = document.getElementById("Kg").getContext('2d');
+/*
+	- Chart를 생성하면서, 
+	- ctx를 첫번째 argument로 넘겨주고, 
+	- 두번째 argument로 그림을 그릴때 필요한 요소들을 모두 넘겨줍니다. 
+	*/
+	var myChart = new Chart(ctx, {
+		type: 'bar',
+		data: {
+			labels: ['1일차', '2일차', '3일차', '4일차', '5일차', '6일차', '7일차'],
+			datasets: [{
+				label: 'Daily Kg',
+				data: [12, 19, 3, 5, 2, 3,7],
+				backgroundColor: [
+				'rgba(255, 99, 132, 0.2)',
+				'rgba(255, 99, 132, 0.2)',
+				'rgba(255, 99, 132, 0.2)',
+				'rgba(255, 99, 132, 0.2)',
+				'rgba(255, 99, 132, 0.2)',
+				'rgba(255, 99, 132, 0.2)',
+				'rgba(255, 99, 132, 0.2)'
+				],
+				borderColor: [
+				'rgba(255,99,132,1)',
+				'rgba(255,99,132,1)',
+				'rgba(255,99,132,1)',
+				'rgba(255,99,132,1)',
+				'rgba(255,99,132,1)',
+				'rgba(255,99,132,1)',
+				'rgba(255,99,132,1)'
+				],
+				borderWidth: 1
+			}]
+		},
+		options: {
+						maintainAspectRatio: true, // default value. false일 경우 포함된 div의 크기에 맞춰서 그려짐.
+						scales: {
+							yAxes: [{
+								ticks: {
+									beginAtZero:true
+								}
+							}]
+						}
+					}
+				});
+
+			</script>
+
+			<br><br>
+
+
 
 
 			
@@ -98,10 +165,7 @@
 							<canvas id="myChart2"></canvas>
 						</div>
 
-						<div class="carousel-caption d-none d-md-block" style="color:#000000">
-							<h5>First slide label</h5>
-							<p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-						</div>
+						
 					</div>
 
 					<div class="carousel-item">
@@ -109,10 +173,7 @@
 							<canvas id="myChart3"></canvas>
 						</div>
 
-						<div class="carousel-caption d-none d-md-block" style="color:#000000">
-							<h5>Second slide label</h5>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-						</div>
+						
 					</div>
 
 					<div class="carousel-item">
@@ -120,9 +181,6 @@
 							<canvas id="myChart4"></canvas>
 						</div>
 
-						<div class="carousel-caption d-none d-md-block" style="color:#000000">
-							<h5>Third slide label</h5>
-						</div>
 					</div>
 				</div>
 				<a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
@@ -139,19 +197,22 @@
 
 	<script> var ctx = document.getElementById('myChart2').getContext('2d'); var chart = new Chart(ctx, { // 챠트 종류를 선택 
 			type: 'line', // 챠트를 그릴 데이타 
-		data: { labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'], datasets: [{ label: 'My First dataset', backgroundColor: 'transparent', borderColor: 'red', data: [0, 10, 5, 2, 20, 30, 45] }] }, // 옵션 
+		data: { labels: ['1일차', '2일차', '3일차', '4일차', '5일차', '6일차', '7일차'], datasets: [{ label: '체중', backgroundColor: 'transparent', borderColor: 'red', data: [0, 10, 5, 2, 20, 30, 45] }] }, // 옵션 
 		options: {} }); 
 	</script>
+
+
 
 		<script> var ctx = document.getElementById('myChart3').getContext('2d'); var chart = new Chart(ctx, { // 챠트 종류를 선택 
 			type: 'line', // 챠트를 그릴 데이타 
-		data: { labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'], datasets: [{ label: 'My First dataset', backgroundColor: 'transparent', borderColor: 'red', data: [0, 10, 5, 2, 20, 30, 45] }] }, // 옵션 
+		data: { labels: ['1일차', '2일차', '3일차', '4일차', '5일차', '6일차', '7일차'], datasets: [{ label: '체지방률', backgroundColor: 'transparent', borderColor: 'Blue', data: [0, 10, 5, 2, 20, 30, 45] }] }, // 옵션 
 		options: {} }); 
 	</script>
 
+
 		<script> var ctx = document.getElementById('myChart4').getContext('2d'); var chart = new Chart(ctx, { // 챠트 종류를 선택 
 			type: 'line', // 챠트를 그릴 데이타 
-		data: { labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'], datasets: [{ label: 'My First dataset', backgroundColor: 'transparent', borderColor: 'red', data: [0, 10, 5, 2, 20, 30, 45] }] }, // 옵션 
+		data: { labels: ['1일차', '2일차', '3일차', '4일차', '5일차', '6일차', '7일차'], datasets: [{ label: '근육량', backgroundColor: 'transparent', borderColor: 'Green', data: [0, 10, 5, 2, 20, 30, 45] }] }, // 옵션 
 		options: {} }); 
 	</script>
 
