@@ -15,7 +15,12 @@
     padding-top: 120px;
     padding-bottom: 120px;
   }
-
+	.inav:hover{
+			-ms-transform: scale(1.5);
+			-webkit-transform: scale(1.5);
+			transform: scale(1.5);
+			opacity: 0.7;
+		}
   #today_exercise_div {
     margin: 5% 10%;
     height: 100px;
@@ -137,18 +142,15 @@
 
 
 
-  <nav class="navbar fixed-bottom" style="background-color:#8DA5BD">
-    <a href="index.html">
-      <i class="fa fa-list-alt" aria-hidden="true" style="font-size:100px; color:white;"></i>
-    </a>
-    <a href="recommend.html">
-      <i class="fa fa-spoon" aria-hidden="true" style="font-size:100px; color:white;"></i>
-    </a>
-    <a href="miband.html">
-      <i class="fa fa-heart" aria-hidden="true" style="font-size:100px; color:white;"></i>
-    </a>
-    <i class="fa fa-pie-chart" aria-hidden="true" style="font-size:100px; color:white;"></i>
-  </nav>
+	<nav class="navbar fixed-bottom" style="background-color:#8DA5BD">
+		<a href="index.html">
+			<i class="fa fa-list-alt inav" aria-hidden="true" style="font-size:100px; color:white;"></i>
+		</a>
+
+		<a href ="recommend.html"><i class="fa fa-spoon inav" aria-hidden="true" style="font-size:100px; color:white;"></i></a>
+		<a href="miband.html"><i class="fa fa-heart inav" aria-hidden="true" style="font-size:100px; color:white;"></i></a>
+		<a href="static.html"><i class="fa fa-pie-chart inav" aria-hidden="true" style="font-size:100px; color:white;"></i></a>
+	</nav>
 
 </body>
 
