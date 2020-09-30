@@ -29,16 +29,16 @@
 		<i class="fa fa-user-circle" style="font-size:100px; color:white;"></i>
 	</nav>
 
-<br><br>
-<div clas="container" style="text-align: center;">
-	<i class="fa fa-pie-chart" aria-hidden="true" style="font-size:300px; color:#8DA5BD; float: center;"></i>
-	<p style="float: center; font-size: 100px;">Report</p>
-</div>
-		<br><br><br>	
-		<div style="width:100%">
-			<canvas id="Kcal"></canvas>
-		</div>
-		<script>
+	<br><br>
+	<div clas="container" style="text-align: center;">
+		<i class="fa fa-pie-chart" aria-hidden="true" style="font-size:300px; color:#8DA5BD; float: center;"></i>
+		<p style="float: center; font-size: 100px;">Report</p>
+	</div>
+	<br><br><br>	
+	<div style="width:100%">
+		<canvas id="Kcal"></canvas>
+	</div>
+	<script>
 				// 우선 컨텍스트를 가져옵니다. 
 				var ctx = document.getElementById("Kcal").getContext('2d');
 /*
@@ -75,6 +75,12 @@
 			}]
 		},
 		options: {
+			legend: {
+				labels: {
+					fontColor: "blue",
+					fontSize: 18
+				}
+			},
 						maintainAspectRatio: true, // default value. false일 경우 포함된 div의 크기에 맞춰서 그려짐.
 						scales: {
 							yAxes: [{
@@ -133,6 +139,13 @@
 			}]
 		},
 		options: {
+
+			legend: {
+				labels: {
+					fontColor: "red",
+					fontSize: 18
+				}
+			},
 						maintainAspectRatio: true, // default value. false일 경우 포함된 div의 크기에 맞춰서 그려짐.
 						scales: {
 							yAxes: [{
@@ -143,6 +156,7 @@
 						}
 					}
 				});
+	
 
 			</script>
 
@@ -199,7 +213,15 @@
 	<script> var ctx = document.getElementById('inbodyKg').getContext('2d'); var chart = new Chart(ctx, { // 챠트 종류를 선택 
 			type: 'line', // 챠트를 그릴 데이타 
 		data: { labels: ['1일차', '2일차', '3일차', '4일차', '5일차', '6일차', '7일차'], datasets: [{ label: '체중', backgroundColor: 'transparent', borderColor: 'red', data: [65, 65.4, 64.5, 64.7, 64.3, 64.6,64.3] }] }, // 옵션 
-		options: {} }); 
+		options: {
+legend: {
+				labels: {
+					fontColor: "red",
+					fontSize: 18
+				}
+			}
+
+		} }); 
 	</script>
 
 
@@ -207,14 +229,31 @@
 		<script> var ctx = document.getElementById('inbodyFat').getContext('2d'); var chart = new Chart(ctx, { // 챠트 종류를 선택 
 			type: 'line', // 챠트를 그릴 데이타 
 		data: { labels: ['1일차', '2일차', '3일차', '4일차', '5일차', '6일차', '7일차'], datasets: [{ label: '체지방률', backgroundColor: 'transparent', borderColor: 'Blue', data: [23.4, 23, 23.3, 22.9, 22.9, 22.7, 22.4] }] }, // 옵션 
-		options: {} }); 
+		options: {
+
+			legend: {
+				labels: {
+					fontColor: "blue",
+					fontSize: 18
+				}
+			}
+		} }); 
 	</script>
 
 
 		<script> var ctx = document.getElementById('inbodyMuscle').getContext('2d'); var chart = new Chart(ctx, { // 챠트 종류를 선택 
 			type: 'line', // 챠트를 그릴 데이타 
 		data: { labels: ['1일차', '2일차', '3일차', '4일차', '5일차', '6일차', '7일차'], datasets: [{ label: '근육량', backgroundColor: 'transparent', borderColor: 'Green', data: [32.1, 32.3, 32.4, 32.4, 32.2, 33, 33.3] }] }, // 옵션 
-		options: {} }); 
+		options: {
+			legend: {
+				labels: {
+					fontColor: "Green",
+					fontSize: 18
+				}
+			}
+
+
+		} }); 
 	</script>
 
 
