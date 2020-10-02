@@ -17,29 +17,53 @@
 			padding-top: 180px;
 			padding-bottom: 120px;
 		}
+
+		.form_group{
+
+		}
 	</style>
 </head>
 <body>
 	<nav class="navbar fixed-top" style="background-color:#8DA5BD">
 		<p style="font-size:90px; font-weight:bold; color:white;">Smart PT</p>
-		<i class="fa fa-user-circle" style="font-size:100px; color:white;"></i>
+		<a href="userInsert3.html"><i class="fa fa-user-circle" style="font-size:100px; color:white;"></i></a>
 	</nav>
 
   <form style="width:80%; margin: 10% auto;">
   <div class="form-row">
+		<div class="form-group col-md-6">
+      <label for="inputState">성별</label>
+      <select id="inputState" class="form-control">
+        <option selected>Choose...</option>
+        <option>Male</option>
+        <option>Female</option>
+      </select>
+    </div>
     <div class="form-group col-md-6">
       <label for="inputNumber">나이</label>
       <input type="number" min="0" max="100" class="form-control" id="inputNumber" placeholder="age ( 세 )">
     </div>
+
+  </div>
+	<div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputHeight">키</label>
       <input type="number" min="100" max="250" class="form-control" id="inputHeight" placeholder="height ( cm )">
     </div>
+		<div class="form-group col-md-6">
+	    <label for="inputWeight">체중</label>
+	    <input type="number" min="10" max="150" class="form-control" id="inputWeight" placeholder="weight ( Kg )">
+	  </div>
   </div>
-  <div class="form-group">
-    <label for="inputWeight">체중</label>
-    <input type="number" min="10" max="150" class="form-control" id="inputWeight" placeholder="weight ( Kg )">
-  </div>
+	<div class="form-group">
+		<label for="inputState">운동 빈도</label>
+		<select id="inputState" class="form-control">
+			<option selected>Choose...</option>
+			<option>앉아서 주로 생활 / 가벼운 움직임만 한다</option>
+			<option>규칙적인 생활을 한다</option>
+			<option>육체노동 등 평소 신체 활동량이 많다</option>
+		</select>
+	</div>
   <div class="form-group">
     <label for="inputCalory">하루 목표 칼로리</label>
     <input type="number" class="form-control" id="inputCalory" placeholder="Calory ( Kcal )">
@@ -56,19 +80,9 @@
         <option>No</option>
       </select>
     </div>
-    <div class="form-group col-md-2">
-      <label for="inputZip">Zip</label>
-      <input type="text" class="form-control" id="inputZip">
-    </div>
   </div>
-  <div class="form-group">
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="gridCheck">
-      <label class="form-check-label" for="gridCheck">
-        Check me out
-      </label>
-    </div>
-  </div>
+
+
   <button type="submit" class="btn btn-primary">Sign in</button>
 </form>
 
