@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="./style.css">
+	<link rel="stylesheet" href="/resource/css/bootstrap.css">
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<meta charset="utf-8">
+
+	<style>
+		body{
+			padding-top: 180px;
+			padding-bottom: 120px;
+		}
+	</style>
+</head>
+<body>
+	<nav class="navbar fixed-top" style="background-color:#8DA5BD">
+		<p style="font-size:90px; font-weight:bold; color:white;">Smart PT</p>
+		<i class="fa fa-user-circle" style="font-size:100px; color:white;"></i>
+	</nav>
+
+  <form style="width:80%; margin: 10% auto;">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputNumber">나이</label>
+      <input type="number" min="0" max="100" class="form-control" id="inputNumber" placeholder="age ( 세 )">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputHeight">키</label>
+      <input type="number" min="100" max="250" class="form-control" id="inputHeight" placeholder="height ( cm )">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputWeight">체중</label>
+    <input type="number" min="10" max="150" class="form-control" id="inputWeight" placeholder="weight ( Kg )">
+  </div>
+  <div class="form-group">
+    <label for="inputCalory">하루 목표 칼로리</label>
+    <input type="number" class="form-control" id="inputCalory" placeholder="Calory ( Kcal )">
+    <br>
+    <p style="color:gray;">[ 하루 권장 칼로리 ] 표준체중(kg) X 활동지수</p>
+    <p style="color:gray;">[ 다이어트 식단 칼로리 ] 여성 : 800 - 1200 Kcal , 남성 : 1200 - 1400 Kcal</p>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="inputState">미스케일 사용여부</label>
+      <select id="inputState" class="form-control">
+        <option selected>Choose...</option>
+        <option>Yes</option>
+        <option>No</option>
+      </select>
+    </div>
+    <div class="form-group col-md-2">
+      <label for="inputZip">Zip</label>
+      <input type="text" class="form-control" id="inputZip">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="gridCheck">
+      <label class="form-check-label" for="gridCheck">
+        Check me out
+      </label>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Sign in</button>
+</form>
+
+
+	<br><br>
+	<nav class="navbar fixed-bottom" style="background-color:#8DA5BD">
+		<a href="index.html">
+			<i class="fa fa-list-alt" aria-hidden="true" style="font-size:100px; color:white;"></i>
+		</a>
+		<a href ="recommend.html">
+			<i class="fa fa-spoon" aria-hidden="true" style="font-size:100px; color:white;"></i>
+		</a>
+		<a href="miband.html">
+      <i class="fa fa-heart" aria-hidden="true" style="font-size:100px; color:white;"></i>
+    </a>
+		<i class="fa fa-pie-chart" aria-hidden="true" style="font-size:100px; color:white;"></i>
+	</nav>
+
+
+
+
+</body>
+</html>
