@@ -1,0 +1,67 @@
+body{
+	padding-top: 180px;
+	padding-bottom: 120px;
+}
+
+
+/*   nav css    */
+
+nav{
+	background-color:#8DA5BD;
+}
+
+.navp{
+	font-size:90px;
+	font-weight: bold;
+	color:white;
+}
+
+
+i.navi{
+	font-size: 100px;
+	color:white;
+}
+
+.navi:hover{
+	-ms-transform: scale(1.5);
+	-webkit-transform: scale(1.5);
+	transform: scale(1.5);
+	opacity: 0.7;
+}
+
+
+
+/* 내용 css */
+
+
+
+.title{
+	float: center; font-size: 100px;
+}
+
+i.titlei{
+	font-size:300px; color:#8DA5BD; float: center;
+	
+}
+
+
+.card{
+
+	margin : 0 auto; width: 80%;
+
+}
+
+
+
+
+
+/* progress p tag  css*/
+
+.pr{
+
+	font-size:20px; font-weight: bold;
+
+
+}
+
+
