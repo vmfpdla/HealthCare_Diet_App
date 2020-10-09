@@ -4,6 +4,12 @@
 	<title></title>
 
 	<link rel="stylesheet" href="./css/jaehyun.css">
+	
+	 <!-- 폰트 -->
+  <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&display=swap" rel="stylesheet">
+  <!-- 아이콘 -->
+  <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+  <!-- 자바스크립트 -->
 
 
 	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
