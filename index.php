@@ -220,28 +220,28 @@
   </div>
   <br/><br/><br/>
   <nav class="navbar fixed-bottom navd">
-    <a href="main.html">
+    <a href="index.php">
       <div class="navIcons" style="text-align:center;" >
         <br/>
         <i class="navIcon fas fa-home navdi" id="navHome" aria-hidden="true"></i>
         <p class="navName navdp"> Home </p>
       </div>
     </a>
-    <a href="recommend.html">
+    <a href="recommend.php">
       <div class="navIcons" style="text-align:center;">
         <br/>
         <i class="navIcon fas fa-utensils navdi" id="navDiet" aria-hidden="true"></i>
         <p class="navName navdp"> Diet </p>
       </div>
     </a>
-    <a href="miband.html">
+    <a href="miband.php">
       <div class="navIcons" style="text-align:center;">
         <br/>
         <i class="navIcon fas fa-heartbeat navdi" id="navMiband" aria-hidden="true"></i>
         <p class="navName navdp"> Miband </p>
       </div>
     </a>
-    <a href="static.html">
+    <a href="static.php">
       <div  class="navIcons" style="text-align:center;">
         <br/>
         <i class="navIcon far fa-chart-bar navdi" id="navChart" aria-hidden="true" ></i>
