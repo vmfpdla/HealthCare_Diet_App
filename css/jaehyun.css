@@ -1,4 +1,6 @@
 body{
+	font-family: 'Black Han Sans', sans-serif;
+	font-family: 'Do Hyeon', sans-serif;
 	padding-top: 180px;
 	padding-bottom: 120px;
 }
@@ -8,6 +10,7 @@ body{
 
 nav{
 	background-color:#8DA5BD;
+	padding-left:50px; padding-right:50px;
 }
 
 .navp{
@@ -29,7 +32,17 @@ i.navi{
 	opacity: 0.7;
 }
 
+nav.navd{
+	background-color:white; box-shadow: 20px 20px 20px 20px #E6E6E6; padding-right:70px; padding-left:70px;
+}
 
+i.navdi{
+	font-size:60px; color:#BDBDBD;
+
+}
+.navdp{
+	color:#BDBDBD;
+}
 
 /* 내용 css */
 
@@ -52,9 +65,6 @@ i.titlei{
 }
 
 
-
-
-
 /* progress p tag  css*/
 
 .pr{
@@ -65,3 +75,49 @@ i.titlei{
 }
 
 
+
+
+/* miband css */
+
+i.mifi{
+	font-size:30px; 
+	margin: 0 0 0 20%; 
+	float:left;
+}
+
+.mif{
+	font-size:20px; font-weight:bold; float:left; margin: 0 40px;
+
+}
+
+
+i.misi{
+	color:red; float:left; font-size: 20px;
+}
+
+h3.mip{
+	font-weight:bold;
+}
+
+.mipp{
+	font-size:20px;
+}
+
+#today_exercise_div {
+	margin: 5% 10%;
+	height: 100px;
+}
+#notification_div {
+	margin: 1% 0;
+	display: inline;
+}
+#exercise_div {
+	width: 70%;
+	margin: 70px auto;
+	/* width 가 지정되어있어서 가운데정렬이 먹히는것임. */
+	background-color: yellow;
+}
+#exercise {
+	padding: 5% 0;
+	text-align: center;
+}
