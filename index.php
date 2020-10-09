@@ -67,7 +67,7 @@ $user_id = 1; # 1번 가져왔다고 가정
     </div>
     <div class="card-body" style="text-align:center">
       <!-- 운동데이터를 가져오는 php 문 -->
-      <?
+      <?php
       $sql1 = "SELECT * FROM doexercise INNER JOIN exerciseinfo on doexercise.exercise_id = exerciseInfo.exercise_id WHERE user_id='$user_id'";
       $result1 = $conn->query($sql1);
 
@@ -89,7 +89,7 @@ $user_id = 1; # 1번 가져왔다고 가정
   <div class="card-header">
     영양소
   </div>
-  <?
+  <?php
   $today = date("Y-m-d");
   $kcal = 0; //칼로리
   $car =0; // 탄수화물
