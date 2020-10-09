@@ -1,5 +1,8 @@
 <?php
 require_once('./dbconn.php');
+$gfood_id=$_POST['food_id'];
+$geaten_time=$_POST['eaten_time'];
+
 $user_id=1
 $eaten_id =5;
 $food_id=1;
@@ -11,14 +14,13 @@ if ( ! $conn ) {
 } else {
 	echo 'Connection established';
 
-	$sql = "INSERT INTO eatenfood (eaten_id, user_id, food_id, eaten_day, eaten_time, eaten_serving) VALUES (5,1,1,"2020-10-09",2,1)";
-
+	$sql = "INSERT INTO eatenfood ( user_id, food_id, eaten_day, eaten_time, eaten_serving) VALUES ( '$user_id', '$food_id','$eaten_day', '$eaten_time', '$eaten_serving')";
 
 	mysqli_query($conn,$sql);
-
+	echo $gfood_id . $geaten_time;
 	$conn->close();
 
-	header("Location: ./index.php");
+#	header("Location: ./index.php");
 }
 
 #$sql = "INSERT INTO eatenfood (eaten_id, user_id, food_id, eaten_day, eaten_time, eaten_serving) VALUES ($eaten_id,$user_id,$food_id,$eaten_day,$eaten_time,$eaten_serving)";
