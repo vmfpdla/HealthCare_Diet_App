@@ -1,5 +1,5 @@
 <?php
-$require_once('./dbconn.php');
+require_once('./dbconn.php');
 $user_id=1
 $eaten_id =5;
 $food_id=1;
