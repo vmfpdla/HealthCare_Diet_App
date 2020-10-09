@@ -4,7 +4,8 @@
 
 
 	<link rel="stylesheet" href="./css/jaehyun.css">
-
+ <script src="./js/nav.js"></script>
+ 
 
 	 <!-- 폰트 -->
   <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&display=swap" rel="stylesheet">
