@@ -34,7 +34,7 @@ $user_id = 1; # 1번 가져왔다고 가정
 
 <head>
   <title></title>
-  <scrip src="./js/nav.js">
+  <scrip src="./js/nav.js"></script>
 
 
     <link rel="stylesheet" href="./css/jaehyun.css">
