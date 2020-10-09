@@ -165,15 +165,36 @@
 
 	<br><br>
 
-	<nav class="navbar fixed-bottom">
-		<a href="index.html">
-			<i class="fa fa-list-alt navi" aria-hidden="true"></i>
-		</a>
-
-		<a href ="recommend.html"><i class="fa fa-spoon navi" aria-hidden="true"></i></a>
-		<a href="miband.html"><i class="fa fa-heart navi" aria-hidden="true"></i></a>
-		<a href="static.html"><i class="fa fa-pie-chart navi" aria-hidden="true"></i></a>
-	</nav>
+  <nav class="navbar fixed-bottom navd">
+    <a href="index.php">
+      <div class="navIcons" style="text-align:center;" >
+        <br/>
+        <i class="navIcon fas fa-home navdi" id="navHome" aria-hidden="true"></i>
+        <p class="navName navdp"> Home </p>
+      </div>
+    </a>
+    <a href="recommend.php">
+      <div class="navIcons" style="text-align:center;">
+        <br/>
+        <i class="navIcon fas fa-utensils navdi" id="navDiet" aria-hidden="true"></i>
+        <p class="navName navdp"> Diet </p>
+      </div>
+    </a>
+    <a href="miband.php">
+      <div class="navIcons" style="text-align:center;">
+        <br/>
+        <i class="navIcon fas fa-heartbeat navdi" id="navMiband" aria-hidden="true"></i>
+        <p class="navName navdp"> Miband </p>
+      </div>
+    </a>
+    <a href="static.php">
+      <div  class="navIcons" style="text-align:center;">
+        <br/>
+        <i class="navIcon far fa-chart-bar navdi" id="navChart" aria-hidden="true" ></i>
+        <p class="navName navdp"> Chart </p>
+      </div>
+    </a>
+  </nav>
 
 
 
