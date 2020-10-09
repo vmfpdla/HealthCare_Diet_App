@@ -34,6 +34,7 @@ $user_id = 1; # 1번 가져왔다고 가정
 
 <head>
   <title></title>
+  <link rel="stylesheet" href="./css/jaehyun.css">
 
   <!-- 스타일 시트 순서 중요 !!!!!!!-->
 
