@@ -35,19 +35,15 @@ $user_id = 1; # 1번 가져왔다고 가정
 <head>
   <title></title>
   <link rel="stylesheet" href="./css/jaehyun.css">
+  <script src="./js/nav.js">
+  
 
-  <!-- 스타일 시트 순서 중요 !!!!!!!-->
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/v4-shims.css">
+  <link rel="stylesheet" href="/resource/css/bootstrap.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="../css/index.css" type="text/css"/>
-  <!-- 폰트 -->
-  <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&display=swap" rel="stylesheet">
-  <!-- 아이콘 -->
-  <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
-  <!-- 자바스크립트 -->
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  <script src="./js/nav.js"></script>
  
 </head>
 
