@@ -8,10 +8,13 @@ $eaten_serving=1;
 $eaten_day = date("Y-m-d",time());
 
 
-$sql = "INSERT INTO eatenfood (eaten_id, user_id, food_id, eaten_day, eaten_time, eaten_serving) VALUES ($eaten_id,$user_id,$food_id,$eaten_day,$eaten_time,$eaten_serving)";
+#$sql = "INSERT INTO eatenfood (eaten_id, user_id, food_id, eaten_day, eaten_time, eaten_serving) VALUES ($eaten_id,$user_id,$food_id,$eaten_day,$eaten_time,$eaten_serving)";
 
 
-$conn=mysqli_query($sql);
+$sql = "INSERT INTO eatenfood (eaten_id, user_id, food_id, eaten_day, eaten_time, eaten_serving) VALUES (5,1,1,"2020-10-09",2,1)";
+
+
+mysqli_query($conn,$sql);
 
 $conn->close();
 
