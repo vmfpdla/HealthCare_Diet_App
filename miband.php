@@ -3,7 +3,7 @@
 
 <head>
   
-  <scrip src="./js/nav.js">
+  <scrip src="./js/nav.js"></script>
 
 
   <link rel="stylesheet" href="./css/jaehyun.css">
