@@ -69,11 +69,25 @@
 
       <tbody>
         <?php
-        header('Content-Type:text/html; charset=UTF-8');
+     #   header('Content-Type:text/html; charset=UTF-8');
 
-        $jb_conn = mysqli_connect( 'localhost', 'root', 'toor', 'smartpt' );
-        $jb_sql = "SELECT * FROM foodinfo;";
+	
+
+	$jb_conn = mysqli_connect( 'localhost', 'root', 'toor', 'smartpt' );
+
+
+	mysqli_query($jb_conn, "set session character_set_connection=utf8;");
+
+	mysqli_query($jb_conn, "set session character_set_results=utf8;");
+
+	mysqli_query($jb_conn, "set session character_set_client=utf8;");
+
+
+	$jb_sql = "SELECT * FROM foodinfo;";
         $jb_result = mysqli_query( $jb_conn, $jb_sql );
+
+
+
 
         while( $jb_row = mysqli_fetch_array( $jb_result ) ) {
         echo '<tr><td>' . $jb_row[ 'food_id' ] . '</td><td>'. $jb_row[ 'food_name' ] . '</td><td>' . $jb_row[ 'food_car' ] . '</td><td>'. $jb_row[ 'food_fat' ] .'</td><td>'. $jb_row[ 'food_pro' ] .'</td><td>'. $jb_row[ 'food_calory' ] .'</td></tr>';
