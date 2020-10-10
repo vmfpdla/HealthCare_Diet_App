@@ -1,6 +1,4 @@
-<?php
-require_once("./dbconn.php");
-?>
+
 
 <!DOCTYPE html>
 <html>
