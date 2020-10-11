@@ -76,7 +76,7 @@
     </div>
   </div>
   <div class="row row-cols-3">
-    <form method="post" action="test3.php">
+    <form method="post" action="updatefoodinput.php">
       <div class="input-group col">
 
         <div class="input-group-prepend">
