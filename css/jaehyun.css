@@ -10,7 +10,8 @@ body{
 
 nav{
 	background-color:#8DA5BD;
-	padding-left:50px; padding-right:50px;
+	padding-left:50px;
+	padding-right:50px;
 }
 
 .navp{
@@ -30,19 +31,26 @@ i.navi{
 	-webkit-transform: scale(1.5);
 	transform: scale(1.5);
 	opacity: 0.7;
+	text-decoration: none;
 }
 
 nav.navd{
-	background-color:white; box-shadow: 20px 20px 20px 20px #E6E6E6; padding-right:70px; padding-left:70px;
+	background-color:white;
+ 	box-shadow: 20px 20px 20px 20px #E6E6E6;
+	padding-right:70px;
+	padding-left:70px;
 }
 
 i.navdi{
-	font-size:60px; color:#BDBDBD;
+	font-size:60px;
+	color:#BDBDBD;
 
 }
 .navdp{
 	color:#BDBDBD;
 }
+
+
 
 /* 내용 css */
 
@@ -54,7 +62,7 @@ i.navdi{
 
 i.titlei{
 	font-size:300px; color:#8DA5BD; float: center;
-	
+
 }
 
 
@@ -68,20 +76,19 @@ i.titlei{
 /* progress p tag  css*/
 
 .pr{
-
 	font-size:20px; font-weight: bold;
-
-
 }
 
-
+.smallbar .pr{
+  font-size: 15px;
+}
 
 
 /* miband css */
 
 i.mifi{
-	font-size:30px; 
-	margin: 0 0 0 20%; 
+	font-size:30px;
+	margin: 0 0 0 20%;
 	float:left;
 }
 
