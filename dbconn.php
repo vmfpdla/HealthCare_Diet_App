@@ -2,7 +2,7 @@
 
   $host = 'localhost';
   $db_user = 'root';
-  $db_pw = 'ghkdduswn123'; #toor
+  $db_pw = 'toor'; #toor
   $db_name = 'smartpt';
   $conn = new mysqli($host, $db_user, $db_pw, $db_name);
 
