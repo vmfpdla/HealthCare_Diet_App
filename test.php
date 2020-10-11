@@ -67,23 +67,36 @@
 
 
 
+
     <div class="input-group mb-3">
       <div class="input-group-prepend">
         <span class="input-group-text" id="basic-addon1">음식이름</span>
       </div>
       <input type="text" class="form-control" id="keyword" placeholder="Food Name" aria-label="Username" aria-describedby="basic-addon1">
     </div>
+  </div>
+  <div class="row row-cols-3">
     <form method="post" action="test3.php">
-      <div class="input-group mb-3">
+      <div class="input-group col">
 
         <div class="input-group-prepend">
           <span class="input-group-text" id="basic-addon1">음식 번호</span>
         </div>
         <input type="text" class="form-control" name="foodnum" id="foodnum" placeholder="Food Number" aria-label="Username" aria-describedby="basic-addon1">
-        <button type="submit"> 선택 </button>
 
-      </div>
-    </form>
+
+
+
+        <div class="input-group col">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">음식 인분</span>
+          </div>
+          <input type="number" class="form-control" name="serving" placeholder="Serving" aria-label="Username" aria-describedby="basic-addon1">
+	</div>
+
+<button type="submit"> 제출 </button>
+      </form>
+    </div>
 
 
 
@@ -128,10 +141,6 @@
     </tbody>
   </table>
 
-  <form method="post" action="test3.php">
-    선택한 번호 :  <input type="text" name="foodnum"  id="foodnum">
-    <button type="submit"> 선택 </button>
-  </form>
 
 </body>
 </html>
