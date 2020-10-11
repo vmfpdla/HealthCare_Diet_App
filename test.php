@@ -41,6 +41,17 @@
         $(temp).parent().show();
       })
     })
+	  
+	  
+
+	  
+	function clickTd(){
+      $("#user table tr").click(function(){
+        var text = $(this).text();
+        #alert(text[0]);
+
+        <?php ?>
+	  
   </script>
 
 
@@ -95,20 +106,7 @@
       ?>
     </tbody>
   </table>
-	  
-	  <table>
-  <tr>
-    <td>Filter Name</td>
-    <td>Filter ID</td>
-  </tr>
-  <?php
-  foreach (filter_list() as $id =>$filter) {
-    echo '<tr><td>' . $filter . '</td><td>' . filter_id($filter) . '</td></tr>';
-  }
-?>
-</table>
-
-
+	
 
 
 
