@@ -33,7 +33,8 @@
   <script type="text/javascript">
 
     $(document).ready(function() {
-      $("#keyword").keyup(function() {
+clickTd();	    
+	$("#keyword").keyup(function() {
         var k = $(this).val();
         $("#user-table > tbody > tr").hide();
         var temp = $("#user-table > tbody > tr > td:nth-child(5n+2):contains('" + k + "')");
@@ -41,6 +42,20 @@
         $(temp).parent().show();
       })
     })
+	  
+	  
+
+	  
+	function clickTd(){
+      $("#user-table tr").click(function(){
+        var text = $(this).text();
+	alert(text[0]);
+     document.getElementById("hi").value=text;
+      });
+
+	}
+
+     
   </script>
 
 
@@ -95,10 +110,10 @@
       ?>
     </tbody>
   </table>
-
-
-
-
-
+<form method="post" action="test3.php">	
+   <input type="text" name="hi"  id="hi">
+	<button type="submit"> submit </button>
+</form> 
+<p> hi </p>
 </body>
 </html>
