@@ -23,10 +23,6 @@
     #user-table {margin: 0 auto; text-align: center;}
     #input-form {margin-top: 10px; margin-bottom: 10px;}
 
-    #user-table {border-collapse: collapse;}
-    #user-table > thead > tr { background-color: #333; color:#fff; }
-    #user-table > thead > tr > th { padding: 8px; width: 150px; }
-    #user-table > tbody > tr > td { border-bottom: 1px solid gray; padding:8px; }
 
   </style>
 
@@ -49,8 +45,8 @@ clickTd();
 	function clickTd(){
       $("#user-table tr").click(function(){
         var text = $(this).text();
-	alert(text[0]);
-     document.getElementById("hi").value=text;
+	alert('선택한 음식번호 : '+text[0]);
+     document.getElementById("foodnum").value=text[0];
       });
 
 	}
@@ -66,11 +62,32 @@ clickTd();
 <body>
 
   <div id="container">
-    <div id="input-form">
-      이름 : <input type="text" id="keyword" />
-    </div>
 
-    <table id="user-table">
+
+
+
+
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="basic-addon1">음식이름</span>
+    </div>
+    <input type="text" class="form-control" id="keyword" placeholder="Food Name" aria-label="Username" aria-describedby="basic-addon1">
+  </div>
+
+  <div class="input-group mb-3">
+    <form method="post" action="test3.php">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">음식 번호</span>
+      </div>
+      <input type="text" class="form-control" name="foodnum" id="foodnum" placeholder="Food Number" aria-label="Username" aria-describedby="basic-addon1">
+      <button type="submit"> 선택 </button>
+    </form>
+  </div>
+
+
+
+
+    <table class="table table-hover" id="user-table">
       <thead>
         <tr>
           <th>음식번호</th>
@@ -109,11 +126,12 @@ clickTd();
       }
       ?>
     </tbody>
-  </table>
-<form method="post" action="test3.php">	
-   <input type="text" name="hi"  id="hi">
-	<button type="submit"> submit </button>
-</form> 
-<p> hi </p>
+</table>
+
+<form method="post" action="test3.php">
+  선택한 번호 :  <input type="text" name="foodnum"  id="foodnum">
+        <button type="submit"> 선택 </button>
+</form>
+
 </body>
 </html>
