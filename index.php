@@ -429,7 +429,7 @@
     저녁
   </div>
   <div class="card-body" id="camera_3"  >
-    <i class="fas fa-utensils" aria-hidden="true"></i>
+    <a href="foodinput.php"><i class="fas fa-utensils" aria-hidden="true"></i></a>
   </div>
 
     <div class="card-body" id="diet_3">

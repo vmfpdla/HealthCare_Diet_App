@@ -23,18 +23,14 @@
     #user-table {margin: 0 auto; text-align: center;}
     #input-form {margin-top: 10px; margin-bottom: 10px;}
 
-    #user-table {border-collapse: collapse;}
-    #user-table > thead > tr { background-color: #333; color:#fff; }
-    #user-table > thead > tr > th { padding: 8px; width: 150px; }
-    #user-table > tbody > tr > td { border-bottom: 1px solid gray; padding:8px; }
 
   </style>
 
   <script type="text/javascript">
 
     $(document).ready(function() {
-clickTd();	    
-	$("#keyword").keyup(function() {
+      clickTd();      
+      $("#keyword").keyup(function() {
         var k = $(this).val();
         $("#user-table > tbody > tr").hide();
         var temp = $("#user-table > tbody > tr > td:nth-child(5n+2):contains('" + k + "')");
@@ -42,20 +38,20 @@ clickTd();
         $(temp).parent().show();
       })
     })
-	  
-	  
+    
+    
 
-	  
-	function clickTd(){
+    
+    function clickTd(){
       $("#user-table tr").click(function(){
         var text = $(this).text();
-	alert(text[0]);
-     document.getElementById("hi").value=text;
+        alert('선택한 음식번호 : '+text[0]);
+        document.getElementById("foodnum").value=text[0];
       });
 
-	}
+    }
 
-     
+
   </script>
 
 
@@ -66,11 +62,45 @@ clickTd();
 <body>
 
   <div id="container">
-    <div id="input-form">
-      이름 : <input type="text" id="keyword" />
+
+
+
+
+
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">음식이름</span>
+      </div>
+      <input type="text" class="form-control" id="keyword" placeholder="Food Name" aria-label="Username" aria-describedby="basic-addon1">
+    </div>
+  </div>
+  <div class="row row-cols-3">
+    <form method="post" action="updatefoodinput.php">
+      <div class="input-group col">
+
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">음식 번호</span>
+        </div>
+        <input type="text" class="form-control" name="foodnum" id="foodnum" placeholder="Food Number" aria-label="Username" aria-describedby="basic-addon1">
+
+
+
+
+        <div class="input-group col">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">음식 인분</span>
+          </div>
+          <input type="number" class="form-control" name="serving" placeholder="Serving" aria-label="Username" aria-describedby="basic-addon1">
+	</div>
+
+<button type="submit"> 제출 </button>
+      </form>
     </div>
 
-    <table id="user-table">
+
+
+    <table class="table table-hover" id="user-table">
       <thead>
         <tr>
           <th>음식번호</th>
@@ -84,21 +114,21 @@ clickTd();
 
       <tbody>
         <?php
-     #   header('Content-Type:text/html; charset=UTF-8');
-
-	
-
-	$jb_conn = mysqli_connect( 'localhost', 'root', 'toor', 'smartpt' );
+        #   header('Content-Type:text/html; charset=UTF-8');
 
 
-	mysqli_query($jb_conn, "set session character_set_connection=utf8;");
 
-	mysqli_query($jb_conn, "set session character_set_results=utf8;");
-
-	mysqli_query($jb_conn, "set session character_set_client=utf8;");
+        $jb_conn = mysqli_connect( 'localhost', 'root', 'toor', 'smartpt' );
 
 
-	$jb_sql = "SELECT * FROM foodinfo;";
+        mysqli_query($jb_conn, "set session character_set_connection=utf8;");
+
+        mysqli_query($jb_conn, "set session character_set_results=utf8;");
+
+        mysqli_query($jb_conn, "set session character_set_client=utf8;");
+
+
+        $jb_sql = "SELECT * FROM foodinfo;";
         $jb_result = mysqli_query( $jb_conn, $jb_sql );
 
 
@@ -110,10 +140,7 @@ clickTd();
       ?>
     </tbody>
   </table>
-<form method="post" action="test3.php">	
-   <input type="text" name="hi"  id="hi">
-	<button type="submit"> submit </button>
-</form> 
-<p> hi </p>
+
+
 </body>
 </html>
