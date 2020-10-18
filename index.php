@@ -262,7 +262,7 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
  
  <div style="margin:20px 30px; float:left;" class="smallbar">
         <div class="container" style="margin-bottom:-25px;">
-          <div class="container" style="float:left; width: 20%;text-align: center;">
+          <div class="container gmainp">
             <p class="pr" align="left;"> Kcal </p>
           </div>
 
@@ -277,7 +277,7 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
         <br><br>
 
         <div class="container" style="margin-bottom:-20px;">
-          <div class="container" style="float:left; width: 20%;text-align: center;">
+          <div class="container gmainp">
             <p class="pr" align="left;"> 탄 </p>
 
           </div>
@@ -295,7 +295,7 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
 
 
         <div class="container" style="margin-bottom:-20px;">
-          <div class="container" style="float:left; width: 20%;text-align: center;">
+          <div class="container gmainp">
             <p class="pr" align="left;"> 단 </p>
 
           </div>
@@ -312,12 +312,12 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
         <br><br>
 
         <div class="container" style="font-weight: bold;">
-          <div class="container" style="float:left; width: 20%;text-align: center;">
+          <div class="container gmainp">
             <p class="pr" align="left;"> 지 </p>
 
           </div>
 
-          <div class="progress rounded-pill" style="height:20px;  width: 300px;">
+          <div class="progress rounded-pill" style="height:20px;">
             <div class="progress-bar progress-bar-striped bg-info progress-bar-animated" role="progressbar"
               style="width: 42%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
               <p class="pr" style="padding-top:15px;"> <?php echo $morning_fat ." / 1500" ?> </p>
@@ -366,12 +366,12 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
 
       <div style="margin:20px 30px;" class="smallbar">
         <div class="container" style="margin-bottom:-25px;">
-          <div class="container" style="float:left; width: 15%;text-align: center;">
+          <div class="container gmainp">
             <p class="pr" align="left;"> Kcal </p>
 
           </div>
 
-          <div class="progress rounded-pill" style="height:25px; width: 300px;">
+          <div class="progress rounded-pill" style="height:25px;">
             <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar"
               style="width: 60%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
               <p class="pr" style="padding-top:15px;"> <?php echo $lunch_kcal ." / 1500" ?> </p>
@@ -382,12 +382,12 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
         <br><br>
 
         <div class="container" style="margin-bottom:-20px;">
-          <div class="container" style="float:left; width: 15%;text-align: center;">
+          <div class="container gmainp">
             <p class="pr" align="left;"> 탄 </p>
 
           </div>
 
-          <div class="progress rounded-pill" style="height:20px;  width: 300px;">
+          <div class="progress rounded-pill" style="height:20px;">
             <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 62.5%"
               aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
               <p class="pr" style="padding-top:15px;"> <?php echo $lunch_car ." / 1500" ?> </p>
@@ -400,12 +400,12 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
 
 
         <div class="container" style="margin-bottom:-20px;">
-          <div class="container" style="float:left; width: 15%;text-align: center;">
+          <div class="container gmainp">
             <p class="pr" align="left;"> 단 </p>
 
           </div>
 
-          <div class="progress rounded-pill" style="height:20px;  width: 300px;">
+          <div class="progress rounded-pill" style="height:20px;">
             <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar"
               style="width: 57%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
               <p class="pr" style="padding-top:15px;"> <?php echo $lunch_pro ." / 1500" ?> </p>
@@ -417,12 +417,12 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
         <br><br>
 
         <div class="container" style="font-weight: bold;">
-          <div class="container" style="float:left; width: 15%;text-align: center;">
+          <div class="container gmainp">
             <p class="pr" align="left;"> 지 </p>
 
           </div>
 
-          <div class="progress rounded-pill" style="height:20px;  width: 300px;">
+          <div class="progress rounded-pill" style="height:20px;">
             <div class="progress-bar progress-bar-striped bg-info progress-bar-animated" role="progressbar"
               style="width: 42%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
               <p class="pr" style="padding-top:15px;"> <?php echo $lunch_fat ." / 1500" ?> </p>
@@ -468,12 +468,12 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
       </div>
       <div style="margin:20px 30px;" class="smallbar">
         <div class="container" style="margin-bottom:-25px;">
-          <div class="container" style="float:left; width: 15%;text-align: center;">
+          <div class="container gmainp">
             <p class="pr" align="left;"> Kcal </p>
 
           </div>
 
-          <div class="progress rounded-pill" style="height:25px; width: 300px;">
+          <div class="progress rounded-pill" style="height:25px;">
             <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar"
               style="width: 60%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
               <p class="pr" style="padding-top:15px;"> <?php echo $dinner_kcal ." / 1500" ?> </p>
@@ -484,12 +484,12 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
         <br><br>
 
         <div class="container" style="margin-bottom:-20px;">
-          <div class="container" style="float:left; width: 15%;text-align: center;">
+          <div class="container gmainp">
             <p class="pr" align="left;"> 탄 </p>
 
           </div>
 
-          <div class="progress rounded-pill" style="height:20px;  width: 300px;">
+          <div class="progress rounded-pill" style="height:20px;">
             <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 62.5%"
               aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
               <p class="pr" style="padding-top:15px;"> <?php echo $dinner_car ." / 1500" ?> </p>
@@ -502,12 +502,12 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
 
 
         <div class="container" style="margin-bottom:-20px;">
-          <div class="container" style="float:left; width: 15%;text-align: center;">
+          <div class="container gmainp">
             <p class="pr" align="left;"> 단 </p>
 
           </div>
 
-          <div class="progress rounded-pill" style="height:20px;  width: 300px;">
+          <div class="progress rounded-pill" style="height:20px;">
             <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar"
               style="width: 57%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
               <p class="pr" style="padding-top:15px;"> <?php echo $dinner_car ." / 1500" ?> </p>
@@ -519,12 +519,12 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
         <br><br>
 
         <div class="container" style="font-weight: bold;">
-          <div class="container" style="float:left; width: 15%;text-align: center;">
+          <div class="container gmainp">
             <p class="pr" align="left;"> 지 </p>
 
           </div>
 
-          <div class="progress rounded-pill" style="height:20px;  width: 300px;">
+          <div class="progress rounded-pill" style="height:20px;">
             <div class="progress-bar progress-bar-striped bg-info progress-bar-animated" role="progressbar"
               style="width: 42%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
               <p class="pr" style="padding-top:15px;"> <?php echo $dinner_fat ." / 1500" ?> </p>
