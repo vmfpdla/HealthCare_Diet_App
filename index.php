@@ -343,7 +343,7 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
     </div>
     <div class="card-body" id="diet_2">
       <div style="float:left; margin:50px 50px;  width:15%;">
-        <?php
+       <p style="width: 100%;"> <?php
     if($is_lunch==1){
       $lunch_kcal =0;
       $lunch_car =0;
@@ -358,7 +358,7 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
         echo nl2br("\n\n");
       }
     }
-    ?>
+    ?></p>
       </div>
 
 
@@ -449,6 +449,7 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
 
     <div class="card-body" id="diet_3">
       <div style="float:left; margin:50px 50px;  width:15%;">
+        <p style="width: 100%;">
         <?php
         if($is_dinner==1){
           $dinner_kcal =0;
@@ -464,7 +465,7 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
             echo nl2br("\n\n");
           }
         }
-      ?>
+      ?></p>
       </div>
       <div style="margin:20px 30px;" class="smallbar">
         <div class="container" style="margin-bottom:-25px;">
