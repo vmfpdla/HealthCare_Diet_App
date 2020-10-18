@@ -97,6 +97,22 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
     $fat = $fat + $row['food_fat'];
     $pro = $pro + $row['food_pro'];
     }
+	  
+	      while($row = $result2->fetch_assoc()) {
+      if($row['eaten_serving']==1){ # 1인분인경우
+      $kcal = $kcal + $row['food_calory'];
+      $car = $car + $row['food_car'];
+      $fat = $fat + $row['food_fat'];
+      $pro = $pro + $row['food_pro'];
+      }
+
+      while($row = $result2->fetch_assoc()) {
+        if($row['eaten_serving']==2){ # 2인분인경우
+        $kcal = $kcal + 2*$row['food_calory'];
+        $car = $car + 2*$row['food_car'];
+        $fat = $fat + 2*$row['food_fat'];
+        $pro = $pro + 2*$row['food_pro'];
+        }
 
   #echo $row['exercise_name'] ." / " .$row['exercise_minute'] ."분 / ".$row['exhausted_calory']."Kcal";
   #echo nl2br("\n");
