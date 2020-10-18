@@ -342,7 +342,7 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
       </form>
     </div>
     <div class="card-body" id="diet_2">
-      <div style="float:left; margin:50px 50px;">
+      <div style="float:left; margin:50px 50px;  width:15%;">
         <?php
     if($is_lunch==1){
       $lunch_kcal =0;
@@ -448,7 +448,7 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
     </div>
 
     <div class="card-body" id="diet_3">
-      <div style="float:left; margin:50px 50px;">
+      <div style="float:left; margin:50px 50px;  width:15%;">
         <?php
         if($is_dinner==1){
           $dinner_kcal =0;
