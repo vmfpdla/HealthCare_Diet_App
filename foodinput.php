@@ -93,7 +93,9 @@
           </div>
           <input type="number" class="form-control" name="serving" placeholder="Serving" aria-label="Username" aria-describedby="basic-addon1">
 	</div>
- 	<input type="hidden" name="eaten_time" value="3"> 
+	
+	<?php echo $_POST['eatentime'];?>
+	<input type="hidden" name="eaten_time" value="<?php echo $_POST['eatentime'];?>"> 
 <button type="submit"> 제출 </button>
       </form>
     </div>
