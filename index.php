@@ -241,8 +241,8 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
       </form>
     </div>
     <div class="card-body" id="diet_1">
-      <div style="float:left; margin:50px 50px;">
-        <?php
+      <div style="float:left; margin:50px 50px; width:15%;">
+        <p style="width:100%"><?php
       if($is_morning==1){
         $morning_kcal =0;
         $morning_car =0;
@@ -257,16 +257,16 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
           echo nl2br("\n\n");
         }
       }
-    ?>
+    ?></p>
       </div>
  
- <div style="margin:20px 30px; float:left;" class="smallbar">
+ <div style="margin:20px 30px; float:left; width:60%;" class="smallbar">
         <div class="container" style="margin-bottom:-25px;">
-          <div class="container gmainp">
-            <p class="pr" align="left;"> Kcal </p>
-          </div>
+         <div class="container" style="float:left; width:20%;"> 
+            <p class="pr"> Kcal </p>
+         </div>
 
-          <div class="progress rounded-pill" style="height:25px;">
+          <div class="progress rounded-pill" style="height:25px; width:70%">
             <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar"
               style="width: 60%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
               <p class="pr" style="padding-top:15px;"> <?php echo $morning_kcal ." / 1500" ?> </p>
@@ -282,7 +282,7 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
 
           </div>
 
-          <div class="progress rounded-pill" style="height:20px;">
+          <div class="progress rounded-pill" style="height:20px; width:70%;">
             <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 62.5%"
               aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
               <p class="pr" style=" padding-top:15px;"> <?php echo $morning_car ." / 1500" ?> </p>
@@ -300,7 +300,7 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
 
           </div>
 
-          <div class="progress rounded-pill" style="height:20px;">
+          <div class="progress rounded-pill" style="height:20px; width:70%;">
             <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar"
               style="width: 57%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
               <p class="pr" style="padding-top:15px;"> <?php echo $morning_pro ." / 1500" ?> </p>
@@ -317,7 +317,7 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
 
           </div>
 
-          <div class="progress rounded-pill" style="height:20px;">
+          <div class="progress rounded-pill" style="height:20px; width:70%;">
             <div class="progress-bar progress-bar-striped bg-info progress-bar-animated" role="progressbar"
               style="width: 42%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
               <p class="pr" style="padding-top:15px;"> <?php echo $morning_fat ." / 1500" ?> </p>
