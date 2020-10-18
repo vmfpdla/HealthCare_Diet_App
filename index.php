@@ -277,7 +277,7 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
         <br><br>
 
         <div class="container" style="margin-bottom:-20px;">
-          <div class="container gmainp">
+          <div class="container" style="float:left; width:20%;"> 
             <p class="pr" align="left;"> 탄 </p>
 
           </div>
@@ -295,7 +295,7 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
 
 
         <div class="container" style="margin-bottom:-20px;">
-          <div class="container gmainp">
+          <div class="container" style="float:left; width:20%;"> 
             <p class="pr" align="left;"> 단 </p>
 
           </div>
@@ -312,7 +312,7 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
         <br><br>
 
         <div class="container" style="font-weight: bold;">
-          <div class="container gmainp">
+          <div class="container" style="float:left; width:20%;"> 
             <p class="pr" align="left;"> 지 </p>
 
           </div>
@@ -366,7 +366,7 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
 
       <div style="margin:20px 30px;" class="smallbar">
         <div class="container" style="margin-bottom:-25px;">
-          <div class="container gmainp">
+          <div class="container" style="float:left; width:20%;"> 
             <p class="pr" align="left;"> Kcal </p>
 
           </div>
@@ -382,7 +382,7 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
         <br><br>
 
         <div class="container" style="margin-bottom:-20px;">
-          <div class="container gmainp">
+          <div class="container" style="float:left; width:20%;"> 
             <p class="pr" align="left;"> 탄 </p>
 
           </div>
@@ -400,7 +400,7 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
 
 
         <div class="container" style="margin-bottom:-20px;">
-          <div class="container gmainp">
+          <div class="container" style="float:left; width:20%;"> 
             <p class="pr" align="left;"> 단 </p>
 
           </div>
@@ -417,7 +417,7 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
         <br><br>
 
         <div class="container" style="font-weight: bold;">
-          <div class="container gmainp">
+          <div class="container" style="float:left; width:20%;"> 
             <p class="pr" align="left;"> 지 </p>
 
           </div>
@@ -468,7 +468,7 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
       </div>
       <div style="margin:20px 30px;" class="smallbar">
         <div class="container" style="margin-bottom:-25px;">
-          <div class="container gmainp">
+          <div class="container" style="float:left; width:20%;"> 
             <p class="pr" align="left;"> Kcal </p>
 
           </div>
@@ -484,7 +484,7 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
         <br><br>
 
         <div class="container" style="margin-bottom:-20px;">
-          <div class="container gmainp">
+          <div class="container" style="float:left; width:20%;"> 
             <p class="pr" align="left;"> 탄 </p>
 
           </div>
@@ -502,7 +502,7 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
 
 
         <div class="container" style="margin-bottom:-20px;">
-          <div class="container gmainp">
+          <div class="container" style="float:left; width:20%;"> 
             <p class="pr" align="left;"> 단 </p>
 
           </div>
@@ -519,7 +519,7 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
         <br><br>
 
         <div class="container" style="font-weight: bold;">
-          <div class="container gmainp">
+          <div class="container" style="float:left; width:20%;"> 
             <p class="pr" align="left;"> 지 </p>
 
           </div>
