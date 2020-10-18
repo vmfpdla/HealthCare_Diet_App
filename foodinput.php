@@ -93,7 +93,7 @@
           </div>
           <input type="number" class="form-control" name="serving" placeholder="Serving" aria-label="Username" aria-describedby="basic-addon1">
 	</div>
-
+ 	<input type="hidden" name="eaten_time" value="3"> 
 <button type="submit"> 제출 </button>
       </form>
     </div>

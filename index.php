@@ -419,7 +419,8 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
 <div class="card-body" id="camera_3"  >
   <form method="POST" action="foodinput.php">
     <input type="hidden" name="eatentime" value="3"/>
-    <i type="submit" class="fas fa-utensils" aria-hidden="true"></i>
+<button type="submit">    <i class="fas fa-utensils" aria-hidden="true"></i>
+</button>
   </form>
 </div>
 
