@@ -364,7 +364,7 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
 
 
 
-      <div style="margin:20px 30px;" class="smallbar">
+      <div style="margin:20px 30px; float:left; width:60%; " class="smallbar">
         <div class="container" style="margin-bottom:-25px;">
           <div class="container" style="float:left; width:20%;"> 
             <p class="pr" align="left;"> Kcal </p>
@@ -467,7 +467,7 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
         }
       ?></p>
       </div>
-      <div style="margin:20px 30px;" class="smallbar">
+      <div style="margin:20px 30px; float:left; width:60%;" class="smallbar">
         <div class="container" style="margin-bottom:-25px;">
           <div class="container" style="float:left; width:20%;"> 
             <p class="pr" align="left;"> Kcal </p>
