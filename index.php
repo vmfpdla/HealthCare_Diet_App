@@ -356,7 +356,7 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
         $lunch_car =  $lunch_car+$row['food_car']*$row['eaten_serving'];
         $lunch_pro =  $lunch_pro+$row['food_pro']*$row['eaten_serving'];
         $lunch_fat =  $lunch_fat+$row['food_fat']*$row['eaten_serving'];
-        echo $row['food_name'] ."  ". $row['food_calory']."  Kcal";
+        echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(".$row['eaten_serving']." 인분)";
         echo nl2br("\n\n");
       }
     }
@@ -463,7 +463,7 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
             $dinner_car =  $dinner_car+$row['food_car']*$row['eaten_serving'];
             $dinner_pro =  $dinner_pro+$row['food_pro']*$row['eaten_serving'];
             $dinner_fat =  $dinner_fat+$row['food_fat']*$row['eaten_serving'];
-            echo $row['food_name'] ."  ". $row['food_calory']."  Kcal";
+            echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(".$row['eaten_serving']." 인분)";
             echo nl2br("\n\n");
           }
         }
