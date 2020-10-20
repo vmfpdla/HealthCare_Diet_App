@@ -249,10 +249,9 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
         $morning_car =0;
         $morning_pro =0;
         $morning_fat =0;
-        $moring_serving=$row['eaten_serving'];
-        echo $moring_serving;
-        while($row = $result3->fetch_assoc()) {
-          $morning_kcal = $morning_kcal+$row['food_calory'];
+	
+	while($row = $result3->fetch_assoc()) {
+          $morning_kcal = $morning_kcal+$row['food_calory']*$row['eaten_serving'];
           $morning_car = $morning_car+$row['food_car'];
           $morning_pro = $morning_pro+$row['food_pro'];
           $morning_fat = $morning_fat+$row['food_fat'];
