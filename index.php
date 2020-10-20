@@ -53,6 +53,11 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
 	border-bottom-left-radius: 5px;
 	border-top-right-radius: 5px; 
 	border-bottom-right-radius: 5px;
+
+width:100%;
+height:70px;
+font-weight:bold;
+font-size:30px;
 }
 
 #btn1:hover{
