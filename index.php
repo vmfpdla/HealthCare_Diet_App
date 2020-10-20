@@ -24,10 +24,12 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
 <head>
   <title></title>
   <meta charset="utf-8">
-  <!-- 외부 css -->
+ 
+	<link rel="stylesheet" href="./css/jaehyun.css">
+
+ <!-- 외부 css -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="./css/jaehyun.css?ver=1">
   <!-- 폰트 -->
   <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&display=swap" rel="stylesheet">
   <!-- 아이콘 -->
@@ -43,10 +45,10 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
 </head>
 
 <body>
-  <nav class="shadow-sm p-3 mb-5  rounded navbar fixed-top">
-    <p class="navp" style=" color:white;">Smart PT</p>
+  <nav class="navbar fixed-top">
+    <p class="navp" >Smart PT</p>
     <a href="userinsert.php">
-      <i class="fas fa-user-circle navi"></i>
+      <i class="fa fa-user-circle navi"></i>
     </a>
 
   </nav>
@@ -91,29 +93,12 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
   if ($result2 -> num_rows>0) { // 여러줄 가져오는 경우
 
   while($row = $result2->fetch_assoc()) {
-    if($row['eaten_serving']==0){ # 0인분인경우
+  #  if($row['eaten_serving']==0){ # 0인분인경우
     $kcal = $kcal + $row['food_calory'];
     $car = $car + $row['food_car'];
     $fat = $fat + $row['food_fat'];
     $pro = $pro + $row['food_pro'];
-    }
-	  
-	      while($row = $result2->fetch_assoc()) {
-      if($row['eaten_serving']==1){ # 1인분인경우
-      $kcal = $kcal + $row['food_calory'];
-      $car = $car + $row['food_car'];
-      $fat = $fat + $row['food_fat'];
-      $pro = $pro + $row['food_pro'];
-      }
-
-      while($row = $result2->fetch_assoc()) {
-        if($row['eaten_serving']==2){ # 2인분인경우
-        $kcal = $kcal + 2*$row['food_calory'];
-        $car = $car + 2*$row['food_car'];
-        $fat = $fat + 2*$row['food_fat'];
-        $pro = $pro + 2*$row['food_pro'];
-        }
-
+   # }
   #echo $row['exercise_name'] ." / " .$row['exercise_minute'] ."분 / ".$row['exhausted_calory']."Kcal";
   #echo nl2br("\n");
   }
