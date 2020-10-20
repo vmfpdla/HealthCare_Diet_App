@@ -578,7 +578,6 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
 
     if (is_morning == 1) {
 
-      document.getElementById('camera_1').style.display = 'none';
       document.getElementById('diet_1').style.display = 'block';
     }
     else {
@@ -589,7 +588,6 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
 
     if (is_lunch == 1) {
 
-      document.getElementById('camera_2').style.display = 'none';
       document.getElementById('diet_2').style.display = 'block';
     }
     else {
@@ -600,7 +598,6 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
 
     if (is_dinner == 1) {
 
-      document.getElementById('camera_3').style.display = 'none';
       document.getElementById('diet_3').style.display = 'block';
     }
     else {
