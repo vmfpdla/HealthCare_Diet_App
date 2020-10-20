@@ -255,7 +255,7 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
           $morning_car = $morning_car+$row['food_car']*$row['eaten_serving'];
           $morning_pro = $morning_pro+$row['food_pro']*$row['eaten_serving'];
           $morning_fat = $morning_fat+$row['food_fat']*$row['eaten_serving'];
-          echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"." (".$row['eaten_serving']." 인분)";
+          echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(".$row['eaten_serving']." 인분)";
           echo nl2br("\n\n");
         }
       }
