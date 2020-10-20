@@ -57,21 +57,6 @@ i.navdi{
 
 /* 내용 css */
 
-#btn1{
-	border: 1px solid #8DA5BD; 
-	background-color: rgba(0,0,0,0); 
-	color: #8DA5BD; 
-	padding: 5px;
-	border-top-left-radius: 5px; 
-	border-bottom-left-radius: 5px;
-	border-top-right-radius: 5px; 
-	border-bottom-right-radius: 5px;
-}
-
-#btn1:hover{
-	color:white;
-	background-color: #8DA5BD;
-}
 
 
 .title{
