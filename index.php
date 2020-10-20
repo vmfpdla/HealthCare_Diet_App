@@ -42,6 +42,9 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
     integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
     crossorigin="anonymous"></script>
   <script src="./js/nav.js"></script>
+
+
+
 </head>
 
 <body>
@@ -238,7 +241,7 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
     <div class="card-body" id="camera_1" style="text-align: center;" >
       <form method="POST" action="foodinput.php">
         <input type="hidden" name="eatentime" value="1" />
-        <button type="submit">음식입력</button>
+        <button type="submit" id = "btn1">음식입력</button>
        <!--<button type="submit"><i class="fas fa-utensils cardi"  style="font-size:100px; "aria-hidden="true"></i></button>-->
       </form>
     </div>
@@ -341,7 +344,7 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
     <div class="card-body" id="camera_2" style="text-align: center;">
       <form method="POST" action="foodinput.php">
         <input type="hidden" name="eatentime" value="2" />
-        <button type="submit">음식입력</button>
+        <button type="submit"  id = "btn1">음식입력</button>
   <!--  <button type="submit"> <i class="fas fa-utensils cardi" style="font-size:100px;"aria-hidden="true"></i></button>-->
       </form>
     </div>
@@ -447,7 +450,7 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
     <div class="card-body" id="camera_3" style="text-align: center;">
       <form method="POST" action="foodinput.php">
         <input type="hidden" name="eatentime" value="3" />
-        <button type="submit">음식입력</button>
+        <button type="submit"  id = "btn1">음식입력</button>
         <!--<button type="submit"> <i class="fas fa-utensils cardi" style="font-size:100px;"aria-hidden="true"></i></button>-->
       </form>
     </div>
