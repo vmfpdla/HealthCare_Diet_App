@@ -42,6 +42,24 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
     integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
     crossorigin="anonymous"></script>
   <script src="./js/nav.js"></script>
+	
+<style>		
+#btn1{
+	border: 1px solid #8DA5BD; 
+	background-color: rgba(0,0,0,0); 
+	color: #8DA5BD; 
+	padding: 5px;
+	border-top-left-radius: 5px; 
+	border-bottom-left-radius: 5px;
+	border-top-right-radius: 5px; 
+	border-bottom-right-radius: 5px;
+}
+
+#btn1:hover{
+	color:white;
+	background-color: #8DA5BD;
+}
+</style>
 
 
 
