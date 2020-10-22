@@ -348,7 +348,7 @@ font-size:30px;
 
           <div class="progress rounded-pill" style="height:20px; width:70%;">
             <div class="progress-bar progress-bar-striped bg-info progress-bar-animated" role="progressbar"
-              style="width: <?php echo $morning_fat/1500*100;?>" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
+              style="width: <?php echo $morning_fat/1500*100;?>%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
               <p class="pr" style="padding-top:15px;"> <?php echo $morning_fat ." / 1500"; ?> </p>
             </div>
           </div>
