@@ -295,9 +295,15 @@ font-size:30px;
            $morning_car = $morning_car+$row['food_car']*$row['eaten_serving'];
            $morning_pro = $morning_pro+$row['food_pro']*$row['eaten_serving'];
            $morning_fat = $morning_fat+$row['food_fat']*$row['eaten_serving'];
+     }
+      if($row['eaten_serving']==0){
+          echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(0.5 인분)";
+	  echo nl2br("\n\n");
       }
+      else{
           echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(".$row['eaten_serving']." 인분)";
-          echo nl2br("\n\n");
+	  echo nl2br("\n\n");
+     	 }
         }
       }
     ?></p>
@@ -371,9 +377,7 @@ font-size:30px;
     </div>
   </div>
 
-
-
-  <br><br>
+<br><br>
   <div class="card">
     <div class="card-header">
       점심
