@@ -24,10 +24,10 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
 <head>
   <title></title>
   <meta charset="utf-8">
- 
-	<link rel="stylesheet" href="./css/jaehyun.css">
 
- <!-- 외부 css -->
+  <link rel="stylesheet" href="./css/jaehyun.css">
+
+  <!-- 외부 css -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <!-- 폰트 -->
@@ -42,29 +42,29 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
     integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
     crossorigin="anonymous"></script>
   <script src="./js/nav.js"></script>
-	
-<style>		
-#btn1{
-	border: 1px solid #8DA5BD; 
-	background-color: rgba(0,0,0,0); 
-	color: #8DA5BD; 
-	padding: 5px;
-	border-top-left-radius: 5px; 
-	border-bottom-left-radius: 5px;
-	border-top-right-radius: 5px; 
-	border-bottom-right-radius: 5px;
 
-width:100%;
-height:70px;
-font-weight:bold;
-font-size:30px;
-}
+  <style>
+    #btn1 {
+      border: 1px solid #8DA5BD;
+      background-color: rgba(0, 0, 0, 0);
+      color: #8DA5BD;
+      padding: 5px;
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
 
-#btn1:hover{
-	color:white;
-	background-color: #8DA5BD;
-}
-</style>
+      width: 100%;
+      height: 70px;
+      font-weight: bold;
+      font-size: 30px;
+    }
+
+    #btn1:hover {
+      color: white;
+      background-color: #8DA5BD;
+    }
+  </style>
 
 
 
@@ -72,7 +72,7 @@ font-size:30px;
 
 <body>
   <nav class="navbar fixed-top">
-    <p class="navp" >Smart PT</p>
+    <p class="navp">Smart PT</p>
     <a href="userinsert.php">
       <i class="fa fa-user-circle navi"></i>
     </a>
@@ -165,8 +165,8 @@ font-size:30px;
         </div>
 
         <div class="progress rounded-pill" style="height:30px;">
-          <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: <?php echo $car/1500*100;?>%"
-            aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
+          <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+            style="width: <?php echo $car/1500*100;?>%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
             <p class="pr" style=" padding-top:20px;">
               <?php echo $car ." / ". $user['user_goal'] ?>
             </p>
@@ -267,11 +267,11 @@ font-size:30px;
     <div class="card-header">
       아침
     </div>
-    <div class="card-body" id="camera_1" style="text-align: center;" >
+    <div class="card-body" id="camera_1" style="text-align: center;">
       <form method="POST" action="foodinput.php">
         <input type="hidden" name="eatentime" value="1" />
-        <button type="submit" id = "btn1">음식입력</button>
-       <!--<button type="submit"><i class="fas fa-utensils cardi"  style="font-size:100px; "aria-hidden="true"></i></button>-->
+        <button type="submit" id="btn1">음식입력</button>
+        <!--<button type="submit"><i class="fas fa-utensils cardi"  style="font-size:100px; "aria-hidden="true"></i></button>-->
       </form>
     </div>
     <div class="card-body" id="diet_1">
@@ -308,16 +308,17 @@ font-size:30px;
       }
     ?></p>
       </div>
- 
- <div style="margin:20px 30px; float:left; width:60%;" class="smallbar">
+
+      <div style="margin:20px 30px; float:left; width:60%;" class="smallbar">
         <div class="container" style="margin-bottom:-25px;">
-         <div class="container" style="float:left; width:20%;"> 
+          <div class="container" style="float:left; width:20%;">
             <p class="pr"> Kcal </p>
-         </div>
+          </div>
 
           <div class="progress rounded-pill" style="height:25px; width:70%">
             <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar"
-              style="width: <?php echo $morning_kcal/1500*100;?>%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
+              style="width: <?php echo $morning_kcal/1500*100;?>%" aria-valuenow="10" aria-valuemin="0"
+              aria-valuemax="100">
               <p class="pr" style="padding-top:15px;"> <?php echo $morning_kcal ." / 1500" ?> </p>
             </div>
           </div>
@@ -326,14 +327,15 @@ font-size:30px;
         <br><br>
 
         <div class="container" style="margin-bottom:-20px;">
-          <div class="container" style="float:left; width:20%;"> 
+          <div class="container" style="float:left; width:20%;">
             <p class="pr" align="left;"> 탄 </p>
 
           </div>
 
           <div class="progress rounded-pill" style="height:20px; width:70%;">
-            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: <?php echo $morning_car/1500*100;?>%"
-              aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
+            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+              style="width: <?php echo $morning_car/1500*100;?>%" aria-valuenow="10" aria-valuemin="0"
+              aria-valuemax="100">
               <p class="pr" style=" padding-top:15px;"> <?php echo $morning_car ." / 1500"; ?> </p>
             </div>
           </div>
@@ -344,14 +346,15 @@ font-size:30px;
 
 
         <div class="container" style="margin-bottom:-20px;">
-          <div class="container" style="float:left; width:20%;"> 
+          <div class="container" style="float:left; width:20%;">
             <p class="pr" align="left;"> 단 </p>
 
           </div>
 
           <div class="progress rounded-pill" style="height:20px; width:70%;">
             <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar"
-              style="width: <?php echo $morning_pro/1500*100;?>%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
+              style="width: <?php echo $morning_pro/1500*100;?>%" aria-valuenow="10" aria-valuemin="0"
+              aria-valuemax="100">
               <p class="pr" style="padding-top:15px;"> <?php echo $morning_pro ." / 1500"; ?> </p>
             </div>
           </div>
@@ -361,14 +364,15 @@ font-size:30px;
         <br><br>
 
         <div class="container" style="font-weight: bold;">
-          <div class="container" style="float:left; width:20%;"> 
+          <div class="container" style="float:left; width:20%;">
             <p class="pr" align="left;"> 지 </p>
 
           </div>
 
           <div class="progress rounded-pill" style="height:20px; width:70%;">
             <div class="progress-bar progress-bar-striped bg-info progress-bar-animated" role="progressbar"
-              style="width: <?php echo $morning_fat/1500*100;?>%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
+              style="width: <?php echo $morning_fat/1500*100;?>%" aria-valuenow="10" aria-valuemin="0"
+              aria-valuemax="100">
               <p class="pr" style="padding-top:15px;"> <?php echo $morning_fat ." / 1500"; ?> </p>
             </div>
           </div>
@@ -377,7 +381,7 @@ font-size:30px;
     </div>
   </div>
 
-<br><br>
+  <br><br>
   <div class="card">
     <div class="card-header">
       점심
@@ -385,13 +389,13 @@ font-size:30px;
     <div class="card-body" id="camera_2" style="text-align: center;">
       <form method="POST" action="foodinput.php">
         <input type="hidden" name="eatentime" value="2" />
-        <button type="submit"  id = "btn1">음식입력</button>
-  <!--  <button type="submit"> <i class="fas fa-utensils cardi" style="font-size:100px;"aria-hidden="true"></i></button>-->
+        <button type="submit" id="btn1">음식입력</button>
+        <!--  <button type="submit"> <i class="fas fa-utensils cardi" style="font-size:100px;"aria-hidden="true"></i></button>-->
       </form>
     </div>
     <div class="card-body" id="diet_2">
       <div style="float:left; margin:50px 50px;  width:15%;">
-       <p style="width: 100%;"> <?php
+        <p style="width: 100%;"> <?php
     if($is_lunch==1){
       $lunch_kcal =0;
       $lunch_car =0;
@@ -409,8 +413,14 @@ font-size:30px;
          $lunch_car =  $lunch_car+$row['food_car']*$row['eaten_serving'];
          $lunch_pro =  $lunch_pro+$row['food_pro']*$row['eaten_serving'];
          $lunch_fat =  $lunch_fat+$row['food_fat']*$row['eaten_serving'];
-         echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(".$row['eaten_serving']." 인분)";
-         echo nl2br("\n\n");
+         if($row['eaten_serving']==0){
+          echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(0.5 인분)";
+	  echo nl2br("\n\n");
+      }
+      else{
+          echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(".$row['eaten_serving']." 인분)";
+	  echo nl2br("\n\n");
+     	 }
     }
       }
     }
@@ -422,14 +432,15 @@ font-size:30px;
 
       <div style="margin:20px 30px; float:left; width:60%; " class="smallbar">
         <div class="container" style="margin-bottom:-25px;">
-          <div class="container" style="float:left; width:20%;"> 
+          <div class="container" style="float:left; width:20%;">
             <p class="pr" align="left;"> Kcal </p>
 
           </div>
 
           <div class="progress rounded-pill" style="height:25px;">
             <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar"
-	    style="width: <?php echo $lunch_kcal/1500*100;?>%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
+              style="width: <?php echo $lunch_kcal/1500*100;?>%" aria-valuenow="10" aria-valuemin="0"
+              aria-valuemax="100">
               <p class="pr" style="padding-top:15px;"> <?php echo $lunch_kcal ." / 1500" ?> </p>
             </div>
           </div>
@@ -438,14 +449,15 @@ font-size:30px;
         <br><br>
 
         <div class="container" style="margin-bottom:-20px;">
-          <div class="container" style="float:left; width:20%;"> 
+          <div class="container" style="float:left; width:20%;">
             <p class="pr" align="left;"> 탄 </p>
 
           </div>
 
           <div class="progress rounded-pill" style="height:20px;">
-            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width:  <?php echo $lunch_car/1500*100;?>%"
-              aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
+            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+              style="width:  <?php echo $lunch_car/1500*100;?>%" aria-valuenow="10" aria-valuemin="0"
+              aria-valuemax="100">
               <p class="pr" style="padding-top:15px;"> <?php echo $lunch_car ." / 1500" ?> </p>
             </div>
           </div>
@@ -456,14 +468,15 @@ font-size:30px;
 
 
         <div class="container" style="margin-bottom:-20px;">
-          <div class="container" style="float:left; width:20%;"> 
+          <div class="container" style="float:left; width:20%;">
             <p class="pr" align="left;"> 단 </p>
 
           </div>
 
           <div class="progress rounded-pill" style="height:20px;">
             <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar"
-              style="width:  <?php echo $lunch_pro/1500*100;?>%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
+              style="width:  <?php echo $lunch_pro/1500*100;?>%" aria-valuenow="10" aria-valuemin="0"
+              aria-valuemax="100">
               <p class="pr" style="padding-top:15px;"> <?php echo $lunch_pro ." / 1500" ?> </p>
             </div>
           </div>
@@ -473,14 +486,15 @@ font-size:30px;
         <br><br>
 
         <div class="container" style="font-weight: bold;">
-          <div class="container" style="float:left; width:20%;"> 
+          <div class="container" style="float:left; width:20%;">
             <p class="pr" align="left;"> 지 </p>
 
           </div>
 
           <div class="progress rounded-pill" style="height:20px;">
             <div class="progress-bar progress-bar-striped bg-info progress-bar-animated" role="progressbar"
-              style="width:  <?php echo $lunch_fat/1500*100;?>%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
+              style="width:  <?php echo $lunch_fat/1500*100;?>%" aria-valuenow="10" aria-valuemin="0"
+              aria-valuemax="100">
               <p class="pr" style="padding-top:15px;"> <?php echo $lunch_fat ." / 1500" ?> </p>
             </div>
           </div>
@@ -499,7 +513,7 @@ font-size:30px;
     <div class="card-body" id="camera_3" style="text-align: center;">
       <form method="POST" action="foodinput.php">
         <input type="hidden" name="eatentime" value="3" />
-        <button type="submit"  id = "btn1">음식입력</button>
+        <button type="submit" id="btn1">음식입력</button>
         <!--<button type="submit"> <i class="fas fa-utensils cardi" style="font-size:100px;"aria-hidden="true"></i></button>-->
       </form>
     </div>
@@ -507,7 +521,7 @@ font-size:30px;
     <div class="card-body" id="diet_3">
       <div style="float:left; margin:50px 50px;  width:15%;">
         <p style="width: 100%;">
-        <?php
+          <?php
         if($is_dinner==1){
           $dinner_kcal =0;
           $dinner_car =0;
@@ -525,8 +539,14 @@ font-size:30px;
               $dinner_car =  $dinner_car+$row['food_car']*$row['eaten_serving'];
               $dinner_pro =  $dinner_pro+$row['food_pro']*$row['eaten_serving'];
               $dinner_fat =  $dinner_fat+$row['food_fat']*$row['eaten_serving'];
-              echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(".$row['eaten_serving']." 인분)";
-              echo nl2br("\n\n");
+              if($row['eaten_serving']==0){
+                echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(0.5 인분)";
+          echo nl2br("\n\n");
+            }
+            else{
+                echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(".$row['eaten_serving']." 인분)";
+          echo nl2br("\n\n");
+              }
         }
           }
         }
@@ -534,14 +554,15 @@ font-size:30px;
       </div>
       <div style="margin:20px 30px; float:left; width:60%;" class="smallbar">
         <div class="container" style="margin-bottom:-25px;">
-          <div class="container" style="float:left; width:20%;"> 
+          <div class="container" style="float:left; width:20%;">
             <p class="pr" align="left;"> Kcal </p>
 
           </div>
 
           <div class="progress rounded-pill" style="height:25px;">
             <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar"
-              style="width:  <?php echo $dinner_kcal/1500*100;?>%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
+              style="width:  <?php echo $dinner_kcal/1500*100;?>%" aria-valuenow="10" aria-valuemin="0"
+              aria-valuemax="100">
               <p class="pr" style="padding-top:15px;"> <?php echo $dinner_kcal ." / 1500" ?> </p>
             </div>
           </div>
@@ -550,14 +571,15 @@ font-size:30px;
         <br><br>
 
         <div class="container" style="margin-bottom:-20px;">
-          <div class="container" style="float:left; width:20%;"> 
+          <div class="container" style="float:left; width:20%;">
             <p class="pr" align="left;"> 탄 </p>
 
           </div>
 
           <div class="progress rounded-pill" style="height:20px;">
-            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: <?php echo $dinner_car/1500*100;?>%"
-              aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
+            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+              style="width: <?php echo $dinner_car/1500*100;?>%" aria-valuenow="10" aria-valuemin="0"
+              aria-valuemax="100">
               <p class="pr" style="padding-top:15px;"> <?php echo $dinner_car ." / 1500" ?> </p>
             </div>
           </div>
@@ -568,14 +590,15 @@ font-size:30px;
 
 
         <div class="container" style="margin-bottom:-20px;">
-          <div class="container" style="float:left; width:20%;"> 
+          <div class="container" style="float:left; width:20%;">
             <p class="pr" align="left;"> 단 </p>
 
           </div>
 
           <div class="progress rounded-pill" style="height:20px;">
             <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar"
-              style="width: <?php echo $dinner_pro/1500*100;?>%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
+              style="width: <?php echo $dinner_pro/1500*100;?>%" aria-valuenow="10" aria-valuemin="0"
+              aria-valuemax="100">
               <p class="pr" style="padding-top:15px;"> <?php echo $dinner_pro ." / 1500" ?> </p>
             </div>
           </div>
@@ -585,14 +608,15 @@ font-size:30px;
         <br><br>
 
         <div class="container" style="font-weight: bold;">
-          <div class="container" style="float:left; width:20%;"> 
+          <div class="container" style="float:left; width:20%;">
             <p class="pr" align="left;"> 지 </p>
 
           </div>
 
           <div class="progress rounded-pill" style="height:20px;">
             <div class="progress-bar progress-bar-striped bg-info progress-bar-animated" role="progressbar"
-              style="width: <?php echo $dinner_fat/1500*100;?>%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
+              style="width: <?php echo $dinner_fat/1500*100;?>%" aria-valuenow="10" aria-valuemin="0"
+              aria-valuemax="100">
               <p class="pr" style="padding-top:15px;"> <?php echo $dinner_fat ." / 1500" ?> </p>
             </div>
           </div>
