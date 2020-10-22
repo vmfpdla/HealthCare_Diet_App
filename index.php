@@ -119,12 +119,18 @@ font-size:30px;
   if ($result2 -> num_rows>0) { // 여러줄 가져오는 경우
 
   while($row = $result2->fetch_assoc()) {
-  #  if($row['eaten_serving']==0){ # 0인분인경우
+    if($row['eaten_serving']==0){ # 0인분인경우
+      $kcal = $kcal + $row['food_calory']*0.5;
+      $car = $car + $row['food_car']*0.5;
+      $fat = $fat + $row['food_fat']*0.5;
+      $pro = $pro + $row['food_pro']*0.5;
+   }
+   else{
     $kcal = $kcal + $row['food_calory']*$row['eaten_serving'];
     $car = $car + $row['food_car']*$row['eaten_serving'];
     $fat = $fat + $row['food_fat']*$row['eaten_serving'];
     $pro = $pro + $row['food_pro']*$row['eaten_serving'];
-   # }
+   }
   #echo $row['exercise_name'] ." / " .$row['exercise_minute'] ."분 / ".$row['exhausted_calory']."Kcal";
   #echo nl2br("\n");
   }
@@ -277,11 +283,19 @@ font-size:30px;
         $morning_pro =0;
         $morning_fat =0;
 	
-	while($row = $result3->fetch_assoc()) {
-          $morning_kcal = $morning_kcal+$row['food_calory']*$row['eaten_serving'];
-          $morning_car = $morning_car+$row['food_car']*$row['eaten_serving'];
-          $morning_pro = $morning_pro+$row['food_pro']*$row['eaten_serving'];
-          $morning_fat = $morning_fat+$row['food_fat']*$row['eaten_serving'];
+  	while($row = $result3->fetch_assoc()) {
+      if ($row['eaten_serving']==0){
+           $morning_kcal = $morning_kcal+$row['food_calory']*0.5;
+           $morning_car = $morning_car+$row['food_car']*0.5;
+           $morning_pro = $morning_pro+$row['food_pro']*0.5;
+           $morning_fat = $morning_fat+$row['food_fat']*0.5;
+     }
+     else{
+           $morning_kcal = $morning_kcal+$row['food_calory']*$row['eaten_serving'];
+           $morning_car = $morning_car+$row['food_car']*$row['eaten_serving'];
+           $morning_pro = $morning_pro+$row['food_pro']*$row['eaten_serving'];
+           $morning_fat = $morning_fat+$row['food_fat']*$row['eaten_serving'];
+      }
           echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(".$row['eaten_serving']." 인분)";
           echo nl2br("\n\n");
         }
@@ -380,12 +394,20 @@ font-size:30px;
       $lunch_pro =0;
       $lunch_fat =0;
       while($row = $result4->fetch_assoc()) {
-        $lunch_kcal = $lunch_kcal+$row['food_calory']*$row['eaten_serving'];
-        $lunch_car =  $lunch_car+$row['food_car']*$row['eaten_serving'];
-        $lunch_pro =  $lunch_pro+$row['food_pro']*$row['eaten_serving'];
-        $lunch_fat =  $lunch_fat+$row['food_fat']*$row['eaten_serving'];
-        echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(".$row['eaten_serving']." 인분)";
-        echo nl2br("\n\n");
+        if ($row['eaten_serving']==0){
+          $lunch_kcal = $lunch_kcal+$row['food_calory']*0.5;
+          $lunch_car = $lunch_car+$row['food_car']*0.5;
+          $lunch_pro = $lunch_pro+$row['food_pro']*0.5;
+          $lunch_fat = $lunch_fat+$row['food_fat']*0.5;
+        }
+       else{
+         $lunch_kcal = $lunch_kcal+$row['food_calory']*$row['eaten_serving'];
+         $lunch_car =  $lunch_car+$row['food_car']*$row['eaten_serving'];
+         $lunch_pro =  $lunch_pro+$row['food_pro']*$row['eaten_serving'];
+         $lunch_fat =  $lunch_fat+$row['food_fat']*$row['eaten_serving'];
+         echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(".$row['eaten_serving']." 인분)";
+         echo nl2br("\n\n");
+    }
       }
     }
     ?></p>
@@ -488,12 +510,20 @@ font-size:30px;
           $dinner_pro =0;
           $dinner_fat =0;
           while($row = $result5->fetch_assoc()) {
-            $dinner_kcal = $dinner_kcal+$row['food_calory']*$row['eaten_serving'];
-            $dinner_car =  $dinner_car+$row['food_car']*$row['eaten_serving'];
-            $dinner_pro =  $dinner_pro+$row['food_pro']*$row['eaten_serving'];
-            $dinner_fat =  $dinner_fat+$row['food_fat']*$row['eaten_serving'];
-            echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(".$row['eaten_serving']." 인분)";
-            echo nl2br("\n\n");
+            if ($row['eaten_serving']==0){
+              $dinner_kcal = $dinner_kcal+$row['food_calory']*0.5;
+              $dinner_car = $dinner_car+$row['food_car']*0.5;
+              $dinner_pro = $dinner_pro+$row['food_pro']*0.5;
+              $dinner_fat = $dinner_fat+$row['food_fat']*0.5;
+           }
+          else{
+              $dinner_kcal = $dinner_kcal+$row['food_calory']*$row['eaten_serving'];
+              $dinner_car =  $dinner_car+$row['food_car']*$row['eaten_serving'];
+              $dinner_pro =  $dinner_pro+$row['food_pro']*$row['eaten_serving'];
+              $dinner_fat =  $dinner_fat+$row['food_fat']*$row['eaten_serving'];
+              echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(".$row['eaten_serving']." 인분)";
+              echo nl2br("\n\n");
+        }
           }
         }
       ?></p>
