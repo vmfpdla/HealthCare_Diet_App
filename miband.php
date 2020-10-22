@@ -4,6 +4,10 @@
   $user['user_goal']= 1500;
   $today = date("Y-m-d");
   $kcal =0;//칼로리
+  $walking_calory=0;
+  $swimming_calory=0;
+  $cycle_calory=0;
+  $rope_calory=0;
 
   $sql1 = "SELECT * FROM doexercise INNER JOIN exerciseinfo on doexercise.exercise_id = exerciseInfo.exercise_id WHERE user_id='$user_id' and doexercise_day='$today'";
   $result1 = $conn->query($sql1);
