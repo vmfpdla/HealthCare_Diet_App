@@ -103,6 +103,10 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
     </div>
   </div>
   <br><br>
+
+
+<a href="app://application">Call Android Activity</a>
+<br><br>
   <div class="card">
     <div class="card-header">
       영양소
