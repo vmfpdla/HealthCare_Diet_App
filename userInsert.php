@@ -58,12 +58,16 @@
 			</select>
 		</div>
 		<div class="form-group">
-			<label for="inputCalory">하루 목표 칼로리</label>
-			<input type="number" class="form-control" id="inputCalory" placeholder="Calory ( Kcal )">
+			<label for="inputCalory">하루 섭취칼로리 설정</label>
+			<label><input style="margin-left:20px" type="radio" name="calory_type" value="recommend_calory" checked="checked" />권장칼로리</label>
+			<label><input style="margin-left:20px" type="radio" name="calory_type" value="onself_calory" />직접</label>
+
 			<br>
+			<input type="number" class="form-control" id="inputCalory" placeholder="Calory ( Kcal )">
 			<p style="color:gray;">[ 하루 권장 칼로리 ] 표준체중(kg) X 활동지수</p>
 			<p style="color:gray;">[ 다이어트 식단 칼로리 ] 여성 : 800 - 1200 Kcal , 남성 : 1200 - 1400 Kcal</p>
 		</div>
+
 		<div class="form-row">
 			<div class="form-group col-md-4">
 				<label for="inputState">미스케일 사용여부</label>
@@ -82,7 +86,13 @@
 
 	<br><br>
 
+	<script>
+		var chk_radio = document.getElementsByName('calory_type');
+		var sel_type = null;
 
+		if(chk_radio[0].checked==true) alert('aaa');
+
+	</script>
 
 
 
