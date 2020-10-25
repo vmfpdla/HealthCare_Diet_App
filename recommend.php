@@ -1,8 +1,42 @@
+<?php
+
+require_once("./dbconn.php");
+
+$user_id = 1; # 1번 가져왔다고 가정
+$sql = "SELECT * FROM user WHERE user_id='$user_id'";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) { // 여러줄 가져오는 경우
+
+  while($row = $result->fetch_assoc()) {
+    $user = $row;
+  }
+} else {
+  echo "유저 접속 오류";
+}
+
+
+$sql1 = "SELECT * FROM diet";
+$result1 = $conn->query($sql1);
+
+if ($result1->num_rows > 0) { // 여러줄 가져오는 경우
+
+  while($row = $result1->fetch_assoc()) {
+
+  echo $row['diet_id'] ." 번식단 " .$row['diet_grains'] ." 밥종류 ".$row['diet_meat']."고기 종류 /".$row['diet_vet']."채소 종류 /".$row['diet_else']."기타 /".$row['calory']."칼로리 /";
+  echo nl2br("\n");
+}
+} else {
+  echo "0 results";
+}
+?>
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
 	<title></title>
-
 	<link rel="stylesheet" href="./css/jaehyun.css">
 	
  
@@ -15,7 +49,6 @@
  <script src="./js/nav.js"></script>
 </STYLE>
 <script src="./js/recommend.js"> </script>
-
 </script>
 </head>
 <body>
@@ -30,67 +63,51 @@
 		<p class="title">식단추천</p>
 	</div>
 	<br><br><br>
-
 	<div class="card">
 		<div class="card-header">
 			영양소
 		</div>
 		<div class="card-body">
-
 			<div class="container">
 				<div class="container" style="float:left; width: 15%;text-align: center;">
 					<p class="pr" align="left;"> Kcal  </p>
 					
 				</div>	
-
 				<div class="progress rounded-pill" style="height:40px;">
 					<div class="progress-bar progress-bar-striped progress-bar-animated bg-danger"role="progressbar" style="width: 60%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
 						<p  style="font-size:20px; font-weight: bold;"> 1560/2600 </p>
 					</div>
 				</div>
 			</div>
-
 			<br><br>
-
 			<div class="container">
 				<div class="container" style="float:left; width: 15%;text-align: center;">
 					<p class="pr" align="left;"> 탄  </p>
 					
 				</div>	
-
 				<div class="progress rounded-pill" style="height:30px;">
 					<div class="progress-bar progress-bar-striped progress-bar-animated"role="progressbar" style="width: 62.5%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
 						<p class="pr"> 250/400 </p>
 					</div>
 				</div>
-
-
 			</div>
 			<br><br>
-
-
 			<div class="container">
 				<div class="container" style="float:left; width: 15%;text-align: center;">
 					<p class="pr" align="left;"> 단  </p>
 					
 				</div>	
-
 				<div class="progress rounded-pill" style="height:30px;">
 					<div class="progress-bar progress-bar-striped bg-success progress-bar-animated"role="progressbar" style="width: 57%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
 						<p class="pr"> 80/140 </p>
 					</div>
 				</div>
 			</div>
-
-
 			<br><br>
-
 			<div class="container" style="font-weight: bold;">
 				<div class="container" style="float:left; width: 15%;text-align: center;">
 					<p class="pr"> 지  </p>
-
 				</div>	
-
 				<div class="progress rounded-pill" style="height:30px;">
 					<div class="progress-bar progress-bar-striped bg-info progress-bar-animated"role="progressbar" style="width: 42%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
 						<p class="pr"> 30/70 </p>
@@ -99,39 +116,27 @@
 			</div>
 		</div>
 	</div>
-
 	<Br><br>
 	
-
-
-
-
 	<div class="card">
 		<div class="card-header">
 			아침
 		</div>
 		<div class="card-body">
-
 			<p> 쌀밥 300Kcal <br> 불고기 471Kcal <br> 된장국 78Kcal  </p>
-
 		</div>
 	</div>
 	
-
 	<Br><br>
-
 	<div class="card">
 		<div class="card-header">
 			점심
 		</div>
 		<div class="card-body">
-
 			<form action="javascript:Display();">
 				<input type="number" size="20">
 				<button>입력</button>
 			</form>
-
-
 			<div id="setKcal" style="display: none;">
 				<form>
 					<select name="selectset" onchange="SetDisplay(this.form)" >
@@ -145,23 +150,16 @@
 			</div>
 		</div>
 	</div>
-
 	<Br><br>
-
 	<div class="card">
 		<div class="card-header">
 			저녁
 		</div>
 		<div class="card-body">
-
 			<p> 쌀밥 300Kcal <br> 불고기 471Kcal <br> 된장국 78Kcal  </p>
-
 		</div>
 	</div>
-
-
 	<br><br>
-
   <nav class="navbar fixed-bottom navd">
     <a href="index.php">
       <div class="navIcons" style="text-align:center;" >
@@ -192,8 +190,5 @@
       </div>
     </a>
   </nav>
-
-
-
 </body>
 </html>
