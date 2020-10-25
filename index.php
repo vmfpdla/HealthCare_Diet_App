@@ -112,36 +112,36 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
       영양소
     </div>
     <?php
-  $today = date("Y-m-d");
-  $kcal = 0; //칼로리
-  $car =0; // 탄수화물
-  $fat =0; // 지방
-  $pro =0; // 단백질
-  $sql2 = "SELECT * FROM eatenfood INNER JOIN foodinfo on eatenfood.food_id = foodinfo.food_id WHERE user_id='$user_id' and eaten_day='$today'";
-  $result2 = $conn->query($sql2);
+      $today = date("Y-m-d");
+      $kcal = 0; //칼로리
+      $car =0; // 탄수화물
+      $fat =0; // 지방
+      $pro =0; // 단백질
+      $sql2 = "SELECT * FROM eatenfood INNER JOIN foodinfo on eatenfood.food_id = foodinfo.food_id WHERE user_id='$user_id' and eaten_day='$today'";
+      $result2 = $conn->query($sql2);
 
-  if ($result2 -> num_rows>0) { // 여러줄 가져오는 경우
+      if ($result2 -> num_rows>0) { // 여러줄 가져오는 경우
 
-  while($row = $result2->fetch_assoc()) {
-    if($row['eaten_serving']==0){ # 0인분인경우
-      $kcal = $kcal + $row['food_calory']*0.5;
-      $car = $car + $row['food_car']*0.5;
-      $fat = $fat + $row['food_fat']*0.5;
-      $pro = $pro + $row['food_pro']*0.5;
-   }
-   else{
-    $kcal = $kcal + $row['food_calory']*$row['eaten_serving'];
-    $car = $car + $row['food_car']*$row['eaten_serving'];
-    $fat = $fat + $row['food_fat']*$row['eaten_serving'];
-    $pro = $pro + $row['food_pro']*$row['eaten_serving'];
-   }
-  #echo $row['exercise_name'] ." / " .$row['exercise_minute'] ."분 / ".$row['exhausted_calory']."Kcal";
-  #echo nl2br("\n");
-  }
+      while($row = $result2->fetch_assoc()) {
+        if($row['eaten_serving']==0){ # 0인분인경우
+          $kcal = $kcal + $row['food_calory']*0.5;
+          $car = $car + $row['food_car']*0.5;
+          $fat = $fat + $row['food_fat']*0.5;
+          $pro = $pro + $row['food_pro']*0.5;
+       }
+       else{
+        $kcal = $kcal + $row['food_calory']*$row['eaten_serving'];
+        $car = $car + $row['food_car']*$row['eaten_serving'];
+        $fat = $fat + $row['food_fat']*$row['eaten_serving'];
+        $pro = $pro + $row['food_pro']*$row['eaten_serving'];
+       }
+      #echo $row['exercise_name'] ." / " .$row['exercise_minute'] ."분 / ".$row['exhausted_calory']."Kcal";
+      #echo nl2br("\n");
+      }
 
-  }
-  else //echo "0 results";
-?>
+      }
+      else //echo "0 results";
+    ?>
     <div class="card-body">
 
       <div class="container">
@@ -280,37 +280,39 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
     </div>
     <div class="card-body" id="diet_1">
       <div style="float:left; margin:50px 50px; width:15%;">
-        <p style="width:100%"><?php
-      if($is_morning==1){
-        $morning_kcal =0;
-        $morning_car =0;
-        $morning_pro =0;
-        $morning_fat =0;
+        <p style="width:100%">
+          <?php
+            if($is_morning==1){
+              $morning_kcal =0;
+              $morning_car =0;
+              $morning_pro =0;
+              $morning_fat =0;
 
-  	while($row = $result3->fetch_assoc()) {
-      if ($row['eaten_serving']==0){
-           $morning_kcal = $morning_kcal+$row['food_calory']*0.5;
-           $morning_car = $morning_car+$row['food_car']*0.5;
-           $morning_pro = $morning_pro+$row['food_pro']*0.5;
-           $morning_fat = $morning_fat+$row['food_fat']*0.5;
-     }
-     else{
-           $morning_kcal = $morning_kcal+$row['food_calory']*$row['eaten_serving'];
-           $morning_car = $morning_car+$row['food_car']*$row['eaten_serving'];
-           $morning_pro = $morning_pro+$row['food_pro']*$row['eaten_serving'];
-           $morning_fat = $morning_fat+$row['food_fat']*$row['eaten_serving'];
-     }
-      if($row['eaten_serving']==0){
-          echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(0.5 인분)";
-	  echo nl2br("\n\n");
-      }
-      else{
-          echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(".$row['eaten_serving']." 인분)";
-	  echo nl2br("\n\n");
-     	 }
-        }
-      }
-    ?></p>
+            	while($row = $result3->fetch_assoc()) {
+                if ($row['eaten_serving']==0){
+                     $morning_kcal = $morning_kcal+$row['food_calory']*0.5;
+                     $morning_car = $morning_car+$row['food_car']*0.5;
+                     $morning_pro = $morning_pro+$row['food_pro']*0.5;
+                     $morning_fat = $morning_fat+$row['food_fat']*0.5;
+               }
+               else{
+                     $morning_kcal = $morning_kcal+$row['food_calory']*$row['eaten_serving'];
+                     $morning_car = $morning_car+$row['food_car']*$row['eaten_serving'];
+                     $morning_pro = $morning_pro+$row['food_pro']*$row['eaten_serving'];
+                     $morning_fat = $morning_fat+$row['food_fat']*$row['eaten_serving'];
+               }
+                if($row['eaten_serving']==0){
+                  echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(0.5 인분)";
+          	      echo nl2br("\n\n");
+                }
+                else{
+                  echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(".$row['eaten_serving']." 인분)";
+          	      echo nl2br("\n\n");
+               	}
+              }
+          }
+          ?>
+        </p>
       </div>
 
       <div style="margin:20px 30px; float:left; width:60%;" class="smallbar">
@@ -668,8 +670,8 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
     var is_dinner = '<?php echo $is_dinner ?>';
 
     if (is_morning == 1) {
-
       document.getElementById('diet_1').style.display = 'block';
+      document.getElementById('camera_1').style.display = 'none';
     }
     else {
 
@@ -680,6 +682,7 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
     if (is_lunch == 1) {
 
       document.getElementById('diet_2').style.display = 'block';
+      document.getElementById('camera_2').style.display = 'none';
     }
     else {
 
@@ -690,6 +693,7 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
     if (is_dinner == 1) {
 
       document.getElementById('diet_3').style.display = 'block';
+      document.getElementById('camera_3').style.display = 'none';
     }
     else {
 

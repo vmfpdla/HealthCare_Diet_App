@@ -25,7 +25,7 @@
 <body>
 	<nav class="navbar fixed-top">
 		<p class="navp">Smart PT</p>
-		<a href="userInsert3.html"><i class="fa fa-user-circle navi"></i></a>
+		<a href="userinsert.php"><i class="fa fa-user-circle navi"></i></a>
 	</nav>
 	<br><br>
 	<br><br>
@@ -40,7 +40,7 @@
 	</div>
 	<script src="./js/KcalGraph.js"></script>
 	<br><br>
-	<br><br><br>	
+	<br><br><br>
 	<div style="width:100%">
 		<canvas id="Kg"></canvas>
 	</div>
@@ -78,11 +78,11 @@
 			<span class="sr-only">Next</span>
 		</a>
 	</div>
-	<script src="./js/inbodyKg.js"> 
+	<script src="./js/inbodyKg.js">
 	</script>
-	<script src="./js/inbodyFat.js"> 
+	<script src="./js/inbodyFat.js">
 	</script>
-	<script src="./js/inbodyMuscle.js"> 
+	<script src="./js/inbodyMuscle.js">
 	</script>
 	<nav class="navbar fixed-bottom navd">
 		<a href="index.php">
