@@ -93,7 +93,9 @@
           </div>
           <input type="number" class="form-control" name="serving" placeholder="Serving" aria-label="Username" aria-describedby="basic-addon1">
 	</div>
-
+	
+	
+	<input type="hidden" name="eaten_time" value="<?php echo $_POST['eatentime'];?>"> 
 <button type="submit"> 제출 </button>
       </form>
     </div>
@@ -135,7 +137,7 @@
 
 
         while( $jb_row = mysqli_fetch_array( $jb_result ) ) {
-        echo '<tr><td>' . $jb_row[ 'food_id' ] . '</td><td>'. $jb_row[ 'food_name' ] . '</td><td>' . $jb_row[ 'food_car' ] . '</td><td>'. $jb_row[ 'food_fat' ] .'</td><td>'. $jb_row[ 'food_pro' ] .'</td><td>'. $jb_row[ 'food_calory' ] .'</td></tr>';
+        echo '<tr><td>' . $jb_row[ 'food_id' ] . '</td><td>'. $jb_row[ 'food_name' ] . '</td><td>' . $jb_row[ 'food_car' ] . '</td><td>'. $jb_row[ 'food_pro' ] .'</td><td>'. $jb_row[ 'food_fat' ] .'</td><td>'. $jb_row[ 'food_calory' ] .'</td></tr>';
       }
       ?>
     </tbody>

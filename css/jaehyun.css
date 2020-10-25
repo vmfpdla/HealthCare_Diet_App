@@ -50,7 +50,10 @@ i.navdi{
 	color:#BDBDBD;
 }
 
-
+/* main 아래 그래프 속성 */
+.gmainp{
+	float:left; width: 20%;text-align: center;
+}
 
 /* 내용 css */
 
@@ -70,6 +73,10 @@ i.titlei{
 
 	margin : 0 auto; width: 80%;
 
+}
+
+i.cardi{
+	font-size: 100px; color:#BDBDBD;
 }
 
 

@@ -12,7 +12,7 @@ require_once("./dbconn.php");
 
 $user_id=1;
 $food_id=$_POST["foodnum"];
-$eaten_time=2;
+$eaten_time=$_POST["eaten_time"];
 $eaten_serving=$_POST["serving"];
 $eaten_day = date('Y-m-d',time());
 #if ( ! $conn ) {
