@@ -92,13 +92,11 @@
 		<p class="title">식단추천</p>
 	</div>
 	<br><br><br>
-
 	<div class="card">
 		<div class="card-header">
 			영양소
 		</div>
 		<div class="card-body">
-
 			<div class="container">
 				<div class="container" style="float:left; width: 15%;text-align: center;">
 					<p class="pr" align="left;"> Kcal  </p>
@@ -114,9 +112,7 @@
 					</div>
 				</div>
 			</div>
-
 			<br><br>
-
 			<div class="container">
 				<div class="container" style="float:left; width: 15%;text-align: center;">
 					<p class="pr" align="left;"> 탄  </p>
@@ -131,12 +127,8 @@
 						</p>
 					</div>
 				</div>
-
-
 			</div>
 			<br><br>
-
-
 			<div class="container">
 				<div class="container" style="float:left; width: 15%;text-align: center;">
 					<p class="pr" align="left;"> 단  </p>
@@ -150,10 +142,7 @@
 					</div>
 				</div>
 			</div>
-
-
 			<br><br>
-
 			<div class="container" style="font-weight: bold;">
 				<div class="container" style="float:left; width: 15%;text-align: center;">
 					<p class="pr"> 지  </p>
@@ -266,7 +255,6 @@
 
 
 	<Br><br>
-
 	<div class="card">
 		<div class="card-header">
 			점심
@@ -310,9 +298,7 @@
 			</p>
 		</div>
 	</div>
-
 	<Br><br>
-
 	<div class="card">
 		<div class="card-header">
 			저녁
@@ -355,10 +341,7 @@
 			</p>
 		</div>
 	</div>
-
-
 	<br><br>
-
   <nav class="navbar fixed-bottom navd">
     <a href="index.php">
       <div class="navIcons" style="text-align:center;" >
