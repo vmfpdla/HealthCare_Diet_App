@@ -132,7 +132,8 @@
 					for($i=0;$i<count($arr);$i++){
 						for($j=0;$j<6;$j++){	
 							echo $arr[$i][$j];
-							echo nl2br("\n");
+						}
+						echo nl2br("\n");
 					}
 			?>
 				<form>
