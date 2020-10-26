@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -100,11 +99,15 @@
 		</div>
 		<div class="card-body">
 			<form action="javascript:Display();">
-				<input type="number" size="20">
+
+				<input type="number" name="inputKcal" size="20">
 				<button>입력</button>
 			</form>
 			<div id="setKcal" style="display: none;">
 				<?php
+
+				   $inputKcal="<script>document.write(inputKcal);</script>"
+				   echo $inputKcal;
 					require_once("./dbconn.php");
 					$user_id = 1; # 1번 가져왔다고 가정
 					$sql = "SELECT * FROM user WHERE user_id='$user_id'";
