@@ -1,3 +1,6 @@
+const { request } = require("http");
+const { RequestTimeout } = require("http-errors");
+
 	
 		function SetDisplay(frm) {
 
@@ -26,4 +29,6 @@
 
 function Display(){
 	document.getElementById("setKcal").style.display='block';
+	var inputKcal = request.getParameter("inputKcal");
+	
 }
