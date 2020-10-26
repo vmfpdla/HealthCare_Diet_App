@@ -105,12 +105,10 @@
 			</form>
 			<div id="setKcal" style="display: none;">
 				<?php
-
 					require_once("./dbconn.php");
 					$user_id = 1; # 1번 가져왔다고 가정
 					$sql = "SELECT * FROM user WHERE user_id='$user_id'";
 					$result = $conn->query($sql);
-
 					if ($result->num_rows > 0) { // 여러줄 가져오는 경우
 						while($row = $result->fetch_assoc()) {
    							 $user = $row;
@@ -118,10 +116,8 @@
 					} else {
  						 echo "유저 접속 오류";
 					}
-
 					$sql1 = "SELECT * FROM diet";
 					$result1 = $conn->query($sql1);
-
 					$arr= array();
 					if ($result1->num_rows > 0) { // 여러줄 가져오는 경우
 					  while($row = $result1->fetch_assoc()) {
@@ -138,8 +134,6 @@
 							echo $arr[$i][$j];
 							echo nl2br("\n");
 					}
-
-				}
 			?>
 				<form>
 					<select name="selectset" onchange="SetDisplay(this.form)" >
