@@ -99,15 +99,14 @@
 		</div>
 		<div class="card-body">
 			<form action="javascript:Display();">
-
-				<input type="number" name="inputKcal" size="20">
+				<?php $inputKcal=0;
+					echo $inputKcal;?>
+				<input type="number" id="inputKcal" name="inputKcal" size="20">
 				<button>입력</button>
 			</form>
 			<div id="setKcal" style="display: none;">
 				<?php
-
-				   $inputKcal="<script>document.write(inputKcal);</script>"
-				   echo $inputKcal;
+					echo $inputKcal;
 					require_once("./dbconn.php");
 					$user_id = 1; # 1번 가져왔다고 가정
 					$sql = "SELECT * FROM user WHERE user_id='$user_id'";
@@ -138,6 +137,7 @@
 						}
 						echo nl2br("\n");
 					}
+					
 			?>
 				<form>
 					<select name="selectset" onchange="SetDisplay(this.form)" >
@@ -146,7 +146,7 @@
 						<option value=2>Set2</option>
 						<option value=3>Set3</option>
 					</select>
-					<input name="set" type="text" size="50" maxlength="50">
+					<input name="set" type="text" size="50" maxlength="50" readonly>
 				</form>
 			</div>
 		</div>
