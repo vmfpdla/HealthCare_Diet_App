@@ -98,8 +98,8 @@
 			점심
 		</div>
 		<div class="card-body">
-			<form action="reommend_diet.php" method="POST">
-				<input type="number" id="WWWinputKcal" name="inputKcal" size="20">
+			<form action="recommend_diet.php" method="POST">
+				<input type="number" id="inputKcal" name="inputKcal" size="20">
 				<button>입력</button>
 			</form>
 			</div>
