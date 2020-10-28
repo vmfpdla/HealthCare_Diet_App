@@ -13,7 +13,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
  <script src="./js/nav.js"></script>
 </STYLE>
-<script src="./js/recommend.js"> </script>
+
 </script>
 </head>
 <body>
@@ -98,56 +98,10 @@
 			점심
 		</div>
 		<div class="card-body">
-			<form action="javascript:Display();">
-				<?php $inputKcal=0;
-					echo $inputKcal;?>
-				<input type="number" id="inputKcal" name="inputKcal" size="20">
+			<form action="reommend_diet.php" method="POST">
+				<input type="number" id="WWWinputKcal" name="inputKcal" size="20">
 				<button>입력</button>
 			</form>
-			<div id="setKcal" style="display: none;">
-				<?php
-					echo $inputKcal;
-					require_once("./dbconn.php");
-					$user_id = 1; # 1번 가져왔다고 가정
-					$sql = "SELECT * FROM user WHERE user_id='$user_id'";
-					$result = $conn->query($sql);
-					if ($result->num_rows > 0) { // 여러줄 가져오는 경우
-						while($row = $result->fetch_assoc()) {
-   							 $user = $row;
-  						}
-					} else {
- 						 echo "유저 접속 오류";
-					}
-					$sql1 = "SELECT * FROM diet";
-					$result1 = $conn->query($sql1);
-					$arr= array();
-					if ($result1->num_rows > 0) { // 여러줄 가져오는 경우
-					  while($row = $result1->fetch_assoc()) {
-						  array_push($arr,array($row['diet_id'],$row['diet_grains'],$row['diet_meat'],$row['diet_vet'],$row['diet_else'],$row['diet_calory']));
-						  echo $row['diet_id'] ." 번식단 밥종류:" .$row['diet_grains'] ." 고기종류: ".$row['diet_meat']."채소 종류 ".$row['diet_vet']."기타: ".$row['diet_else']."칼로리 :".$row['diet_calory'];
-	  						echo nl2br("\n");
-  						}
-					} else {
-  					echo "0 results";
-					}
-
-					for($i=0;$i<count($arr);$i++){
-						for($j=0;$j<6;$j++){	
-							echo $arr[$i][$j];
-						}
-						echo nl2br("\n");
-					}
-					
-			?>
-				<form>
-					<select name="selectset" onchange="SetDisplay(this.form)" >
-						<option selected value=0>-선택하세요- </option>
-						<option value=1>Set1</option>
-						<option value=2>Set2</option>
-						<option value=3>Set3</option>
-					</select>
-					<input name="set" type="text" size="50" maxlength="50" readonly>
-				</form>
 			</div>
 		</div>
 	</div>
