@@ -139,12 +139,7 @@
 						echo nl2br("\n");
 						
 					}
- 
-					for($i=0;$i<count($arr_diet);$i++){
-						for($j=0;$j<6;$j++){
-							echo $arr_diet[$i][$j];
-						}
-					}
+
 					
 					for($i=0;$i<count($arr_diet)-1;$i++){
 						for($j=0;$j<count($arr_diet);$j++){
@@ -158,6 +153,13 @@
 						}
 
 					}	
+
+					 
+					for($i=0;$i<count($arr_diet);$i++){
+						for($j=0;$j<6;$j++){
+							echo $arr_diet[$i][$j];
+						}
+					}
 				
 					
 				 	
