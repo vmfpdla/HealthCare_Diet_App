@@ -98,14 +98,8 @@
 			점심
 		</div>
 		<div class="card-body">
-			<form action="javascript:Display();">
-				<?php $inputKcal=0;
-					echo $inputKcal;?>
-				<input type="number" id="inputKcal" name="inputKcal" size="20">
-				<button>입력</button>
-			</form>
 				<?php
-					echo $inputKcal;
+					$inputKcal=$_POST["inputKcal"];
 					require_once("./dbconn.php");
 					$user_id = 1; # 1번 가져왔다고 가정
 					$sql = "SELECT * FROM user WHERE user_id='$user_id'";
@@ -137,8 +131,18 @@
 						echo nl2br("\n");
 					}
 
-
-					echo print_r($_POST);
+					
+					
+					for($i=0;$i<count($arr);$i++){
+						if($arr[i][5]) < $inputKcal){}
+							for($j=0;$j<6;$j++){	
+								echo $arr[$i][$j];
+							}
+						}
+						echo nl2br("\n");
+					}
+					
+					
 					
 			?>
 				<form>
