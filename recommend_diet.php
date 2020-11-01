@@ -148,10 +148,7 @@
 								$arr_diet[$j]=$arr_diet[$j+1];
 								$arr_diet[$j+1]=$temp;
 							}
-
-
 						}
-
 					}	
 
 					 
@@ -161,12 +158,10 @@
 						}
 					}
 				
-					
 				 	
-					
-					
 			?>
 				<form>
+
 					<select name="selectset" onchange="SetDisplay(this.form)" >
 						<option selected value=0>-선택하세요- </option>
 						<option value=1>Set1</option>
