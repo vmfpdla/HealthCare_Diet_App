@@ -153,9 +153,15 @@
 					}	
  					 
 					for($i=0;$i<count($arr_diet);$i++){
+						
 						for($j=0;$j<6;$j++){
-							echo $arr_diet[$i][$j];
+							if($j==0) {echo '<input type="button" value='. $arr_diet[$i][$j] . '>';
+							}
+							else {echo " ".$arr_diet[$i][$j];
+							
+							}
 						}
+						
 						echo nl2br("\n");
 					}
 						
