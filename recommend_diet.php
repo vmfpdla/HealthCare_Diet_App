@@ -118,8 +118,8 @@
 					if ($result1->num_rows > 0) { // 여러줄 가져오는 경우
 					  while($row = $result1->fetch_assoc()) {
 						  array_push($arr,array($row['diet_id'],$row['diet_grains'],$row['diet_meat'],$row['diet_vet'],$row['diet_else'],$row['diet_calory']));
-		#				  echo $row['diet_id'] ." 번식단 밥종류:" .$row['diet_grains'] ." 고기종류: ".$row['diet_meat']."채소 종류 ".$row['diet_vet']."기타: ".$row['diet_else']."칼로리 :".$row['diet_calory'];
-	  						echo nl2br("\n");
+						#  echo $row['diet_id'] ." 번식단 밥종류:" .$row['diet_grains'] ." 고기종류: ".$row['diet_meat']."채소 종류 ".$row['diet_vet']."기타: ".$row['diet_else']."칼로리 :".$row['diet_calory'];
+	  				#		echo nl2br("\n");
   						}
 					} else {
   					echo "0 results";
@@ -131,7 +131,7 @@
 						#	echo $arr[$i][$j];
 						#}
 						if($inputKcal> $arr[$i][5]){
-							echo $arr[$i][5];
+		#					echo $arr[$i][5];
 
 							array_push($arr_diet,array($arr[$i][0],$arr[$i][1],$arr[$i][2],$arr[$i][3],$arr[$i][4],$arr[$i][5]));
 
@@ -140,9 +140,10 @@
 						
 					}
 
+				
 					
 					for($i=0;$i<count($arr_diet)-1;$i++){
-						for($j=0;$j<count($arr_diet);$j++){
+						for($j=0;$j<count($arr_diet)-1;$j++){
 							if($arr_diet[$j][5]>$arr_diet[$j+1][5]){
 								$temp=$arr_diet[$j];
 								$arr_diet[$j]=$arr_diet[$j+1];
@@ -150,13 +151,14 @@
 							}
 						}
 					}	
-
-					 
+ 					 
 					for($i=0;$i<count($arr_diet);$i++){
 						for($j=0;$j<6;$j++){
 							echo $arr_diet[$i][$j];
 						}
+						echo nl2br("\n");
 					}
+						
 				
 				 	
 			?>
