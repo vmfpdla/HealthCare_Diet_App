@@ -29,7 +29,7 @@
   <script type="text/javascript">
 
     $(document).ready(function() {
-      clickTd();      
+      clickTd();
       $("#keyword").keyup(function() {
         var k = $(this).val();
         $("#user-table > tbody > tr").hide();
@@ -38,10 +38,10 @@
         $(temp).parent().show();
       })
     })
-    
-    
 
-    
+
+
+
     function clickTd(){
       $("#user-table tr").click(function(){
         var text = $(this).text();
@@ -93,9 +93,9 @@
           </div>
           <input type="number" class="form-control" name="serving" placeholder="Serving" aria-label="Username" aria-describedby="basic-addon1">
 	</div>
-	
-	
-	<input type="hidden" name="eaten_time" value="<?php echo $_POST['eatentime'];?>"> 
+
+
+	<input type="hidden" name="eaten_time" value="<?php echo $_POST['eatentime'];?>">
 <button type="submit"> 제출 </button>
       </form>
     </div>
@@ -120,7 +120,7 @@
 
 
 
-        $jb_conn = mysqli_connect( 'localhost', 'root', 'toor', 'smartpt' );
+        $jb_conn = mysqli_connect( 'localhost', 'root', 'ghkdduswn123', 'smartpt' );
 
 
         mysqli_query($jb_conn, "set session character_set_connection=utf8;");

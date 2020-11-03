@@ -32,6 +32,8 @@
     echo "유저 접속 오류";
   }
 
+	$conn->close();
+
   if($isset($_SESSION['user_id']))
   {
     header('Location:./index.php');

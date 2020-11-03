@@ -386,15 +386,12 @@
 		document.getElementById('diet_1').style.display = 'none';
 	}
 
-	if (is_lunch == 1) {
+	if (is_lunch == 1 && is_dinner ==0) { // 점심이 입력된 경우 -> 저녁 3개제공
 
 		document.getElementById('diet_2').style.display = 'block';
 		document.getElementById('input_2').style.display = 'none';
-	}
-	else {
-
-		document.getElementById('input_2').style.display = 'block';
-		document.getElementById('diet_2').style.display = 'none';
+		document.getElementById('input_3').style.display = 'block';
+		document.getElementById('diet_3').style.display = 'none';
 	}
 
 	if (is_dinner == 1) {
@@ -402,11 +399,7 @@
 		document.getElementById('diet_3').style.display = 'block';
 		document.getElementById('input_3').style.display = 'none';
 	}
-	else {
-
-		document.getElementById('input_3').style.display = 'block';
-		document.getElementById('diet_3').style.display = 'none';
-	}
+	
 
   </script>
 
