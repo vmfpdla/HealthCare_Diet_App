@@ -51,47 +51,6 @@
   <div id="container">
 
 
-
-
-
-
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="basic-addon1">음식이름</span>
-      </div>
-      <input type="text" class="form-control" id="keyword" placeholder="Food Name" aria-label="Username" aria-describedby="basic-addon1">
-    </div>
-  </div>
-  <div class="row row-cols-3">
-    <form method="post" action="updatefoodinput.php">
-      <div class="input-group col">
-
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon1">음식 번호</span>
-        </div>
-        <input type="text" class="form-control" name="foodnum" id="foodnum" placeholder="Food Number" aria-label="Username" aria-describedby="basic-addon1">
-
-
-
-
-        <div class="input-group col">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1">음식 인분</span>
-          </div>
-          <input type="number" class="form-control" name="serving" placeholder="Serving" aria-label="Username" aria-describedby="basic-addon1">
-	</div>
-
-    <?php
-	$eaten_time=$_POST['eaten_time'];
-    echo $eaten_time;
-	?>
-
-<button type="submit"> 제출 </button>
-      </form>
-    </div>
-
-
-
     <table class="table table-hover" id="user-table">
       <thead>
         <tr>
@@ -173,14 +132,19 @@
             }
         }	
         for($i=0;$i<count($arr_diet);$i++){
-			echo '<tr><td>' . $arr_diet[i][0]. '</td><td>'. $arr_diet[i][1] . '</td><td>' .$arr_diet[i][2]. '</td><td>'. $arr_diet[i][3] .'</td><td>'. $arr_diet[i][4] .'</td><td>'. $arr_diet[i][5] .'</td></tr>';
+			echo '<tr><td>' . $arr_diet[$i][0]. '</td><td>'. $arr_diet[$i][1] . '</td><td>' .$arr_diet[$i][2]. '</td><td>'. $arr_diet[$i][3] .'</td><td>'. $arr_diet[$i][4] .'</td><td>'. $arr_diet[$i][5] .'</td></tr>';
    
         }
         
       ?>
     </tbody>
   </table>
+</div>
 
+<form>
+
+
+</form>
 
 </body>
 </html>
