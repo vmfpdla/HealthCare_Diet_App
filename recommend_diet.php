@@ -136,7 +136,7 @@
 							array_push($arr_diet,array($arr[$i][0],$arr[$i][1],$arr[$i][2],$arr[$i][3],$arr[$i][4],$arr[$i][5]));
 
 						}
-						echo nl2br("\n");
+				#		echo nl2br("\n");
 						
 					}
 
@@ -155,7 +155,8 @@
 					for($i=0;$i<count($arr_diet);$i++){
 						
 						for($j=0;$j<6;$j++){
-							if($j==0) {echo '<input type="button" value='. $arr_diet[$i][$j] . '>';
+							$k=$i+1;
+							if($j==0) {echo '<input type="button" value='.$k."번" .'>';
 							}
 							else {echo " ".$arr_diet[$i][$j];
 							
@@ -168,18 +169,7 @@
 				
 				 	
 			?>
-				<form>
-
-					<select name="selectset" onchange="SetDisplay(this.form)" >
-						<option selected value=0>-선택하세요- </option>
-						<option value=1>Set1</option>
-						<option value=2>Set2</option>
-						<option value=3>Set3</option>
-					</select>
-					<input name="set" type="text" size="50" maxlength="50" readonly>
-				</form>
-			</div>
-
+</div>
 	</div>
 	<Br><br>
 	<div class="card">
