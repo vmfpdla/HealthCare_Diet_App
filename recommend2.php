@@ -13,7 +13,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
  <script src="./js/nav.js"></script>
 </STYLE>
-
 </script>
 </head>
 <body>
@@ -83,6 +82,76 @@
 	</div>
 	<Br><br>
 	
+	<?php
+
+require_once("./dbconn.php");
+
+$user_id = 1; # 1번 가져왔다고 가정
+$sql = "SELECT * FROM user WHERE user_id='$user_id'";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) { // 여러줄 가져오는 경우
+
+  while($row = $result->fetch_assoc()) {
+    $user = $row;
+  }
+} else {
+  echo "유저 접속 오류";
+}
+?>
+
+<?php
+
+$today = date("Y-m-d");
+  // 아침에 먹은 식단을 가져온다.
+  $sql3 = "SELECT * FROM eatenfood INNER JOIN foodinfo on eatenfood.food_id = foodinfo.food_id WHERE user_id='$user_id' and eaten_day='$today' and eaten_time=1";
+  $result3 = $conn->query($sql3);
+
+  if ($result3 -> num_rows>0) { // 여러줄 가져오는 경우
+
+    //아침에 먹은게 하나라도 있는 경우
+    $is_morning =1;
+  }
+  else{
+    // 아침에 먹은게 없는경우에는 카메라 아이콘 보여준다.
+    $is_morning =0;
+  }
+
+  // 점심에 먹은 식단을 가져온다.
+  $sql4 = "SELECT * FROM eatenfood INNER JOIN foodinfo on eatenfood.food_id = foodinfo.food_id WHERE user_id='$user_id' and eaten_day='$today' and eaten_time=2";
+  $result4 = $conn->query($sql4);
+
+  if ($result4 -> num_rows>0) { // 여러줄 가져오는 경우
+
+    //점심에 먹은게 하나라도 있는 경우
+    $is_lunch =1;
+  }
+  else{
+    // 점심에 먹은게 없는경우에는 카메라 아이콘 보여준다.
+    $is_lunch =0;
+  }
+
+  // 저녁에 먹은 식단을 가져온다.
+  $sql5 = "SELECT * FROM eatenfood INNER JOIN foodinfo on eatenfood.food_id = foodinfo.food_id WHERE user_id='$user_id' and eaten_day='$today' and eaten_time=3";
+  $result5 = $conn->query($sql5);
+
+
+  if ($result5 -> num_rows>0) { // 여러줄 가져오는 경우
+
+    //저녁에 먹은게 하나라도 있는 경우
+    $is_dinner =1;
+  }
+  else{
+    // 저녁에 먹은게 없는경우에는 카메라 아이콘 보여준다.
+    $is_dinner =0;
+  }
+
+
+  echo $is_morning . $is_lunch . $is_dinner
+
+?>
+
+
 	<div class="card">
 		<div class="card-header">
 			아침
