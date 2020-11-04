@@ -9,7 +9,7 @@
   $cycle_calory=0;
   $rope_calory=0;
 
-  $sql1 = "SELECT * FROM doexercise INNER JOIN exerciseinfo on doexercise.exercise_id = exerciseInfo.exercise_id WHERE user_id='$user_id' and doexercise_day='$today'";
+  $sql1 = "SELECT * FROM doexercise INNER JOIN exerciseinfo on doexercise.exercise_id = exerciseinfo.exercise_id WHERE user_id='$user_id' and doexercise_day='$today'";
   $result1 = $conn->query($sql1);
 
   if ($result1->num_rows > 0) { // 여러줄 가져오는 경우
