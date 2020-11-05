@@ -131,19 +131,16 @@
 
         
 
-        $sql2="SELECT eaten_calory from eatenfood where eaten_day=$today";
-        $result2=$conn->query($sql2);
+        $sql2="SELECT eaten_calory from eatenfood where eaten_day='$today'";
 
-        if($result2->num_rows>0){
-            while($row = $result1->fetch_assoc()) {
-                $dinnerKcal=$dinnerKcal+$row['eaten_calory'];
-                echo $row['eaten_calory'];
-                echo nl2br("\n");
+	$result2=mysqli_query($conn,$sql2);
+            while($cal_row=mysqli_fetch_array($result2)) {
+                $dinnerKcal=$dinnerKcal+$cal_row['eaten_calory'];
             }
-        }
 
-        $dinnerKcal=$user['user_goal']-$dinnerKcal;
-
+        $dinnerKcal=$user['user_goal']-$dinnerKcal-$lunch_diet;
+	echo $user['user_goal'];	
+	echo $dinnerKcal;
 
 
 
