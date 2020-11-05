@@ -2,39 +2,39 @@
   require_once("./dbconn.php");
   $user_id = 1; # 1번 가져왔다고 가정
 
+  $i=0;
+  $j=0;
+  $dailyKcal; // 일별 섭취 칼로리
+  $inbody;
+  $today = date("Y-m-d");
 
+  // $start = strtotime("-3 days");
+  // $end = strtotime("+3 days");
+  // $start = date('Y-m-d',$start);
+  // $end = date('Y-m-d',$end);
+
+
+  // 음식 칼로리 불러오기
   $sql1 = "SELECT * FROM eatenfood WHERE user_id='$user_id' ORDER BY eaten_day";
   $result1 = $conn->query($sql1);
 
   if ($result1->num_rows > 0) { // 여러줄 가져오는 경우
     while($row = $result1->fetch_assoc())
     {
-          if($row['exercise_name']=='걷기')
-          {
-            $walking = $row;
-            $walking_calory = $row['exercise_calory'];
+          $dailyKcal[$i]=$row;
+          $i++;
+    }
+  }
 
-          }
-          else if($row['exercise_name']=='수영')
-          {
-            $swimming = $row;
-            $swimming_calory = $row['exercise_calory'];
 
-          }
-          else if($row['exercise_name']=='자전거')
-          {
-            $cycle = $row;
-            $cycle_calory = $row['exercise_calory'];
+  $sql2= "SELECT * FROM inbody WHERE user_id='$user_id' ORDER BY ABS(DATEDIFF(NOW(),inbody_day)) LIMIT 5";
+  $result2 = $conn->query($sql2);
 
-          }
-          else
-          {
-            $rope = $row;
-            $rope_calory = $row['exercise_calory'];
-
-          }
-
-          $kcal = $kcal - $row['doexercise_calory'];
+  if ($result2->num_rows > 0) { // 여러줄 가져오는 경우
+    while($row = $result2->fetch_assoc())
+    {
+          $inbody[$j]=$row;
+          $j++;
     }
   }
 
@@ -65,7 +65,18 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 
 </head>
+
 <body>
+  <div id="dailykcalarray">
+    <?php
+      echo json_encode($dailyKcal);
+    ?>
+  </div>
+  <div id="dailyinbodyarray">
+    <?php
+      echo json_encode($inbody);
+    ?>
+  </div>
 	<nav class="navbar fixed-top">
 		<p class="navp">Smart PT</p>
 		<a href="userinsert.php"><i class="fa fa-user-circle navi"></i></a>
@@ -75,19 +86,19 @@
 	<div style="width:100%">
 		<canvas id="daily_kcal"></canvas>
 	</div>
-	<script src="./js/daily_kcalgraph.js"></script>
+	<script src="./js/daily_kcalgraph.js?ver=1"></script>
 
 	<br><br><br>
 	<div style="width:100%">
 		<canvas id="week_kcal"></canvas>
 	</div>
-	<script src="./js/week_kcalgraph.js"></script>
+	<script src="./js/week_kcalgraph.js?ver=1"></script>
 
 	<br><br><br>
 	<div style="width:100%">
 		<canvas id="month_kcal"></canvas>
 	</div>
-	<script src="./js/month_kcalgraph.js"></script>
+	<script src="./js/month_kcalgraph.js?ver=2"></script>
 
 	<br><br><br>
 	<div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
@@ -98,7 +109,7 @@
 			<li data-target="#carouselExampleCaptions" data-slide-to="3"></li>
 		</ol>
 		<div class="carousel-inner">
-			<div class="carousel-item active">
+			<div class="carousel-item ">
 				<div style="width:100%">
 					<canvas id="inbodyMuscle"></canvas>
 				</div>
@@ -113,7 +124,7 @@
 					<canvas id="inbodyKg"></canvas>
 				</div>
 			</div>
-			<div class="carousel-item">
+			<div class="carousel-item active">
 				<div style="width:100%">
 					<canvas id="inbodyBmi"></canvas>
 				</div>
@@ -128,10 +139,11 @@
 			<span class="sr-only">Next</span>
 		</a>
 	</div>
-	<script src="./js/inbodyKg.js"></script>
-	<script src="./js/inbodyFat.js"></script>
-	<script src="./js/inbodyMuscle.js"></script>
-	<script src="./js/inbodyBmi.js"></script>
+	<script src="./js/inbodyKg.js?ver=2"></script>
+	<script src="./js/inbodyFat.js?ver=2"></script>
+	<script src="./js/inbodyMuscle.js?ver=2"></script>
+	<script src="./js/inbodyBmi.js?ver=2"></script>
+  <br><br><br><br>
 	<nav class="navbar fixed-bottom navd">
 		<a href="index.php">
 			<div class="navIcons" style="text-align:center;" >

@@ -3,6 +3,7 @@
 require_once("./dbconn.php");
 
 $user_id = 1; # 1번 가져왔다고 가정
+$today = date("Y-m-d");
 $sql = "SELECT * FROM user WHERE user_id='$user_id'";
 $result = $conn->query($sql);
 
@@ -86,7 +87,7 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
     <div class="card-body" style="text-align:center">
       <!-- 운동데이터를 가져오는 php 문 -->
       <?php
-      $sql1 = "SELECT * FROM doexercise INNER JOIN exerciseinfo on doexercise.exercise_id = exerciseInfo.exercise_id WHERE user_id='$user_id'";
+      $sql1 = "SELECT * FROM doexercise INNER JOIN exerciseinfo on doexercise.exercise_id = exerciseInfo.exercise_id WHERE user_id='$user_id' and doexercise_day='$today'";
       $result1 = $conn->query($sql1);
 
       if ($result1->num_rows > 0) { // 여러줄 가져오는 경우
@@ -97,7 +98,7 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
         echo nl2br("\n");
       }
       } else {
-        echo "0 results";
+        echo "아직 운동을 안했어요 !";
       }
     ?>
     </div>

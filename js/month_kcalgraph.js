@@ -1,3 +1,45 @@
+var today = new Date();
+
+var date_arr = new Array();
+var calory_arr = new Array();
+var dailykcalarray = document.getElementById("dailykcalarray");
+dailykcalarray = dailykcalarray.innerHTML;
+dailykcalarray = JSON.parse(dailykcalarray);
+
+for(var i=0;i<7;i++)
+{
+	if(calory_arr[i]===undefined) calory_arr[i]=0;
+}
+
+var yyyy = today.getFullYear();
+var flag =0;
+for(var i=0;i<7;i++)
+{
+	var mm = today.getMonth()-2+i; // Jan is 0
+
+	if(mm>12){
+		 mm = mm-12;
+		 if(flag==0)
+		 {
+			 yyyy=yyyy+1;
+			 flag=1;
+		 }
+	 }
+
+	date_arr[i] = yyyy + '-'+ mm;
+
+	for(var j=0;j<dailykcalarray.length;j++)
+	{
+		if(dailykcalarray[j].eaten_day.indexOf(date_arr[i])!=-1)
+		{
+			calory_arr[i]=calory_arr[i]+ parseInt(dailykcalarray[j].eaten_calory);
+		}
+	}
+
+}
+
+
+
 // 우선 컨텍스트를 가져옵니다.
 var ctx = document.getElementById("month_kcal").getContext('2d');
 /*
@@ -8,10 +50,10 @@ var ctx = document.getElementById("month_kcal").getContext('2d');
 	var myChart = new Chart(ctx, {
 		type: 'bar',
 		data: {
-			labels: ['1일차', '2일차', '3일차', '4일차', '5일차', '6일차', '7일차'],
+			labels: date_arr,
 			datasets: [{
 				label: '월별 섭취 칼로리',
-				data: [2300, 2200, 2200, 2150, 2400, 2100,1970],
+				data: calory_arr,
 				backgroundColor: [
 				'rgba(54, 162, 235, 0.2)',
 				'rgba(54, 162, 235, 0.2)',
