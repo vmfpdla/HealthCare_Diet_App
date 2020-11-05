@@ -19,9 +19,18 @@ $eaten_day = date('Y-m-d',time());
 #die( 'Could not connect: ' . mysqli_error($con) );
 #} else {
 
+$sql3="SELECT foo_car FROM foodinfo where food_id=$food_id";
 
+$eaten_calory=mysqli_query($conn,$sql3);
+
+if($eaten_serving==0){
+	$eaten_calory=$food_car*0.5;
+}
+else{
+	$eaten_calory=$food_car*$eaten_serving;
+}
 print_r($_POST);
-$sql2 = "INSERT INTO eatenfood ( user_id, food_id, eaten_day, eaten_time, eaten_serving) VALUES ( '$user_id', '$food_id','$eaten_day', '$eaten_time', '$eaten_serving')";
+$sql2 = "INSERT INTO eatenfood ( user_id, food_id, eaten_day, eaten_time, eaten_serving, eaten_calory) VALUES ( '$user_id', '$food_id','$eaten_day', '$eaten_time', '$eaten_serving','$eaten_calory')";
 
 mysqli_query($conn,$sql2);
 $conn->close();
