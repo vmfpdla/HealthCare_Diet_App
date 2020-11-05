@@ -145,12 +145,6 @@
         
 
         $dinnerKcal=$user['user_goal']-$dinnerKcal-$lunch_diet;
-	echo $user['user_goal'];	
-	echo $dinnerKcal;
-
-
-
-
 
 
         for($i=0;$i<count($arr);$i++){
@@ -190,5 +184,6 @@
 
        
 
+        <a href="recommend2.php">추천창으로 이동 </a>
     </body>
 </html>
