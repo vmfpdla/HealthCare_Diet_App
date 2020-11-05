@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -121,6 +122,9 @@
         $arr_diet=array();
         if ($result1->num_rows > 0) { // 여러줄 가져오는 경우
           while($row = $result1->fetch_assoc()) {
+              if($row['diet_id']==$lunch_diet){
+                  $lunch_diet=$row['diet_calory'];
+              }
               array_push($arr,array($row['diet_id'],$row['diet_grains'],$row['diet_meat'],$row['diet_vet'],$row['diet_else'],$row['diet_calory']));
             #  echo $row['diet_id'] ." 번식단 밥종류:" .$row['diet_grains'] ." 고기종류: ".$row['diet_meat']."채소 종류 ".$row['diet_vet']."기타: ".$row['diet_else']."칼로리 :".$row['diet_calory'];
           #		echo nl2br("\n");
@@ -137,6 +141,8 @@
             while($cal_row=mysqli_fetch_array($result2)) {
                 $dinnerKcal=$dinnerKcal+$cal_row['eaten_calory'];
             }
+        
+        
 
         $dinnerKcal=$user['user_goal']-$dinnerKcal-$lunch_diet;
 	echo $user['user_goal'];	
