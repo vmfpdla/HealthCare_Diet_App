@@ -240,7 +240,7 @@ $today = date("Y-m-d");
 		  }
 		  else{
 
-			echo ' <form action="lunch_diet.php" method="POST"><input type="number" id="inputKcal" name="inputKcal" size="20"><button>입력</button></form>';
+			echo ' <form action="morning_diet.php" method="POST"><input type="number" id="inputKcal" name="inputKcal" size="20"><button>입력</button></form>';
 
 
 		  }
@@ -301,13 +301,42 @@ $today = date("Y-m-d");
         저녁
     </div>
     <div class="card-body">
-        <p>
-            쌀밥 300Kcal
-            <br>
-            불고기 471Kcal
-            <br>
-            된장국 78Kcal
-        </p>
+        <?php
+	        if($is_dinner==1){
+				$dinner_kcal =0;
+				$dinner_car =0;
+				$dinner_pro =0;
+				$dinner_fat =0;
+				while($row = $result5->fetch_assoc()) {
+				  if ($row['eaten_serving']==0){
+					$dinner_kcal = $dinner_kcal+$row['food_calory']*0.5;
+					$dinner_car = $dinner_car+$row['food_car']*0.5;
+					$dinner_pro = $dinner_pro+$row['food_pro']*0.5;
+					$dinner_fat = $dinner_fat+$row['food_fat']*0.5;
+				 }
+				else{
+					$dinner_kcal = $dinner_kcal+$row['food_calory']*$row['eaten_serving'];
+					$dinner_car =  $dinner_car+$row['food_car']*$row['eaten_serving'];
+					$dinner_pro =  $dinner_pro+$row['food_pro']*$row['eaten_serving'];
+					$dinner_fat =  $dinner_fat+$row['food_fat']*$row['eaten_serving'];
+					if($row['eaten_serving']==0){
+					  echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(0.5 인분)";
+				echo nl2br("\n\n");
+				  }
+				  else{
+					  echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(".$row['eaten_serving']." 인분)";
+				echo nl2br("\n\n");
+						}
+			  		}
+				}
+			  }
+			  else{
+				echo '<form action="dinner_diet.php" method="POST"><input type="number" id="inputKcal" name="inputKcal" size="20"><button>입력</button></form>';
+	
+			  }
+
+		?>
+			
     </div>
 </div>
 <br><br>
