@@ -199,7 +199,7 @@ $today = date("Y-m-d");
   }
 
 
-  echo $is_morning . $is_lunch . $is_dinner
+  echo $is_morning . $is_lunch . $is_dinner;
 
 ?>
 
@@ -240,10 +240,7 @@ $today = date("Y-m-d");
 		  }
 		  else{
 
-			echo ' <form action="lunch_diet.php" method="POST">
-			<input type="number" id="inputKcal" name="inputKcal" size="20">
-			<button>입력</button>
-		</form>';
+			echo ' <form action="lunch_diet.php" method="POST"><input type="number" id="inputKcal" name="inputKcal" size="20"><button>입력</button></form>';
 
 
 		  }
@@ -291,10 +288,7 @@ $today = date("Y-m-d");
      		 }
 		}
 		else{
-			echo '<form action="lunch_diet.php" method="POST">
-			<input type="number" id="inputKcal" name="inputKcal" size="20">
-			<button>입력</button>
-		</form>'
+			echo '<form action="lunch_diet.php" method="POST"><input type="number" id="inputKcal" name="inputKcal" size="20"><button>입력</button></form>';
 		}
     ?>
 
