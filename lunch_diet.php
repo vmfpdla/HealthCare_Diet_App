@@ -52,7 +52,7 @@
         <script type="text/javascript">
             $(document).ready(function () {
                 clickTd();
-            }
+            })
 
             function clickTd() {
                 $("#user-table tr").click(function () {
@@ -77,7 +77,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1">식단 번호</span>
                         </div>
-                        <input type="text" class="form-control" name="dietnum" id="dietnum" placeholder="Food Number" aria-label="Username" aria-describedby="basic-addon1">
+                        <input type="text" class="form-control" name="dietnum" id="dietnum" placeholder="Diet Number" aria-label="Username" aria-describedby="basic-addon1">
 
                         <button type="submit">
                             제출
