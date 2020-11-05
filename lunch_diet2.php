@@ -143,9 +143,7 @@
             }
         
         
-
         $dinnerKcal=$user['user_goal']-$dinnerKcal-$lunch_diet;
-
 
         for($i=0;$i<count($arr);$i++){
             #for($j=0;$j<6;$j++){	
