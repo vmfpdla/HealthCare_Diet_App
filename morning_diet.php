@@ -1,3 +1,4 @@
+  
 <!DOCTYPE html>
 <html>
     <head>
@@ -51,7 +52,6 @@
 
         <script type="text/javascript">
             $(document).ready(function () {
-                clickTd();
             })
 
             function clickTd() {
@@ -70,20 +70,6 @@
 
         <div id="container">
 
-            <div class="row row-cols-3">
-                <form method="post" action="lunch_diet2.php">
-                    <div class="input-group col">
-
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">식단 번호</span>
-                        </div>
-                        <input type="text" class="form-control" name="dietnum" id="dietnum" placeholder="Diet Number" aria-label="Username" aria-describedby="basic-addon1">
-
-                        <button type="submit">
-                            제출
-                        </button>
-                    </form>
-                </div>
 
                 <table class="table table-hover" id="user-table">
                     <thead>

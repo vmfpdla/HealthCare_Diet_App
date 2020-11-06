@@ -19,13 +19,13 @@ $eaten_day = date('Y-m-d',time());
 #die( 'Could not connect: ' . mysqli_error($con) );
 #} else {
 
-$sql3="SELECT food_car FROM foodinfo where food_id=$food_id";
+$sql3="SELECT food_calory FROM foodinfo where food_id=$food_id";
 
 $result=mysqli_query($conn,$sql3);
 
 while($cal_row=mysqli_fetch_array($result)){
 
-	$eaten_calory=$cal_row['food_car'];
+	$eaten_calory=$cal_row['food_calory'];
 }
 
 if($eaten_serving==0){

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -58,7 +59,9 @@
                 $("#user-table tr").click(function () {
                     var text = $(this).text();
                     alert('선택한 식단번호 : ' + text[0]);
-                    document.getElementById("dietnum").value = text[0];
+                    document
+                        .getElementById("dietnum")
+                        .value = text[0];
                 });
 
             }
@@ -70,35 +73,21 @@
 
         <div id="container">
 
-            <div class="row row-cols-3">
-                <form method="post" action="lunch_diet2.php">
-                    <div class="input-group col">
+            <table class="table table-hover" id="user-table">
+                <thead>
+                    <tr>
+                        <th>식단번호</th>
+                        <th>곡류</th>
+                        <th>고기류</th>
+                        <th>채소류</th>
+                        <th>기타</th>
+                        <th>칼로리</th>
+                    </tr>
+                </thead>
 
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">식단 번호</span>
-                        </div>
-                        <input type="text" class="form-control" name="dietnum" id="dietnum" placeholder="Diet Number" aria-label="Username" aria-describedby="basic-addon1">
-
-                        <button type="submit">
-                            제출
-                        </button>
-                    </form>
-                </div>
-
-                <table class="table table-hover" id="user-table">
-                    <thead>
-                        <tr>
-                            <th>식단번호</th>
-                            <th>곡류</th>
-                            <th>고기류</th>
-                            <th>채소류</th>
-                            <th>기타</th>
-                            <th>칼로리</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                    <?php
+                <tbody>
+                <?php
+                $today=date("Y-m-d");
         #   header('Content-Type:text/html; charset=UTF-8');
 
 
@@ -113,9 +102,11 @@
         mysqli_query($jb_conn, "set session character_set_client=utf8;");
 
 
-        $inputKcal=$_POST["inputKcal"];
+
+        $lunch_diet=$_POST["dietnum"];
         require_once("./dbconn.php");
         $user_id = 1; # 1번 가져왔다고 가정
+
         $sql = "SELECT * FROM user WHERE user_id='$user_id'";
         $result = $conn->query($sql);
         if ($result->num_rows > 0) { // 여러줄 가져오는 경우
@@ -131,6 +122,9 @@
         $arr_diet=array();
         if ($result1->num_rows > 0) { // 여러줄 가져오는 경우
           while($row = $result1->fetch_assoc()) {
+              if($row['diet_id']==$lunch_diet){
+                  $lunch_diet=$row['diet_calory'];
+              }
               array_push($arr,array($row['diet_id'],$row['diet_grains'],$row['diet_meat'],$row['diet_vet'],$row['diet_else'],$row['diet_calory']));
             #  echo $row['diet_id'] ." 번식단 밥종류:" .$row['diet_grains'] ." 고기종류: ".$row['diet_meat']."채소 종류 ".$row['diet_vet']."기타: ".$row['diet_else']."칼로리 :".$row['diet_calory'];
           #		echo nl2br("\n");
@@ -139,12 +133,23 @@
           echo "0 results";
         }
 
+        
+
+        $sql2="SELECT eaten_calory from eatenfood where eaten_day='$today'";
+
+	$result2=mysqli_query($conn,$sql2);
+            while($cal_row=mysqli_fetch_array($result2)) {
+                $dinnerKcal=$dinnerKcal+$cal_row['eaten_calory'];
+            }
+        
+        
+        $dinnerKcal=$user['user_goal']-$dinnerKcal-$lunch_diet;
 
         for($i=0;$i<count($arr);$i++){
             #for($j=0;$j<6;$j++){	
             #	echo $arr[$i][$j];
             #}
-            if($inputKcal> $arr[$i][5]){
+            if($dinnerKcal> $arr[$i][5]){
 #					echo $arr[$i][5];
 
                 array_push($arr_diet,array($arr[$i][0],$arr[$i][1],$arr[$i][2],$arr[$i][3],$arr[$i][4],$arr[$i][5]));
@@ -171,11 +176,12 @@
         }
         
       ?>
-                    </tbody>
-                </table>
-            </div>
+                </tbody>
+            </table>
+        </div>
 
-            <form></form>
+       
 
-        </body>
-    </html>
+        <a href="recommend2.php">추천창으로 이동 </a>
+    </body>
+</html>
