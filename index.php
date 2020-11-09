@@ -74,7 +74,7 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
 <body>
   <nav class="navbar fixed-top">
     <p class="navp">Smart PT</p>
-    <a href="userinsert.php">
+    <a href="usermodify.php">
       <i class="fa fa-user-circle navi"></i>
     </a>
 

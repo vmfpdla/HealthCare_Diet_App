@@ -87,7 +87,7 @@
 <body>
 	<nav class="navbar fixed-top">
 		<p class="navp">Smart PT</p>
-		<a href="userinsert.php"><i class="fa fa-user-circle navi"></i></a>
+		<a href="usermodify.php"><i class="fa fa-user-circle navi"></i></a>
 	</nav>
 
 	<br><br>

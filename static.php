@@ -7,12 +7,21 @@
   $dailyKcal; // 일별 섭취 칼로리
   $inbody;
   $today = date("Y-m-d");
-
+  $user;
   // $start = strtotime("-3 days");
   // $end = strtotime("+3 days");
   // $start = date('Y-m-d',$start);
   // $end = date('Y-m-d',$end);
 
+  $sql = "SELECT * FROM user WHERE user_id='$user_id'";
+  $result = $conn->query($sql);
+
+  if ($result->num_rows > 0) { // 여러줄 가져오는 경우
+    while($row = $result->fetch_assoc())
+    {
+      $user=$row;
+    }
+  }
 
   // 음식 칼로리 불러오기
   $sql1 = "SELECT * FROM eatenfood WHERE user_id='$user_id' ORDER BY eaten_day";
@@ -67,19 +76,19 @@
 </head>
 
 <body>
-  <div id="dailykcalarray">
+  <div id="dailykcalarray" style="display:none">
     <?php
       echo json_encode($dailyKcal);
     ?>
   </div>
-  <div id="dailyinbodyarray">
+  <div id="dailyinbodyarray"  style="display:none">
     <?php
       echo json_encode($inbody);
     ?>
   </div>
 	<nav class="navbar fixed-top">
 		<p class="navp">Smart PT</p>
-		<a href="userinsert.php"><i class="fa fa-user-circle navi"></i></a>
+		<a href="usermodify.php"><i class="fa fa-user-circle navi"></i></a>
 	</nav>
 
 	<br><br><br>
@@ -108,7 +117,7 @@
 			<li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
 			<li data-target="#carouselExampleCaptions" data-slide-to="3"></li>
 		</ol>
-		<div class="carousel-inner">
+		<div class="carousel-inner" id="inbodydiv">
 			<div class="carousel-item ">
 				<div style="width:100%">
 					<canvas id="inbodyMuscle"></canvas>
@@ -174,5 +183,20 @@
 			</div>
 		</a>
 	</nav>
+  <script>
+
+    var user_check = '<?php echo $user[user_check_inbody] ?>';
+
+    if (user_check == 0) {
+      document.getElementById('inbodydiv').style.display = 'none';
+    }
+    else {
+      document.getElementById('inbodydiv').style.display = 'block';
+    }
+
+
+
+  </script>
+
 </body>
 </html>
