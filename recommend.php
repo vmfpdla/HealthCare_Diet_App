@@ -8,6 +8,7 @@
 	$fat =0; // 지방
 	$pro =0; // 단백질
 
+
 	$user_id = 1; # 1번 가져왔다고 가정
 	$sql = "SELECT * FROM user WHERE user_id='$user_id'";
 	$result = $conn->query($sql);
@@ -21,6 +22,11 @@
 	else {
 	  echo "유저 접속 오류";
 	}
+	//
+	$maxcar = $user['user_goal'] * 0.65;
+	$maxfat =$user['user_goal'] * 0.2;
+	$maxpro =$user['user_goal'] * 0.15;
+
 	// 오늘 먹은 음식 조회
 	$sql1 = "SELECT * FROM eatenfood INNER JOIN foodinfo on eatenfood.food_id = foodinfo.food_id WHERE user_id='$user_id' and eaten_day='$today'";
 	$result1 = $conn->query($sql1);
@@ -103,7 +109,7 @@
 
 				<div class="progress rounded-pill" style="height:40px;">
 					<div class="progress-bar progress-bar-striped progress-bar-animated bg-danger"role="progressbar"
-					 	style="width: <?php echo $kcal/1500*100;?>%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
+					 	style="width: <?php echo $kcal/$user['user_goal']*100;?>%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
 						<p  class="pr" style="padding-top:15px;">
 							<?php echo $kcal ." / ". $user['user_goal'] ?>
 						</p>
@@ -119,9 +125,9 @@
 
 				<div class="progress rounded-pill" style="height:30px;">
 					<div class="progress-bar progress-bar-striped progress-bar-animated"role="progressbar"
-					style="width:  <?php echo $car/1500*100;?>%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
+					style="width:  <?php echo $car/$maxcar*100;?>%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
 						<p class="pr" style=" padding-top:20px;">
-							<?php echo $car ." / ". $user['user_goal'] ?>
+							<?php echo $car ." / ". $maxcar ?>
 						</p>
 					</div>
 				</div>
@@ -135,8 +141,8 @@
 
 				<div class="progress rounded-pill" style="height:30px;">
 					<div class="progress-bar progress-bar-striped bg-success progress-bar-animated"role="progressbar"
-					style="width: <?php echo $pro/1500*100;?>%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
-						<p class="pr" style=" padding-top:20px;"> <?php echo $pro ." / ". $user['user_goal'] ?> </p>
+					style="width: <?php echo $pro/$maxpro*100;?>%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
+						<p class="pr" style=" padding-top:20px;"> <?php echo $pro ." / ". $maxpro?> </p>
 					</div>
 				</div>
 			</div>
@@ -149,8 +155,8 @@
 
 				<div class="progress rounded-pill" style="height:30px;">
 					<div class="progress-bar progress-bar-striped bg-info progress-bar-animated"role="progressbar"
-					style="width: <?php echo $fat/1500*100;?>%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
-						<p class="pr" style=" padding-top:20px;"> <?php echo $fat ." / ". $user['user_goal'] ?> </p>
+					style="width: <?php echo $fat/$maxfat*100;?>%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
+						<p class="pr" style=" padding-top:20px;"> <?php echo $fat ." / ". $maxfat ?> </p>
 					</div>
 				</div>
 			</div>
@@ -399,7 +405,7 @@
 		document.getElementById('diet_3').style.display = 'block';
 		document.getElementById('input_3').style.display = 'none';
 	}
-	
+
 
   </script>
 

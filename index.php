@@ -118,6 +118,10 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
       $car =0; // 탄수화물
       $fat =0; // 지방
       $pro =0; // 단백질
+
+      $maxcar = $user['user_goal'] * 0.65;
+      $maxfat =$user['user_goal'] * 0.2;
+      $maxpro =$user['user_goal'] * 0.15;
       $sql2 = "SELECT * FROM eatenfood INNER JOIN foodinfo on eatenfood.food_id = foodinfo.food_id WHERE user_id='$user_id' and eaten_day='$today'";
       $result2 = $conn->query($sql2);
 
@@ -153,7 +157,7 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
 
         <div class="progress rounded-pill" style="height:40px;">
           <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar"
-            style="width: <?php echo $kcal/1500*100;?>%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
+            style="width: <?php echo $kcal/ $user['user_goal']*100;?>%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
             <p class="pr" style="padding-top:15px;">
               <?php echo $kcal ." / ". $user['user_goal'] ?>
             </p>
@@ -171,9 +175,9 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
 
         <div class="progress rounded-pill" style="height:30px;">
           <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
-            style="width: <?php echo $car/1500*100;?>%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
+            style="width: <?php echo $car/$maxcar*100;?>%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
             <p class="pr" style=" padding-top:20px;">
-              <?php echo $car ." / ". $user['user_goal'] ?>
+              <?php echo $car ." / ". $maxcar ?>
             </p>
           </div>
         </div>
@@ -191,9 +195,9 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
 
         <div class="progress rounded-pill" style="height:30px;">
           <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar"
-            style="width: <?php echo $pro/1500*100;?>%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
+            style="width: <?php echo $pro/$maxpro*100;?>%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
             <p class="pr" style=" padding-top:20px;">
-              <?php echo $pro ." / ". $user['user_goal'] ?>
+              <?php echo $pro ." / ". $maxpro?>
             </p>
           </div>
         </div>
@@ -210,9 +214,9 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
 
         <div class="progress rounded-pill" style="height:30px;">
           <div class="progress-bar progress-bar-striped bg-info progress-bar-animated" role="progressbar"
-            style="width: <?php echo $fat/1500*100;?>%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
+            style="width: <?php echo $fat/$maxfat*100;?>%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
             <p class="pr" style="padding-top:20px;">
-              <?php echo $fat ." / ". $user['user_goal'] ?>
+              <?php echo $fat ." / ". $maxfat ?>
             </p>
           </div>
         </div>
