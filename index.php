@@ -1,20 +1,36 @@
 <?php
 
-require_once("./dbconn.php");
+  require_once("./dbconn.php");
 
-$user_id = 1; # 1번 가져왔다고 가정
-$today = date("Y-m-d");
-$sql = "SELECT * FROM user WHERE user_id='$user_id'";
-$result = $conn->query($sql);
+  $user_id = 1; # 1번 가져왔다고 가정
+  $today = date("Y-m-d");
+  $sql = "SELECT * FROM user WHERE user_id='$user_id'";
+  $result = $conn->query($sql);
+  $walking;
+  $running;
+  if ($result->num_rows > 0) { // 여러줄 가져오는 경우
 
-if ($result->num_rows > 0) { // 여러줄 가져오는 경우
-
-  while($row = $result->fetch_assoc()) {
-    $user = $row;
+    while($row = $result->fetch_assoc()) {
+      $user = $row;
+    }
+  } else {
+    echo "유저 접속 오류";
   }
-} else {
-  echo "유저 접속 오류";
-}
+
+  $sql1 = "SELECT * FROM doexercise INNER JOIN exerciseinfo on doexercise.exercise_id = exerciseInfo.exercise_id WHERE user_id='$user_id' and doexercise_day='$today'";
+  $result1 = $conn->query($sql1);
+
+  if ($result1->num_rows > 0) { // 여러줄 가져오는 경우
+
+    while($row = $result1->fetch_assoc()) {
+      if($row['exercise_id']==1) $walking = $row;
+      else if($row['exercise_id']==2)$running = $row;
+    // echo $row['exercise_name'] ." / " .$row['doexercise_minute'] ."분 / ".$row['doexercise_calory']."Kcal";
+    // echo nl2br("\n");
+    }
+  } else {
+    //echo //"아직 운동을 안했어요 !";
+  }
 ?>
 
 <!DOCTYPE html>
@@ -26,17 +42,15 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
   <title></title>
   <meta charset="utf-8">
 
-  <link rel="stylesheet" href="./css/jaehyun.css">
 
   <!-- 외부 css -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <!-- 폰트 -->
-  <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/jaehyun.css?ver=2">
   <!-- 아이콘 -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/v4-shims.css">
-
   <!-- 스크립트 -->
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
@@ -45,6 +59,7 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
   <script src="./js/nav.js"></script>
 
   <style>
+
     #btn1 {
       border: 1px solid #8DA5BD;
       background-color: rgba(0, 0, 0, 0);
@@ -80,29 +95,37 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
 
   </nav>
   <br><br><br>
-  <div class="card">
-    <div class="card-header card-header1">
-      <p class="card-header1">오늘의 운동</p>
-    </div>
-    <div class="card-body" style="text-align:center">
-      <!-- 운동데이터를 가져오는 php 문 -->
-      <?php
-      $sql1 = "SELECT * FROM doexercise INNER JOIN exerciseinfo on doexercise.exercise_id = exerciseInfo.exercise_id WHERE user_id='$user_id' and doexercise_day='$today'";
-      $result1 = $conn->query($sql1);
+  <div style="margin-left:50px;">
+    <h1 >오늘의 운동</h3>
+    <h3 class="mb-2 text-muted">Today's exercise</h3>
+  </div>
+  <br>
+  <div class="card exercise-card" style="float:left; margin:0 100px;">
+    <div class="card-body">
+        <img src="./walking.png"  width="100" height="100"/>
+        <p style="font-size:50px; margin-bottom:0; color:#f38181;"><?php echo $walking['doexercise_calory'];?></p>
+        <p style="font-size:30px; color:gray;">Kcal</p>
+        <div>
+        <p style="font-size:25px; float:left; margin-left:40px;"><?php echo $walking['doexercise_minute'];?> min</p>
+        <p style="font-size:25px; "><?php echo $walking['doexercise_distance'];?> km</p>
+        </div>
 
-      if ($result1->num_rows > 0) { // 여러줄 가져오는 경우
-
-        while($row = $result1->fetch_assoc()) {
-
-        echo $row['exercise_name'] ." / " .$row['doexercise_minute'] ."분 / ".$row['doexercise_calory']."Kcal";
-        echo nl2br("\n");
-      }
-      } else {
-        echo "아직 운동을 안했어요 !";
-      }
-    ?>
     </div>
   </div>
+
+  <div class="card exercise-card" style="margin-left:200px;">
+    <div class="card-body">
+        <img src="./running.png"  width="100" height="100"/>
+        <p style="font-size:50px; margin-bottom:0; color:#f38181;"><?php echo $running['doexercise_calory'];?></p>
+        <p style="font-size:30px; color:gray;">Kcal</p>
+        <div>
+        <p style="font-size:25px; float:left; margin-left:40px;"><?php echo $running['doexercise_minute'];?> min</p>
+        <p style="font-size:25px; "><?php echo $running['doexercise_distance'];?> km</p>
+        </div>
+
+    </div>
+  </div>
+
   <br><br>
 
 
