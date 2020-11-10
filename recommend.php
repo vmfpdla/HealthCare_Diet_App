@@ -57,46 +57,48 @@
 	else //echo "0 results";
 
 ?>
+
 <!DOCTYPE html>
 <html>
-<head>
-	<title></title>
+    <head>
+        <title></title>
+        <link rel="stylesheet" href="./css/jaehyun.css">
 
-	<meta charset="utf-8">
-
-  <link rel="stylesheet" href="./css/jaehyun.css">
-
-  <!-- 외부 css -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <!-- 폰트 -->
-  <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&display=swap" rel="stylesheet">
-  <!-- 아이콘 -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/v4-shims.css">
-
-  <!-- 스크립트 -->
-  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
-  <script src="./js/nav.js"></script>
-	<script src="./js/recommend.js"> </script>
+        <link
+            rel="stylesheet"
+            href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
+        <link
+            rel="stylesheet"
+            href="https://use.fontawesome.com/releases/v5.14.0/css/v4-shims.css">
+        <link rel="stylesheet" href="/resource/css/bootstrap.css">
+        <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+            crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+        <script src="./js/nav.js"></script>
+    </style>
+</script>
 </head>
-
 <body>
-	<nav class="navbar fixed-top">
-		<p class="navp">Smart PT</p>
-		<a href="usermodify.php"><i class="fa fa-user-circle navi"></i></a>
-	</nav>
+<nav class="navbar fixed-top">
+    <p class="navp">Smart PT</p>
+    <a href="userInsert3.html">
+        <i class="fa fa-user-circle navi"></i>
+    </a>
+</nav>
 
-	<br><br>
-	<div clas="container" style="text-align: center;">
-		<i class="fa fa-spoon titlei" aria-hidden="true"></i>
-		<p class="title">식단추천</p>
-	</div>
-	<br><br><br>
-	<div class="card">
+<br><br>
+<div clas="container" style="text-align: center;">
+    <i class="fa fa-spoon titlei" aria-hidden="true"></i>
+    <p class="title">식단추천</p>
+</div>
+<br><br><br>	<div class="card">
 		<div class="card-header">
 			영양소
 		</div>
@@ -163,9 +165,29 @@
 		</div>
 	</div>
 
-	<br><br>
+	
+<br><br>
 
-	<?php
+<?php
+
+require_once("./dbconn.php");
+
+$user_id = 1; # 1번 가져왔다고 가정
+$sql = "SELECT * FROM user WHERE user_id='$user_id'";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) { // 여러줄 가져오는 경우
+
+  while($row = $result->fetch_assoc()) {
+    $user = $row;
+  }
+} else {
+  echo "유저 접속 오류";
+}
+?>
+
+<?php
+
   // 아침에 먹은 식단을 가져온다.
   $sql3 = "SELECT * FROM eatenfood INNER JOIN foodinfo on eatenfood.food_id = foodinfo.food_id WHERE user_id='$user_id' and eaten_day='$today' and eaten_time=1";
   $result3 = $conn->query($sql3);
@@ -209,206 +231,185 @@
     $is_dinner =0;
   }
 
+
+  echo $is_morning . $is_lunch . $is_dinner;
+
 ?>
 
+<div class="card">
+    <div class="card-header">
+        아침
+    </div>
+    <div class="card-body">
+    <?php
+            if($is_morning==1){
+              $morning_kcal =0;
+              $morning_car =0;
+              $morning_pro =0;
+              $morning_fat =0;
+
+            	while($row = $result3->fetch_assoc()) {
+                if ($row['eaten_serving']==0){
+                     $morning_kcal = $morning_kcal+$row['food_calory']*0.5;
+                     $morning_car = $morning_car+$row['food_car']*0.5;
+                     $morning_pro = $morning_pro+$row['food_pro']*0.5;
+                     $morning_fat = $morning_fat+$row['food_fat']*0.5;
+               }
+               else{
+                     $morning_kcal = $morning_kcal+$row['food_calory']*$row['eaten_serving'];
+                     $morning_car = $morning_car+$row['food_car']*$row['eaten_serving'];
+                     $morning_pro = $morning_pro+$row['food_pro']*$row['eaten_serving'];
+                     $morning_fat = $morning_fat+$row['food_fat']*$row['eaten_serving'];
+               }
+                if($row['eaten_serving']==0){
+                  echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(0.5 인분)";
+          	      echo nl2br("\n\n");
+                }
+                else{
+                  echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(".$row['eaten_serving']." 인분)";
+          	      echo nl2br("\n\n");
+               	}
+              }
+		  }
+		  else{
+
+			echo ' <form action="morning_diet.php" method="POST"><input type="number" id="inputKcal" name="inputKcal" size="20"><button>입력</button></form>';
 
 
-	<div class="card">
-		<div class="card-header">
-			아침
-		</div>
-		<div class="card-body" id="input_1">
+		  }
 
-			<form action="javascript:Display();">
-				<input type="number" size="20">
-				<button>입력</button>
-			</form>
+		  
+          ?>
 
-			<div id="setKcal" style="display: none;">
-				<form>
-					<select name="selectset" onchange="SetDisplay(this.form)" >
-						<option selected value=0>-선택하세요- </option>
-						<option value=1>Set1</option>
-						<option value=2>Set2</option>
-						<option value=3>Set3</option>
-					</select>
-					<input name="set" type="text" size="50" maxlength="50">
-				</form>
-			</div>
-		</div>
+    </div>
+</div>
 
-		<div class="card-body" id="diet_1">
-			<p>
-			<?php
-				if($is_morning==1){
-					while($row = $result3->fetch_assoc()) {
-						if($row['eaten_serving']==0){
-							echo $row['food_name'] ."  ". $row['food_calory']*0.5."  Kcal"."  (0.5 인분)";
-							echo nl2br("\n\n");
+<br><br>
+<div class="card">
+    <div class="card-header">
+        점심
+    </div>
+    <div class="card-body">
+        <p style="width: 100%;">
+        <?php
+    		if($is_lunch==1){
+   			   $lunch_kcal =0;
+		      $lunch_car =0;
+		      $lunch_pro =0;
+		      $lunch_fat =0;
+		      while($row = $result4->fetch_assoc()) {
+		        if ($row['eaten_serving']==0){
+		          $lunch_kcal = $lunch_kcal+$row['food_calory']*0.5;
+    		      $lunch_car = $lunch_car+$row['food_car']*0.5;
+         		  $lunch_pro = $lunch_pro+$row['food_pro']*0.5;
+       				$lunch_fat = $lunch_fat+$row['food_fat']*0.5;
+        		}
+      			else{
+         			$lunch_kcal = $lunch_kcal+$row['food_calory']*$row['eaten_serving'];
+         			$lunch_car =  $lunch_car+$row['food_car']*$row['eaten_serving'];
+         			$lunch_pro =  $lunch_pro+$row['food_pro']*$row['eaten_serving'];
+         			$lunch_fat =  $lunch_fat+$row['food_fat']*$row['eaten_serving'];
+         				if($row['eaten_serving']==0){
+         				 echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(0.5 인분)";
+	  					echo nl2br("\n\n");
+      					}
+      			else{
+         		 echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(".$row['eaten_serving']." 인분)";
+	  				echo nl2br("\n\n");
+     	 			}
+    			}
+     		 }
+		}
+		else{
+			echo '<form action="lunch_diet.php" method="POST"><input type="number" id="inputKcal" name="inputKcal" size="20"><button>입력</button></form>';
+		}
+    ?>
+
+        </div>
+    </div>
+</div>
+<br><br>
+<div class="card">
+    <div class="card-header">
+        저녁
+    </div>
+    <div class="card-body">
+        <?php
+	        if($is_dinner==1){
+				$dinner_kcal =0;
+				$dinner_car =0;
+				$dinner_pro =0;
+				$dinner_fat =0;
+				while($row = $result5->fetch_assoc()) {
+				  if ($row['eaten_serving']==0){
+					$dinner_kcal = $dinner_kcal+$row['food_calory']*0.5;
+					$dinner_car = $dinner_car+$row['food_car']*0.5;
+					$dinner_pro = $dinner_pro+$row['food_pro']*0.5;
+					$dinner_fat = $dinner_fat+$row['food_fat']*0.5;
+				 }
+				else{
+					$dinner_kcal = $dinner_kcal+$row['food_calory']*$row['eaten_serving'];
+					$dinner_car =  $dinner_car+$row['food_car']*$row['eaten_serving'];
+					$dinner_pro =  $dinner_pro+$row['food_pro']*$row['eaten_serving'];
+					$dinner_fat =  $dinner_fat+$row['food_fat']*$row['eaten_serving'];
+					if($row['eaten_serving']==0){
+					  echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(0.5 인분)";
+				echo nl2br("\n\n");
+				  }
+				  else{
+					  echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(".$row['eaten_serving']." 인분)";
+				echo nl2br("\n\n");
 						}
-						else{
-							echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."  (".$row['eaten_serving']." 인분)";
-							echo nl2br("\n\n");
-						}
-					}
+			  		}
 				}
-			?>
-			</p>
-		</div>
-	</div>
+			  }
+			  else{
+				echo '<form action="dinner_diet.php" method="POST"><input type="number" id="inputKcal" name="inputKcal" size="20"><button>입력</button></form>';
+	
+			  }
 
-
-	<Br><br>
-	<div class="card">
-		<div class="card-header">
-			점심
-		</div>
-		<div class="card-body" id="input_2">
-
-			<form action="javascript:Display();">
-				<input type="number" size="20">
-				<button>입력</button>
-			</form>
-
-			<div id="setKcal" style="display: none;">
-				<form>
-					<select name="selectset" onchange="SetDisplay(this.form)" >
-						<option selected value=0>-선택하세요- </option>
-						<option value=1>Set1</option>
-						<option value=2>Set2</option>
-						<option value=3>Set3</option>
-					</select>
-					<input name="set" type="text" size="50" maxlength="50">
-				</form>
-			</div>
-		</div>
-
-		<div class="card-body" id="diet_2">
-			<p>
-			<?php
-				if($is_lunch==1){
-					while($row = $result4->fetch_assoc()) {
-						if($row['eaten_serving']==0){
-							echo $row['food_name'] ."  ". $row['food_calory']*0.5."  Kcal"."  (0.5 인분)";
-							echo nl2br("\n\n");
-						}
-						else{
-							echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."  (".$row['eaten_serving']." 인분)";
-							echo nl2br("\n\n");
-						}
-					}
-				}
-			?>
-			</p>
-		</div>
-	</div>
-	<Br><br>
-	<div class="card">
-		<div class="card-header">
-			저녁
-		</div>
-		<div class="card-body" id="input_3">
-
-			<form action="javascript:Display();">
-				<input type="number" size="20">
-				<button>입력</button>
-			</form>
-
-			<div id="setKcal" style="display: none;">
-				<form>
-					<select name="selectset" onchange="SetDisplay(this.form)" >
-						<option selected value=0>-선택하세요- </option>
-						<option value=1>Set1</option>
-						<option value=2>Set2</option>
-						<option value=3>Set3</option>
-					</select>
-					<input name="set" type="text" size="50" maxlength="50">
-				</form>
-			</div>
-		</div>
-		<div class="card-body" id="diet_3">
-			<p>
-			<?php
-				if($is_dinner==1){
-					while($row = $result5->fetch_assoc()) {
-						if($row['eaten_serving']==0){
-							echo $row['food_name'] ."  ". $row['food_calory']*0.5."  Kcal"."  (0.5 인분)";
-							echo nl2br("\n\n");
-						}
-						else{
-							echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."  (".$row['eaten_serving']." 인분)";
-							echo nl2br("\n\n");
-						}
-					}
-				}
-			?>
-			</p>
-		</div>
-	</div>
-	<br><br>
-  <nav class="navbar fixed-bottom navd">
+		?>
+			
+    </div>
+</div>
+<br><br>
+<nav class="navbar fixed-bottom navd">
     <a href="index.php">
-      <div class="navIcons" style="text-align:center;" >
-        <br/>
-        <i class="navIcon fas fa-home navdi" id="navHome" aria-hidden="true"></i>
-        <p class="navName navdp"> Home </p>
-      </div>
+        <div class="navIcons" style="text-align:center;">
+            <br/>
+            <i class="navIcon fas fa-home navdi" id="navHome" aria-hidden="true"></i>
+            <p class="navName navdp">
+                Home
+            </p>
+        </div>
     </a>
     <a href="recommend.php">
-      <div class="navIcons" style="text-align:center;">
-        <br/>
-        <i class="navIcon fas fa-utensils navdi" id="navDiet" aria-hidden="true"></i>
-        <p class="navName navdp"> Diet </p>
-      </div>
+        <div class="navIcons" style="text-align:center;">
+            <br/>
+            <i class="navIcon fas fa-utensils navdi" id="navDiet" aria-hidden="true"></i>
+            <p class="navName navdp">
+                Diet
+            </p>
+        </div>
     </a>
     <a href="miband.php">
-      <div class="navIcons" style="text-align:center;">
-        <br/>
-        <i class="navIcon fas fa-heartbeat navdi" id="navMiband" aria-hidden="true"></i>
-        <p class="navName navdp"> Miband </p>
-      </div>
+        <div class="navIcons" style="text-align:center;">
+            <br/>
+            <i class="navIcon fas fa-heartbeat navdi" id="navMiband" aria-hidden="true"></i>
+            <p class="navName navdp">
+                Miband
+            </p>
+        </div>
     </a>
     <a href="static.php">
-      <div  class="navIcons" style="text-align:center;">
-        <br/>
-        <i class="navIcon far fa-chart-bar navdi" id="navChart" aria-hidden="true" ></i>
-        <p class="navName navdp"> Chart </p>
-      </div>
+        <div class="navIcons" style="text-align:center;">
+            <br/>
+            <i class="navIcon far fa-chart-bar navdi" id="navChart" aria-hidden="true"></i>
+            <p class="navName navdp">
+                Chart
+            </p>
+        </div>
     </a>
-  </nav>
-	<script>
-
-	var is_morning = '<?php echo $is_morning ?>';
-	var is_lunch = '<?php echo $is_lunch ?>';
-	var is_dinner = '<?php echo $is_dinner ?>';
-
-	if (is_morning == 1) {
-		document.getElementById('diet_1').style.display = 'block';
-		document.getElementById('input_1').style.display = 'none';
-	}
-	else {
-
-		document.getElementById('input_1').style.display = 'block';
-		document.getElementById('diet_1').style.display = 'none';
-	}
-
-	if (is_lunch == 1 && is_dinner ==0) { // 점심이 입력된 경우 -> 저녁 3개제공
-
-		document.getElementById('diet_2').style.display = 'block';
-		document.getElementById('input_2').style.display = 'none';
-		document.getElementById('input_3').style.display = 'block';
-		document.getElementById('diet_3').style.display = 'none';
-	}
-
-	if (is_dinner == 1) {
-
-		document.getElementById('diet_3').style.display = 'block';
-		document.getElementById('input_3').style.display = 'none';
-	}
-
-
-  </script>
-
-
+</nav>
 </body>
 </html>

@@ -17,8 +17,14 @@
     echo "유저 접속 오류";
   }
 
+<<<<<<< HEAD
   $sql1 = "SELECT * FROM doexercise INNER JOIN exerciseinfo on doexercise.exercise_id = exerciseInfo.exercise_id WHERE user_id='$user_id' and doexercise_day='$today'";
   $result1 = $conn->query($sql1);
+=======
+$user_id = 1; # 1번 가져왔다고 가정
+$sql = "SELECT * FROM user WHERE user_id='$user_id'";
+$result = $conn->query($sql);
+>>>>>>> 2b29a664f61fae524ea99a67d85c7385634f73fd
 
   if ($result1->num_rows > 0) { // 여러줄 가져오는 경우
 
@@ -89,12 +95,13 @@
 <body>
   <nav class="navbar fixed-top">
     <p class="navp">Smart PT</p>
-    <a href="usermodify.php">
+    <a href="userinsert.php">
       <i class="fa fa-user-circle navi"></i>
     </a>
 
   </nav>
   <br><br><br>
+<<<<<<< HEAD
   <div style="margin-left:50px;">
     <h1 >오늘의 운동</h3>
     <h3 class="mb-2 text-muted">Today's exercise</h3>
@@ -109,6 +116,17 @@
         <p style="font-size:25px; float:left; margin-left:40px;"><?php echo $walking['doexercise_minute'];?> min</p>
         <p style="font-size:25px; "><?php echo $walking['doexercise_distance'];?> km</p>
         </div>
+=======
+  <div class="card">
+    <div class="card-header card-header1">
+      <p class="card-header1">오늘의 운동</p>
+    </div>
+    <div class="card-body" style="text-align:center">
+      <!-- 운동데이터를 가져오는 php 문 -->
+      <?php
+      $sql1 = "SELECT * FROM doexercise INNER JOIN exerciseinfo on doexercise.exercise_id = exerciseInfo.exercise_id WHERE user_id='$user_id'";
+      $result1 = $conn->query($sql1);
+>>>>>>> 2b29a664f61fae524ea99a67d85c7385634f73fd
 
     </div>
   </div>
@@ -123,53 +141,59 @@
         <p style="font-size:25px; "><?php echo $running['doexercise_distance'];?> km</p>
         </div>
 
+<<<<<<< HEAD
+=======
+        echo $row['exercise_name'] ." / " .$row['doexercise_minute'] ."분 / ".$row['doexercise_calory']."Kcal";
+        echo nl2br("\n");
+      }
+      } else {
+        echo "0 results";
+      }
+    ?>
+>>>>>>> 2b29a664f61fae524ea99a67d85c7385634f73fd
     </div>
   </div>
 
   <br><br>
 
 
-<a href="app://application">Call Android Activity</a>
+<a href="app://application">Call Android Activity</a> 
 <br><br>
   <div class="card">
     <div class="card-header">
       영양소
     </div>
     <?php
-      $today = date("Y-m-d");
-      $kcal = 0; //칼로리
-      $car =0; // 탄수화물
-      $fat =0; // 지방
-      $pro =0; // 단백질
+  $today = date("Y-m-d");
+  $kcal = 0; //칼로리
+  $car =0; // 탄수화물
+  $fat =0; // 지방
+  $pro =0; // 단백질
+  $sql2 = "SELECT * FROM eatenfood INNER JOIN foodinfo on eatenfood.food_id = foodinfo.food_id WHERE user_id='$user_id' and eaten_day='$today'";
+  $result2 = $conn->query($sql2);
 
-      $maxcar = $user['user_goal'] * 0.65;
-      $maxfat =$user['user_goal'] * 0.2;
-      $maxpro =$user['user_goal'] * 0.15;
-      $sql2 = "SELECT * FROM eatenfood INNER JOIN foodinfo on eatenfood.food_id = foodinfo.food_id WHERE user_id='$user_id' and eaten_day='$today'";
-      $result2 = $conn->query($sql2);
+  if ($result2 -> num_rows>0) { // 여러줄 가져오는 경우
 
-      if ($result2 -> num_rows>0) { // 여러줄 가져오는 경우
+  while($row = $result2->fetch_assoc()) {
+    if($row['eaten_serving']==0){ # 0인분인경우
+      $kcal = $kcal + $row['food_calory']*0.5;
+      $car = $car + $row['food_car']*0.5;
+      $fat = $fat + $row['food_fat']*0.5;
+      $pro = $pro + $row['food_pro']*0.5;
+   }
+   else{
+    $kcal = $kcal + $row['food_calory']*$row['eaten_serving'];
+    $car = $car + $row['food_car']*$row['eaten_serving'];
+    $fat = $fat + $row['food_fat']*$row['eaten_serving'];
+    $pro = $pro + $row['food_pro']*$row['eaten_serving'];
+   }
+  #echo $row['exercise_name'] ." / " .$row['exercise_minute'] ."분 / ".$row['exhausted_calory']."Kcal";
+  #echo nl2br("\n");
+  }
 
-      while($row = $result2->fetch_assoc()) {
-        if($row['eaten_serving']==0){ # 0인분인경우
-          $kcal = $kcal + $row['food_calory']*0.5;
-          $car = $car + $row['food_car']*0.5;
-          $fat = $fat + $row['food_fat']*0.5;
-          $pro = $pro + $row['food_pro']*0.5;
-       }
-       else{
-        $kcal = $kcal + $row['food_calory']*$row['eaten_serving'];
-        $car = $car + $row['food_car']*$row['eaten_serving'];
-        $fat = $fat + $row['food_fat']*$row['eaten_serving'];
-        $pro = $pro + $row['food_pro']*$row['eaten_serving'];
-       }
-      #echo $row['exercise_name'] ." / " .$row['exercise_minute'] ."분 / ".$row['exhausted_calory']."Kcal";
-      #echo nl2br("\n");
-      }
-
-      }
-      else //echo "0 results";
-    ?>
+  }
+  else //echo "0 results";
+?>
     <div class="card-body">
 
       <div class="container">
@@ -180,7 +204,7 @@
 
         <div class="progress rounded-pill" style="height:40px;">
           <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar"
-            style="width: <?php echo $kcal/ $user['user_goal']*100;?>%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
+            style="width: <?php echo $kcal/1500*100;?>%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
             <p class="pr" style="padding-top:15px;">
               <?php echo $kcal ." / ". $user['user_goal'] ?>
             </p>
@@ -198,9 +222,9 @@
 
         <div class="progress rounded-pill" style="height:30px;">
           <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
-            style="width: <?php echo $car/$maxcar*100;?>%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
+            style="width: <?php echo $car/1500*100;?>%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
             <p class="pr" style=" padding-top:20px;">
-              <?php echo $car ." / ". $maxcar ?>
+              <?php echo $car ." / ". $user['user_goal'] ?>
             </p>
           </div>
         </div>
@@ -218,9 +242,9 @@
 
         <div class="progress rounded-pill" style="height:30px;">
           <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar"
-            style="width: <?php echo $pro/$maxpro*100;?>%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
+            style="width: <?php echo $pro/1500*100;?>%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
             <p class="pr" style=" padding-top:20px;">
-              <?php echo $pro ." / ". $maxpro?>
+              <?php echo $pro ." / ". $user['user_goal'] ?>
             </p>
           </div>
         </div>
@@ -237,9 +261,9 @@
 
         <div class="progress rounded-pill" style="height:30px;">
           <div class="progress-bar progress-bar-striped bg-info progress-bar-animated" role="progressbar"
-            style="width: <?php echo $fat/$maxfat*100;?>%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
+            style="width: <?php echo $fat/1500*100;?>%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
             <p class="pr" style="padding-top:20px;">
-              <?php echo $fat ." / ". $maxfat ?>
+              <?php echo $fat ." / ". $user['user_goal'] ?>
             </p>
           </div>
         </div>
@@ -308,39 +332,37 @@
     </div>
     <div class="card-body" id="diet_1">
       <div style="float:left; margin:50px 50px; width:15%;">
-        <p style="width:100%">
-          <?php
-            if($is_morning==1){
-              $morning_kcal =0;
-              $morning_car =0;
-              $morning_pro =0;
-              $morning_fat =0;
+        <p style="width:100%"><?php
+      if($is_morning==1){
+        $morning_kcal =0;
+        $morning_car =0;
+        $morning_pro =0;
+        $morning_fat =0;
 
-            	while($row = $result3->fetch_assoc()) {
-                if ($row['eaten_serving']==0){
-                     $morning_kcal = $morning_kcal+$row['food_calory']*0.5;
-                     $morning_car = $morning_car+$row['food_car']*0.5;
-                     $morning_pro = $morning_pro+$row['food_pro']*0.5;
-                     $morning_fat = $morning_fat+$row['food_fat']*0.5;
-               }
-               else{
-                     $morning_kcal = $morning_kcal+$row['food_calory']*$row['eaten_serving'];
-                     $morning_car = $morning_car+$row['food_car']*$row['eaten_serving'];
-                     $morning_pro = $morning_pro+$row['food_pro']*$row['eaten_serving'];
-                     $morning_fat = $morning_fat+$row['food_fat']*$row['eaten_serving'];
-               }
-                if($row['eaten_serving']==0){
-                  echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(0.5 인분)";
-          	      echo nl2br("\n\n");
-                }
-                else{
-                  echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(".$row['eaten_serving']." 인분)";
-          	      echo nl2br("\n\n");
-               	}
-              }
-          }
-          ?>
-        </p>
+  	while($row = $result3->fetch_assoc()) {
+      if ($row['eaten_serving']==0){
+           $morning_kcal = $morning_kcal+$row['food_calory']*0.5;
+           $morning_car = $morning_car+$row['food_car']*0.5;
+           $morning_pro = $morning_pro+$row['food_pro']*0.5;
+           $morning_fat = $morning_fat+$row['food_fat']*0.5;
+     }
+     else{
+           $morning_kcal = $morning_kcal+$row['food_calory']*$row['eaten_serving'];
+           $morning_car = $morning_car+$row['food_car']*$row['eaten_serving'];
+           $morning_pro = $morning_pro+$row['food_pro']*$row['eaten_serving'];
+           $morning_fat = $morning_fat+$row['food_fat']*$row['eaten_serving'];
+     }
+      if($row['eaten_serving']==0){
+          echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(0.5 인분)";
+	  echo nl2br("\n\n");
+      }
+      else{
+          echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(".$row['eaten_serving']." 인분)";
+	  echo nl2br("\n\n");
+     	 }
+        }
+      }
+    ?></p>
       </div>
 
       <div style="margin:20px 30px; float:left; width:60%;" class="smallbar">
@@ -698,8 +720,8 @@
     var is_dinner = '<?php echo $is_dinner ?>';
 
     if (is_morning == 1) {
+
       document.getElementById('diet_1').style.display = 'block';
-      document.getElementById('camera_1').style.display = 'none';
     }
     else {
 
@@ -710,7 +732,6 @@
     if (is_lunch == 1) {
 
       document.getElementById('diet_2').style.display = 'block';
-      document.getElementById('camera_2').style.display = 'none';
     }
     else {
 
@@ -721,7 +742,6 @@
     if (is_dinner == 1) {
 
       document.getElementById('diet_3').style.display = 'block';
-      document.getElementById('camera_3').style.display = 'none';
     }
     else {
 

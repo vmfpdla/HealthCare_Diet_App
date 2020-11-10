@@ -1,3 +1,4 @@
+
   
 <!DOCTYPE html>
 <html>
@@ -88,7 +89,7 @@
         #   header('Content-Type:text/html; charset=UTF-8');
 
 
-
+	$today=date("Y-m-d");
         $jb_conn = mysqli_connect( 'localhost', 'root', 'toor', 'smartpt' );
 
 
@@ -110,7 +111,44 @@
               }
         } else {
               echo "유저 접속 오류";
-        }
+	}
+
+    
+
+    $maxcar = $user['user_goal'] * 0.65;
+	$maxfat =$user['user_goal'] * 0.2;
+	$maxpro =$user['user_goal'] * 0.15;
+
+	// 오늘 먹은 음식 조회
+	$sql2 = "SELECT * FROM eatenfood INNER JOIN foodinfo on eatenfood.food_id = foodinfo.food_id WHERE user_id='$user_id' and eaten_day='$today'";
+	$result1 = $conn->query($sql2);
+
+	if ($result1 -> num_rows>0) { // 여러줄 가져오는 경우
+
+		while($row = $result1->fetch_assoc()) {
+			if($row['eaten_serving']==0)
+			{ # 0인분인경우
+				$kcal = $kcal + $row['food_calory']*0.5;
+				$car = $car + $row['food_car']*0.5;
+				$fat = $fat + $row['food_fat']*0.5;
+				$pro = $pro + $row['food_pro']*0.5;
+		 	}
+			else
+			{
+				$kcal = $kcal + $row['food_calory']*$row['eaten_serving'];
+				$car = $car + $row['food_car']*$row['eaten_serving'];
+				$fat = $fat + $row['food_fat']*$row['eaten_serving'];
+				$pro = $pro + $row['food_pro']*$row['eaten_serving'];
+			 }
+			if($row['eaten_time']==1) // 아침인경우
+			{
+
+			}
+		}
+    }
+
+    echo $kcal;
+    
         $sql1 = "SELECT * FROM diet";
         $result1 = $conn->query($sql1);
         $arr= array();
