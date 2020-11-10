@@ -110,7 +110,9 @@
               }
         } else {
               echo "유저 접속 오류";
-        }
+	}
+
+	echo $user['user_goal'];
         $sql1 = "SELECT * FROM diet";
         $result1 = $conn->query($sql1);
         $arr= array();
