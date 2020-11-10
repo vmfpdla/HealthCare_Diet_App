@@ -89,7 +89,7 @@
         #   header('Content-Type:text/html; charset=UTF-8');
 
 
-
+	$today=date("Y-m-d");
         $jb_conn = mysqli_connect( 'localhost', 'root', 'toor', 'smartpt' );
 
 
@@ -113,7 +113,6 @@
               echo "유저 접속 오류";
 	}
 
-    echo $user['user_goal'];
     
 
     $maxcar = $user['user_goal'] * 0.65;
@@ -148,7 +147,7 @@
 		}
     }
 
-    echo $maxcar . $car;
+    echo $kcal;
     
         $sql1 = "SELECT * FROM diet";
         $result1 = $conn->query($sql1);
