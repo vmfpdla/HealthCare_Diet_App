@@ -1,3 +1,63 @@
+<?php
+
+	require_once("./dbconn.php");
+
+	$today = date("Y-m-d");
+	$kcal = 0; //칼로리
+	$car =0; // 탄수화물
+	$fat =0; // 지방
+	$pro =0; // 단백질
+
+
+	$user_id = 1; # 1번 가져왔다고 가정
+	$sql = "SELECT * FROM user WHERE user_id='$user_id'";
+	$result = $conn->query($sql);
+
+	if ($result->num_rows > 0) { // 여러줄 가져오는 경우
+
+	  while($row = $result->fetch_assoc()) {
+	    $user = $row;
+	  }
+	}
+	else {
+	  echo "유저 접속 오류";
+	}
+	//
+	$maxcar = $user['user_goal'] * 0.65;
+	$maxfat =$user['user_goal'] * 0.2;
+	$maxpro =$user['user_goal'] * 0.15;
+
+	// 오늘 먹은 음식 조회
+	$sql1 = "SELECT * FROM eatenfood INNER JOIN foodinfo on eatenfood.food_id = foodinfo.food_id WHERE user_id='$user_id' and eaten_day='$today'";
+	$result1 = $conn->query($sql1);
+
+	if ($result1 -> num_rows>0) { // 여러줄 가져오는 경우
+
+		while($row = $result1->fetch_assoc()) {
+			if($row['eaten_serving']==0)
+			{ # 0인분인경우
+				$kcal = $kcal + $row['food_calory']*0.5;
+				$car = $car + $row['food_car']*0.5;
+				$fat = $fat + $row['food_fat']*0.5;
+				$pro = $pro + $row['food_pro']*0.5;
+		 	}
+			else
+			{
+				$kcal = $kcal + $row['food_calory']*$row['eaten_serving'];
+				$car = $car + $row['food_car']*$row['eaten_serving'];
+				$fat = $fat + $row['food_fat']*$row['eaten_serving'];
+				$pro = $pro + $row['food_pro']*$row['eaten_serving'];
+			 }
+			if($row['eaten_time']==1) // 아침인경우
+			{
+
+			}
+		}
+	}
+	else //echo "0 results";
+
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -38,100 +98,74 @@
     <i class="fa fa-spoon titlei" aria-hidden="true"></i>
     <p class="title">식단추천</p>
 </div>
-<br><br><br>
-<div class="card">
-    <div class="card-header">
-        영양소
-    </div>
-    <div class="card-body">
-        <div class="container">
-            <div class="container" style="float:left; width: 15%;text-align: center;">
-                <p class="pr" align="left;">
-                    Kcal
-                </p>
+<br><br><br>	<div class="card">
+		<div class="card-header">
+			영양소
+		</div>
+		<div class="card-body">
+			<div class="container">
+				<div class="container" style="float:left; width: 15%;text-align: center;">
+					<p class="pr" align="left;"> Kcal  </p>
 
-            </div>
-            <div class="progress rounded-pill" style="height:40px;">
-                <div
-                    class="progress-bar progress-bar-striped progress-bar-animated bg-danger"
-                    role="progressbar"
-                    style="width: 60%"
-                    aria-valuenow="10"
-                    aria-valuemin="0"
-                    aria-valuemax="100">
-                    <p style="font-size:20px; font-weight: bold;">
-                        1560/2600
-                    </p>
-                </div>
-            </div>
-        </div>
-        <br><br>
-        <div class="container">
-            <div class="container" style="float:left; width: 15%;text-align: center;">
-                <p class="pr" align="left;">
-                    탄
-                </p>
+				</div>
 
-            </div>
-            <div class="progress rounded-pill" style="height:30px;">
-                <div
-                    class="progress-bar progress-bar-striped progress-bar-animated"
-                    role="progressbar"
-                    style="width: 62.5%"
-                    aria-valuenow="10"
-                    aria-valuemin="0"
-                    aria-valuemax="100">
-                    <p class="pr">
-                        250/400
-                    </p>
-                </div>
-            </div>
-        </div>
-        <br><br>
-        <div class="container">
-            <div class="container" style="float:left; width: 15%;text-align: center;">
-                <p class="pr" align="left;">
-                    단
-                </p>
+				<div class="progress rounded-pill" style="height:40px;">
+					<div class="progress-bar progress-bar-striped progress-bar-animated bg-danger"role="progressbar"
+					 	style="width: <?php echo $kcal/$user['user_goal']*100;?>%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
+						<p  class="pr" style="padding-top:15px;">
+							<?php echo $kcal ." / ". $user['user_goal'] ?>
+						</p>
+					</div>
+				</div>
+			</div>
+			<br><br>
+			<div class="container">
+				<div class="container" style="float:left; width: 15%;text-align: center;">
+					<p class="pr" align="left;"> 탄  </p>
 
-            </div>
-            <div class="progress rounded-pill" style="height:30px;">
-                <div
-                    class="progress-bar progress-bar-striped bg-success progress-bar-animated"
-                    role="progressbar"
-                    style="width: 57%"
-                    aria-valuenow="10"
-                    aria-valuemin="0"
-                    aria-valuemax="100">
-                    <p class="pr">
-                        80/140
-                    </p>
-                </div>
-            </div>
-        </div>
-        <br><br>
-        <div class="container" style="font-weight: bold;">
-            <div class="container" style="float:left; width: 15%;text-align: center;">
-                <p class="pr">
-                    지
-                </p>
-            </div>
-            <div class="progress rounded-pill" style="height:30px;">
-                <div
-                    class="progress-bar progress-bar-striped bg-info progress-bar-animated"
-                    role="progressbar"
-                    style="width: 42%"
-                    aria-valuenow="10"
-                    aria-valuemin="0"
-                    aria-valuemax="100">
-                    <p class="pr">
-                        30/70
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+				</div>
+
+				<div class="progress rounded-pill" style="height:30px;">
+					<div class="progress-bar progress-bar-striped progress-bar-animated"role="progressbar"
+					style="width:  <?php echo $car/$maxcar*100;?>%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
+						<p class="pr" style=" padding-top:20px;">
+							<?php echo $car ." / ". $maxcar ?>
+						</p>
+					</div>
+				</div>
+			</div>
+			<br><br>
+			<div class="container">
+				<div class="container" style="float:left; width: 15%;text-align: center;">
+					<p class="pr" align="left;"> 단  </p>
+
+				</div>
+
+				<div class="progress rounded-pill" style="height:30px;">
+					<div class="progress-bar progress-bar-striped bg-success progress-bar-animated"role="progressbar"
+					style="width: <?php echo $pro/$maxpro*100;?>%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
+						<p class="pr" style=" padding-top:20px;"> <?php echo $pro ." / ". $maxpro?> </p>
+					</div>
+				</div>
+			</div>
+			<br><br>
+			<div class="container" style="font-weight: bold;">
+				<div class="container" style="float:left; width: 15%;text-align: center;">
+					<p class="pr"> 지  </p>
+
+				</div>
+
+				<div class="progress rounded-pill" style="height:30px;">
+					<div class="progress-bar progress-bar-striped bg-info progress-bar-animated"role="progressbar"
+					style="width: <?php echo $fat/$maxfat*100;?>%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
+						<p class="pr" style=" padding-top:20px;"> <?php echo $fat ." / ". $maxfat ?> </p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	
 <br><br>
 
 <?php
@@ -154,7 +188,6 @@ if ($result->num_rows > 0) { // 여러줄 가져오는 경우
 
 <?php
 
-$today = date("Y-m-d");
   // 아침에 먹은 식단을 가져온다.
   $sql3 = "SELECT * FROM eatenfood INNER JOIN foodinfo on eatenfood.food_id = foodinfo.food_id WHERE user_id='$user_id' and eaten_day='$today' and eaten_time=1";
   $result3 = $conn->query($sql3);
