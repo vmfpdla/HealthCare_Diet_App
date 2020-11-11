@@ -173,28 +173,7 @@ else //echo "0 results";
 
 <br><br>
 
-<div class="card">
-<div class="card-header card-header1">
-<ul class="nav nav-tabs" id="myTab" role="tablist">
-  <li class="nav-item" role="presentation">
-    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">아침</a>
-  </li>
-  <li class="nav-item" role="presentation">
-    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">점심</a>
-  </li>
-  <li class="nav-item" role="presentation">
-    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">저녁</a>
-  </li>
-</ul>
-</div>
-<div class="card-body">
 
-<div class="tab-content" id="myTabContent">
-  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">.a..</div>
-  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">..b.</div>
-  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">..c.</div>
-</div>
-</div>
 
 
 
@@ -245,20 +224,38 @@ $is_dinner =0;
 
 ?>
 
+
 <div class="card">
-  <div class="card-header">
-    아침
-  </div>
+<div class="card-header card-header1">
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#breakfast" role="tab" aria-controls="home" aria-selected="true">아침</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#lunch" role="tab" aria-controls="profile" aria-selected="false">점심</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#dinner" role="tab" aria-controls="contact" aria-selected="false">저녁</a>
+  </li>
+</ul>
+</div>
+<div class="card-body">
+
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="breakfast" role="tabpanel" aria-labelledby="home-tab">
+  
+  
   <div class="card-body" id="camera_1" style="text-align: center;">
-    <form method="POST" action="foodinput.php">
+      <form method="POST" action="foodinput.php">
       <input type="hidden" name="eatentime" value="1" />
       <button type="submit" id="btn1">음식입력</button>
       <!--<button type="submit"><i class="fas fa-utensils cardi"  style="font-size:100px; "aria-hidden="true"></i></button>-->
     </form>
-  </div>
-  <div class="card-body" id="diet_1">
+    </div>
+    <div class="card-body" id="diet_1">
     <div style="float:left; margin:50px 50px; width:15%;">
-      <p style="width:100%"><?php
+      <p style="width:100%">
+	  <?php
         if($is_morning==1){
         $morning_kcal =0;
         $morning_car =0;
@@ -277,23 +274,24 @@ $is_dinner =0;
       $morning_car = $morning_car+$row['food_car']*$row['eaten_serving'];
       $morning_pro = $morning_pro+$row['food_pro']*$row['eaten_serving'];
       $morning_fat = $morning_fat+$row['food_fat']*$row['eaten_serving'];
-    }
-    if($row['eaten_serving']==0){
-    echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(0.5 인분)";
-    echo nl2br("\n\n");
-  }
-  else{
-  echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(".$row['eaten_serving']." 인분)";
-  echo nl2br("\n\n");
-}
-}
-}
-?></p>
-</div>
+      }
+     if($row['eaten_serving']==0){
+     echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(0.5 인분)";
+     echo nl2br("\n\n");
+   }
+   else{
+   echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(".$row['eaten_serving']." 인분)";
+   echo nl2br("\n\n");
+  	}
+  	}
+  	}
+  	?>
+  	</p>
+  	</div>
 
-<div style="margin:20px 30px; float:left; width:60%;" class="smallbar">
-  <div class="container" style="margin-bottom:-25px;">
-    <div class="container" style="float:left; width:20%;">
+	  <div style="margin:20px 30px; float:left; width:60%;" class="smallbar">
+    <div class="container" style="margin-bottom:-25px;">
+     <div class="container" style="float:left; width:20%;">
       <p class="pr"> Kcal </p>
     </div>
 
@@ -303,31 +301,136 @@ $is_dinner =0;
       aria-valuemax="100">
       <p class="pr" style="padding-top:15px;"> <?php echo $morning_kcal ." / 1500" ?> </p>
     </div>
-  </div>
-</div>
+    </div>
+	  </div>
 
-<br><br>
+	  <br><br>
 
-<div class="container" style="margin-bottom:-20px;">
-  <div class="container" style="float:left; width:20%;">
+	  <div class="container" style="margin-bottom:-20px;">
+    <div class="container" style="float:left; width:20%;">
     <p class="pr" align="left;"> 탄 </p>
 
-  </div>
+    </div>
 
-  <div class="progress rounded-pill" style="height:20px; width:70%;">
+   <div class="progress rounded-pill" style="height:20px; width:70%;">
     <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
     style="width: <?php echo $morning_car/1500*100;?>%" aria-valuenow="10" aria-valuemin="0"
     aria-valuemax="100">
     <p class="pr" style=" padding-top:15px;"> <?php echo $morning_car ." / 1500"; ?> </p>
+   </div>
+  	</div>
+  
+  
+  
+  
+  </div>
+  <div class="tab-pane fade" id="lunch" role="tabpanel" aria-labelledby="profile-tab">
+  
+  
+  
+  ..b.
+  
+  
+  
+  </div>
+  <div class="tab-pane fade" id="dinner" role="tabpanel" aria-labelledby="contact-tab">
+  
+  
+  
+  ..c.
+  
+  
+  
   </div>
 </div>
-
-
 </div>
-<br><br>
+</div>
+
+  <div class="card">
+    <div class="card-header">
+    아침
+    </div>
+    <div class="card-body" id="camera_1" style="text-align: center;">
+      <form method="POST" action="foodinput.php">
+      <input type="hidden" name="eatentime" value="1" />
+      <button type="submit" id="btn1">음식입력</button>
+      <!--<button type="submit"><i class="fas fa-utensils cardi"  style="font-size:100px; "aria-hidden="true"></i></button>-->
+    </form>
+    </div>
+    <div class="card-body" id="diet_1">
+    <div style="float:left; margin:50px 50px; width:15%;">
+      <p style="width:100%">
+	  <?php
+        if($is_morning==1){
+        $morning_kcal =0;
+        $morning_car =0;
+        $morning_pro =0;
+        $morning_fat =0;
+
+        while($row = $result3->fetch_assoc()) {
+        if ($row['eaten_serving']==0){
+        $morning_kcal = $morning_kcal+$row['food_calory']*0.5;
+        $morning_car = $morning_car+$row['food_car']*0.5;
+        $morning_pro = $morning_pro+$row['food_pro']*0.5;
+        $morning_fat = $morning_fat+$row['food_fat']*0.5;
+      }
+      else{
+      $morning_kcal = $morning_kcal+$row['food_calory']*$row['eaten_serving'];
+      $morning_car = $morning_car+$row['food_car']*$row['eaten_serving'];
+      $morning_pro = $morning_pro+$row['food_pro']*$row['eaten_serving'];
+      $morning_fat = $morning_fat+$row['food_fat']*$row['eaten_serving'];
+      }
+     if($row['eaten_serving']==0){
+     echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(0.5 인분)";
+     echo nl2br("\n\n");
+   }
+   else{
+   echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(".$row['eaten_serving']." 인분)";
+   echo nl2br("\n\n");
+  	}
+  	}
+  	}
+  	?>
+  	</p>
+  	</div>
+
+	  <div style="margin:20px 30px; float:left; width:60%;" class="smallbar">
+    <div class="container" style="margin-bottom:-25px;">
+     <div class="container" style="float:left; width:20%;">
+      <p class="pr"> Kcal </p>
+    </div>
+
+    <div class="progress rounded-pill" style="height:25px; width:70%">
+      <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar"
+      style="width: <?php echo $morning_kcal/1500*100;?>%" aria-valuenow="10" aria-valuemin="0"
+      aria-valuemax="100">
+      <p class="pr" style="padding-top:15px;"> <?php echo $morning_kcal ." / 1500" ?> </p>
+    </div>
+    </div>
+	  </div>
+
+	  <br><br>
+
+	  <div class="container" style="margin-bottom:-20px;">
+    <div class="container" style="float:left; width:20%;">
+    <p class="pr" align="left;"> 탄 </p>
+
+    </div>
+
+   <div class="progress rounded-pill" style="height:20px; width:70%;">
+    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+    style="width: <?php echo $morning_car/1500*100;?>%" aria-valuenow="10" aria-valuemin="0"
+    aria-valuemax="100">
+    <p class="pr" style=" padding-top:15px;"> <?php echo $morning_car ." / 1500"; ?> </p>
+   </div>
+  	</div>
 
 
-<div class="container" style="margin-bottom:-20px;">
+  	</div>
+	<br><br>
+
+
+	<div class="container" style="margin-bottom:-20px;">
   <div class="container" style="float:left; width:20%;">
     <p class="pr" align="left;"> 단 </p>
 
@@ -339,16 +442,15 @@ $is_dinner =0;
     aria-valuemax="100">
     <p class="pr" style="padding-top:15px;"> <?php echo $morning_pro ." / 1500"; ?> </p>
   </div>
-</div>
-</div>
+	</div>
+	</div>
 
 
-<br><br>
+	<br><br>
 
-<div class="container" style="font-weight: bold;">
+	<div class="container" style="font-weight: bold;">
   <div class="container" style="float:left; width:20%;">
     <p class="pr" align="left;"> 지 </p>
-
   </div>
 
   <div class="progress rounded-pill" style="height:20px; width:70%;">
@@ -357,14 +459,18 @@ $is_dinner =0;
     aria-valuemax="100">
     <p class="pr" style="padding-top:15px;"> <?php echo $morning_fat ." / 1500"; ?> </p>
   </div>
-</div>
-</div>
-</div>
-</div>
-</div>
 
-<br><br>
-<div class="card">
+  </div>
+
+  </div>
+  </div>
+  </div>
+  </div>
+
+  <br><br>
+  
+  
+  <div class="card">
   <div class="card-header">
     점심
   </div>
