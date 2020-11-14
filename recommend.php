@@ -1,4 +1,3 @@
-
 <?php
 
 require_once("./dbconn.php");
@@ -57,15 +56,16 @@ if($row['eaten_time']==1) // 아침인경우
 }
 else //echo "0 results";
 
+
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
-	<link rel="stylesheet" href="./css/jaehyun.css">
+  <title></title>
+  <link rel="stylesheet" href="./css/jaehyun.css">
 
-	<link
+  <link
   rel="stylesheet"
   href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
   <link
@@ -89,6 +89,30 @@ else //echo "0 results";
 
 </style>
 </script>
+
+<script>
+function myFunction() {
+  // Declare variables
+  var input, table, tr, td, i, txtValue,tv,iv,count;
+  
+  input = document.getElementById("myInput");
+  table = document.getElementById("user-table");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 1; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[5];
+    tv=(parseInt(($(td).html())));  
+    iv=(parseInt($(input).val())); 
+    if((iv>=tv)){
+        tr[i].style.display = "";
+        count=count+1;
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+</script>
 </head>
 <body>
   <nav class="navbar fixed-top">
@@ -103,19 +127,19 @@ else //echo "0 results";
   <i class="fa fa-spoon titlei" aria-hidden="true"></i>
   <p class="title">식단추천</p>
 </div>
-<br><br><br>	<div class="card">
-	<div class="card-header">
-		영양소
-	</div>
-	<div class="card-body">
-		<div class="container">
-			<div class="container" style="float:left; width: 15%;text-align: center;">
-				<p class="pr" align="left;"> Kcal  </p>
+<br><br><br>  <div class="card">
+  <div class="card-header">
+    영양소
+  </div>
+  <div class="card-body">
+    <div class="container">
+      <div class="container" style="float:left; width: 15%;text-align: center;">
+        <p class="pr" align="left;"> Kcal  </p>
 
-			</div>
+      </div>
 
-			<div class="progress rounded-pill" style="height:40px;">
-				<div class="progress-bar progress-bar-striped progress-bar-animated bg-danger"role="progressbar"
+      <div class="progress rounded-pill" style="height:40px;">
+        <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger"role="progressbar"
         style="width: <?php echo $kcal/$user['user_goal']*100;?>%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
         <p  class="pr" style="padding-top:15px;">
           <?php echo $kcal ." / ". $user['user_goal'] ?>
@@ -227,7 +251,7 @@ $is_dinner =0;
 
 <div class="card">
   <div class="card-header card-header1">
-    <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
       <li class="nav-item" role="presentation">
         <a class="nav-link active" id="home-tab" data-toggle="tab" href="#breakfast" role="tab" aria-controls="home" aria-selected="true">아침</a>
       </li>
@@ -614,6 +638,123 @@ $is_dinner =0;
 </div>
 </div>
 </div>
+<br>
+<br>
+<br>
+
+<div class="card">
+  <div class="card-header">
+   식단추천
+ </div>
+ <div class="card-body">
+
+
+<div id="container">
+
+
+<table class="table table-hover" id="user-table">
+<!--
+<div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">칼로리</span>
+      </div>
+      <input type="number" class="form-control" id="keyword" placeholder="Food Name" aria-label="Username" aria-describedby="basic-addon1">
+    </div>-->
+<div style="text-align:center;">
+    <input style="width:50%; height:100px; text-align:center;"type="text" id="myInput" onkeyup="myFunction()" placeholder="칼로리입력">
+   </div> <thead>
+<br><br><br>
+        <tr>
+            <th>식단번호</th>
+            <th>곡류</th>
+            <th>고기류</th>
+            <th>채소류</th>
+            <th>기타</th>
+            <th>칼로리</th>
+        </tr>
+    </thead>
+
+    <tbody>
+    <?php
+#   header('Content-Type:text/html; charset=UTF-8');
+
+
+      $today=date("Y-m-d");
+      $jb_conn = mysqli_connect( 'localhost', 'root', 'toor', 'smartpt' );
+
+
+      mysqli_query($jb_conn, "set session character_set_connection=utf8;"); 
+
+      mysqli_query($jb_conn, "set session character_set_results=utf8;");
+
+      mysqli_query($jb_conn, "set session character_set_client=utf8;");
+
+
+      require_once("./dbconn.php");
+      $user_id = 1; # 1번 가져왔다고 가정
+      $sql = "SELECT * FROM user WHERE user_id='$user_id'";
+      $result = $conn->query($sql);
+      if ($result->num_rows > 0) { // 여러줄 가져오는 경우
+        while($row = $result->fetch_assoc()) {
+      $user = $row;
+      }
+      } else {
+      echo "유저 접속 오류";
+    }
+
+
+
+$maxcar = $user['user_goal'] * 0.65;
+$maxfat =$user['user_goal'] * 0.2;
+$maxpro =$user['user_goal'] * 0.15;
+
+
+$sql1 = "SELECT * FROM diet";
+$result1 = $conn->query($sql1);
+while($row=mysqli_fetch_array( $result1 ) ) {
+  echo '<tr style="display:none"><td>' . $row['diet_id']. '</td><td>'. $row['diet_grains'] . '</td><td>' .$row['diet_meat']. '</td><td>'. $row['diet_vet'] .'</td><td>'. $row['diet_else'] .'</td><td>'. $row['diet_calory'] .'</td></tr>';
+ 
+}
+
+/*
+$arr= array();
+$arr_diet=array();
+if ($result1->num_rows > 0) { // 여러줄 가져오는 경우
+while($row = $result1->fetch_assoc()) {
+array_push($arr,array($row['diet_id'],$row['diet_grains'],$row['diet_meat'],$row['diet_vet'],$row['diet_else'],$row['diet_calory']));
+#  echo $row['diet_id'] ." 번식단 밥종류:" .$row['diet_grains'] ." 고기종류: ".$row['diet_meat']."채소 종류 ".$row['diet_vet']."기타: ".$row['diet_else']."칼로리 :".$row['diet_calory'];
+#   echo nl2br("\n");
+}
+} else {
+echo "0 results";
+}
+if($inputKcal> $arr[$i][5]){
+#         echo $arr[$i][5];
+array_push($arr_diet,array($arr[$i][0],$arr[$i][1],$arr[$i][2],$arr[$i][3],$arr[$i][4],$arr[$i][5]));
+}
+#   echo nl2br("\n");
+}
+for($i=0;$i<count($arr_diet)-1;$i++){
+for($j=0;$j<count($arr_diet)-1;$j++){
+if($arr_diet[$j][5]>$arr_diet[$j+1][5]){
+    $temp=$arr_diet[$j];
+    $arr_diet[$j]=$arr_diet[$j+1];
+    $arr_diet[$j+1]=$temp;
+}
+}
+} 
+#for($i=0;$i<count($arr_diet);$i++){
+#echo '<tr><td>' . $arr_diet[$i][0]. '</td><td>'. $arr_diet[$i][1] . '</td><td>' .$arr_diet[$i][2]. '</td><td>'. $arr_diet[$i][3] .'</td><td>'. $arr_diet[$i][4] .'</td><td>'. $arr_diet[$i][5] .'</td></tr>';
+#}
+*/
+?>
+    </tbody>
+</table>
+</div>
+
+
+</div>
+</div>
 
 <br /><br /><br />
 <nav class="navbar fixed-bottom navd">
@@ -646,43 +787,7 @@ $is_dinner =0;
     </div>
   </a>
 </nav>
-<script>
 
-  var is_morning = '<?php echo $is_morning ?>';
-  var is_lunch = '<?php echo $is_lunch ?>';
-  var is_dinner = '<?php echo $is_dinner ?>';
-
-  if (is_morning == 1) {
-
-    document.getElementById('diet_1').style.display = 'block';
-  }
-  else {
-
-    document.getElementById('camera_1').style.display = 'block';
-    document.getElementById('diet_1').style.display = 'none';
-  }
-
-  if (is_lunch == 1) {
-
-    document.getElementById('diet_2').style.display = 'block';
-  }
-  else {
-
-    document.getElementById('camera_2').style.display = 'block';
-    document.getElementById('diet_2').style.display = 'none';
-  }
-
-  if (is_dinner == 1) {
-
-    document.getElementById('diet_3').style.display = 'block';
-  }
-  else {
-
-    document.getElementById('camera_3').style.display = 'block';
-    document.getElementById('diet_3').style.display = 'none';
-  }
-
-</script>
 
 
 
@@ -697,31 +802,31 @@ $is_dinner =0;
  </div>
 </a>
 <a href="recommend.php">
-	<div class="navIcons" style="text-align:center;">
-		<br/>
-		<i class="navIcon fas fa-utensils navdi" id="navDiet" aria-hidden="true"></i>
-		<p class="navName navdp">
-			Diet
-		</p>
-	</div>
+  <div class="navIcons" style="text-align:center;">
+    <br/>
+    <i class="navIcon fas fa-utensils navdi" id="navDiet" aria-hidden="true"></i>
+    <p class="navName navdp">
+      Diet
+    </p>
+  </div>
 </a>
 <a href="miband.php">
-	<div class="navIcons" style="text-align:center;">
-		<br/>
-		<i class="navIcon fas fa-heartbeat navdi" id="navMiband" aria-hidden="true"></i>
-		<p class="navName navdp">
-			Miband
-		</p>
-	</div>
+  <div class="navIcons" style="text-align:center;">
+    <br/>
+    <i class="navIcon fas fa-heartbeat navdi" id="navMiband" aria-hidden="true"></i>
+    <p class="navName navdp">
+      Miband
+    </p>
+  </div>
 </a>
 <a href="static.php">
-	<div class="navIcons" style="text-align:center;">
-		<br/>
-		<i class="navIcon far fa-chart-bar navdi" id="navChart" aria-hidden="true"></i>
-		<p class="navName navdp">
-			Chart
-		</p>
-	</div>
+  <div class="navIcons" style="text-align:center;">
+    <br/>
+    <i class="navIcon far fa-chart-bar navdi" id="navChart" aria-hidden="true"></i>
+    <p class="navName navdp">
+      Chart
+    </p>
+  </div>
 </a>
 </nav>
 </body>
