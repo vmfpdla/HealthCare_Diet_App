@@ -642,69 +642,35 @@ $is_dinner =0;
 #   header('Content-Type:text/html; charset=UTF-8');
 
 
-$today=date("Y-m-d");
-$jb_conn = mysqli_connect( 'localhost', 'root', 'toor', 'smartpt' );
+      $today=date("Y-m-d");
+      $jb_conn = mysqli_connect( 'localhost', 'root', 'toor', 'smartpt' );
 
 
-mysqli_query($jb_conn, "set session character_set_connection=utf8;");
+      mysqli_query($jb_conn, "set session character_set_connection=utf8;"); 
 
-mysqli_query($jb_conn, "set session character_set_results=utf8;");
+      mysqli_query($jb_conn, "set session character_set_results=utf8;");
 
-mysqli_query($jb_conn, "set session character_set_client=utf8;");
+      mysqli_query($jb_conn, "set session character_set_client=utf8;");
 
 
-$inputKcal=$_POST["inputKcal"];
-require_once("./dbconn.php");
-$user_id = 1; # 1번 가져왔다고 가정
-$sql = "SELECT * FROM user WHERE user_id='$user_id'";
-$result = $conn->query($sql);
-if ($result->num_rows > 0) { // 여러줄 가져오는 경우
-while($row = $result->fetch_assoc()) {
-    $user = $row;
-}
-} else {
-echo "유저 접속 오류";
-}
+      $inputKcal=600;
+      require_once("./dbconn.php");
+      $user_id = 1; # 1번 가져왔다고 가정
+      $sql = "SELECT * FROM user WHERE user_id='$user_id'";
+      $result = $conn->query($sql);
+      if ($result->num_rows > 0) { // 여러줄 가져오는 경우
+        while($row = $result->fetch_assoc()) {
+      $user = $row;
+      }
+      } else {
+      echo "유저 접속 오류";
+    }
 
 
 
 $maxcar = $user['user_goal'] * 0.65;
 $maxfat =$user['user_goal'] * 0.2;
 $maxpro =$user['user_goal'] * 0.15;
-
-// 오늘 먹은 음식 조회
-$sql2 = "SELECT * FROM eatenfood INNER JOIN foodinfo on eatenfood.food_id = foodinfo.food_id WHERE user_id='$user_id' and eaten_day='$today'";
-$result1 = $conn->query($sql2);
-
-if ($result1 -> num_rows>0) { // 여러줄 가져오는 경우
-
-while($row = $result1->fetch_assoc()) {
-if($row['eaten_serving']==0)
-{ # 0인분인경우
-$kcal = $kcal + $row['food_calory']*0.5;
-$car = $car + $row['food_car']*0.5;
-$fat = $fat + $row['food_fat']*0.5;
-$pro = $pro + $row['food_pro']*0.5;
-}
-else
-{
-$kcal = $kcal + $row['food_calory']*$row['eaten_serving'];
-$car = $car + $row['food_car']*$row['eaten_serving'];
-$fat = $fat + $row['food_fat']*$row['eaten_serving'];
-$pro = $pro + $row['food_pro']*$row['eaten_serving'];
-}
-if($row['eaten_time']==1) // 아침인경우
-{
-
-}
-}
-}
-
-$needcar = $maxcar-$car;
-$needfat = $maxfat-$fat;
-$needpro = $maxpro - $pro;
-
-echo $needcar ." ". $needfat." ".$needpro;
 
 
 $sql1 = "SELECT * FROM diet";
