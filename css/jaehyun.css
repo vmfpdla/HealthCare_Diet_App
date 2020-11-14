@@ -134,3 +134,22 @@ h3.mip{
 	padding: 5% 0;
 	text-align: center;
 }
+.card-body{
+	box-shadow: 2px 2px 2px 2px #E6E6E6;
+}
+
+.exercise-card{
+	width:300px;
+	height:360px;
+}
+
+.exercise-card > .card-body{
+	text-align: center;
+}
+.exercise-card > .card-body > img{
+	margin-top:30px;
+}
+
+.carprofat .progress{
+	height:20px;
+}
