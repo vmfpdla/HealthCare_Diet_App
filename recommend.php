@@ -94,8 +94,7 @@ $(document).ready(function() {
       $("#keyword").keyup(function() {
         var k = $(this).val();
         $("#user-table > tbody > tr").hide();
-        var temp = $(("#user-table > tbody > tr > td:nth-child(6n))<('" + k + "')");
-
+        var temp = $("#user-table > tbody > tr > td:nth-child(6n+0):<=('" + k + "')");
         $(temp).parent().show();
       })
     })
