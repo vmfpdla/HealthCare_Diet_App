@@ -1,6 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
-
 body{
+	font-family: 'Black Han Sans', sans-serif;
 	font-family: 'Do Hyeon', sans-serif;
 	padding-top: 180px;
 	padding-bottom: 120px;
@@ -8,9 +7,7 @@ body{
 
 
 /*   nav css    */
-p{
-	font-size:20px;
-}
+
 nav{
 	background-color:#8DA5BD;
 	padding-left:50px;
@@ -67,16 +64,16 @@ i.navdi{
 }
 
 i.titlei{
-	font-size:300px; color:#8DA5BD; float: center;
+	font-size:10px; color:#8DA5BD; float: center;
 
 }
 
 
 .card{
+
 	margin : 0 auto; width: 80%;
 
 }
-
 i.cardi{
 	font-size: 100px; color:#BDBDBD;
 }
@@ -136,24 +133,4 @@ h3.mip{
 #exercise {
 	padding: 5% 0;
 	text-align: center;
-}
-
-.card-body{
-	box-shadow: 2px 2px 2px 2px #E6E6E6;
-}
-
-.exercise-card{
-	width:300px;
-	height:360px;
-}
-
-.exercise-card > .card-body{
-	text-align: center;
-}
-.exercise-card > .card-body > img{
-	margin-top:30px;
-}
-
-.carprofat .progress{
-	height:20px;
 }

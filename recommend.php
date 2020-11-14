@@ -638,7 +638,9 @@ $is_dinner =0;
 </div>
 </div>
 </div>
-
+<br>
+<br>
+<br>
 
 <div class="card">
   <div class="card-header">
@@ -658,9 +660,10 @@ $is_dinner =0;
       </div>
       <input type="number" class="form-control" id="keyword" placeholder="Food Name" aria-label="Username" aria-describedby="basic-addon1">
     </div>-->
-
-    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="칼로리입력">
-    <thead>
+<div style="text-align:center;">
+    <input style="width:50%; height:100px; text-align:center;"type="text" id="myInput" onkeyup="myFunction()" placeholder="칼로리입력">
+   </div> <thead>
+<br><br><br>
         <tr>
             <th>식단번호</th>
             <th>곡류</th>
@@ -687,7 +690,6 @@ $is_dinner =0;
       mysqli_query($jb_conn, "set session character_set_client=utf8;");
 
 
-      $inputKcal=600;
       require_once("./dbconn.php");
       $user_id = 1; # 1번 가져왔다고 가정
       $sql = "SELECT * FROM user WHERE user_id='$user_id'";
@@ -710,7 +712,7 @@ $maxpro =$user['user_goal'] * 0.15;
 $sql1 = "SELECT * FROM diet";
 $result1 = $conn->query($sql1);
 while($row=mysqli_fetch_array( $result1 ) ) {
-  echo '<tr><td>' . $row['diet_id']. '</td><td>'. $row['diet_grains'] . '</td><td>' .$row['diet_meat']. '</td><td>'. $row['diet_vet'] .'</td><td>'. $row['diet_else'] .'</td><td>'. $row['diet_calory'] .'</td></tr>';
+  echo '<tr style="display:none"><td>' . $row['diet_id']. '</td><td>'. $row['diet_grains'] . '</td><td>' .$row['diet_meat']. '</td><td>'. $row['diet_vet'] .'</td><td>'. $row['diet_else'] .'</td><td>'. $row['diet_calory'] .'</td></tr>';
  
 }
 
