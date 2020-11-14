@@ -694,7 +694,8 @@ $maxpro =$user['user_goal'] * 0.15;
 $sql1 = "SELECT * FROM diet";
 $result1 = $conn->query($sql1);
 while($result1=mysqli_fetch_array( $jb_result ) ) {
-  echo $row['diet_id'] ." 번식단 밥종류:" .$row['diet_grains'] ." 고기종류: ".$row['diet_meat']."채소 종류 ".$row['diet_vet']."기타: ".$row['diet_else']."칼로리 :".$row['diet_calory'];
+  echo '<tr><td>' . $row['diet_id']. '</td><td>'. $row['diet_grains'] . '</td><td>' .$row['diet_meat']. '</td><td>'. $row['diet_vet'] .'</td><td>'. $row['diet_else'] .'</td><td>'. $row['diet_calory'] .'</td></tr>';
+ 
 }
 
 /*
