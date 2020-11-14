@@ -88,6 +88,19 @@ else //echo "0 results";
 
 </style>
 </script>
+<script type="text/javascript">
+
+$(document).ready(function() {  
+      $("#keyword").keyup(function() {
+        var k = $(this).val();
+        $("#user-table > tbody > tr").hide();
+        var temp = $(("#user-table > tbody > tr > td:nth-child(6n))<('" + k + "')");
+
+        $(temp).parent().show();
+      })
+    })
+
+</script>
 </head>
 <body>
   <nav class="navbar fixed-top">
@@ -626,6 +639,12 @@ $is_dinner =0;
 
 
 <table class="table table-hover" id="user-table">
+<div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">칼로리</span>
+      </div>
+      <input type="number" class="form-control" id="keyword" placeholder="Food Name" aria-label="Username" aria-describedby="basic-addon1">
+    </div>
     <thead>
         <tr>
             <th>식단번호</th>
@@ -723,12 +742,6 @@ echo '<tr><td>' . $arr_diet[$i][0]. '</td><td>'. $arr_diet[$i][1] . '</td><td>' 
 </table>
 </div>
 
-
-
-
-
-
-?>
 
 </div>
 </div>
