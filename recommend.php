@@ -693,6 +693,11 @@ $maxpro =$user['user_goal'] * 0.15;
 
 $sql1 = "SELECT * FROM diet";
 $result1 = $conn->query($sql1);
+while($result1=mysqli_fetch_array( $jb_result ) ) {
+  echo $row['diet_id'] ." 번식단 밥종류:" .$row['diet_grains'] ." 고기종류: ".$row['diet_meat']."채소 종류 ".$row['diet_vet']."기타: ".$row['diet_else']."칼로리 :".$row['diet_calory'];
+}
+
+/*
 $arr= array();
 $arr_diet=array();
 if ($result1->num_rows > 0) { // 여러줄 가져오는 경우
@@ -706,10 +711,7 @@ echo "0 results";
 }
 
 
-for($i=0;$i<count($arr);$i++){
-#for($j=0;$j<6;$j++){	
-#	echo $arr[$i][$j];
-#}
+
 if($inputKcal> $arr[$i][5]){
 #					echo $arr[$i][5];
 
@@ -731,11 +733,12 @@ if($arr_diet[$j][5]>$arr_diet[$j+1][5]){
 }
 }
 }	
-for($i=0;$i<count($arr_diet);$i++){
-echo '<tr><td>' . $arr_diet[$i][0]. '</td><td>'. $arr_diet[$i][1] . '</td><td>' .$arr_diet[$i][2]. '</td><td>'. $arr_diet[$i][3] .'</td><td>'. $arr_diet[$i][4] .'</td><td>'. $arr_diet[$i][5] .'</td></tr>';
 
-}
+#for($i=0;$i<count($arr_diet);$i++){
+#echo '<tr><td>' . $arr_diet[$i][0]. '</td><td>'. $arr_diet[$i][1] . '</td><td>' .$arr_diet[$i][2]. '</td><td>'. $arr_diet[$i][3] .'</td><td>'. $arr_diet[$i][4] .'</td><td>'. $arr_diet[$i][5] .'</td></tr>';
 
+#}
+*/
 ?>
     </tbody>
 </table>
