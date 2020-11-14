@@ -104,6 +104,27 @@ $(document).ready(function() {
 	})
 
 </script>
+
+
+<script>
+function myFunction() {
+  // Declare variables
+  var input, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  table = document.getElementById("user-table");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[5];
+    if (td>Number(input)) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+</script>
 </head>
 <body>
   <nav class="navbar fixed-top">
@@ -642,12 +663,15 @@ $is_dinner =0;
 
 
 <table class="table table-hover" id="user-table">
+<!--
 <div class="input-group mb-3">
       <div class="input-group-prepend">
         <span class="input-group-text" id="basic-addon1">칼로리</span>
       </div>
       <input type="number" class="form-control" id="keyword" placeholder="Food Name" aria-label="Username" aria-describedby="basic-addon1">
-    </div>
+    </div>-->
+
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="칼로리입력">
     <thead>
         <tr>
             <th>식단번호</th>
@@ -784,43 +808,7 @@ if($arr_diet[$j][5]>$arr_diet[$j+1][5]){
     </div>
   </a>
 </nav>
-<script>
 
-  var is_morning = '<?php echo $is_morning ?>';
-  var is_lunch = '<?php echo $is_lunch ?>';
-  var is_dinner = '<?php echo $is_dinner ?>';
-
-  if (is_morning == 1) {
-
-    document.getElementById('diet_1').style.display = 'block';
-  }
-  else {
-
-    document.getElementById('camera_1').style.display = 'block';
-    document.getElementById('diet_1').style.display = 'none';
-  }
-
-  if (is_lunch == 1) {
-
-    document.getElementById('diet_2').style.display = 'block';
-  }
-  else {
-
-    document.getElementById('camera_2').style.display = 'block';
-    document.getElementById('diet_2').style.display = 'none';
-  }
-
-  if (is_dinner == 1) {
-
-    document.getElementById('diet_3').style.display = 'block';
-  }
-  else {
-
-    document.getElementById('camera_3').style.display = 'block';
-    document.getElementById('diet_3').style.display = 'none';
-  }
-
-</script>
 
 
 
