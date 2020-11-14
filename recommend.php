@@ -93,11 +93,15 @@ else //echo "0 results";
 $(document).ready(function() {  
       $("#keyword").keyup(function() {
         var k = $(this).val();
-        $("#user-table > tbody > tr").hide();
-        var temp = $("#user-table > tbody > tr > td:nth-child(6n+0):<=('" + k + "')");
-        $(temp).parent().show();
-      })
-    })
+	$("#user-table > tbody > tr").hide();
+	var temp = $("#user-table > tbody > tr > td:nth-child(6n):contains('" + k + "')");
+
+	//if((parseInt("#user-table > tbody > tr > td:nth-child(6n)"))<(k))
+	//	var temp = $("#user-table > tbody > tr > td:nth-child(6n)");		
+	$(temp).parent().show();
+      
+      	})
+	})
 
 </script>
 </head>
@@ -693,7 +697,7 @@ $maxpro =$user['user_goal'] * 0.15;
 
 $sql1 = "SELECT * FROM diet";
 $result1 = $conn->query($sql1);
-while($result1=mysqli_fetch_array( $jb_result ) ) {
+while($row=mysqli_fetch_array( $result1 ) ) {
   echo '<tr><td>' . $row['diet_id']. '</td><td>'. $row['diet_grains'] . '</td><td>' .$row['diet_meat']. '</td><td>'. $row['diet_vet'] .'</td><td>'. $row['diet_else'] .'</td><td>'. $row['diet_calory'] .'</td></tr>';
  
 }
