@@ -88,40 +88,26 @@ else //echo "0 results";
 
 </style>
 </script>
-<script type="text/javascript">
-
-$(document).ready(function() {  
-      $("#keyword").keyup(function() {
-        var k = $(this).val();
-	$("#user-table > tbody > tr").hide();
-	var temp = $("#user-table > tbody > tr > td:nth-child(6n):contains('" + k + "')");
-
-	//if((parseInt("#user-table > tbody > tr > td:nth-child(6n)"))<(k))
-	//	var temp = $("#user-table > tbody > tr > td:nth-child(6n)");		
-	$(temp).parent().show();
-      
-      	})
-	})
-
-</script>
-
 
 <script>
 function myFunction() {
   // Declare variables
-  var input, table, tr, td, i, txtValue;
+  var input, table, tr, td, i, txtValue,tv,iv;
   input = document.getElementById("myInput");
   table = document.getElementById("user-table");
   tr = table.getElementsByTagName("tr");
 
   // Loop through all table rows, and hide those who don't match the search query
-  for (i = 0; i < tr.length; i++) {
+  for (i = 1; i < tr.length; i++) {
     td = tr[i].getElementsByTagName("td")[5];
-    if (td>Number(input)) {
+    tv=(parseInt(($(td).html())));  
+   iv=(parseInt($(input).val())); 
+
+    if(iv>=tv){
         tr[i].style.display = "";
       } else {
         tr[i].style.display = "none";
-      }
+  }
     }
   }
 </script>
