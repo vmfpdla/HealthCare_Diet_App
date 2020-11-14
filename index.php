@@ -145,18 +145,18 @@
   <br><br><br>
 
   <div style="margin-left:50px;">
-    <h1 >오늘의 운동</h3>
-    <h3 class="mb-2 text-muted">Today's exercise</h3>
+    <p style="font-size:80px;">오늘의 운동</p>
+    <p class="mb-2 text-muted" style="font-size:70px;">Today's exercise</p>
   </div>
   <br>
   <div class="card exercise-card" style="float:left; margin:0 100px;">
     <div class="card-body">
         <img src="./walking.png"  width="100" height="100"/>
-        <p style="font-size:50px; margin-bottom:0; color:#f38181;"><?php echo $walking['doexercise_calory'];?></p>
-        <p style="font-size:30px; color:gray;">Kcal</p>
+        <p style="font-size:60px; margin-bottom:0; color:#f38181;"><?php echo $walking['doexercise_calory'];?></p>
+        <p style="font-size:40px; color:gray;">Kcal</p>
         <div>
-          <p style="font-size:25px; float:left; margin-left:40px;"><?php echo $walking['doexercise_minute'];?> min</p>
-          <p style="font-size:25px; "><?php echo $walking['doexercise_distance'];?> km</p>
+          <p style="font-size:30px; float:left; margin-left:40px;"><?php echo $walking['doexercise_minute'];?> min</p>
+          <p style="font-size:30px; "><?php echo $walking['doexercise_distance'];?> km</p>
 	     </div>
     </div>
   </div>
@@ -164,11 +164,11 @@
   <div class="card exercise-card" style="margin-right:100px;">
     <div class="card-body">
         <img src="./running.png"  width="100" height="100"/>
-        <p style="font-size:50px; margin-bottom:0; color:#f38181;"><?php echo $running['doexercise_calory'];?></p>
-        <p style="font-size:30px; color:gray;">Kcal</p>
+        <p style="font-size:60px; margin-bottom:0; color:#f38181;"><?php echo $running['doexercise_calory'];?></p>
+        <p style="font-size:40px; color:gray;">Kcal</p>
         <div>
-          <p style="font-size:25px; float:left; margin-left:40px;"><?php echo $running['doexercise_minute'];?> min</p>
-          <p style="font-size:25px; "><?php echo $running['doexercise_distance'];?> km</p>
+          <p style="font-size:30px; float:left; margin-left:40px;"><?php echo $running['doexercise_minute'];?> min</p>
+          <p style="font-size:30px; "><?php echo $running['doexercise_distance'];?> km</p>
         </div>
     </div>
   </div>
@@ -176,42 +176,42 @@
   <br><br><br><br>
   <a href="app://application">Call Android Activity</a>
   <div style="margin-left:50px;">
-    <h1 >오늘의 영양소</h3>
-    <h3 class="mb-2 text-muted">Today's nutrients</h3>
+    <p style="font-size:80px;">오늘의 영양소</p>
+    <p class="mb-2 text-muted" style="font-size:70px;">Today's nutrients</p>
   </div>
   <br>
   <div class="card nutrients-card" style="margin:0 100px; height:350px;">
     <div class="card-body">
       <br><br>
       <div>
-        <p style="float:left; margin-right:20px;" > 칼로리 </p>
+        <p style="margin-right:20px; font-size:40px;" > 칼로리 </p>
         <div class="progress" style="height:30px;" >
           <div class="progress-bar bg-success" role="progressbar" style="width:  <?php echo $kcal/$user['user_goal']*100;?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
         </div>
-        <p style="text-align:center;"><?php echo $kcal."/".$user['user_goal'];?></p>
+        <p style="text-align:center; font-size:30px;"><?php echo $kcal."/".$user['user_goal'];?></p>
       </div>
       <br><br>
       <div class="carprofat">
         <div style="float:left; width:150px; text-align:center; margin:0 70px;">
-          <p> 탄수화물 </p>
+          <p style="font-size:40px;"> 탄수화물 </p>
           <div class="progress" >
             <div class="progress-bar bg-info" role="progressbar" style="width: <?php echo $car/$maxcar*100;?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"> </div>
           </div>
-          <p><?php echo $car."/".$maxcar;?></p>
+          <p style="font-size:30px;"><?php echo $car."/".$maxcar;?></p>
         </div>
         <div style="float:left; width:150px; text-align:center; margin-right: 70px;">
-          <p> 단백질 </p>
+          <p style="font-size:40px;"> 단백질 </p>
           <div class="progress" >
             <div class="progress-bar bg-info" role="progressbar" style="width: <?php echo $pro/$maxpro*100;?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"> </div>
           </div>
-          <p><?php echo $pro."/".$maxpro;?></p>
+          <p style="font-size:30px;"><?php echo $pro."/".$maxpro;?></p>
         </div>
         <div style="float:left; width:150px; text-align:center;">
-          <p> 지방 </p>
+          <p style="font-size:40px;"> 지방 </p>
           <div class="progress" >
             <div class="progress-bar bg-info" role="progressbar" style="width: <?php echo $fat/$maxfat*100;?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
           </div>
-          <p><?php echo $fat."/".$maxfat;?></p>
+          <p style="font-size:30px;"><?php echo $fat."/".$maxfat;?></p>
         </div>
       </div>
     </div>
