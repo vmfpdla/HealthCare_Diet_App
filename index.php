@@ -180,15 +180,15 @@
     <p class="mb-2 text-muted" style="font-size:70px;">Today's nutrients</p>
   </div>
   <br>
-  <div class="card nutrients-card" style="margin:0 100px; height:350px;">
+  <div class="card nutrients-card" style="margin:0 100px; height:500px;">
     <div class="card-body">
       <br><br>
-      <div>
+      <div style="text-align:center">
         <p style="margin-right:20px; font-size:40px;" > 칼로리 </p>
         <div class="progress" style="height:30px;" >
           <div class="progress-bar bg-success" role="progressbar" style="width:  <?php echo $kcal/$user['user_goal']*100;?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
         </div>
-        <p style="text-align:center; font-size:30px;"><?php echo $kcal."/".$user['user_goal'];?></p>
+        <p style="font-size:30px;"><?php echo $kcal."/".$user['user_goal'];?></p>
       </div>
       <br><br>
       <div class="carprofat">
