@@ -804,15 +804,6 @@ if($arr_diet[$j][5]>$arr_diet[$j+1][5]){
     </p>
   </div>
 </a>
-<a href="miband.php">
-  <div class="navIcons" style="text-align:center;">
-    <br/>
-    <i class="navIcon fas fa-heartbeat navdi" id="navMiband" aria-hidden="true"></i>
-    <p class="navName navdp">
-      Miband
-    </p>
-  </div>
-</a>
 <a href="static.php">
   <div class="navIcons" style="text-align:center;">
     <br/>
