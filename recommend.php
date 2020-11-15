@@ -757,30 +757,7 @@ if($arr_diet[$j][5]>$arr_diet[$j+1][5]){
 </div>
 
 <br /><br /><br />
-<nav class="navbar fixed-bottom navd">
-  <a href="index.php">
-    <div class="navIcons" style="text-align:center;">
-      <br />
-      <i class="navIcon fas fa-home navdi" id="navHome" aria-hidden="true"></i>
-      <p class="navName navdp"> Home </p>
-    </div>
-  </a>
-  <a href="recommend.php">
-    <div class="navIcons" style="text-align:center;">
-      <br />
-      <i class="navIcon fas fa-utensils navdi" id="navDiet" aria-hidden="true"></i>
-      <p class="navName navdp"> Diet </p>
-    </div>
-  </a>
 
-  <a href="static.php">
-    <div class="navIcons" style="text-align:center;">
-      <br />
-      <i class="navIcon far fa-chart-bar navdi" id="navChart" aria-hidden="true"></i>
-      <p class="navName navdp"> Chart </p>
-    </div>
-  </a>
-</nav>
 
 
 
