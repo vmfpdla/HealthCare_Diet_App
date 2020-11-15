@@ -11,6 +11,10 @@
   $car =0; // 탄수화물
   $fat =0; // 지방
   $pro =0; // 단백질
+  $walking_calory;
+  $running_calory;
+  $recommend_walking;
+  $recommend_running;
 
   $sql = "SELECT * FROM user WHERE user_id='$user_id'";
   $result = $conn->query($sql);
@@ -34,8 +38,16 @@
   if ($result1->num_rows > 0) { // 여러줄 가져오는 경우
 
     while($row = $result1->fetch_assoc()) {
-      if($row['exercise_id']==1) $walking = $row;
-      else if($row['exercise_id']==2) $running = $row;
+      if($row['exercise_id']==1)
+      {
+        $walking = $row;
+        $walking_calory = $row['exercise_calory'];
+      }
+      else if($row['exercise_id']==2)
+      {
+        $running = $row;
+        $running_calory = $row['exercise_calory'];
+      }
     // echo $row['exercise_name'] ." / " .$row['doexercise_minute'] ."분 / ".$row['doexercise_calory']."Kcal";
     // echo nl2br("\n");
     }
@@ -61,13 +73,13 @@
 
   while($row = $result2->fetch_assoc()) {
     if($row['eaten_serving']==0){ # 0인분인경우
-      $kcal = $kcal + $row['food_calory']*0.5;
+      $kcal = $kcal + $row['eaten_calory'];
       $car = $car + $row['food_car']*0.5;
       $fat = $fat + $row['food_fat']*0.5;
       $pro = $pro + $row['food_pro']*0.5;
    }
    else{
-    $kcal = $kcal + $row['food_calory']*$row['eaten_serving'];
+    $kcal = $kcal + $row['eaten_calory'];
     $car = $car + $row['food_car']*$row['eaten_serving'];
     $fat = $fat + $row['food_fat']*$row['eaten_serving'];
     $pro = $pro + $row['food_pro']*$row['eaten_serving'];
@@ -77,7 +89,9 @@
   }
 
   }
-  else //echo "0 results";
+
+  $recommend_walking = ($kcal-$user['user_goal'])/$walking_calory;
+  $recommend_running = ($kcal-$user['user_goal'])/$running_calory;
 
 ?>
 
@@ -95,15 +109,15 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./css/jaehyun.css?ver=3">
+  <link rel="stylesheet" href="./css/jaehyun.css?ver=2">
   <!-- 아이콘 -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/v4-shims.css">
   <!-- 스크립트 -->
-  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
   <script src="./js/nav.js"></script>
 
   <style>
@@ -128,6 +142,8 @@
       color: white;
       background-color: #8DA5BD;
     }
+
+
   </style>
 
 
@@ -183,14 +199,50 @@
   <div class="card nutrients-card" style="margin:0 100px; height:500px;">
     <div class="card-body">
       <br><br>
-      <div style="text-align:center">
+      <div style="text-align:center" data-toggle="modal" data-target="#exampleModal" >
         <p style="margin-right:20px; font-size:40px;" > 칼로리 </p>
         <div class="progress" style="height:30px;" >
-          <div class="progress-bar bg-success" role="progressbar" style="width:  <?php echo $kcal/$user['user_goal']*100;?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+          <div class="progress-bar bg-success" id="progress_kcal" role="progressbar" style="width:  <?php echo $kcal/$user['user_goal']*100;?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
         </div>
         <p style="font-size:30px;"><?php echo $kcal."/".$user['user_goal'];?></p>
+        <div id="notification_div" style="position:absolute; right:10%; width:200px; ">
+          <i class="fas fa-exclamation-circle misi" style="font-size:30px;"></i>
+          <p style="font-size:20px; ">총 <?php echo ($kcal-$user['user_goal']);?> Kcal 초과</p>
+        </div>
       </div>
-      <br><br>
+
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog" >
+          <div class="modal-content" style="width:600px; height:600px; display:table;" >
+            <div style="text-align:center;">
+              <br>
+              <h1 class="modal-title" id="exampleModalLabel">추천운동</h1>
+              <p style="font-size:50px;"><?php echo ($kcal-$user['user_goal']);?> kcal</p>
+            </div>
+            <div class="modal-body">
+              <div class="card exercise-card" style="float:left; width:200px; height:300px; margin-left:50px;">
+                <div class="card-body">
+                    <img src="./walking.png"  width="70" height="70"/>
+                    <p style="font-size:60px; margin-bottom:0; color:#f38181;"><?php echo  $recommend_walking;?></p>
+                    <p style="font-size:35px; color:gray;">Min</p>
+                </div>
+              </div>
+              <div class="card exercise-card" style=" width:200px; height:300px;">
+                <div class="card-body">
+                    <img src="./running.png"  width="70" height="70"/>
+                    <p style="font-size:60px; margin-bottom:0; color:#f38181;"><?php echo $recommend_running;?></p>
+                    <p style="font-size:35px; color:gray;">Min</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <br><br><br>
       <div class="carprofat">
         <div style="float:left; width:150px; text-align:center; margin:0 70px;">
           <p style="font-size:40px;"> 탄수화물 </p>
@@ -249,5 +301,24 @@
       </div>
     </a>
   </nav>
+  <script>
+    var kcal = Number('<?php echo $kcal?>');
+    var goal = Number('<?php echo $user['user_goal']?>');
+
+
+    if(kcal>goal){
+      document.getElementById('progress_kcal').className="bg-danger";
+      document.getElementById('exampleModal').style.display='none';
+      document.getElementById('notification_div').style.display='block';
+    }
+    else{
+      document.getElementById('progress_kcal').className="bg-success";
+      document.getElementById('exampleModal').style.display='block';
+      document.getElementById('notification_div').style.display='none';
+    }
+  </script>
+
+
+}
 </body>
 </html>
