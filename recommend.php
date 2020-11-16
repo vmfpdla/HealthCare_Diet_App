@@ -125,9 +125,6 @@ else //echo "0 results";
   height:500px;
   overflow-y:scroll;
 }
-tr.tile{
-  position:absolute;
-}
 
 
 </style>
@@ -676,7 +673,7 @@ else{
       <input style="font-size : 50px; width:50%; height:100px; text-align:center;"type="text" id="myInput" onkeyup="myFunction()" placeholder="칼로리입력">
     </div> <thead>
       <br><br><br>
-      <tr class="title">
+      <tr class="tile">
         <th>식단번호</th>
         <th>곡류</th>
         <th>고기류</th>
