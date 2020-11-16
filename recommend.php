@@ -122,7 +122,7 @@ else //echo "0 results";
 </script>
 <style>
 .box {
-  height:500px;
+  height:450px;
   overflow-y:scroll;
 }
 
