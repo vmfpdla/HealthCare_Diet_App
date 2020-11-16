@@ -262,13 +262,13 @@ else{
   <div class="card-header card-header1">
     <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
       <li class="nav-item" role="presentation">
-        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#breakfast" role="tab" aria-controls="home" aria-selected="true">아침</a>
+        <a class="nav-link active rea" id="home-tab" data-toggle="tab" href="#breakfast" role="tab" aria-controls="home" aria-selected="true">아침</a>
       </li>
       <li class="nav-item" role="presentation">
-        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#lunch" role="tab" aria-controls="profile" aria-selected="false">점심</a>
+        <a class="nav-link rea" id="profile-tab" data-toggle="tab" href="#lunch" role="tab" aria-controls="profile" aria-selected="false">점심</a>
       </li>
       <li class="nav-item" role="presentation">
-        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#dinner" role="tab" aria-controls="contact" aria-selected="false">저녁</a>
+        <a class="nav-link rea" id="contact-tab" data-toggle="tab" href="#dinner" role="tab" aria-controls="contact" aria-selected="false">저녁</a>
       </li>
     </ul>
   </div>
