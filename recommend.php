@@ -413,11 +413,10 @@ else{
 
     <div class="tab-pane fade" id="lunch" role="tabpanel" aria-labelledby="profile-tab">
         <div class="card-body" id="camera_2" style="text-align: center;">
-    <form method="POST" action="app://application">
-      <input type="hidden" name="eatentime" value="2" />
-      <button type="submit" class="btn btn-secondary"id="btn1">음식입력</button>
+   
+      <a href="app://"><button class="btn btn-secondary"id="btn1">음식입력</button></a>
       <!--  <button type="submit"> <i class="fas fa-utensils cardi" style="font-size:100px;"aria-hidden="true"></i></button>-->
-    </form>
+
   </div>
 
     <div style="float:left; margin:50px 50px;  width:15%;">
@@ -538,11 +537,8 @@ else{
 
 
   <div class="card-body" id="camera_3" style="text-align: center;">
-    <form method="POST" action="app://application">
-      <input type="hidden" name="eatentime" value="3" />
-      <button type="submit" class="btn btn-secondary"id="btn1">음식입력</button>
-      <!--<button type="submit"> <i class="fas fa-utensils cardi" style="font-size:100px;"aria-hidden="true"></i></button>-->
-    </form>
+
+  <a href="app://"><button class="btn btn-secondary"id="btn1">음식입력</button></a>
   </div>
 
 
