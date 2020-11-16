@@ -268,15 +268,15 @@ else{
   <div class="tab-content" id="myTabContent" >
     <div class="tab-pane fade show active" id="breakfast" role="tabpanel" aria-labelledby="home-tab">
 
-      <div class="card-body" id="camera_2" style="text-align: center; height:80px;">
+      <div class="card-body" id="camera_1" style="text-align: center; height:80px;">
         <form method="POST" action="foodinput.php">
-          <input type="hidden" name="eatentime" value="2" />
+          <input type="hidden" name="eatentime" value="1" />
           <button type="submit" id="btn1">음식입력</button>
           <!--  <button type="submit"> <i class="fas fa-utensils cardi" style="font-size:100px;"aria-hidden="true"></i></button>-->
         </form>
       </div>
 
-      <div class="card-body" id="diet_2">
+      <div class="card-body" id="diet_1">
         <div style="float:left; margin:50px 50px;  width:15%;">
           <p style="width: 100%;"> <?php
           if($is_lunch==1){
