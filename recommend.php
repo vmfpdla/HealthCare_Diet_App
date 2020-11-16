@@ -1,60 +1,60 @@
 <?php
 
-  require_once("./dbconn.php");
+require_once("./dbconn.php");
 
-  $today = date("Y-m-d");
-  $kcal = 0; //칼로리
-  $car =0; // 탄수화물
-  $fat =0; // 지방
-  $pro =0; // 단백질
+$today = date("Y-m-d");
+$kcal = 0; //칼로리
+$car =0; // 탄수화물
+$fat =0; // 지방
+$pro =0; // 단백질
 
 
-  $user_id = 1; # 1번 가져왔다고 가정
-  $sql = "SELECT * FROM user WHERE user_id='$user_id'";
-  $result = $conn->query($sql);
+$user_id = 1; # 1번 가져왔다고 가정
+$sql = "SELECT * FROM user WHERE user_id='$user_id'";
+$result = $conn->query($sql);
 
-  if ($result->num_rows > 0) { // 여러줄 가져오는 경우
+if ($result->num_rows > 0) { // 여러줄 가져오는 경우
 
-    while($row = $result->fetch_assoc()) {
-      $user = $row;
-    }
+  while($row = $result->fetch_assoc()) {
+    $user = $row;
   }
-  else {
+}
+else {
   echo "유저 접속 오류";
-  }
-  //
-  $maxcar = $user['user_goal'] * 0.65;
-  $maxfat =$user['user_goal'] * 0.2;
-  $maxpro =$user['user_goal'] * 0.15;
+}
+//
+$maxcar = $user['user_goal'] * 0.65;
+$maxfat =$user['user_goal'] * 0.2;
+$maxpro =$user['user_goal'] * 0.15;
 
-  // 오늘 먹은 음식 조회
-  $sql1 = "SELECT * FROM eatenfood INNER JOIN foodinfo on eatenfood.food_id = foodinfo.food_id WHERE user_id='$user_id' and eaten_day='$today'";
-  $result1 = $conn->query($sql1);
+// 오늘 먹은 음식 조회
+$sql1 = "SELECT * FROM eatenfood INNER JOIN foodinfo on eatenfood.food_id = foodinfo.food_id WHERE user_id='$user_id' and eaten_day='$today'";
+$result1 = $conn->query($sql1);
 
-  if ($result1 -> num_rows>0) { // 여러줄 가져오는 경우
+if ($result1 -> num_rows>0) { // 여러줄 가져오는 경우
 
-    while($row = $result1->fetch_assoc()) {
-      if($row['eaten_serving']==0)
-      { # 0인분인경우
-         $kcal = $kcal + $row['food_calory']*0.5;
-         $car = $car + $row['food_car']*0.5;
-         $fat = $fat + $row['food_fat']*0.5;
-         $pro = $pro + $row['food_pro']*0.5;
-      }
-      else
-      {
-         $kcal = $kcal + $row['food_calory']*$row['eaten_serving'];
-         $car = $car + $row['food_car']*$row['eaten_serving'];
-         $fat = $fat + $row['food_fat']*$row['eaten_serving'];
-         $pro = $pro + $row['food_pro']*$row['eaten_serving'];
-      }
-      if($row['eaten_time']==1) // 아침인경우
-      {
+  while($row = $result1->fetch_assoc()) {
+    if($row['eaten_serving']==0)
+{ # 0인분인경우
+ $kcal = $kcal + $row['food_calory']*0.5;
+ $car = $car + $row['food_car']*0.5;
+ $fat = $fat + $row['food_fat']*0.5;
+ $pro = $pro + $row['food_pro']*0.5;
+}
+else
+{
+ $kcal = $kcal + $row['food_calory']*$row['eaten_serving'];
+ $car = $car + $row['food_car']*$row['eaten_serving'];
+ $fat = $fat + $row['food_fat']*$row['eaten_serving'];
+ $pro = $pro + $row['food_pro']*$row['eaten_serving'];
+}
+if($row['eaten_time']==1) // 아침인경우
+{
 
-      }
-    }
-  }
-  else //echo "0 results";
+}
+}
+}
+else //echo "0 results";
 
 
 ?>
@@ -63,7 +63,6 @@
 <html>
 <head>
   <title></title>
-  <link rel="stylesheet" href="./css/jaehyun.css">
 
   <link
   rel="stylesheet"
@@ -72,6 +71,7 @@
   rel="stylesheet"
   href="https://use.fontawesome.com/releases/v5.14.0/css/v4-shims.css">
   <link rel="stylesheet" href="/resource/css/bootstrap.css">
+  <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
   <link
   rel="stylesheet"
   href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -88,10 +88,13 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
 </style>
+
+<link rel="stylesheet" href="./css/jaehyun.css?ver=2">
+
 </script>
 
 <script>
-function myFunction() {
+  function myFunction() {
   // Declare variables
   var input, table, tr, td, i, txtValue,tv,iv,count;
 
@@ -105,22 +108,22 @@ function myFunction() {
     tv=(parseInt(($(td).html())));
     iv=(parseInt($(input).val()));
     if((iv>=tv)){
-        tr[i].style.display = "";
-        count=count+1;
-      } else {
-        tr[i].style.display = "none";
-      }
+      tr[i].style.display = "";
+      count=count+1;
+    } else {
+      tr[i].style.display = "none";
     }
   }
+}
 </script>
 </head>
 <body>
   <nav class="navbar fixed-top">
-    <p class="navp">Smart PT</p>
+    <p class="navp">SmartPT</p>
     <a href="userInsert3.html">
      <i class="fa fa-user-circle navi"></i>
-    </a>
-  </nav>
+   </a>
+ </nav>
 
  <br><br>
  <div clas="container" style="text-align: center;">
@@ -198,10 +201,6 @@ function myFunction() {
 <br><br>
 
 
-
-
-
-
 <?php
 // 아침에 먹은 식단을 가져온다.
 $sql3 = "SELECT * FROM eatenfood INNER JOIN foodinfo on eatenfood.food_id = foodinfo.food_id WHERE user_id='$user_id' and eaten_day='$today' and eaten_time=1";
@@ -210,11 +209,11 @@ $result3 = $conn->query($sql3);
 if ($result3 -> num_rows>0) { // 여러줄 가져오는 경우
 
 //아침에 먹은게 하나라도 있는 경우
-$is_morning =1;
+  $is_morning =1;
 }
 else{
 // 아침에 먹은게 없는경우에는 카메라 아이콘 보여준다.
-$is_morning =0;
+  $is_morning =0;
 }
 
 // 점심에 먹은 식단을 가져온다.
@@ -224,11 +223,11 @@ $result4 = $conn->query($sql4);
 if ($result4 -> num_rows>0) { // 여러줄 가져오는 경우
 
 //점심에 먹은게 하나라도 있는 경우
-$is_lunch =1;
+  $is_lunch =1;
 }
 else{
 // 점심에 먹은게 없는경우에는 카메라 아이콘 보여준다.
-$is_lunch =0;
+  $is_lunch =0;
 }
 
 // 저녁에 먹은 식단을 가져온다.
@@ -239,11 +238,11 @@ $result5 = $conn->query($sql5);
 if ($result5 -> num_rows>0) { // 여러줄 가져오는 경우
 
 //저녁에 먹은게 하나라도 있는 경우
-$is_dinner =1;
+  $is_dinner =1;
 }
 else{
 // 저녁에 먹은게 없는경우에는 카메라 아이콘 보여준다.
-$is_dinner =0;
+  $is_dinner =0;
 }
 
 ?>
@@ -265,231 +264,227 @@ $is_dinner =0;
   </div>
 
 
-  <div class="tab-content" id="myTabContent">
+  <div class="tab-content" id="myTabContent" >
     <div class="tab-pane fade show active" id="breakfast" role="tabpanel" aria-labelledby="home-tab">
 
-      <div class="card-body" id="camera_2" style="text-align: center;">
+      <div class="card-body" id="camera_1" style="text-align: center; height:80px;">
         <form method="POST" action="foodinput.php">
-          <input type="hidden" name="eatentime" value="2" />
+          <input type="hidden" name="eatentime" value="1" />
           <button type="submit" id="btn1">음식입력</button>
           <!--  <button type="submit"> <i class="fas fa-utensils cardi" style="font-size:100px;"aria-hidden="true"></i></button>-->
         </form>
       </div>
-      <div class="card-body" id="diet_2">
+
+
         <div style="float:left; margin:50px 50px;  width:15%;">
           <p style="width: 100%;"> <?php
-            if($is_lunch==1){
+          if($is_lunch==1){
             $lunch_kcal =0;
             $lunch_car =0;
             $lunch_pro =0;
             $lunch_fat =0;
             while($row = $result4->fetch_assoc()) {
-            if ($row['eaten_serving']==0){
-            $lunch_kcal = $lunch_kcal+$row['food_calory']*0.5;
-            $lunch_car = $lunch_car+$row['food_car']*0.5;
-            $lunch_pro = $lunch_pro+$row['food_pro']*0.5;
-            $lunch_fat = $lunch_fat+$row['food_fat']*0.5;
+              if ($row['eaten_serving']==0){
+                $lunch_kcal = $lunch_kcal+$row['food_calory']*0.5;
+                $lunch_car = $lunch_car+$row['food_car']*0.5;
+                $lunch_pro = $lunch_pro+$row['food_pro']*0.5;
+                $lunch_fat = $lunch_fat+$row['food_fat']*0.5;
+              }
+              else{
+                $lunch_kcal = $lunch_kcal+$row['food_calory']*$row['eaten_serving'];
+                $lunch_car =  $lunch_car+$row['food_car']*$row['eaten_serving'];
+                $lunch_pro =  $lunch_pro+$row['food_pro']*$row['eaten_serving'];
+                $lunch_fat =  $lunch_fat+$row['food_fat']*$row['eaten_serving'];
+                if($row['eaten_serving']==0){
+                  echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(0.5 인분)";
+                  echo nl2br("\n\n");
+                }
+                else{
+                  echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(".$row['eaten_serving']." 인분)";
+                  echo nl2br("\n\n");
+                }
+              }
+            }
           }
-          else{
-          $lunch_kcal = $lunch_kcal+$row['food_calory']*$row['eaten_serving'];
-          $lunch_car =  $lunch_car+$row['food_car']*$row['eaten_serving'];
-          $lunch_pro =  $lunch_pro+$row['food_pro']*$row['eaten_serving'];
-          $lunch_fat =  $lunch_fat+$row['food_fat']*$row['eaten_serving'];
-          if($row['eaten_serving']==0){
-          echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(0.5 인분)";
-          echo nl2br("\n\n");
-        }
-        else{
-        echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(".$row['eaten_serving']." 인분)";
-        echo nl2br("\n\n");
-      }
-    }
-  }
-}
-?></p>
+          ?></p>
 
-  </div>
+        </div>
 
 
 
 
 
-<div style="margin:20px 30px; float:left; width:60%; " class="smallbar">
-  <div class="container" style="margin-bottom:-25px;">
-    <div class="container" style="float:left; width:20%;">
-      <p class="pr" align="left;"> Kcal </p>
+        <div style="margin:20px 30px; float:left; width:60%; " class="smallbar">
+          <div class="container" style="margin-bottom:-25px;">
+            <div class="container" style="float:left; width:20%;">
+              <p class="pr" align="left;"> Kcal </p>
 
+            </div>
+
+            <div class="progress rounded-pill" style="height:25px;">
+              <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar"
+              style="width: <?php echo $lunch_kcal/1500*100;?>%" aria-valuenow="10" aria-valuemin="0"
+              aria-valuemax="100">
+              <p class="pr" style="padding-top:15px;"> <?php echo $lunch_kcal ." / 1500" ?> </p>
+            </div>
+          </div>
+        </div>
+
+        <br><br>
+
+        <div class="container" style="margin-bottom:-20px;">
+          <div class="container" style="float:left; width:20%;">
+            <p class="pr" align="left;"> 탄 </p>
+
+          </div>
+
+          <div class="progress rounded-pill" style="height:20px;">
+            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+            style="width:  <?php echo $lunch_car/1500*100;?>%" aria-valuenow="10" aria-valuemin="0"
+            aria-valuemax="100">
+            <p class="pr" style="padding-top:15px;"> <?php echo $lunch_car ." / 1500" ?> </p>
+          </div>
+        </div>
+
+
+      </div>
+      <br><br>
+
+
+      <div class="container" style="margin-bottom:-20px;">
+        <div class="container" style="float:left; width:20%;">
+          <p class="pr" align="left;"> 단 </p>
+
+        </div>
+
+        <div class="progress rounded-pill" style="height:20px;">
+          <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar"
+          style="width:  <?php echo $lunch_pro/1500*100;?>%" aria-valuenow="10" aria-valuemin="0"
+          aria-valuemax="100">
+          <p class="pr" style="padding-top:15px;"> <?php echo $lunch_pro ." / 1500" ?> </p>
+        </div>
+      </div>
     </div>
 
-    <div class="progress rounded-pill" style="height:25px;">
-      <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar"
-      style="width: <?php echo $lunch_kcal/1500*100;?>%" aria-valuenow="10" aria-valuemin="0"
-      aria-valuemax="100">
-      <p class="pr" style="padding-top:15px;"> <?php echo $lunch_kcal ." / 1500" ?> </p>
+
+    <br><br>
+
+    <div class="container" style="font-weight: bold;">
+      <div class="container" style="float:left; width:20%;">
+        <p class="pr" align="left;"> 지 </p>
+
+      </div>
+
+      <div class="progress rounded-pill" style="height:20px;">
+        <div class="progress-bar progress-bar-striped bg-info progress-bar-animated" role="progressbar"
+        style="width:  <?php echo $lunch_fat/1500*100;?>%" aria-valuenow="10" aria-valuemin="0"
+        aria-valuemax="100">
+        <p class="pr" style="padding-top:15px;"> <?php echo $lunch_fat ." / 1500" ?> </p>
+         </div>
+       </div>
+      </div>
+
+       </div>
     </div>
-  </div>
-</div>
-
-<br><br>
-
-<div class="container" style="margin-bottom:-20px;">
-  <div class="container" style="float:left; width:20%;">
-    <p class="pr" align="left;"> 탄 </p>
-
-  </div>
-
-  <div class="progress rounded-pill" style="height:20px;">
-    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
-    style="width:  <?php echo $lunch_car/1500*100;?>%" aria-valuenow="10" aria-valuemin="0"
-    aria-valuemax="100">
-    <p class="pr" style="padding-top:15px;"> <?php echo $lunch_car ." / 1500" ?> </p>
-  </div>
-</div>
 
 
-</div>
-<br><br>
-
-
-<div class="container" style="margin-bottom:-20px;">
-  <div class="container" style="float:left; width:20%;">
-    <p class="pr" align="left;"> 단 </p>
-
-  </div>
-
-  <div class="progress rounded-pill" style="height:20px;">
-    <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar"
-    style="width:  <?php echo $lunch_pro/1500*100;?>%" aria-valuenow="10" aria-valuemin="0"
-    aria-valuemax="100">
-    <p class="pr" style="padding-top:15px;"> <?php echo $lunch_pro ." / 1500" ?> </p>
-  </div>
-</div>
-</div>
-
-
-<br><br>
-
-<div class="container" style="font-weight: bold;">
-  <div class="container" style="float:left; width:20%;">
-    <p class="pr" align="left;"> 지 </p>
-
-  </div>
-
-  <div class="progress rounded-pill" style="height:20px;">
-    <div class="progress-bar progress-bar-striped bg-info progress-bar-animated" role="progressbar"
-    style="width:  <?php echo $lunch_fat/1500*100;?>%" aria-valuenow="10" aria-valuemin="0"
-    aria-valuemax="100">
-    <p class="pr" style="padding-top:15px;"> <?php echo $lunch_fat ." / 1500" ?> </p>
-  </div>
-</div>
-</div>
-</div>
-</div>
-
-
-
-
-
-</div>
-<div class="tab-pane fade" id="lunch" role="tabpanel" aria-labelledby="profile-tab">
-
-
-  <div class="card-body" id="camera_2" style="text-align: center;">
+    <div class="tab-pane fade" id="lunch" role="tabpanel" aria-labelledby="profile-tab">
+        <div class="card-body" id="camera_2" style="text-align: center;">
     <form method="POST" action="foodinput.php">
       <input type="hidden" name="eatentime" value="2" />
       <button type="submit" id="btn1">음식입력</button>
       <!--  <button type="submit"> <i class="fas fa-utensils cardi" style="font-size:100px;"aria-hidden="true"></i></button>-->
     </form>
   </div>
-  <div class="card-body" id="diet_2">
+
     <div style="float:left; margin:50px 50px;  width:15%;">
       <p style="width: 100%;"> <?php
-        if($is_lunch==1){
+      if($is_lunch==1){
         $lunch_kcal =0;
         $lunch_car =0;
         $lunch_pro =0;
         $lunch_fat =0;
         while($row = $result4->fetch_assoc()) {
-        if ($row['eaten_serving']==0){
-        $lunch_kcal = $lunch_kcal+$row['food_calory']*0.5;
-        $lunch_car = $lunch_car+$row['food_car']*0.5;
-        $lunch_pro = $lunch_pro+$row['food_pro']*0.5;
-        $lunch_fat = $lunch_fat+$row['food_fat']*0.5;
+          if ($row['eaten_serving']==0){
+            $lunch_kcal = $lunch_kcal+$row['food_calory']*0.5;
+            $lunch_car = $lunch_car+$row['food_car']*0.5;
+            $lunch_pro = $lunch_pro+$row['food_pro']*0.5;
+            $lunch_fat = $lunch_fat+$row['food_fat']*0.5;
+          }
+          else{
+            $lunch_kcal = $lunch_kcal+$row['food_calory']*$row['eaten_serving'];
+            $lunch_car =  $lunch_car+$row['food_car']*$row['eaten_serving'];
+            $lunch_pro =  $lunch_pro+$row['food_pro']*$row['eaten_serving'];
+            $lunch_fat =  $lunch_fat+$row['food_fat']*$row['eaten_serving'];
+            if($row['eaten_serving']==0){
+              echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(0.5 인분)";
+              echo nl2br("\n\n");
+            }
+            else{
+              echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(".$row['eaten_serving']." 인분)";
+              echo nl2br("\n\n");
+            }
+          }
+        }
       }
-      else{
-      $lunch_kcal = $lunch_kcal+$row['food_calory']*$row['eaten_serving'];
-      $lunch_car =  $lunch_car+$row['food_car']*$row['eaten_serving'];
-      $lunch_pro =  $lunch_pro+$row['food_pro']*$row['eaten_serving'];
-      $lunch_fat =  $lunch_fat+$row['food_fat']*$row['eaten_serving'];
-      if($row['eaten_serving']==0){
-      echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(0.5 인분)";
-      echo nl2br("\n\n");
-    }
-    else{
-    echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(".$row['eaten_serving']." 인분)";
-    echo nl2br("\n\n");
-  }
-}
-}
-}
-?></p>
+      ?></p>
 
-</div>
+    </div>
 
 
 
 
 
-<div style="margin:20px 30px; float:left; width:60%; " class="smallbar">
-  <div class="container" style="margin-bottom:-25px;">
+    <div style="margin:20px 30px; float:left; width:60%; " class="smallbar">
+      <div class="container" style="margin-bottom:-25px;">
+        <div class="container" style="float:left; width:20%;">
+          <p class="pr" align="left;"> Kcal </p>
+
+        </div>
+
+        <div class="progress rounded-pill" style="height:25px;">
+          <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar"
+          style="width: <?php echo $lunch_kcal/1500*100;?>%" aria-valuenow="10" aria-valuemin="0"
+          aria-valuemax="100">
+          <p class="pr" style="padding-top:15px;"> <?php echo $lunch_kcal ." / 1500" ?> </p>
+        </div>
+      </div>
+    </div>
+
+    <br><br>
+
+    <div class="container" style="margin-bottom:-20px;">
+      <div class="container" style="float:left; width:20%;">
+        <p class="pr" align="left;"> 탄 </p>
+
+      </div>
+
+      <div class="progress rounded-pill" style="height:20px;">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+        style="width:  <?php echo $lunch_car/1500*100;?>%" aria-valuenow="10" aria-valuemin="0"
+        aria-valuemax="100">
+        <p class="pr" style="padding-top:15px;"> <?php echo $lunch_car ." / 1500" ?> </p>
+      </div>
+    </div>
+
+
+  </div>
+  <br><br>
+
+
+  <div class="container" style="margin-bottom:-20px;">
     <div class="container" style="float:left; width:20%;">
-      <p class="pr" align="left;"> Kcal </p>
+      <p class="pr" align="left;"> 단 </p>
 
     </div>
 
-    <div class="progress rounded-pill" style="height:25px;">
-      <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar"
-      style="width: <?php echo $lunch_kcal/1500*100;?>%" aria-valuenow="10" aria-valuemin="0"
+    <div class="progress rounded-pill" style="height:20px;">
+      <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar"
+      style="width:  <?php echo $lunch_pro/1500*100;?>%" aria-valuenow="10" aria-valuemin="0"
       aria-valuemax="100">
-      <p class="pr" style="padding-top:15px;"> <?php echo $lunch_kcal ." / 1500" ?> </p>
+      <p class="pr" style="padding-top:15px;"> <?php echo $lunch_pro ." / 1500" ?> </p>
     </div>
   </div>
-</div>
-
-<br><br>
-
-<div class="container" style="margin-bottom:-20px;">
-  <div class="container" style="float:left; width:20%;">
-    <p class="pr" align="left;"> 탄 </p>
-
-  </div>
-
-  <div class="progress rounded-pill" style="height:20px;">
-    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
-    style="width:  <?php echo $lunch_car/1500*100;?>%" aria-valuenow="10" aria-valuemin="0"
-    aria-valuemax="100">
-    <p class="pr" style="padding-top:15px;"> <?php echo $lunch_car ." / 1500" ?> </p>
-  </div>
-</div>
-
-
-</div>
-<br><br>
-
-
-<div class="container" style="margin-bottom:-20px;">
-  <div class="container" style="float:left; width:20%;">
-    <p class="pr" align="left;"> 단 </p>
-
-  </div>
-
-  <div class="progress rounded-pill" style="height:20px;">
-    <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar"
-    style="width:  <?php echo $lunch_pro/1500*100;?>%" aria-valuenow="10" aria-valuemin="0"
-    aria-valuemax="100">
-    <p class="pr" style="padding-top:15px;"> <?php echo $lunch_pro ." / 1500" ?> </p>
-  </div>
-</div>
 </div>
 
 
@@ -507,14 +502,15 @@ $is_dinner =0;
     aria-valuemax="100">
     <p class="pr" style="padding-top:15px;"> <?php echo $lunch_fat ." / 1500" ?> </p>
   </div>
-</div>
-</div>
-</div>
-</div>
+        </div>
+            </div>
+        </div>
+
+
+    </div>
 
 
 
-</div>
 <div class="tab-pane fade" id="dinner" role="tabpanel" aria-labelledby="contact-tab">
 
 
@@ -526,156 +522,147 @@ $is_dinner =0;
     </form>
   </div>
 
-  <div class="card-body" id="diet_3">
+
+
     <div style="float:left; margin:50px 50px;  width:15%;">
       <p style="width: 100%;">
         <?php
         if($is_dinner==1){
-        $dinner_kcal =0;
-        $dinner_car =0;
-        $dinner_pro =0;
-        $dinner_fat =0;
-        while($row = $result5->fetch_assoc()) {
-        if ($row['eaten_serving']==0){
-        $dinner_kcal = $dinner_kcal+$row['food_calory']*0.5;
-        $dinner_car = $dinner_car+$row['food_car']*0.5;
-        $dinner_pro = $dinner_pro+$row['food_pro']*0.5;
-        $dinner_fat = $dinner_fat+$row['food_fat']*0.5;
-      }
-      else{
-      $dinner_kcal = $dinner_kcal+$row['food_calory']*$row['eaten_serving'];
-      $dinner_car =  $dinner_car+$row['food_car']*$row['eaten_serving'];
-      $dinner_pro =  $dinner_pro+$row['food_pro']*$row['eaten_serving'];
-      $dinner_fat =  $dinner_fat+$row['food_fat']*$row['eaten_serving'];
-      if($row['eaten_serving']==0){
-      echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(0.5 인분)";
-      echo nl2br("\n\n");
-    }
-    else{
-    echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(".$row['eaten_serving']." 인분)";
-    echo nl2br("\n\n");
-  }
-}
-}
-}
-?></p>
-</div>
-<div style="margin:20px 30px; float:left; width:60%;" class="smallbar">
-  <div class="container" style="margin-bottom:-25px;">
-    <div class="container" style="float:left; width:20%;">
-      <p class="pr" align="left;"> Kcal </p>
+          $dinner_kcal =0;
+          $dinner_car =0;
+          $dinner_pro =0;
+          $dinner_fat =0;
+          while($row = $result5->fetch_assoc()) {
+            if ($row['eaten_serving']==0){
+              $dinner_kcal = $dinner_kcal+$row['food_calory']*0.5;
+              $dinner_car = $dinner_car+$row['food_car']*0.5;
+              $dinner_pro = $dinner_pro+$row['food_pro']*0.5;
+              $dinner_fat = $dinner_fat+$row['food_fat']*0.5;
+            }
+            else{
+              $dinner_kcal = $dinner_kcal+$row['food_calory']*$row['eaten_serving'];
+              $dinner_car =  $dinner_car+$row['food_car']*$row['eaten_serving'];
+              $dinner_pro =  $dinner_pro+$row['food_pro']*$row['eaten_serving'];
+              $dinner_fat =  $dinner_fat+$row['food_fat']*$row['eaten_serving'];
+              if($row['eaten_serving']==0){
+                echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(0.5 인분)";
+                echo nl2br("\n\n");
+              }
+              else{
+                echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(".$row['eaten_serving']." 인분)";
+                echo nl2br("\n\n");
+              }
+            }
+          }
+        }
+        ?></p>
+      </div>
+      <div style="margin:20px 30px; float:left; width:60%;" class="smallbar">
+        <div class="container" style="margin-bottom:-25px;">
+          <div class="container" style="float:left; width:20%;">
+            <p class="pr" align="left;"> Kcal </p>
+          </div>
 
+          <div class="progress rounded-pill" style="height:25px;">
+            <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar"
+            style="width:  <?php echo $dinner_kcal/1500*100;?>%" aria-valuenow="10" aria-valuemin="0"
+            aria-valuemax="100">
+            <p class="pr" style="padding-top:15px;"> <?php echo $dinner_kcal ." / 1500" ?> </p>
+          </div>
+        </div>
+      </div>
+
+      <br><br>
+
+      <div class="container" style="margin-bottom:-20px;">
+        <div class="container" style="float:left; width:20%;">
+          <p class="pr" align="left;"> 탄 </p>
+
+        </div>
+
+        <div class="progress rounded-pill" style="height:20px;">
+          <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+          style="width: <?php echo $dinner_car/1500*100;?>%" aria-valuenow="10" aria-valuemin="0"
+          aria-valuemax="100">
+          <p class="pr" style="padding-top:15px;"> <?php echo $dinner_car ." / 1500" ?> </p>
+        </div>
+      </div>
     </div>
+    <br><br>
 
-    <div class="progress rounded-pill" style="height:25px;">
-      <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar"
-      style="width:  <?php echo $dinner_kcal/1500*100;?>%" aria-valuenow="10" aria-valuemin="0"
+
+    <div class="container" style="margin-bottom:-20px;">
+      <div class="container" style="float:left; width:20%;">
+        <p class="pr" align="left;"> 단 </p>
+      </div>
+      <div class="progress rounded-pill" style="height:20px;">
+        <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar"
+        style="width: <?php echo $dinner_pro/1500*100;?>%" aria-valuenow="10" aria-valuemin="0"
+        aria-valuemax="100">
+        <p class="pr" style="padding-top:15px;"> <?php echo $dinner_pro ." / 1500" ?> </p>
+          </div>
+        </div>
+      </div>
+
+
+  <br><br>
+
+      <div class="container" style="font-weight: bold;">
+        <div class="container" style="float:left; width:20%;">
+      <p class="pr" align="left;"> 지 </p>
+        </div>
+        <div class="progress rounded-pill" style="height:20px;">
+         <div class="progress-bar progress-bar-striped bg-info progress-bar-animated" role="progressbar"
+      style="width: <?php echo $dinner_fat/1500*100;?>%" aria-valuenow="10" aria-valuemin="0"
       aria-valuemax="100">
-      <p class="pr" style="padding-top:15px;"> <?php echo $dinner_kcal ." / 1500" ?> </p>
+      <p class="pr" style="padding-top:15px;"> <?php echo $dinner_fat ." / 1500" ?> </p>
+        </div>
+      </div>
+       </div>
+
+       </div>
+
+
+
+
+      </div>
     </div>
-  </div>
-</div>
+    </div>
 
-<br><br>
-
-<div class="container" style="margin-bottom:-20px;">
-  <div class="container" style="float:left; width:20%;">
-    <p class="pr" align="left;"> 탄 </p>
-
-  </div>
-
-  <div class="progress rounded-pill" style="height:20px;">
-    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
-    style="width: <?php echo $dinner_car/1500*100;?>%" aria-valuenow="10" aria-valuemin="0"
-    aria-valuemax="100">
-    <p class="pr" style="padding-top:15px;"> <?php echo $dinner_car ." / 1500" ?> </p>
-  </div>
-</div>
-
-
-</div>
-<br><br>
-
-
-<div class="container" style="margin-bottom:-20px;">
-  <div class="container" style="float:left; width:20%;">
-    <p class="pr" align="left;"> 단 </p>
-
-  </div>
-
-  <div class="progress rounded-pill" style="height:20px;">
-    <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar"
-    style="width: <?php echo $dinner_pro/1500*100;?>%" aria-valuenow="10" aria-valuemin="0"
-    aria-valuemax="100">
-    <p class="pr" style="padding-top:15px;"> <?php echo $dinner_pro ." / 1500" ?> </p>
-  </div>
-</div>
-</div>
-
-
-<br><br>
-
-<div class="container" style="font-weight: bold;">
-  <div class="container" style="float:left; width:20%;">
-    <p class="pr" align="left;"> 지 </p>
-
-  </div>
-
-  <div class="progress rounded-pill" style="height:20px;">
-    <div class="progress-bar progress-bar-striped bg-info progress-bar-animated" role="progressbar"
-    style="width: <?php echo $dinner_fat/1500*100;?>%" aria-valuenow="10" aria-valuemin="0"
-    aria-valuemax="100">
-    <p class="pr" style="padding-top:15px;"> <?php echo $dinner_fat ." / 1500" ?> </p>
-  </div>
-</div>
-</div>
-</div>
-</div>
-
-
-
-
-</div>
-</div>
-</div>
 <br>
 <br>
 <br>
 
-<div class="card">
-  <div class="card-header">
-   식단추천
- </div>
- <div class="card-body">
-
-
-<div id="container">
-
-
-<table class="table table-hover" id="user-table">
-<!--
-<div class="input-group mb-3">
+  <div class="card">
+      <div class="card-header">
+       식단추천
+      </div>
+      <div class="card-body">
+          <div id="container">
+        <table class="table table-hover" id="user-table">
+    <!--
+    <div class="input-group mb-3">
       <div class="input-group-prepend">
         <span class="input-group-text" id="basic-addon1">칼로리</span>
       </div>
       <input type="number" class="form-control" id="keyword" placeholder="Food Name" aria-label="Username" aria-describedby="basic-addon1">
-    </div>-->
-<div style="text-align:center;">
-    <input style="width:50%; height:100px; text-align:center;"type="text" id="myInput" onkeyup="myFunction()" placeholder="칼로리입력">
-   </div> <thead>
-<br><br><br>
-        <tr>
-            <th>식단번호</th>
-            <th>곡류</th>
-            <th>고기류</th>
-            <th>채소류</th>
-            <th>기타</th>
-            <th>칼로리</th>
-        </tr>
+        </div>-->
+    <div style="text-align:center;">
+      <input style="width:50%; height:100px; text-align:center;"type="text" id="myInput" onkeyup="myFunction()" placeholder="칼로리입력">
+    </div> <thead>
+      <br><br><br>
+      <tr>
+        <th>식단번호</th>
+        <th>곡류</th>
+        <th>고기류</th>
+        <th>채소류</th>
+        <th>기타</th>
+        <th>칼로리</th>
+      </tr>
     </thead>
 
     <tbody>
-    <?php
+      <?php
 #   header('Content-Type:text/html; charset=UTF-8');
 
 
@@ -696,25 +683,25 @@ $is_dinner =0;
       $result = $conn->query($sql);
       if ($result->num_rows > 0) { // 여러줄 가져오는 경우
         while($row = $result->fetch_assoc()) {
-      $user = $row;
-      }
+          $user = $row;
+        }
       } else {
-      echo "유저 접속 오류";
-    }
+        echo "유저 접속 오류";
+      }
 
 
 
-$maxcar = $user['user_goal'] * 0.65;
-$maxfat =$user['user_goal'] * 0.2;
-$maxpro =$user['user_goal'] * 0.15;
+      $maxcar = $user['user_goal'] * 0.65;
+      $maxfat =$user['user_goal'] * 0.2;
+      $maxpro =$user['user_goal'] * 0.15;
 
 
-$sql1 = "SELECT * FROM diet";
-$result1 = $conn->query($sql1);
-while($row=mysqli_fetch_array( $result1 ) ) {
-  echo '<tr style="display:none"><td>' . $row['diet_id']. '</td><td>'. $row['diet_grains'] . '</td><td>' .$row['diet_meat']. '</td><td>'. $row['diet_vet'] .'</td><td>'. $row['diet_else'] .'</td><td>'. $row['diet_calory'] .'</td></tr>';
+      $sql1 = "SELECT * FROM diet";
+      $result1 = $conn->query($sql1);
+      while($row=mysqli_fetch_array( $result1 ) ) {
+        echo '<tr style="display:none"><td>' . $row['diet_id']. '</td><td>'. $row['diet_grains'] . '</td><td>' .$row['diet_meat']. '</td><td>'. $row['diet_vet'] .'</td><td>'. $row['diet_else'] .'</td><td>'. $row['diet_calory'] .'</td></tr>';
 
-}
+      }
 
 /*
 $arr= array();
@@ -749,12 +736,12 @@ if($arr_diet[$j][5]>$arr_diet[$j+1][5]){
 */
 ?>
     </tbody>
-</table>
-</div>
+    </table>
+    </div>
 
 
-</div>
-</div>
+    </div>
+    </div>
 
 <br /><br /><br />
 
