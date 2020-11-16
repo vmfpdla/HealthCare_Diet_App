@@ -63,7 +63,6 @@ else //echo "0 results";
 <html>
 <head>
   <title></title>
-  <link rel="stylesheet" href="./css/jaehyun.css">
 
   <link
   rel="stylesheet"
@@ -89,6 +88,9 @@ else //echo "0 results";
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
 </style>
+
+  <link rel="stylesheet" href="./css/jaehyun.css?ver=2">
+
 </script>
 
 <script>
@@ -117,7 +119,7 @@ function myFunction() {
 </head>
 <body>
   <nav class="navbar fixed-top">
-    <p class="navp">Smart PT</p>
+    <p class="navp">SmartPT</p>
     <a href="userInsert3.html">
      <i class="fa fa-user-circle navi"></i>
    </a>
@@ -199,10 +201,6 @@ function myFunction() {
 <br><br>
 
 
-
-
-
-
 <?php
 // 아침에 먹은 식단을 가져온다.
 $sql3 = "SELECT * FROM eatenfood INNER JOIN foodinfo on eatenfood.food_id = foodinfo.food_id WHERE user_id='$user_id' and eaten_day='$today' and eaten_time=1";
@@ -266,10 +264,10 @@ $is_dinner =0;
   </div>
 
 
-  <div class="tab-content" id="myTabContent">
+  <div class="tab-content" id="myTabContent" >
     <div class="tab-pane fade show active" id="breakfast" role="tabpanel" aria-labelledby="home-tab">
 
-      <div class="card-body" id="camera_2" style="text-align: center;">
+      <div class="card-body" id="camera_2" style="text-align: center; height:80px;">
         <form method="POST" action="foodinput.php">
           <input type="hidden" name="eatentime" value="2" />
           <button type="submit" id="btn1">음식입력</button>
