@@ -127,8 +127,8 @@ else //echo "0 results";
 }
 
 #btn1{
+ width:80%;
   font-size:40px;
-
 }
 </style>
 </head>
@@ -291,10 +291,10 @@ else{
   <div class="tab-content" id="myTabContent" >
     <div class="tab-pane fade show active" id="breakfast" role="tabpanel" aria-labelledby="home-tab">
 
-      <div class="card-body" id="camera_1" style="text-align: center; height:80px;">
+      <div class="card-body" id="camera_1" style="text-align: center; height:120px;">
         <form method="POST" action="foodinput.php">
           <input type="hidden" name="eatentime" value="1" />
-          <button type="submit" id="btn1">음식입력</button>
+          <button type="submit" class="btn btn-secondary"id="btn1" style="background-color:#8da5bd">음식입력</button>
           <!--  <button type="submit"> <i class="fas fa-utensils cardi" style="font-size:100px;"aria-hidden="true"></i></button>-->
         </form>
       </div>
