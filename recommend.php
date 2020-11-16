@@ -324,9 +324,9 @@ else{
 
             <div class="progress rounded-pill" style="height:25px;">
               <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar"
-              style="width: <?php echo $lunch_kcal/1500*100;?>%" aria-valuenow="10" aria-valuemin="0"
+              style="width: <?php echo $morning_kcal/1500*100;?>%" aria-valuenow="10" aria-valuemin="0"
               aria-valuemax="100">
-              <p class="pr" style="padding-top:15px;"> <?php echo $lunch_kcal ." / 1500" ?> </p>
+              <p class="pr" style="padding-top:15px;"> <?php echo $morning_kcal ." / 1500" ?> </p>
             </div>
           </div>
         </div>
@@ -341,9 +341,9 @@ else{
 
           <div class="progress rounded-pill" style="height:20px;">
             <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
-            style="width:  <?php echo $lunch_car/1500*100;?>%" aria-valuenow="10" aria-valuemin="0"
+            style="width:  <?php echo $morning_car/1500*100;?>%" aria-valuenow="10" aria-valuemin="0"
             aria-valuemax="100">
-            <p class="pr" style="padding-top:15px;"> <?php echo $lunch_car ." / 1500" ?> </p>
+            <p class="pr" style="padding-top:15px;"> <?php echo $morning_car ." / 1500" ?> </p>
           </div>
         </div>
 
@@ -360,9 +360,9 @@ else{
 
         <div class="progress rounded-pill" style="height:20px;">
           <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar"
-          style="width:  <?php echo $lunch_pro/1500*100;?>%" aria-valuenow="10" aria-valuemin="0"
+          style="width:  <?php echo $morning_pro/1500*100;?>%" aria-valuenow="10" aria-valuemin="0"
           aria-valuemax="100">
-          <p class="pr" style="padding-top:15px;"> <?php echo $lunch_pro ." / 1500" ?> </p>
+          <p class="pr" style="padding-top:15px;"> <?php echo $morning_pro ." / 1500" ?> </p>
         </div>
       </div>
     </div>
@@ -378,9 +378,9 @@ else{
 
       <div class="progress rounded-pill" style="height:20px;">
         <div class="progress-bar progress-bar-striped bg-info progress-bar-animated" role="progressbar"
-        style="width:  <?php echo $lunch_fat/1500*100;?>%" aria-valuenow="10" aria-valuemin="0"
+        style="width:  <?php echo $morning_fat/1500*100;?>%" aria-valuenow="10" aria-valuemin="0"
         aria-valuemax="100">
-        <p class="pr" style="padding-top:15px;"> <?php echo $lunch_fat ." / 1500" ?> </p>
+        <p class="pr" style="padding-top:15px;"> <?php echo $morning_fat ." / 1500" ?> </p>
          </div>
        </div>
       </div>
