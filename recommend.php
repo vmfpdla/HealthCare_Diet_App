@@ -128,7 +128,14 @@ else //echo "0 results";
 
 
 
- <div class="card nutrients-card" style="margin:0 100px; height:500px;">
+
+ <br><br>
+ <div clas="container" style="text-align: center;">
+  <i class="fa fa-spoon titlei" aria-hidden="true"></i>
+  <p class="title">식단추천</p>
+</div>
+<br><br><br>  
+<div class="card nutrients-card" style="margin:0 100px; height:500px;">
     <div class="card-body">
       <br><br>
       <div style="text-align:center" data-toggle="modal" data-target="#exampleModal" >
@@ -200,78 +207,6 @@ else //echo "0 results";
       </div>
     </div>
   </div>
- <br><br>
- <div clas="container" style="text-align: center;">
-  <i class="fa fa-spoon titlei" aria-hidden="true"></i>
-  <p class="title">식단추천</p>
-</div>
-<br><br><br>  <div class="card">
-  <div class="card-header">
-    영양소
-  </div>
-  <div class="card-body">
-    <div class="container">
-      <div class="container" style="float:left; width: 15%;text-align: center;">
-        <p class="pr" align="left;"> Kcal  </p>
-
-      </div>
-
-      <div class="progress rounded-pill" style="height:40px;">
-        <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger"role="progressbar"
-        style="width: <?php echo $kcal/$user['user_goal']*100;?>%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
-        <p  class="pr" style="padding-top:15px;">
-          <?php echo $kcal ." / ". $user['user_goal'] ?>
-        </p>
-      </div>
-    </div>
-  </div>
-  <br><br>
-  <div class="container">
-   <div class="container" style="float:left; width: 15%;text-align: center;">
-    <p class="pr" align="left;"> 탄  </p>
-
-  </div>
-
-  <div class="progress rounded-pill" style="height:30px;">
-    <div class="progress-bar progress-bar-striped progress-bar-animated"role="progressbar"
-    style="width:  <?php echo $car/$maxcar*100;?>%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
-    <p class="pr" style=" padding-top:20px;">
-      <?php echo $car ." / ". $maxcar ?>
-    </p>
-  </div>
-</div>
-</div>
-<br><br>
-<div class="container">
- <div class="container" style="float:left; width: 15%;text-align: center;">
-  <p class="pr" align="left;"> 단  </p>
-
-</div>
-
-<div class="progress rounded-pill" style="height:30px;">
-  <div class="progress-bar progress-bar-striped bg-success progress-bar-animated"role="progressbar"
-  style="width: <?php echo $pro/$maxpro*100;?>%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
-  <p class="pr" style=" padding-top:20px;"> <?php echo $pro ." / ". $maxpro?> </p>
-</div>
-</div>
-</div>
-<br><br>
-<div class="container" style="font-weight: bold;">
- <div class="container" style="float:left; width: 15%;text-align: center;">
-  <p class="pr"> 지  </p>
-
-</div>
-
-<div class="progress rounded-pill" style="height:30px;">
-  <div class="progress-bar progress-bar-striped bg-info progress-bar-animated"role="progressbar"
-  style="width: <?php echo $fat/$maxfat*100;?>%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
-  <p class="pr" style=" padding-top:20px;"> <?php echo $fat ." / ". $maxfat ?> </p>
-</div>
-</div>
-</div>
-</div>
-</div>
-
 
 <br><br>
 
