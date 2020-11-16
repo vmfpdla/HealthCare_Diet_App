@@ -26,13 +26,6 @@ span{
 font-size:30px;
 }
 
-input{
-font-size:30px;
-
-}
-form{
-font-size:30px;
-}
 
 .hi{
 font-size:30px;
@@ -88,12 +81,13 @@ font-size:30px;
       <input type="text" class="form-control hi" id="keyword" placeholder="Food Name" aria-label="Username" aria-describedby="basic-addon1">
     </div>
   </div>
+<br>
   <div class="row row-cols-3">
     <form method="post" action="updatefoodinput.php">
       <div class="input-group col">
 
         <div class="input-group-prepend">
-          <span class="input-group-text hi" id="basic-addon1">음식 번호</span>
+          <span class="input-group-text" id="basic-addon1">음식 번호</span>
         </div>
         <input type="text" class="form-control hi" name="foodnum" id="foodnum" placeholder="Food Number" aria-label="Username" aria-describedby="basic-addon1">
 
@@ -102,7 +96,7 @@ font-size:30px;
 
         <div class="input-group col">
           <div class="input-group-prepend">
-            <span class="input-group-text hi" id="basic-addon1">음식 인분</span>
+            <span class="input-group-text " id="basic-addon1">음식 인분</span>
           </div>
           <input type="number" class="form-control hi" name="serving" placeholder="Serving" aria-label="Username" aria-describedby="basic-addon1">
 	</div>
@@ -111,12 +105,10 @@ font-size:30px;
 	<input type="number" name="eaten_time" placeholder="아침:1 점심:2 저녁:3"> 
 <button type="submit"> 제출 </button>
       </form>
-    </div>
-
-<br><br><br><br><br><br><br>
+</div>
 
     <table class="table table-hover" id="user-table">
-      <thead>
+      <thead >
         <tr>
           <th>음식번호</th>
           <th>음식이름</th>
