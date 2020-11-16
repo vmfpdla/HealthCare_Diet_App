@@ -72,6 +72,7 @@ else //echo "0 results";
   rel="stylesheet"
   href="https://use.fontawesome.com/releases/v5.14.0/css/v4-shims.css">
   <link rel="stylesheet" href="/resource/css/bootstrap.css">
+   <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
   <link
   rel="stylesheet"
   href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
