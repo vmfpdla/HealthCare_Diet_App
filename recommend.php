@@ -126,7 +126,10 @@ else //echo "0 results";
   overflow-y:scroll;
 }
 
+#btn1{
+  font-size:40px;
 
+}
 </style>
 </head>
 <body>
