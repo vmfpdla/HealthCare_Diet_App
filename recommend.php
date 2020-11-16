@@ -103,6 +103,7 @@ else //echo "0 results";
   table = document.getElementById("user-table");
   tr = table.getElementsByTagName("tr");
 
+
   // Loop through all table rows, and hide those who don't match the search query
   for (i = 1; i < tr.length; i++) {
     td = tr[i].getElementsByTagName("td")[5];
@@ -110,10 +111,6 @@ else //echo "0 results";
     iv=(parseInt($(input).val()));
     count=0; 
     if((iv>=tv)){
-      if(tr.is(":visible")){
-        count=count+1;
-      }
-      if(count>3) continue;
       tr[i].style.display = "";
       count=count+1;
     } else {
@@ -121,7 +118,19 @@ else //echo "0 results";
     }
   }
 }
+
 </script>
+<style>
+.box {
+  height:500px;
+  overflow-y:scroll;
+}
+tr.tile{
+  position:absolute;
+}
+
+
+</style>
 </head>
 <body>
   <nav class="navbar fixed-top">
@@ -654,6 +663,7 @@ else{
       </div>
       <div class="card-body">
           <div id="container">
+          <div class="box">
         <table class="table table-hover" id="user-table">
     <!--
     <div class="input-group mb-3">
@@ -666,7 +676,7 @@ else{
       <input style="font-size : 50px; width:50%; height:100px; text-align:center;"type="text" id="myInput" onkeyup="myFunction()" placeholder="칼로리입력">
     </div> <thead>
       <br><br><br>
-      <tr>
+      <tr class="title">
         <th>식단번호</th>
         <th>곡류</th>
         <th>고기류</th>
@@ -753,7 +763,7 @@ if($arr_diet[$j][5]>$arr_diet[$j+1][5]){
     </tbody>
     </table>
     </div>
-
+</div>
 
     </div>
     </div>
