@@ -6,6 +6,14 @@ body{
 }
 
 
+.rea{
+	font-size:40px;
+}
+
+tr{
+font-size:30px;
+text-align:center;
+}
 /*   nav css    */
 
 nav{

@@ -132,9 +132,9 @@ else //echo "0 results";
  <br><br>
  <div clas="container" style="text-align: center;">
   <i class="fa fa-spoon titlei" aria-hidden="true"></i>
-  <p class="title">식단추천</p>
+  <p class="title">Diet</p>
 </div>
-<br><br><br>  
+<br><br>  
 <div class="card nutrients-card" style="margin:0 100px; height:500px;">
     <div class="card-body">
       <br><br>
@@ -644,7 +644,7 @@ else{
 <br>
 
   <div class="card">
-      <div class="card-header">
+      <div class="card-header rea" style="text-align:center;">
        식단추천
       </div>
       <div class="card-body">
@@ -658,7 +658,7 @@ else{
       <input type="number" class="form-control" id="keyword" placeholder="Food Name" aria-label="Username" aria-describedby="basic-addon1">
         </div>-->
     <div style="text-align:center;">
-      <input style="width:50%; height:100px; text-align:center;"type="text" id="myInput" onkeyup="myFunction()" placeholder="칼로리입력">
+      <input style="font-size : 50px; width:50%; height:100px; text-align:center;"type="text" id="myInput" onkeyup="myFunction()" placeholder="칼로리입력">
     </div> <thead>
       <br><br><br>
       <tr>
