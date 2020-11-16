@@ -276,7 +276,7 @@ else{
         </form>
       </div>
 
-      <div class="card-body" id="diet_1">
+ 
         <div style="float:left; margin:50px 50px;  width:15%;">
           <p style="width: 100%;"> <?php
           if($is_lunch==1){
@@ -384,7 +384,7 @@ else{
          </div>
        </div>
       </div>
-        </div>
+    
        </div>
     </div>
 
@@ -397,7 +397,7 @@ else{
       <!--  <button type="submit"> <i class="fas fa-utensils cardi" style="font-size:100px;"aria-hidden="true"></i></button>-->
     </form>
   </div>
-  <div class="card-body" id="diet_2">
+
     <div style="float:left; margin:50px 50px;  width:15%;">
       <p style="width: 100%;"> <?php
       if($is_lunch==1){
@@ -507,7 +507,7 @@ else{
             </div>
         </div>
         
-        </div>
+
     </div>
 
 
@@ -524,7 +524,7 @@ else{
   </div>
 
 
-  <div class="card-body" id="diet_3">
+
     <div style="float:left; margin:50px 50px;  width:15%;">
       <p style="width: 100%;">
         <?php
@@ -622,8 +622,7 @@ else{
        </div>
       
        </div>
-        </div>
-
+    
 
 
 
