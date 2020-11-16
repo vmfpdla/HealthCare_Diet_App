@@ -1,60 +1,60 @@
 <?php
 
-require_once("./dbconn.php");
+  require_once("./dbconn.php");
 
-$today = date("Y-m-d");
-$kcal = 0; //칼로리
-$car =0; // 탄수화물
-$fat =0; // 지방
-$pro =0; // 단백질
+  $today = date("Y-m-d");
+  $kcal = 0; //칼로리
+  $car =0; // 탄수화물
+  $fat =0; // 지방
+  $pro =0; // 단백질
 
 
-$user_id = 1; # 1번 가져왔다고 가정
-$sql = "SELECT * FROM user WHERE user_id='$user_id'";
-$result = $conn->query($sql);
+  $user_id = 1; # 1번 가져왔다고 가정
+  $sql = "SELECT * FROM user WHERE user_id='$user_id'";
+  $result = $conn->query($sql);
 
-if ($result->num_rows > 0) { // 여러줄 가져오는 경우
+  if ($result->num_rows > 0) { // 여러줄 가져오는 경우
 
-while($row = $result->fetch_assoc()) {
-$user = $row;
-}
-}
-else {
-echo "유저 접속 오류";
-}
-//
-$maxcar = $user['user_goal'] * 0.65;
-$maxfat =$user['user_goal'] * 0.2;
-$maxpro =$user['user_goal'] * 0.15;
+    while($row = $result->fetch_assoc()) {
+      $user = $row;
+    }
+  }
+  else {
+  echo "유저 접속 오류";
+  }
+  //
+  $maxcar = $user['user_goal'] * 0.65;
+  $maxfat =$user['user_goal'] * 0.2;
+  $maxpro =$user['user_goal'] * 0.15;
 
-// 오늘 먹은 음식 조회
-$sql1 = "SELECT * FROM eatenfood INNER JOIN foodinfo on eatenfood.food_id = foodinfo.food_id WHERE user_id='$user_id' and eaten_day='$today'";
-$result1 = $conn->query($sql1);
+  // 오늘 먹은 음식 조회
+  $sql1 = "SELECT * FROM eatenfood INNER JOIN foodinfo on eatenfood.food_id = foodinfo.food_id WHERE user_id='$user_id' and eaten_day='$today'";
+  $result1 = $conn->query($sql1);
 
-if ($result1 -> num_rows>0) { // 여러줄 가져오는 경우
+  if ($result1 -> num_rows>0) { // 여러줄 가져오는 경우
 
-while($row = $result1->fetch_assoc()) {
-if($row['eaten_serving']==0)
-{ # 0인분인경우
- $kcal = $kcal + $row['food_calory']*0.5;
- $car = $car + $row['food_car']*0.5;
- $fat = $fat + $row['food_fat']*0.5;
- $pro = $pro + $row['food_pro']*0.5;
-}
-else
-{
- $kcal = $kcal + $row['food_calory']*$row['eaten_serving'];
- $car = $car + $row['food_car']*$row['eaten_serving'];
- $fat = $fat + $row['food_fat']*$row['eaten_serving'];
- $pro = $pro + $row['food_pro']*$row['eaten_serving'];
-}
-if($row['eaten_time']==1) // 아침인경우
-{
+    while($row = $result1->fetch_assoc()) {
+      if($row['eaten_serving']==0)
+      { # 0인분인경우
+         $kcal = $kcal + $row['food_calory']*0.5;
+         $car = $car + $row['food_car']*0.5;
+         $fat = $fat + $row['food_fat']*0.5;
+         $pro = $pro + $row['food_pro']*0.5;
+      }
+      else
+      {
+         $kcal = $kcal + $row['food_calory']*$row['eaten_serving'];
+         $car = $car + $row['food_car']*$row['eaten_serving'];
+         $fat = $fat + $row['food_fat']*$row['eaten_serving'];
+         $pro = $pro + $row['food_pro']*$row['eaten_serving'];
+      }
+      if($row['eaten_time']==1) // 아침인경우
+      {
 
-}
-}
-}
-else //echo "0 results";
+      }
+    }
+  }
+  else //echo "0 results";
 
 
 ?>
@@ -94,7 +94,7 @@ else //echo "0 results";
 function myFunction() {
   // Declare variables
   var input, table, tr, td, i, txtValue,tv,iv,count;
-  
+
   input = document.getElementById("myInput");
   table = document.getElementById("user-table");
   tr = table.getElementsByTagName("tr");
@@ -102,8 +102,8 @@ function myFunction() {
   // Loop through all table rows, and hide those who don't match the search query
   for (i = 1; i < tr.length; i++) {
     td = tr[i].getElementsByTagName("td")[5];
-    tv=(parseInt(($(td).html())));  
-    iv=(parseInt($(input).val())); 
+    tv=(parseInt(($(td).html())));
+    iv=(parseInt($(input).val()));
     if((iv>=tv)){
         tr[i].style.display = "";
         count=count+1;
@@ -119,8 +119,8 @@ function myFunction() {
     <p class="navp">Smart PT</p>
     <a href="userInsert3.html">
      <i class="fa fa-user-circle navi"></i>
-   </a>
- </nav>
+    </a>
+  </nav>
 
  <br><br>
  <div clas="container" style="text-align: center;">
@@ -683,7 +683,7 @@ $is_dinner =0;
       $jb_conn = mysqli_connect( 'localhost', 'root', 'toor', 'smartpt' );
 
 
-      mysqli_query($jb_conn, "set session character_set_connection=utf8;"); 
+      mysqli_query($jb_conn, "set session character_set_connection=utf8;");
 
       mysqli_query($jb_conn, "set session character_set_results=utf8;");
 
@@ -713,7 +713,7 @@ $sql1 = "SELECT * FROM diet";
 $result1 = $conn->query($sql1);
 while($row=mysqli_fetch_array( $result1 ) ) {
   echo '<tr style="display:none"><td>' . $row['diet_id']. '</td><td>'. $row['diet_grains'] . '</td><td>' .$row['diet_meat']. '</td><td>'. $row['diet_vet'] .'</td><td>'. $row['diet_else'] .'</td><td>'. $row['diet_calory'] .'</td></tr>';
- 
+
 }
 
 /*
@@ -742,7 +742,7 @@ if($arr_diet[$j][5]>$arr_diet[$j+1][5]){
     $arr_diet[$j+1]=$temp;
 }
 }
-} 
+}
 #for($i=0;$i<count($arr_diet);$i++){
 #echo '<tr><td>' . $arr_diet[$i][0]. '</td><td>'. $arr_diet[$i][1] . '</td><td>' .$arr_diet[$i][2]. '</td><td>'. $arr_diet[$i][3] .'</td><td>'. $arr_diet[$i][4] .'</td><td>'. $arr_diet[$i][5] .'</td></tr>';
 #}

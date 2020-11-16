@@ -9,7 +9,7 @@
   $exercise = $_POST['inputExercise'];
   $miscale = $_POST['inputMiscale'];
   $kcal = $_POST['inputCalory'];
-
+ 	$flag=0;
 
   $user_code = abc; # 1번 가져왔다고 가정
 
@@ -23,28 +23,57 @@
                           user_weight='$user_weight',
                           user_goal='$kcal',
                           user_check_inbody='$miscale',
-                          user_check_exercise='$exercise'";
+                          user_check_exercise='$exercise'
+											WHERE user_id='$user_id'";
 
-  $signup = mysqli_query($conn,$sql);
+	if (mysqli_query($conn, $sql)) { $flag=1; }
+	else { $flag=0; }
 
-  $sql1 = "SELECT * FROM user WHERE user_id='$user_id'";
-  $result1 = $conn->query($sql1);
 
-  if ($result1->num_rows > 0) { // 여러줄 가져오는 경우
 
-    while($row1 = $result1->fetch_assoc()) {
-      $_SESSION['user_id']=$row1['user_id'];
-    }
-  } else {
-    echo "유저 접속 오류";
-  }
 
 	$conn->close();
 
-  if($isset($_SESSION['user_id']))
-  {
-    header('Location:./index.php');
-  }
-
-
 ?>
+<!DOCTYPE html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<html>
+
+<head>
+  <title></title>
+  <meta charset="utf-8">
+  <!-- 외부 css -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/jaehyun.css?ver=2">
+  <!-- 아이콘 -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/v4-shims.css">
+  <!-- 스크립트 -->
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+  integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+  crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  <script src="./js/nav.js"></script>
+</head>
+
+<body>
+</body>
+<script>
+  var flag = Number('<?php echo $flag?>');
+
+  if(flag==1){
+    alert("수정이 완료되었습니다");
+		location.href="index.php";
+  }
+  else{
+		alert("수정에 실패했습니다. 다시 시도해주세요");
+		location.href="usermodify.php";
+  }
+</script>
+</html>

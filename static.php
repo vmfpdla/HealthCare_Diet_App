@@ -8,10 +8,7 @@
   $inbody;
   $today = date("Y-m-d");
   $user;
-  // $start = strtotime("-3 days");
-  // $end = strtotime("+3 days");
-  // $start = date('Y-m-d',$start);
-  // $end = date('Y-m-d',$end);
+
 
   $sql = "SELECT * FROM user WHERE user_id='$user_id'";
   $result = $conn->query($sql);
@@ -35,7 +32,7 @@
     }
   }
 
-
+  //
   $sql2= "SELECT * FROM inbody WHERE user_id='$user_id' ORDER BY ABS(DATEDIFF(NOW(),inbody_day)) LIMIT 5";
   $result2 = $conn->query($sql2);
 
@@ -95,19 +92,19 @@
 	<div style="width:100%">
 		<canvas id="daily_kcal"></canvas>
 	</div>
-	<script src="./js/daily_kcalgraph.js?ver=1"></script>
+	<script src="./js/daily_kcalgraph.js?ver=2"></script>
 
 	<br><br><br>
 	<div style="width:100%">
 		<canvas id="week_kcal"></canvas>
 	</div>
-	<script src="./js/week_kcalgraph.js?ver=1"></script>
+	<script src="./js/week_kcalgraph.js?ver=3"></script>
 
 	<br><br><br>
 	<div style="width:100%">
 		<canvas id="month_kcal"></canvas>
 	</div>
-	<script src="./js/month_kcalgraph.js?ver=2"></script>
+	<script src="./js/month_kcalgraph.js?ver=1"></script>
 
 	<br><br><br>
 	<div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">

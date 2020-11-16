@@ -150,3 +150,15 @@ h3.mip{
 .carprofat .progress{
 	height:20px;
 }
+
+.form-group > label{
+	font-size:40px;
+}
+.form-group > select{
+	font-size:30px;
+
+}
+.form-group > input{
+	font-size:30px;
+
+}

@@ -103,8 +103,6 @@
 <head>
   <title></title>
   <meta charset="utf-8">
-
-
   <!-- 외부 css -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -117,46 +115,19 @@
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+  integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+  crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
   <script src="./js/nav.js"></script>
-
-  <style>
-
-    #btn1 {
-      border: 1px solid #8DA5BD;
-      background-color: rgba(0, 0, 0, 0);
-      color: #8DA5BD;
-      padding: 5px;
-      border-top-left-radius: 5px;
-      border-bottom-left-radius: 5px;
-      border-top-right-radius: 5px;
-      border-bottom-right-radius: 5px;
-
-      width: 100%;
-      height: 70px;
-      font-weight: bold;
-      font-size: 30px;
-    }
-
-    #btn1:hover {
-      color: white;
-      background-color: #8DA5BD;
-    }
-
-
-  </style>
-
-
-
 </head>
 
 <body>
   <nav class="navbar fixed-top">
     <p class="navp">Smart PT</p>
-    <a href="userinsert.php">
+    <a href="usermodify.php">
       <i class="fa fa-user-circle navi"></i>
     </a>
-
   </nav>
   <br><br><br>
 
@@ -294,24 +265,21 @@
       </div>
     </a>
   </nav>
-  <script>
-    var kcal = Number('<?php echo $kcal?>');
-    var goal = Number('<?php echo $user['user_goal']?>');
-
-
-    if(kcal>goal){
-      document.getElementById('progress_kcal').className="bg-danger";
-      document.getElementById('exampleModal').style.display='none';
-      document.getElementById('notification_div').style.display='block';
-    }
-    else{
-      document.getElementById('progress_kcal').className="bg-success";
-      document.getElementById('exampleModal').style.display='block';
-      document.getElementById('notification_div').style.display='none';
-    }
-  </script>
-
-
-}
 </body>
+<script>
+  var kcal = Number('<?php echo $kcal?>');
+  var goal = Number('<?php echo $user['user_goal']?>');
+
+
+  if(kcal>goal){
+    document.getElementById('progress_kcal').className="bg-danger";
+    document.getElementById('exampleModal').style.display='block';
+    document.getElementById('notification_div').style.display='block';
+  }
+  else{
+    document.getElementById('progress_kcal').className="bg-success";
+    document.getElementById('exampleModal').style.display='none';
+    document.getElementById('notification_div').style.display='none';
+  }
+</script>
 </html>
