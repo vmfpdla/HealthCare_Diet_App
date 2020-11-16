@@ -107,8 +107,13 @@ else //echo "0 results";
   for (i = 1; i < tr.length; i++) {
     td = tr[i].getElementsByTagName("td")[5];
     tv=(parseInt(($(td).html())));  
-    iv=(parseInt($(input).val())); 
+    iv=(parseInt($(input).val()));
+    count=0; 
     if((iv>=tv)){
+      if(tr.is(":visible")){
+        count=count+1;
+      }
+      if(count>3) continue;
       tr[i].style.display = "";
       count=count+1;
     } else {
