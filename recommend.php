@@ -293,11 +293,9 @@ else{
     <div class="tab-pane fade show active" id="breakfast" role="tabpanel" aria-labelledby="home-tab">
 
       <div class="card-body" id="camera_1" style="text-align: center; height:120px;">
-        <form method="POST" action="app://application">
-          <input type="hidden" name="eatentime" value="1" />
-          <button type="submit" class="btn btn-secondary"id="btn1">음식입력</button>
+          <a href="app://"><button class="btn btn-secondary"id="btn1">음식입력</button></a>
           <!--  <button type="submit"> <i class="fas fa-utensils cardi" style="font-size:100px;"aria-hidden="true"></i></button>-->
-        </form>
+	
       </div>
 
  
