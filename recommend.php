@@ -293,7 +293,7 @@ else{
     <div class="tab-pane fade show active" id="breakfast" role="tabpanel" aria-labelledby="home-tab">
 
       <div class="card-body" id="camera_1" style="text-align: center; height:120px;">
-        <form method="POST" action="foodinput.php">
+        <form method="POST" action="app://application">
           <input type="hidden" name="eatentime" value="1" />
           <button type="submit" class="btn btn-secondary"id="btn1">음식입력</button>
           <!--  <button type="submit"> <i class="fas fa-utensils cardi" style="font-size:100px;"aria-hidden="true"></i></button>-->
@@ -415,7 +415,7 @@ else{
 
     <div class="tab-pane fade" id="lunch" role="tabpanel" aria-labelledby="profile-tab">
         <div class="card-body" id="camera_2" style="text-align: center;">
-    <form method="POST" action="foodinput.php">
+    <form method="POST" action="app://application">
       <input type="hidden" name="eatentime" value="2" />
       <button type="submit" class="btn btn-secondary"id="btn1">음식입력</button>
       <!--  <button type="submit"> <i class="fas fa-utensils cardi" style="font-size:100px;"aria-hidden="true"></i></button>-->
@@ -540,7 +540,7 @@ else{
 
 
   <div class="card-body" id="camera_3" style="text-align: center;">
-    <form method="POST" action="foodinput.php">
+    <form method="POST" action="app://application">
       <input type="hidden" name="eatentime" value="3" />
       <button type="submit" class="btn btn-secondary"id="btn1">음식입력</button>
       <!--<button type="submit"> <i class="fas fa-utensils cardi" style="font-size:100px;"aria-hidden="true"></i></button>-->
