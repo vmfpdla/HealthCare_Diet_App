@@ -42,5 +42,5 @@ mysqli_query($conn,$sql2);
 $conn->close();
 
 
-header("Location: ./recommend.php");
+header("Location:goback://application");
 ?>
