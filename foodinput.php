@@ -22,8 +22,21 @@
     #container #input-form {text-align: center;}
     #user-table {margin: 0 auto; text-align: center;}
     #input-form {margin-top: 10px; margin-bottom: 10px;}
+span{
+font-size:30px;
+}
 
+input{
+font-size:30px;
 
+}
+form{
+font-size:30px;
+}
+
+.hi{
+font-size:30px;
+}
   </style>
 
   <script type="text/javascript">
@@ -53,7 +66,7 @@
 
 
   </script>
-
+<link rel="stylesheet" href="./css/jaehyun.css?ver=2">
 
 </head>
 
@@ -70,9 +83,9 @@
 
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text" id="basic-addon1">음식이름</span>
+        <span class="input-group-text hi" id="basic-addon1">음식이름</span>
       </div>
-      <input type="text" class="form-control" id="keyword" placeholder="Food Name" aria-label="Username" aria-describedby="basic-addon1">
+      <input type="text" class="form-control hi" id="keyword" placeholder="Food Name" aria-label="Username" aria-describedby="basic-addon1">
     </div>
   </div>
   <div class="row row-cols-3">
@@ -80,18 +93,18 @@
       <div class="input-group col">
 
         <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon1">음식 번호</span>
+          <span class="input-group-text hi" id="basic-addon1">음식 번호</span>
         </div>
-        <input type="text" class="form-control" name="foodnum" id="foodnum" placeholder="Food Number" aria-label="Username" aria-describedby="basic-addon1">
+        <input type="text" class="form-control hi" name="foodnum" id="foodnum" placeholder="Food Number" aria-label="Username" aria-describedby="basic-addon1">
 
 
 
 
         <div class="input-group col">
           <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1">음식 인분</span>
+            <span class="input-group-text hi" id="basic-addon1">음식 인분</span>
           </div>
-          <input type="number" class="form-control" name="serving" placeholder="Serving" aria-label="Username" aria-describedby="basic-addon1">
+          <input type="number" class="form-control hi" name="serving" placeholder="Serving" aria-label="Username" aria-describedby="basic-addon1">
 	</div>
 	
 	
@@ -100,7 +113,7 @@
       </form>
     </div>
 
-
+<br><br><br><br><br><br><br>
 
     <table class="table table-hover" id="user-table">
       <thead>
