@@ -42,5 +42,5 @@ mysqli_query($conn,$sql2);
 $conn->close();
 
 
-header("Location: ./index.php");
+header("Location: ./recommend.php");
 ?>
