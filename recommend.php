@@ -1,3 +1,4 @@
+  
 <?php
 
 require_once("./dbconn.php");
@@ -97,7 +98,7 @@ else //echo "0 results";
   function myFunction() {
   // Declare variables
   var input, table, tr, td, i, txtValue,tv,iv,count;
-
+  
   input = document.getElementById("myInput");
   table = document.getElementById("user-table");
   tr = table.getElementsByTagName("tr");
@@ -105,8 +106,8 @@ else //echo "0 results";
   // Loop through all table rows, and hide those who don't match the search query
   for (i = 1; i < tr.length; i++) {
     td = tr[i].getElementsByTagName("td")[5];
-    tv=(parseInt(($(td).html())));
-    iv=(parseInt($(input).val()));
+    tv=(parseInt(($(td).html())));  
+    iv=(parseInt($(input).val())); 
     if((iv>=tv)){
       tr[i].style.display = "";
       count=count+1;
@@ -275,7 +276,7 @@ else{
         </form>
       </div>
 
-
+ 
         <div style="float:left; margin:50px 50px;  width:15%;">
           <p style="width: 100%;"> <?php
           if($is_lunch==1){
@@ -383,7 +384,7 @@ else{
          </div>
        </div>
       </div>
-
+    
        </div>
     </div>
 
@@ -505,7 +506,7 @@ else{
         </div>
             </div>
         </div>
-
+        
 
     </div>
 
@@ -619,9 +620,9 @@ else{
         </div>
       </div>
        </div>
-
+      
        </div>
-
+    
 
 
 
@@ -670,7 +671,7 @@ else{
       $jb_conn = mysqli_connect( 'localhost', 'root', 'toor', 'smartpt' );
 
 
-      mysqli_query($jb_conn, "set session character_set_connection=utf8;");
+      mysqli_query($jb_conn, "set session character_set_connection=utf8;"); 
 
       mysqli_query($jb_conn, "set session character_set_results=utf8;");
 
@@ -729,7 +730,7 @@ if($arr_diet[$j][5]>$arr_diet[$j+1][5]){
     $arr_diet[$j+1]=$temp;
 }
 }
-}
+} 
 #for($i=0;$i<count($arr_diet);$i++){
 #echo '<tr><td>' . $arr_diet[$i][0]. '</td><td>'. $arr_diet[$i][1] . '</td><td>' .$arr_diet[$i][2]. '</td><td>'. $arr_diet[$i][3] .'</td><td>'. $arr_diet[$i][4] .'</td><td>'. $arr_diet[$i][5] .'</td></tr>';
 #}
