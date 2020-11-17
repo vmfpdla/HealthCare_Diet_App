@@ -3,6 +3,7 @@ package com.example.smartpt;
 import android.content.Context;
 import android.os.Handler;
 
+import com.example.smartpt.MiBand.BandData;
 import com.example.smartpt.MiScale.ScaleData;
 
 import timber.log.Timber;
@@ -10,32 +11,28 @@ import timber.log.Timber;
 public class SmartPT {
     public static boolean DEBUG_MODE = false;
 
-//    public static final String DATABASE_NAME = "openScale.db";
+//    public static final String DATABASE_NAME = "smartpt.db";
 
     private static SmartPT instance;
+    //scaleData에 미스케일 정보 들어있음
     private ScaleData scaleData;
-//    private AppDatabase appDB;
-//    private ScaleMeasurementDAO measurementDAO;
-//    private ScaleUserDAO userDAO;
-
-//    private ScaleUser selectedScaleUser;
+    //bandData에 미밴드 정보 들어있음
+    private BandData bandData;
     private String deviceName;
     private String deviceAddress;
     private int userId;
     private com.example.smartpt.bluetooth.BluetoothCommunication btDeviceDriver;
-//    private AlarmHandler alarmHandler;
 
     private Context context;
 
     private SmartPT(Context context) {
         this.context = context;
-//        alarmHandler = new AlarmHandler();
         btDeviceDriver = null;
-        deviceAddress = "add : Null";
+        deviceAddress = "address : Null";
         deviceName = "name : Null";
         userId = -1;
         scaleData = null;
-//        reopenDatabase(false);
+        bandData = null;
     }
 
     public void setDevice(String name, String address){
@@ -53,27 +50,27 @@ public class SmartPT {
         if(scaleData==null) return null;
         else return scaleData;
     }
+    public void setBandData(BandData data) { bandData = data; }
+    public BandData getBandData() {
+        if(bandData==null) return null;
+        else return bandData;
+    }
     public String getDeviceName(){
         return deviceName;
     }
-
     public String getDeviceAddress(){
         return deviceAddress;
     }
-
     public static void createInstance(Context context) {
         if (instance != null) {
             return;
         }
-
         instance = new SmartPT(context);
     }
-
     public static SmartPT getInstance() {
         if (instance == null) {
             throw new RuntimeException("No OpenScale instance created");
         }
-
         return instance;
     }
 

@@ -7,42 +7,12 @@
     android:orientation="vertical"
     android:gravity="center_horizontal"
     tools:context=".MiScale.MiScaleActivity">
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/device_name_tv"
-        android:text="Device name: Empty">
-    </TextView>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/device_address_tv"
-        android:text="Device address: Empty">
-    </TextView>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/blt_btn"
-        android:text="Bluetooth">
-    </Button>
-
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/blt_iv"
         >
     </ImageView>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Inbody"
-        android:id="@+id/inbody_btn">
-    </Button>
-
 
     <FrameLayout
         android:layout_width="match_parent"

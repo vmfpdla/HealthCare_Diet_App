@@ -19,6 +19,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.smartpt.PreferenceManager;
 import com.example.smartpt.R;
 import com.example.smartpt.SmartPT;
 
@@ -31,16 +32,14 @@ public class MiScaleActivity extends AppCompatActivity {
 
     private static final int ENABLE_BLUETOOTH_REQUEST = 102;
     private static final int REQUEST_ENABLE_BT = 0;
-    private static final int BT_ON = 1;
-    private static final int BT_OFF = 2;
-    private static final int BT_SEARCHING = 3;
+    private static final int BT_ON = 1;         //블투 켜진상태
+    private static final int BT_OFF = 2;        //블투 꺼진상태
+    private static final int BT_SEARCHING = 3;  //블투 찾는상태
+    private static final int BT_PAIRING = 4;    //블투 페어링상태
 
     private SmartPT smartPT = SmartPT.getInstance();
     private int btState;
-    private int userID;
 
-    private TextView deviceNameTv, deviceAddressTv;
-    private Button bltBtn, inbodyBtn;
     private ImageView bltIv;
 
     //    private static Button bluetoothStatus;
@@ -50,30 +49,14 @@ public class MiScaleActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mi_scale);
-//        boolean isFirst = com.example.smartpt.PreferenceManager.getIsFirst(context);
-//        if(isFirst == true){
-//            Log.d("SmartPT", "뉴비");
-//            createID();
-//        }else{
-//            Log.d("SmartPT", "기존유저");
-//            userID = com.example.smartpt.PreferenceManager.getID(context);
-//        }
+        context = getApplicationContext();
 
-        FragmentManager fm = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fm.beginTransaction();
-        fragmentTransaction.add(R.id.fragment, new BluetoothSettingsFragment());
-        fragmentTransaction.commit();
+        checkUser();
+        initializeLayout();
+        initializeBluetooth();
 
-        deviceNameTv = findViewById(R.id.device_name_tv);
-        deviceAddressTv = findViewById(R.id.device_address_tv);
-        bltBtn = findViewById(R.id.blt_btn);
-        inbodyBtn = findViewById(R.id.inbody_btn);
-        bltIv = findViewById(R.id.blt_iv);
-
-        deviceNameTv.setText(smartPT.getDeviceName());
-        deviceAddressTv.setText(smartPT.getDeviceAddress());
-
-
+    }
+    private void initializeBluetooth() {
         BluetoothManager bluetoothManager = (BluetoothManager) getSystemService(BLUETOOTH_SERVICE);
         boolean hasBluetooth = bluetoothManager.getAdapter() != null;
 
@@ -94,6 +77,9 @@ public class MiScaleActivity extends AppCompatActivity {
             btState = BT_ON;
             bltIv.setImageResource(R.drawable.ic_bt_on);
         }
+//        else if(){
+//
+//        }
         else{
             btState = BT_OFF;
             bltIv.setImageResource(R.drawable.ic_bl_disabled);
@@ -115,29 +101,17 @@ public class MiScaleActivity extends AppCompatActivity {
                 }
             }
         });
-
-        bltBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                switchFragemnt(new BluetoothSettingsFragment());
-                invokeConnectToBluetoothDevice();
-            }
-        });
-        inbodyBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                switchFragemnt(new InbodyShowFragment());
-            }
-        });
-    };
-
-    private void switchFragemnt(Fragment fr){
-        FragmentManager fm = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fm.beginTransaction();
-        fragmentTransaction.replace(R.id.fragment, fr);
-        fragmentTransaction.commit();
     }
 
+    private void initializeLayout() {
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fm.beginTransaction();
+        fragmentTransaction.add(R.id.fragment, new BluetoothSettingsFragment());
+        fragmentTransaction.commit();
+
+        bltIv = findViewById(R.id.blt_iv);
+
+    }
     private void showToast(String msg){
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
@@ -271,6 +245,18 @@ public class MiScaleActivity extends AppCompatActivity {
             //if DB의 id값이랑 중복된경우 isOverlap = true;
         }
 
-        com.example.smartpt.PreferenceManager.setID(context, id);
+        PreferenceManager.setID(context, id);
+        Log.d("id", Integer.toString(com.example.smartpt.PreferenceManager.getID(context)));
+    }
+
+    private void checkUser(){
+        boolean isFirst = PreferenceManager.getIsFirst(context);
+        if(isFirst == true){
+            Log.d("SmartPT", "뉴비");
+            createID();
+        }else{
+            Log.d("SmartPT", "기존유저");
+//            userID = PreferenceManager.getID(context);
+        }
     }
 }

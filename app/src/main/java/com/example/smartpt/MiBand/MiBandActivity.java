@@ -16,6 +16,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.example.smartpt.R;
+import com.example.smartpt.SmartPT;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.fitness.Fitness;
 import com.google.android.gms.fitness.FitnessActivities;
@@ -45,14 +46,14 @@ public class MiBandActivity extends AppCompatActivity {
     public static final String TAG = "StepCounter";
     private static final int PERMISSION_ALL = 1;
     private static final int REQUEST_OAUTH_REQUEST_CODE = 0x1001;
-    private static final int SINGLE_PERMISSION = 1004;  //권한변수
 
-    static String[] categories = {"Swimming", "Biking", "Jumping Rope", "Walking", "Running", "Nothing", "Somethingelse"};
+    static String[] categories = {"Walking", "Running", "Nothing", "Others"};
+    private static float[] calories = {0, 0, 0, 0};
+    private static float[] distances = {0, 0, 0, 0};
+    private static int[] minutes = {0, 0, 0, 0};
     private int calorie = 0;
     private long step = 0;
     private int distance = 0;
-    private static int activity_min[] = new int[7];
-    private static float activity_cal[] = new float[7];
 
     private FitnessOptions fitnessOptions;
 
@@ -66,6 +67,7 @@ public class MiBandActivity extends AppCompatActivity {
         setContentView(R.layout.activity_mi_band);
     }
 
+    //권한 확인
     public void checkPermission(){
         String[] PERMISSIONS = {
                 Manifest.permission.ACTIVITY_RECOGNITION,
@@ -77,7 +79,8 @@ public class MiBandActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(this, PERMISSIONS, PERMISSION_ALL);
             Log.e(TAG, "허가안됐음");
         }
-        else{}//권한있음
+        //권한있음
+        else{}
     }
 
     @Override
@@ -116,7 +119,6 @@ public class MiBandActivity extends AppCompatActivity {
     }
 
     public void initializeHealth() {
-
         fitnessOptions =
                 FitnessOptions.builder()
 //                        .addDataType(DataType.TYPE_STEP_COUNT_CUMULATIVE)
@@ -126,8 +128,8 @@ public class MiBandActivity extends AppCompatActivity {
                         .addDataType(DataType.TYPE_DISTANCE_DELTA)
                         .build();
 
+        //구글로그인안된경우
         if (!GoogleSignIn.hasPermissions(GoogleSignIn.getLastSignedInAccount(this), fitnessOptions)) {
-            //구글로그인안된경우
             GoogleSignIn.requestPermissions(
                     this,
                     REQUEST_OAUTH_REQUEST_CODE,
@@ -135,11 +137,16 @@ public class MiBandActivity extends AppCompatActivity {
                     fitnessOptions);
             Log.i(TAG, "initializeHealth: Fitness Counter Background Permission denied ");
         }
+
+        //구글로그인된경우
         else {
-            //구글로그인됨
-            initializeStep();
-            initializeCalorie();
-            initializeDistance();
+            //총걸음
+//            initializeStep();
+            //총칼로리
+//            initializeCalorie();
+            //총거리
+//            initializeDistance();
+            //하루동안의 운동
             readHistoryData();
         }
     }
@@ -152,9 +159,11 @@ public class MiBandActivity extends AppCompatActivity {
                         new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
+                                //권한 있는 경우
                                 if (task.isSuccessful()) {
                                     Log.i(TAG, "Successfully subscribed for calorie!");
-                                    readCalorieData();//false
+                                    //칼로리 읽음
+                                    readCalorieData();
                                 } else {
                                     Log.w(TAG, "There was a problem subscribing.", task.getException());
                                 }
@@ -200,9 +209,11 @@ public class MiBandActivity extends AppCompatActivity {
                         new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
+                                //권한 있는 경우
                                 if (task.isSuccessful()) {
                                     Log.i(TAG, "Successfully subscribed!");
-                                    readStepCountData();//false, false, null
+                                    //걸음 수 읽음
+                                    readStepCountData();
                                 } else {
                                     Log.w(TAG, "There was a problem subscribing.", task.getException());
                                 }
@@ -218,8 +229,6 @@ public class MiBandActivity extends AppCompatActivity {
     }
 
     public void readStepCountData() {
-//        Fitness.getHistoryClient(this, GoogleSignIn.getSignedInAccountFromIntent(this))
-//                .readData()
         Fitness.getHistoryClient(this, GoogleSignIn.getLastSignedInAccount(this))
                 .readDailyTotal(DataType.TYPE_STEP_COUNT_DELTA)
                 .addOnSuccessListener(
@@ -241,122 +250,6 @@ public class MiBandActivity extends AppCompatActivity {
                                 Log.w(TAG, "There was a problem getting the step count.", e);
                             }
                         });
-    }
-
-    public static DataReadRequest queryFitnessData(){
-//        TimeZone jst = TimeZone.getTimeZone ("JST");
-        Calendar cal = Calendar.getInstance();
-        Date now = new Date();
-        cal.setTime(now);
-        long endTime = cal.getTimeInMillis();
-        cal.set(Calendar.HOUR_OF_DAY, 00);
-        cal.set(Calendar.MINUTE, 0);
-        cal.set(Calendar.SECOND, 0);
-//        cal.add(Calendar.WEEK_OF_YEAR, -1);
-//        cal.add(Calendar.DAY_OF_YEAR, 6);
-        long startTime = cal.getTimeInMillis();
-//
-//        cal.set(Calendar.HOUR_OF_DAY, 23);
-//        cal.set(Calendar.MINUTE, 59);
-//        cal.set(Calendar.SECOND, 59);
-//        endTime = cal.getTimeInMillis();
-
-        DateFormat dateFormat = DateFormat.getDateInstance();
-//        Log.i(TAG, "Range Start: " + dateFormat.format(startTime));
-//        Log.i(TAG, "Range End: " + dateFormat.format(endTime));
-        SimpleDateFormat format1 = new SimpleDateFormat("yyyy년 MM월dd일 HH시mm분ss초");
-        Log.i(TAG, "Range Start" + format1.format(startTime));
-        Log.i(TAG, "Range End" + format1.format(endTime));
-
-        DataReadRequest readRequest =
-                new DataReadRequest.Builder()
-                        .aggregate(DataType.TYPE_ACTIVITY_SEGMENT)
-                        .aggregate(DataType.TYPE_CALORIES_EXPENDED)
-                        .bucketByActivityType(1, TimeUnit.MILLISECONDS)
-                        .setTimeRange(startTime, endTime, TimeUnit.MILLISECONDS)
-                        .build();
-
-        return readRequest;
-    }
-
-    private Task<DataReadResponse> readHistoryData() {
-        DataReadRequest readRequest = queryFitnessData();
-
-        // Invoke the History API to fetch the data with the query
-        return Fitness.getHistoryClient(this, GoogleSignIn.getLastSignedInAccount(this))
-                .readData(readRequest)
-                .addOnSuccessListener(
-                        new OnSuccessListener<DataReadResponse>() {
-                            @Override
-                            public void onSuccess(DataReadResponse dataReadResponse) {
-                                //Log.e(TAG, "NO PROBLEM");
-                                printData(dataReadResponse);
-                            }
-                        })
-                .addOnFailureListener(
-                        new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Log.e(TAG, "There was a problem reading history data.", e);
-                            }
-                        });
-    }
-
-    static void dumpDataSet(DataSet dataSet, String activity) {
-        if (dataSet.isEmpty()) {
-            Log.e(TAG, "빈 셋");
-            return;
-        }
-
-        SimpleDateFormat dateFormat = new SimpleDateFormat();
-        for (DataPoint dp : dataSet.getDataPoints()) {
-            String s = String.format("Data point: %s -> %s   %s",
-                    dp.getDataType().getName(),
-                    dateFormat.format(dp.getStartTime(TimeUnit.MILLISECONDS)),
-                    dateFormat.format(dp.getEndTime(TimeUnit.MILLISECONDS)));
-            Log.i(TAG, s);
-
-            if(dp.getDataType().equals(DataType.TYPE_CALORIES_EXPENDED))
-                setActivityCal(activity, dp.getValue(Field.FIELD_CALORIES).asFloat());
-            else
-                setActivityMin(dp.getValue(Field.FIELD_ACTIVITY).asInt(), dp.getValue(Field.FIELD_DURATION).asInt());
-            for(Field field : dp.getDataType().getFields()) {
-                String name = field.getName();
-                Value value = dp.getValue(field);
-                Log.i(TAG, "\t" + name + " = " + value.toString());
-            }
-        }
-    }
-
-    public static void printData(DataReadResponse dataReadResult) {
-        int bucketSize = dataReadResult.getBuckets().size();
-        if (bucketSize > 0) {
-            Log.i(TAG, "Number of returned buckets of DataSets is: " + bucketSize);
-            for (Bucket bucket : dataReadResult.getBuckets()) {
-                String bucketActivity = bucket.getActivity();
-                List<DataSet> dataSets = bucket.getDataSets();
-                for (DataSet dataSet : dataSets) {
-                    dumpDataSet(dataSet, bucketActivity);
-                }
-//                if(bucketActivity.contains(FitnessActivities.WALKING) ||
-//                        bucketActivity.contains(FitnessActivities.RUNNING)){
-//                    Log.e(TAG, "bucket type->" + bucket.getActivity());
-//                    dataSets = bucket.getDataSets();
-//                    for (DataSet dataSet : dataSets) {
-//                        dumpDataSet(dataSet, bucketActivity);
-//                    }
-//                }
-                //Log.e(TAG, "BurnedCalories->" + String.valueOf(expendedCalories));
-            }
-        } else if (dataReadResult.getDataSets().size() > 0) {
-            Log.i(TAG, "Number of returned DataSets is: " + dataReadResult.getDataSets().size());
-            for (DataSet dataSet : dataReadResult.getDataSets()) {
-                dumpDataSet(dataSet, "??");
-            }
-        }
-        else{
-            Log.i(TAG, "Nothing to print");
-        }
     }
 
     public void initializeDistance() {
@@ -408,49 +301,158 @@ public class MiBandActivity extends AppCompatActivity {
 
     }
 
+    public static DataReadRequest queryFitnessData(){
+        Calendar cal = Calendar.getInstance();
+        Date now = new Date();
+        cal.setTime(now);
+        long endTime = cal.getTimeInMillis();
+        cal.set(Calendar.HOUR_OF_DAY, 00);
+        cal.set(Calendar.MINUTE, 0);
+        cal.set(Calendar.SECOND, 0);
+        long startTime = cal.getTimeInMillis();
+
+        SimpleDateFormat format = new SimpleDateFormat("yyyy년 MM월dd일 HH시mm분ss초");
+        Log.i(TAG, "Range Start" + format.format(startTime));
+        Log.i(TAG, "Range End" + format.format(endTime));
+
+        DataReadRequest readRequest =
+                new DataReadRequest.Builder()
+                        .aggregate(DataType.TYPE_ACTIVITY_SEGMENT)
+                        .aggregate(DataType.TYPE_CALORIES_EXPENDED)
+                        .aggregate(DataType.TYPE_DISTANCE_DELTA)
+                        .bucketByActivityType(1, TimeUnit.MILLISECONDS)
+                        .setTimeRange(startTime, endTime, TimeUnit.MILLISECONDS)
+                        .build();
+
+        return readRequest;
+    }
+
+    private Task<DataReadResponse> readHistoryData() {
+        DataReadRequest readRequest = queryFitnessData();
+
+        // Invoke the History API to fetch the data with the query
+        return Fitness.getHistoryClient(this, GoogleSignIn.getLastSignedInAccount(this))
+                .readData(readRequest)
+                .addOnSuccessListener(
+                        new OnSuccessListener<DataReadResponse>() {
+                            @Override
+                            public void onSuccess(DataReadResponse dataReadResponse) {
+                                //Log.e(TAG, "NO PROBLEM");
+                                printData(dataReadResponse);
+                                storeBandData();
+                                SmartPT smartPT = SmartPT.getInstance();
+                                String s = smartPT.getBandData().toString();
+                                Log.d(TAG, s);
+                            }
+                        })
+                .addOnFailureListener(
+                        new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Log.e(TAG, "There was a problem reading history data.", e);
+                            }
+                        });
+    }
+
+    void storeBandData(){
+        BandData bandData = new BandData();
+        bandData.distances = distances;
+        bandData.calories = calories;
+        bandData.minutes = minutes;
+        SmartPT smartPT = SmartPT.getInstance();
+        smartPT.setBandData(bandData);
+    }
+
+    static void dumpDataSet(DataSet dataSet, String activity) {
+        if (dataSet.isEmpty()) {
+            Log.e(TAG, "빈 셋");
+            return;
+        }
+        SimpleDateFormat dateFormat = new SimpleDateFormat();
+        for (DataPoint dp : dataSet.getDataPoints()) {
+            String s = String.format("Data point: %s -> %s   %s",
+                    dp.getDataType().getName(),
+                    dateFormat.format(dp.getStartTime(TimeUnit.MILLISECONDS)),
+                    dateFormat.format(dp.getEndTime(TimeUnit.MILLISECONDS)));
+            Log.i(TAG, s);
+
+            //칼로리
+            if(dp.getDataType().equals(DataType.TYPE_CALORIES_EXPENDED))
+                setActivityCal(activity, dp.getValue(Field.FIELD_CALORIES).asFloat());
+            //거리
+            else if(dp.getDataType().equals(DataType.TYPE_DISTANCE_DELTA))
+                setActivityDis(activity, dp.getValue(Field.FIELD_DISTANCE).asFloat());
+            //시간
+            else
+                setActivityMin(dp.getValue(Field.FIELD_ACTIVITY).asInt(), dp.getValue(Field.FIELD_DURATION).asInt());
+
+            for(Field field : dp.getDataType().getFields()) {
+                String name = field.getName();
+                Value value = dp.getValue(field);
+                Log.i(TAG, "\t" + name + " = " + value.toString());
+            }
+        }
+    }
+
+    public static void printData(DataReadResponse dataReadResult) {
+        int bucketSize = dataReadResult.getBuckets().size();
+        if (bucketSize > 0) {
+            Log.i(TAG, "Number of returned buckets of DataSets is: " + bucketSize);
+            for (Bucket bucket : dataReadResult.getBuckets()) {
+                String bucketActivity = bucket.getActivity();
+                List<DataSet> dataSets = bucket.getDataSets();
+                for (DataSet dataSet : dataSets) {
+                    dumpDataSet(dataSet, bucketActivity);
+                }
+            }
+        }
+        else{
+            Log.i(TAG, "Nothing to print");
+        }
+    }
+
     private static int getCategory(int activity){
-        if(activity == 3)   //nothing
-            return 5;
-        else if(activity == 82)
-            return 0;//"Swimming";
-        else if(activity == 1)
-            return 1;//"Biking";
-        else if(activity == 39)
-            return 2;//"Jumping Rope";
+        if(activity == 7)
+            return 0;//Running
         else if(activity == 8)
-            return 4;//Running
-        else if(activity == 7)    //walking(7)
-            return 3;//"Walking";
+            return 1;//Walking
+        else if(activity == 3)
+            return 2;//Nothing
         else
-            return 5;
+            return 3;//Others
     }
     private static int getCategory(String activity){
-        if(activity.contains(FitnessActivities.SWIMMING))
+        if(activity.contains(FitnessActivities.WALKING))
             return 0;
-        else if(activity.contains(FitnessActivities.BIKING))
-            return 1;
-        else if(activity.contains(FitnessActivities.JUMP_ROPE))
-            return 2;
         else if(activity.contains(FitnessActivities.RUNNING))
-            return 4;
-        else if(activity.contains(FitnessActivities.WALKING))
-            return 3;
+            return 1;
+        else if(activity.contains(FitnessActivities.STILL))
+            return 2;
         else
-            return 5;
+            return 3;
     }
 
     private static void setActivityMin(int category, int millisecond){
         int c = getCategory(category);
-        activity_min[c] += millisecond/1000/60;
-        for(int i=0;i<5;i++){
-            Log.i(TAG, "활동 : "+categories[i] +"분 : "+ activity_min[i]);
+        minutes[c] += millisecond/1000/60;
+        for(int i=0;i<4;i++){
+//            Log.i(TAG, "활동 : "+categories[i] +"분 : "+ activity_min[i]);
+            Log.i(TAG, "활동 : "+categories[i] +"분 : "+ minutes[i]);
         }
     }
     private static void setActivityCal(String activity, float calorie){
         int c = getCategory(activity);
-        activity_cal[c] += calorie;
-        for(int i=0;i<5;i++){
-            Log.i(TAG, "활동 : "+categories[i] +"칼로리 : "+ activity_cal[i]);
+        calories[c] += calorie;
+        for(int i=0;i<4;i++){
+//            Log.i(TAG, "활동 : "+categories[i] +"칼로리 : "+ activity_cal[i]);
+            Log.i(TAG, "활동 : "+categories[i] +"칼로리 : "+ calories[i]);
+        }
+    }
+    private static void setActivityDis(String activity, float distance){
+        int c = getCategory(activity);
+        distances[c] += distance;
+        for(int i=0;i<4;i++){
+            Log.i(TAG, "활동 : "+categories[i] +"거리 : "+ distances[i]);
         }
     }
 

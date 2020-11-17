@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -31,6 +32,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.smartpt.R;
+import com.example.smartpt.bluetooth.BluetoothCommunication;
 import com.welie.blessed.BluetoothCentral;
 import com.welie.blessed.BluetoothCentralCallback;
 import com.welie.blessed.BluetoothPeripheral;
@@ -80,12 +82,12 @@ public class BluetoothSettingsFragment extends Fragment {
         }
         super.onResume();
     }
-
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        menu.clear();
-    }
-
+//
+//    @Override
+//    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+//        menu.clear();
+//    }
+//
     private static final String formatDeviceName(String name, String address) {
         if (name.isEmpty() || address.isEmpty()) {
             return "-";
@@ -113,7 +115,7 @@ public class BluetoothSettingsFragment extends Fragment {
         central.scanForPeripherals();
 
         txtSearching.setVisibility(View.VISIBLE);
-        txtSearching.setText("bluetooth_searching");
+        txtSearching.setText("블루투스 검색중");
         progressBar.setVisibility(View.VISIBLE);
 
         progressHandler = new Handler();
@@ -124,23 +126,13 @@ public class BluetoothSettingsFragment extends Fragment {
             public void run() {
                 stopBluetoothDiscovery();
 
-                txtSearching.setText("bluetooth_searching_finished");
-//                progressBar.setVisibility(View.GONE);
-//
-//                BluetoothDeviceView notSupported = new BluetoothDeviceView(getContext());
-//                notSupported.setDeviceName("scale_not_supported");
-//                notSupported.setSummaryText("label_click_to_help_add_support");
-//                notSupported.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//                        Intent notSupportedIntent = new Intent(Intent.ACTION_VIEW);
-//                        notSupportedIntent.setData(
-//                                Uri.parse("https://github.com/oliexdev/openScale/wiki/Supported-scales-in-openScale"));
-//
-//                        startActivity(notSupportedIntent);
-//                    }
-//                });
-//                deviceListView.addView(notSupported);
+                txtSearching.setText("블루투스 검색 완료");
+                progressBar.setVisibility(View.GONE);
+
+                BluetoothDeviceView notSupported = new BluetoothDeviceView(getContext());
+                notSupported.setSummaryText("지원되는 기기가 없습니다.");
+                notSupported.setEnabled(false);
+                deviceListView.addView(notSupported);
             }
         }, 20 * 1000);
     }
@@ -166,7 +158,7 @@ public class BluetoothSettingsFragment extends Fragment {
         BluetoothDeviceView deviceView = new BluetoothDeviceView(getContext());
         deviceView.setDeviceName(formatDeviceName(bleScanResult.getDevice()));
 
-        com.example.smartpt.bluetooth.BluetoothCommunication btDevice = com.example.smartpt.bluetooth.BluetoothFactory.createDeviceDriver(getContext(), device.getName());
+        BluetoothCommunication btDevice = com.example.smartpt.bluetooth.BluetoothFactory.createDeviceDriver(getContext(), device.getName());
         if (btDevice != null) {
             Timber.d("Found supported device %s (driver: %s)",
                     formatDeviceName(device), btDevice.driverName());
@@ -176,7 +168,7 @@ public class BluetoothSettingsFragment extends Fragment {
         else {
             Timber.d("Found unsupported device %s",
                     formatDeviceName(device));
-            deviceView.setSummaryText("bt_device_no_support");
+            deviceView.setSummaryText("지원되지 않는 기기");
             deviceView.setEnabled(false);
 
         }
@@ -296,7 +288,7 @@ public class BluetoothSettingsFragment extends Fragment {
                         startBluetoothDiscovery();
                     }
                 } else {
-                    Toast.makeText(getContext(), "permission_not_granted", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "허가가 필요합니다.", Toast.LENGTH_SHORT).show();
                 }
                 break;
             }
