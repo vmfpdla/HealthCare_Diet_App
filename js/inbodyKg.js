@@ -21,7 +21,23 @@ for(var i=0;i<5;i++)
 
 var ctx = document.getElementById('inbodyKg').getContext('2d'); var chart = new Chart(ctx, { // 챠트 종류를 선택
 			type: 'line', // 챠트를 그릴 데이타
-		data: { labels: date_arr, datasets: [{ label: '체중', backgroundColor: 'transparent', borderColor: 'red', data: weight_arr }] }, // 옵션
+		data: {
+			labels: date_arr,
+			datasets: [
+				{
+					label: '체중',
+					backgroundColor: 'transparent',
+					borderColor: 'red',
+					data: weight_arr,
+					backgroundColor: [
+          "#f38b4a",
+          "#56d798",
+          "#ff8397",
+          "#6970d5"
+        ],
+				}
+			]
+		}, // 옵션
 		options: {
 			legend: {
 				labels: {
