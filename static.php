@@ -74,7 +74,8 @@
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  <script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
+
+
 </head>
 
 <body>
@@ -113,16 +114,10 @@
 
 	<br><br><br>
 	<div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
-    <!-- <ol class="carousel-indicators">
-      <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-      <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-      <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
-      <li data-target="#carouselExampleCaptions" data-slide-to="3"></li>
-    </ol> -->
 		<div class="carousel-inner">
 			<div class="carousel-item active">
 				<div style="width:100%">
-					<canvas id="inbodyMuscle" style="background-color: gray;"></canvas>
+					<canvas id="inbodyMuscle"></canvas>
           <script src="./js/inbodyMuscle.js?ver=?"></script>
 				</div>
 			</div>
@@ -145,14 +140,14 @@
 				</div>
 			</div>
 		</div>
-    <!-- <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
      <span class="sr-only">Previous</span>
-   </a>
-   <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-     <span class="carousel-control-next-icon" aria-hidden="true"></span>
-     <span class="sr-only">Next</span>
-   </a> -->
+    </a>
+     <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+       <span class="carousel-control-next-icon" aria-hidden="true"></span>
+       <span class="sr-only">Next</span>
+     </a>
 	</div>
 
 
@@ -191,16 +186,6 @@
     else {
       document.getElementById('carouselExampleCaptions').style.display = 'block';
     }
-
-
-    $('.carousel').carousel({
-      touch: true // default
-    })
-
-
-
-
-
   </script>
 
 </body>
