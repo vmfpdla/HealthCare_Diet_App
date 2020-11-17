@@ -24,7 +24,7 @@ for(var i=0;i<7;i++)
 	if(mm<10){ mm = '0'+mm }
 
 	date_arr[i] = yyyy + '-'+ mm + '-' + dd;
-	date_arr1[i] = mm + '-' + dd;
+	date_arr1[i] = mm + '/' + dd;
 
 	for(var j=0;j<dailykcalarray.length;j++)
 	{

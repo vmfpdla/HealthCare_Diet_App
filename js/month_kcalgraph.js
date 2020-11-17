@@ -54,6 +54,7 @@ var ctx = document.getElementById("month_kcal").getContext('2d');
 			datasets: [{
 				label: '월별 섭취 칼로리',
 				data: calory_arr,
+				hoverBorderWidth : '3',
 				backgroundColor: [
 				'rgba(54, 162, 235, 0.2)',
 				'rgba(54, 162, 235, 0.2)',
@@ -87,9 +88,9 @@ var ctx = document.getElementById("month_kcal").getContext('2d');
 							xAxes: [{
 								ticks:{
 									fontColor : 'rgba(12, 13, 13, 1)',
-									fontSize : 30
+									fontSize : 25
 								},
-								
+
 							}],
 							yAxes: [{
 								ticks: {

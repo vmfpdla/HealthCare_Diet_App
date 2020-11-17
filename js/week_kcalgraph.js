@@ -157,6 +157,7 @@ var ctx = document.getElementById("week_kcal").getContext('2d');
 			datasets: [{
 				label: '주별 섭취 칼로리',
 				data: calory_arr,
+				hoverBorderWidth : '3',
 				backgroundColor: [
 				'rgba(54, 162, 235, 0.2)',
 				'rgba(54, 162, 235, 0.2)',
@@ -181,15 +182,23 @@ var ctx = document.getElementById("week_kcal").getContext('2d');
 		options: {
 			legend: {
 				labels: {
-					fontColor: "blue",
-					fontSize: 18
+					fontColor: "black",
+					fontSize: 30
 				}
 			},
 						maintainAspectRatio: true, // default value. false일 경우 포함된 div의 크기에 맞춰서 그려짐.
 						scales: {
+							xAxes: [{
+								ticks:{
+									fontColor : 'rgba(12, 13, 13, 1)',
+									fontSize : 25
+								},
+
+							}],
 							yAxes: [{
 								ticks: {
-									beginAtZero:false
+									beginAtZero:false,
+									fontSize : 30
 								}
 							}]
 						}

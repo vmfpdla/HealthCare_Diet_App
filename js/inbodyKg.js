@@ -29,5 +29,5 @@ var ctx = document.getElementById('inbodyKg').getContext('2d'); var chart = new 
 					fontSize: 18
 				}
 			}
-s
+
 		} });
