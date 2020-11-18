@@ -1,4 +1,3 @@
-  
 <?php
 
 require_once("./dbconn.php");
@@ -295,7 +294,7 @@ else{
       <div class="card-body" id="camera_1" style="text-align: center; height:120px;">
           <a href="app://1"><button class="btn btn-secondary"id="btn1">음식입력</button></a>
           <!--  <button type="submit"> <i class="fas fa-utensils cardi" style="font-size:100px;"aria-hidden="true"></i></button>-->
-	
+  
       </div>
 
  
@@ -334,80 +333,46 @@ else{
         </div>
 
 
-
-
-
-        <div style="margin:20px 30px; float:left; width:60%; " class="smallbar">
-          <div class="container" style="margin-bottom:-25px;">
-            <div class="container" style="float:left; width:20%;">
-              <p class="pr" align="left;"> Kcal </p>
-
-            </div>
-
-            <div class="progress rounded-pill" style="height:25px;">
-              <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar"
-              style="width: <?php echo $morning_kcal/1500*100;?>%" aria-valuenow="10" aria-valuemin="0"
-              aria-valuemax="100">
-              <p class="pr" style="padding-top:15px;"> <?php echo $morning_kcal ." / 1500" ?> </p>
-            </div>
-          </div>
-        </div>
-
-        <br><br>
-
-        <div class="container" style="margin-bottom:-20px;">
-          <div class="container" style="float:left; width:20%;">
-            <p class="pr" align="left;"> 탄 </p>
-
-          </div>
-
-          <div class="progress rounded-pill" style="height:20px;">
-            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
-            style="width:  <?php echo $morning_car/1500*100;?>%" aria-valuenow="10" aria-valuemin="0"
-            aria-valuemax="100">
-            <p class="pr" style="padding-top:15px;"> <?php echo $morning_car ." / 1500" ?> </p>
-          </div>
-        </div>
-
-
-      </div>
+  <div class="card nutrients-card" style="margin:0 100px; height:500px;">
+        <div class="card-body">
       <br><br>
-
-
-      <div class="container" style="margin-bottom:-20px;">
-        <div class="container" style="float:left; width:20%;">
-          <p class="pr" align="left;"> 단 </p>
-
+      <div style="text-align:center" data-toggle="modal" data-target="#exampleModal" >
+        <p style="margin-right:20px; font-size:40px;" > 칼로리 </p>
+        <div class="progress" style="height:30px;" >
+          <div class="progress-bar bg-success" id="progress_kcal" role="progressbar" style="width:  <?php echo $morning_kcal/$user['user_goal']*100;?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
         </div>
+        <p style="font-size:30px;"><?php echo $morning_kcal."/".$user['user_goal'];?></p>
+      </div>
 
-        <div class="progress rounded-pill" style="height:20px;">
-          <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar"
-          style="width:  <?php echo $morning_pro/1500*100;?>%" aria-valuenow="10" aria-valuemin="0"
-          aria-valuemax="100">
-          <p class="pr" style="padding-top:15px;"> <?php echo $morning_pro ." / 1500" ?> </p>
+
+
+      <br><br><br>
+      <div class="carprofat">
+        <div style="float:left; width:150px; text-align:center; margin:0 70px;">
+          <p style="font-size:40px;"> 탄수화물 </p>
+          <div class="progress" >
+            <div class="progress-bar bg-info" role="progressbar" style="width: <?php echo $morning_car/$maxcar*100;?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"> </div>
+          </div>
+          <p style="font-size:30px;"><?php echo $morning_car."/".$maxcar;?></p>
+        </div>
+        <div style="float:left; width:150px; text-align:center; margin-right: 70px;">
+          <p style="font-size:40px;"> 단백질 </p>
+          <div class="progress" >
+            <div class="progress-bar bg-info" role="progressbar" style="width: <?php echo $morning_pro/$maxpro*100;?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"> </div>
+          </div>
+          <p style="font-size:30px;"><?php echo $morning_pro."/".$maxpro;?></p>
+        </div>
+        <div style="float:left; width:150px; text-align:center;">
+          <p style="font-size:40px;"> 지방 </p>
+          <div class="progress" >
+            <div class="progress-bar bg-info" role="progressbar" style="width: <?php echo $morning_fat/$maxfat*100;?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+          <p style="font-size:30px;"><?php echo $morning_fat."/".$maxfat;?></p>
         </div>
       </div>
     </div>
+  </div>
 
-
-    <br><br>
-
-    <div class="container" style="font-weight: bold;">
-      <div class="container" style="float:left; width:20%;">
-        <p class="pr" align="left;"> 지 </p>
-
-      </div>
-
-      <div class="progress rounded-pill" style="height:20px;">
-        <div class="progress-bar progress-bar-striped bg-info progress-bar-animated" role="progressbar"
-        style="width:  <?php echo $morning_fat/1500*100;?>%" aria-valuenow="10" aria-valuemin="0"
-        aria-valuemax="100">
-        <p class="pr" style="padding-top:15px;"> <?php echo $morning_fat ." / 1500" ?> </p>
-         </div>
-       </div>
-      </div>
-    
-       </div>
     </div>
 
 
