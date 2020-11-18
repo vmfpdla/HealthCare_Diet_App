@@ -347,24 +347,25 @@ else{
 
 
 
-          <br><br><br>
-          <div class="carprofat">
-            <div style="float:left; width:150px; text-align:center; margin:0 70px;">
-              <p style="font-size:30px;"> 탄수화물 </p>
+          <br>
+
+          <div class="carprofat" style="text-align:center;">
+            <div style="float:left; width:18%; text-align:center; margin:0px 10px 0 100px;">
+              <p style="font-size:20px;"> 탄수화물 </p>
               <div class="progress" >
                 <div class="progress-bar bg-info" role="progressbar" style="width: <?php echo $morning_car/$maxcar*100;?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"> </div>
               </div>
               <p style="font-size:20px;"><?php echo $morning_car."/".$maxcar;?></p>
             </div>
-            <div style="float:left; width:150px; text-align:center; margin-right: 70px;">
-              <p style="font-size:30px;"> 단백질 </p>
+            <div style="float:left; width:18%; text-align:center; margin-right: 10px;">
+              <p style="font-size:20px;"> 단백질 </p>
               <div class="progress" >
                 <div class="progress-bar bg-info" role="progressbar" style="width: <?php echo $morning_pro/$maxpro*100;?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"> </div>
               </div>
               <p style="font-size:20px;"><?php echo $morning_pro."/".$maxpro;?></p>
             </div>
-            <div style="float:left; width:150px; text-align:center;">
-              <p style="font-size:30px;"> 지방 </p>
+            <div style="float:left; width:18%; text-align:center;">
+              <p style="font-size:20px;"> 지방 </p>
               <div class="progress" >
                 <div class="progress-bar bg-info" role="progressbar" style="width: <?php echo $morning_fat/$maxfat*100;?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
