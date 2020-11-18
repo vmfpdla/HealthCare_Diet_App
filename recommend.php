@@ -293,7 +293,7 @@ else{
     <div class="tab-pane fade show active" id="breakfast" role="tabpanel" aria-labelledby="home-tab">
 
       <div class="card-body" id="camera_1" style="text-align: center; height:120px;">
-          <a href="app://"><button class="btn btn-secondary"id="btn1">음식입력</button></a>
+          <a href="app://1"><button class="btn btn-secondary"id="btn1">음식입력</button></a>
           <!--  <button type="submit"> <i class="fas fa-utensils cardi" style="font-size:100px;"aria-hidden="true"></i></button>-->
 	
       </div>
@@ -414,7 +414,7 @@ else{
     <div class="tab-pane fade" id="lunch" role="tabpanel" aria-labelledby="profile-tab">
         <div class="card-body" id="camera_2" style="text-align: center;">
    
-      <a href="app://"><button class="btn btn-secondary"id="btn1">음식입력</button></a>
+      <a href="app://2"><button class="btn btn-secondary"id="btn1">음식입력</button></a>
       <!--  <button type="submit"> <i class="fas fa-utensils cardi" style="font-size:100px;"aria-hidden="true"></i></button>-->
 
   </div>
@@ -538,7 +538,7 @@ else{
 
   <div class="card-body" id="camera_3" style="text-align: center;">
 
-  <a href="app://"><button class="btn btn-secondary"id="btn1">음식입력</button></a>
+  <a href="app://3"><button class="btn btn-secondary"id="btn1">음식입력</button></a>
   </div>
 
 

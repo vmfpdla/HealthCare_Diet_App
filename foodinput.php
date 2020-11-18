@@ -102,7 +102,7 @@ font-size:30px;
 	</div>
 	
 	
-	<input type="number" name="eaten_time" placeholder="아침:1 점심:2 저녁:3"> 
+	<input type="hidden" name="eaten_time" value="<?php echo $_GET["eaten_time"];?>"> 
 <button type="submit"> 제출 </button>
       </form>
 </div>
