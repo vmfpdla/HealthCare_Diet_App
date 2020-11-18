@@ -3,15 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.smartpt">
 
-
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
-
     <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-
 
     <application
         android:name=".Application"
@@ -23,22 +20,23 @@
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
         android:usesCleartextTraffic="true">
 
+
+
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3940256099942544~3347511713"/>
+            android:value="ca-app-pub-3940256099942544~3347511713" />
+        <activity android:name=".inputfood"/>
+        <activity android:name=".post" />
+        <activity android:name=".CameraActivity" />
 
-        <activity android:name=".post">
 
-
-        </activity>
-        <activity android:name=".CameraActivity"></activity>
         <activity android:name=".MiBand.MiBandActivity">
 
         </activity>
         <activity android:name=".MiScale.MiScaleActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
+                <data android:host="smartpt" android:scheme="gocamera"/>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

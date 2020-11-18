@@ -9,6 +9,7 @@ import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,6 +44,10 @@ public class CameraActivity extends AppCompatActivity {
     private ImageView imageViewResult;
     private CameraView cameraView;
     private String id1,id2,id3;
+    private RadioButton btnRadio1,btnRadio2,btnRadio3;
+    private Integer amount=0;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +56,15 @@ public class CameraActivity extends AppCompatActivity {
         imageViewResult = findViewById(R.id.imageViewResult);
         textViewResult = findViewById(R.id.textViewResult);
         textViewResult.setMovementMethod(new ScrollingMovementMethod());
+
+        Intent gintent = getIntent();
+
+        final int data=gintent.getIntExtra("data",1);
+
+
+        btnRadio1 = findViewById(R.id.radio0);
+        btnRadio2 = findViewById(R.id.radio1);
+        btnRadio3 = findViewById(R.id.radio2);
 
         btnFood1 = findViewById(R.id.btn_food1);
         btnFood2 = findViewById(R.id.btn_food2);
@@ -84,8 +98,12 @@ public class CameraActivity extends AppCompatActivity {
 
 
                 btnFood1.setText("BUTTON1");
+                btnFood1.setEnabled(false);
                 btnFood2.setText("BUTTON2");
+                btnFood2.setEnabled(false);
                 btnFood3.setText("BUTTON3");
+                btnFood3.setEnabled(false);
+
                 id1="";
                 id2="";
                 id3="";
@@ -94,15 +112,31 @@ public class CameraActivity extends AppCompatActivity {
                 for(int i =0;i<array.length;i++) {
                     if(i==0) {
                         btnFood1.setText(results.get(0).getTitle());
+                        btnFood1.setEnabled(true);
+
                         id1 = results.get(0).getId();
                     }if(i==1) {
                         btnFood2.setText(results.get(1).getTitle());
+                        btnFood2.setEnabled(true);
+
                         id2 = results.get(1).getId();
                     }if(i==2) {
                         btnFood3.setText(results.get(2).getTitle());
+                        btnFood3.setEnabled(true);
+
                         id3 = results.get(2).getId();
                     }
                 }
+                btnFood1.setVisibility(btnFood1.VISIBLE);
+                btnFood2.setVisibility(btnFood2.VISIBLE);
+                btnFood3.setVisibility(btnFood3.VISIBLE);
+
+                btnSearch.setVisibility(btnSearch.VISIBLE);
+
+                btnRadio1.setVisibility(btnRadio1.VISIBLE);
+                btnRadio2.setVisibility(btnRadio2.VISIBLE);
+                btnRadio3.setVisibility(btnRadio3.VISIBLE);
+
 
             }
 
@@ -115,7 +149,8 @@ public class CameraActivity extends AppCompatActivity {
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myIntent = new Intent(getApplicationContext(), MainActivity.class);
+                Intent myIntent = new Intent(getApplicationContext(), inputfood.class);
+                myIntent.putExtra("data",data);
                 startActivity(myIntent);
             }
         });
@@ -128,35 +163,73 @@ public class CameraActivity extends AppCompatActivity {
         });
 
         initTensorFlowAndLoadModel();
+
         final ContentValues values = new ContentValues();
         final Context appContext = this.getApplicationContext();
-        final String url = "https://smartpt.ml/test.php";
+        final String url = "https://smartpt.ml/updatefoodinput.php";
+
 
         btnFood1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                btnFood1.setText(id1);
+                if(btnRadio1.isChecked())
+                    amount=0;
+                else if(btnRadio2.isChecked())
+                    amount=1;
+                else if(btnRadio3.isChecked())
+                    amount=3;
+
+                btnFood1.setText(""+amount);
+
                 values.put("foodid", id1);
+                values.put("eaten_time",data);
+                values.put("serving",amount);
                 NetworkTask networkTask = new NetworkTask(url, values, appContext, Opcode.LoginRequest, "POST");
                 networkTask.execute();
+                Intent myIntent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(myIntent);
             }
         });
         btnFood2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(btnRadio1.isChecked())
+                    amount=0;
+                else if(btnRadio2.isChecked())
+                    amount=1;
+                else if(btnRadio3.isChecked())
+                    amount=3;
+
                 btnFood2.setText(id2);
+
                 values.put("foodid", id2);
+                values.put("eaten_time",data);
+                values.put("serving",amount);
                 NetworkTask networkTask = new NetworkTask(url, values, appContext, Opcode.LoginRequest, "POST");
                 networkTask.execute();
+                Intent myIntent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(myIntent);
             }
         });
         btnFood3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(btnRadio1.isChecked())
+                    amount=0;
+                else if(btnRadio2.isChecked())
+                    amount=1;
+                else if(btnRadio3.isChecked())
+                    amount=3;
+
                 btnFood3.setText(id3);
+
                 values.put("foodid", id3);
+                values.put("eaten_time",data);
+                values.put("serving",amount);
                 NetworkTask networkTask = new NetworkTask(url, values, appContext, Opcode.LoginRequest, "POST");
                 networkTask.execute();
+                Intent myIntent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(myIntent);
             }
         });
     }

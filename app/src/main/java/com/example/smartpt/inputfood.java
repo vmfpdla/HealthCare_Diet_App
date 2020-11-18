@@ -8,9 +8,8 @@ import android.os.Bundle;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class inputfood extends AppCompatActivity {
     private WebView mWebView;
     private WebSettings mWebSettings;
     public Context mContext; // 요거는 웹뷰랑 액티비티 왔다갔다하려고 만든거
@@ -18,12 +17,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
+        setContentView(R.layout.activity_inputfood);
 
         mWebView = (WebView) findViewById(R.id.wv);
         mContext = this.getApplicationContext();
+        Intent gintent = getIntent();
 
+        int data=gintent.getIntExtra("data",1);
 
 
         mWebView.setWebViewClient(new WebViewClient()); // 클릭시 새창 안뜨게
@@ -39,26 +39,15 @@ public class MainActivity extends AppCompatActivity {
         mWebSettings.setCacheMode(WebSettings.LOAD_NO_CACHE); // 브라우저 캐시 허용 여부
         mWebSettings.setDomStorageEnabled(true); // 로컬저장소 허용 여부
 
-        mWebView.loadUrl("https://smartpt.ml"); // 웹뷰에 표시할 웹사이트 주소, 웹뷰 시작
-        mWebView.setWebViewClient(new WebViewClientClass());
+        mWebView.loadUrl("https://smartpt.ml/foodinput.php?eaten_time="+data); // 웹뷰에 표시할 웹사이트 주소, 웹뷰 시작
+        mWebView.setWebViewClient(new inputfood.WebViewClientClass());
     }
-
     private class WebViewClientClass extends WebViewClient{
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url){
 
-            if (url.startsWith("app://")){
-                Intent intent=new Intent(mContext.getApplicationContext(),CameraActivity.class);
-                int data =Integer.parseInt(url.substring(6));
-                intent.putExtra("data",data);
-                startActivity(intent);
-                return true;
-            }
-            else if (url.startsWith("iotdevice://")){
-
-                Intent intent=new Intent(mContext.getApplicationContext(),CameraActivity.class);
-                int data =Integer.parseInt(url.substring(6));
-                intent.putExtra("data",data);
+            if (url.startsWith("goback://")){
+                Intent intent=new Intent(mContext.getApplicationContext(),MainActivity.class);
                 startActivity(intent);
                 return true;
             }
@@ -66,6 +55,8 @@ public class MainActivity extends AppCompatActivity {
                 view.loadUrl(url);
                 return true;
             }
+
+
         }
     }
 }
