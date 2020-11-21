@@ -143,7 +143,7 @@
       </a>
     </nav>
 	<script>
-		function changeCalory(sel){
+		window.changeCalory = function(sel) {
 			if(sel=='권장칼로리')
 			{
 				document.getElementById('inputCalory').readOnly = true;
@@ -161,7 +161,7 @@
 			var weight  =$('#inputWeight').val();
 			var height  =$('#inputHeight').val() *0.01;
 			var miscale =$('#inputMiscale').val();
-			var kcal =0;
+			var kcal = 0;
 
 			if(gender==0) //남자면
 			{
@@ -179,7 +179,7 @@
 
 		var ori_gender ='<?php echo $user['user_gender'];?>';
 		var ori_exercise ='<?php echo $user['user_check_exercise'];?>';
-		var ori_miscale =='<?php echo $user['user_check_inbody'];?>';
+		var ori_miscale ='<?php echo $user['user_check_inbody'];?>';
 
 		if(ori_gender == 0 ) $('#inputGender').val('0').prop("selected",true);
 		else $('#inputGender').val('1').prop("selected",true);
