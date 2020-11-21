@@ -100,9 +100,15 @@ font-size:30px;
           </div>
           <input type="number" class="form-control hi" name="serving" placeholder="Serving" aria-label="Username" aria-describedby="basic-addon1">
 	</div>
+<<<<<<< HEAD
 
 
 	<input type="number" name="eaten_time" placeholder="아침:1 점심:2 저녁:3">
+=======
+	
+	
+	<input type="hidden" name="eaten_time" value="<?php echo $_GET["eaten_time"];?>"> 
+>>>>>>> e86c04cd4ebf68e7be0681c7e98b78ea4dab288f
 <button type="submit"> 제출 </button>
       </form>
 </div>
