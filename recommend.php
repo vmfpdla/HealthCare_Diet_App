@@ -297,25 +297,7 @@ else{
 
       <div class="card-body" id="camera_1" style="text-align: center; height:120px;">
 <<<<<<< HEAD
-          <a href="app://"><button class="btn btn-secondary"id="btn1">음식입력</button></a>
-          <!--  <button type="submit"> <i class="fas fa-utensils cardi" style="font-size:100px;"aria-hidden="true"></i></button>-->
-
-      </div>
-
-
-        <div style="float:left; margin:50px 50px;  width:15%;">
-          <p style="width: 100%;"> <?php
-          if($is_morning==1){
-            $morning_kcal =0;
-            $morning_car =0;
-            $morning_pro =0;
-            $morning_fat =0;
-            while($row = $result3->fetch_assoc()) {
-              if ($row['eaten_serving']==0){
-                $morning_kcal = $morning_kcal+$row['food_calory']*0.5;
-                $morning_car = $morning_car+$row['food_car']*0.5;
-                $morning_pro = $morning_pro+$row['food_pro']*0.5;
-                $morning_fat = $morning_fat+$row['food_fat']*0.5;
+       
 =======
         <a href="app://1"><button class="btn btn-secondary"id="btn1">음식입력</button></a>
         <!--  <button type="submit"> <i class="fas fa-utensils cardi" style="font-size:100px;"aria-hidden="true"></i></button>-->
