@@ -42,6 +42,7 @@
       {
         $walking = $row;
         $walking_calory = $row['exercise_calory'];
+
       }
       else if($row['exercise_id']==2)
       {
@@ -49,11 +50,7 @@
         $running_calory = $row['exercise_calory'];
       }
     // echo $row['exercise_name'] ." / " .$row['doexercise_minute'] ."분 / ".$row['doexercise_calory']."Kcal";
-    // echo nl2br("\n");
     }
-  }
-  else {
-    //echo //"아직 운동을 안했어요 !";
   }
   if($walking==null){
     $walking['doexercise_calory']=0;
@@ -107,7 +104,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./css/jaehyun.css?ver=2">
+  <link rel="stylesheet" href="./css/jaehyun.css?ver=3">
   <!-- 아이콘 -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/v4-shims.css">
@@ -119,12 +116,12 @@
   integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
   crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-  <script src="./js/nav.js"></script>
+  <script src="./js/nav.js?ver=1"></script>
 </head>
 
 <body>
   <nav class="navbar fixed-top">
-    <p class="navp">Smart PT</p>
+    <p class="navp">SmartPT</p>
     <a href="usermodify.php">
       <i class="fa fa-user-circle navi"></i>
     </a>
@@ -161,7 +158,7 @@
   </div>
 
   <br><br><br><br>
-  <a href="app://application">Call Android Activity</a>
+
   <div style="margin-left:50px;">
     <p style="font-size:80px;">오늘의 영양소</p>
     <p class="mb-2 text-muted" style="font-size:70px;">Today's nutrients</p>
@@ -169,8 +166,8 @@
   <br>
   <div class="card nutrients-card" style="margin:0 100px; height:500px;">
     <div class="card-body">
-      <br><br>
-      <div style="text-align:center" data-toggle="modal" data-target="#exampleModal" >
+      <br>
+      <div id="calorydiv"style="text-align:center">
         <p style="margin-right:20px; font-size:40px;" > 칼로리 </p>
         <div class="progress" style="height:30px;" >
           <div class="progress-bar bg-success" id="progress_kcal" role="progressbar" style="width:  <?php echo $kcal/$user['user_goal']*100;?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
@@ -220,21 +217,21 @@
           <div class="progress" >
             <div class="progress-bar bg-info" role="progressbar" style="width: <?php echo $car/$maxcar*100;?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"> </div>
           </div>
-          <p style="font-size:30px;"><?php echo $car."/".$maxcar;?></p>
+          <p style="font-size:25px;"><?php echo $car."/".$maxcar;?></p>
         </div>
         <div style="float:left; width:150px; text-align:center; margin-right: 70px;">
           <p style="font-size:40px;"> 단백질 </p>
           <div class="progress" >
             <div class="progress-bar bg-info" role="progressbar" style="width: <?php echo $pro/$maxpro*100;?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"> </div>
           </div>
-          <p style="font-size:30px;"><?php echo $pro."/".$maxpro;?></p>
+          <p style="font-size:25px;"><?php echo $pro."/".$maxpro;?></p>
         </div>
         <div style="float:left; width:150px; text-align:center;">
           <p style="font-size:40px;"> 지방 </p>
           <div class="progress" >
             <div class="progress-bar bg-info" role="progressbar" style="width: <?php echo $fat/$maxfat*100;?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
           </div>
-          <p style="font-size:30px;"><?php echo $fat."/".$maxfat;?></p>
+          <p style="font-size:25px;"><?php echo $fat."/".$maxfat;?></p>
         </div>
       </div>
     </div>
@@ -246,8 +243,8 @@
     <a href="index.php">
       <div class="navIcons" style="text-align:center;">
         <br />
-        <i class="navIcon fas fa-home navdi" id="navHome" aria-hidden="true"></i>
-        <p class="navName navdp"> Home </p>
+        <i class="navIcon fas fa-home navdi" id="navHome" aria-hidden="true" style="color:#8DA5BD;"></i>
+        <p class="navName navdp" style="color:#8DA5BD;"> Home </p>
       </div>
     </a>
     <a href="recommend.php">
@@ -265,21 +262,27 @@
       </div>
     </a>
   </nav>
+
 </body>
 <script>
+
   var kcal = Number('<?php echo $kcal?>');
   var goal = Number('<?php echo $user['user_goal']?>');
 
 
   if(kcal>goal){
     document.getElementById('progress_kcal').className="bg-danger";
-    document.getElementById('exampleModal').style.display='block';
     document.getElementById('notification_div').style.display='block';
   }
   else{
     document.getElementById('progress_kcal').className="bg-success";
-    document.getElementById('exampleModal').style.display='none';
     document.getElementById('notification_div').style.display='none';
   }
+  $(function(){
+    $("#calorydiv").click(function(){
+      if(kcal>goal) $('div.modal').modal();
+    })
+})
+
 </script>
 </html>

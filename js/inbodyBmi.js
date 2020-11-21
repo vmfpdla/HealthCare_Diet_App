@@ -25,9 +25,25 @@ var ctx = document.getElementById('inbodyBmi').getContext('2d'); var chart = new
 		options: {
 			legend: {
 				labels: {
-					fontColor: "red",
-					fontSize: 18
+					fontColor: "black",
+					fontSize: 30
 				}
-			}
+			},
+
+			scales: {
+				xAxes: [{
+					ticks:{
+						fontColor : 'rgba(12, 13, 13, 1)',
+						fontSize : 25
+					},
+
+				}],
+				yAxes: [{
+					ticks: {
+						beginAtZero:false,
+						fontSize : 30
+					}
+				}]
+			},
 
 		} });

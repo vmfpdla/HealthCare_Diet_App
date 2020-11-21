@@ -9,6 +9,7 @@ body{
 .rea{
 	font-size:40px;
 }
+
 tr{
 font-size:30px;
 text-align:center;
@@ -16,7 +17,7 @@ text-align:center;
 /*   nav css    */
 
 nav{
-	background-color:#8DA5BD;
+	background-color:white;
 	padding-left:50px;
 	padding-right:50px;
 }
@@ -24,22 +25,16 @@ nav{
 .navp{
 	font-size:90px;
 	font-weight: bold;
-	color:white;
+	color:#8DA5BD;
 }
 
 
 i.navi{
 	font-size: 100px;
-	color:white;
+	color:#D8D8D8;
 }
 
-.navi:hover{
-	-ms-transform: scale(1.5);
-	-webkit-transform: scale(1.5);
-	transform: scale(1.5);
-	opacity: 0.7;
-	text-decoration: none;
-}
+
 
 nav.navd{
 	background-color:white;
@@ -53,8 +48,10 @@ i.navdi{
 	color:#BDBDBD;
 
 }
+
 .navdp{
 	color:#BDBDBD;
+	font-size:30px;
 }
 
 /* main 아래 그래프 속성 */

@@ -1,4 +1,4 @@
-  
+
 <?php
 
 require_once("./dbconn.php");
@@ -90,7 +90,7 @@ else //echo "0 results";
 
 </style>
 
-<link rel="stylesheet" href="./css/jaehyun.css?ver=2">
+<link rel="stylesheet" href="./css/jaehyun.css?ver=3">
 
 </script>
 
@@ -98,7 +98,7 @@ else //echo "0 results";
   function myFunction() {
   // Declare variables
   var input, table, tr, td, i, txtValue,tv,iv,count;
-  
+
   input = document.getElementById("myInput");
   table = document.getElementById("user-table");
   tr = table.getElementsByTagName("tr");
@@ -107,9 +107,9 @@ else //echo "0 results";
   // Loop through all table rows, and hide those who don't match the search query
   for (i = 1; i < tr.length; i++) {
     td = tr[i].getElementsByTagName("td")[5];
-    tv=(parseInt(($(td).html())));  
+    tv=(parseInt(($(td).html())));
     iv=(parseInt($(input).val()));
-    count=0; 
+    count=0;
     if((iv>=tv)){
       tr[i].style.display = "";
       count=count+1;
@@ -149,7 +149,7 @@ else //echo "0 results";
   <i class="fa fa-spoon titlei" aria-hidden="true"></i>
   <p class="title">Diet</p>
 </div>
-<br><br>  
+<br><br>
 <div class="card nutrients-card" style="margin:0 100px; height:500px;">
     <div class="card-body">
       <br><br>
@@ -295,10 +295,10 @@ else{
       <div class="card-body" id="camera_1" style="text-align: center; height:120px;">
           <a href="app://"><button class="btn btn-secondary"id="btn1">음식입력</button></a>
           <!--  <button type="submit"> <i class="fas fa-utensils cardi" style="font-size:100px;"aria-hidden="true"></i></button>-->
-	
+
       </div>
 
- 
+
         <div style="float:left; margin:50px 50px;  width:15%;">
           <p style="width: 100%;"> <?php
           if($is_morning==1){
@@ -406,14 +406,14 @@ else{
          </div>
        </div>
       </div>
-    
+
        </div>
     </div>
 
 
     <div class="tab-pane fade" id="lunch" role="tabpanel" aria-labelledby="profile-tab">
         <div class="card-body" id="camera_2" style="text-align: center;">
-   
+
       <a href="app://"><button class="btn btn-secondary"id="btn1">음식입력</button></a>
       <!--  <button type="submit"> <i class="fas fa-utensils cardi" style="font-size:100px;"aria-hidden="true"></i></button>-->
 
@@ -527,7 +527,7 @@ else{
         </div>
             </div>
         </div>
-        
+
 
     </div>
 
@@ -638,9 +638,9 @@ else{
         </div>
       </div>
        </div>
-      
+
        </div>
-    
+
 
 
 
@@ -690,7 +690,7 @@ else{
       $jb_conn = mysqli_connect( 'localhost', 'root', 'toor', 'smartpt' );
 
 
-      mysqli_query($jb_conn, "set session character_set_connection=utf8;"); 
+      mysqli_query($jb_conn, "set session character_set_connection=utf8;");
 
       mysqli_query($jb_conn, "set session character_set_results=utf8;");
 
@@ -749,7 +749,7 @@ if($arr_diet[$j][5]>$arr_diet[$j+1][5]){
     $arr_diet[$j+1]=$temp;
 }
 }
-} 
+}
 #for($i=0;$i<count($arr_diet);$i++){
 #echo '<tr><td>' . $arr_diet[$i][0]. '</td><td>'. $arr_diet[$i][1] . '</td><td>' .$arr_diet[$i][2]. '</td><td>'. $arr_diet[$i][3] .'</td><td>'. $arr_diet[$i][4] .'</td><td>'. $arr_diet[$i][5] .'</td></tr>';
 #}
@@ -771,32 +771,26 @@ if($arr_diet[$j][5]>$arr_diet[$j+1][5]){
 
 <nav class="navbar fixed-bottom navd">
   <a href="index.php">
-   <div class="navIcons" style="text-align:center;">
-    <br/>
-    <i class="navIcon fas fa-home navdi" id="navHome" aria-hidden="true"></i>
-    <p class="navName navdp">
-     Home
-   </p>
- </div>
-</a>
-<a href="recommend.php">
-  <div class="navIcons" style="text-align:center;">
-    <br/>
-    <i class="navIcon fas fa-utensils navdi" id="navDiet" aria-hidden="true"></i>
-    <p class="navName navdp">
-      Diet
-    </p>
-  </div>
-</a>
-<a href="static.php">
-  <div class="navIcons" style="text-align:center;">
-    <br/>
-    <i class="navIcon far fa-chart-bar navdi" id="navChart" aria-hidden="true"></i>
-    <p class="navName navdp">
-      Chart
-    </p>
-  </div>
-</a>
+    <div class="navIcons" style="text-align:center;">
+      <br />
+      <i class="navIcon fas fa-home navdi" id="navHome" aria-hidden="true" ></i>
+      <p class="navName navdp"> Home </p>
+    </div>
+  </a>
+  <a href="recommend.php">
+    <div class="navIcons" style="text-align:center;">
+      <br />
+      <i class="navIcon fas fa-utensils navdi" id="navDiet" aria-hidden="true" style="color:#8DA5BD;"></i>
+      <p class="navName navdp" style="color:#8DA5BD;"> Diet </p>
+    </div>
+  </a>
+  <a href="static.php">
+    <div class="navIcons" style="text-align:center;">
+      <br />
+      <i class="navIcon far fa-chart-bar navdi" id="navChart" aria-hidden="true"></i>
+      <p class="navName navdp"> Chart </p>
+    </div>
+  </a>
 </nav>
 </body>
 </html>

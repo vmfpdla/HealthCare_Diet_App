@@ -35,10 +35,26 @@ var chart = new Chart(ctx, { // 챠트 종류를 선택
 		options: {
 			legend: {
 				labels: {
-					fontColor: "Green",
-					fontSize: 18
+					fontColor: "black",
+					fontSize: 30
 				}
-			}
+			},
+
+			scales: {
+				xAxes: [{
+					ticks:{
+						fontColor : 'rgba(12, 13, 13, 1)',
+						fontSize : 25
+					},
+
+				}],
+				yAxes: [{
+					ticks: {
+						beginAtZero:false,
+						fontSize : 30
+					}
+				}]
+			},
 
 
 		} });

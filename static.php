@@ -51,29 +51,26 @@
 	<title></title>
   <meta charset="utf-8">
 
-  <link rel="stylesheet" href="./css/jaehyun.css">
-
   <!-- 외부 css -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <!-- 폰트 -->
-  <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/jaehyun.css?ver=3">
   <!-- 아이콘 -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/v4-shims.css">
-
   <!-- 스크립트 -->
-  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
-  <script src="./js/nav.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+  integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+  crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+  <script src="./js/nav.js"></script>
+
+
 
 
 </head>
@@ -90,8 +87,8 @@
     ?>
   </div>
 	<nav class="navbar fixed-top">
-		<p class="navp">Smart PT</p>
-		<a href="usermodify.php"><i class="fa fa-user-circle navi"></i></a>
+		<p class="navp">SmartPT</p>
+		<a href=""><i class="fas fa-sync" style="font-size:70px; color:#D8D8D8; margin-right:30px;"></i></a>
 	</nav>
 
 	<br><br><br>
@@ -118,25 +115,25 @@
 			<div class="carousel-item active">
 				<div style="width:100%">
 					<canvas id="inbodyMuscle"></canvas>
-          <script src="./js/inbodyMuscle.js?ver=?"></script>
+          <script src="./js/inbodyMuscle.js?ver=1"></script>
 				</div>
 			</div>
 			<div class="carousel-item">
 				<div style="width:100%">
 					<canvas id="inbodyFat"></canvas>
-          <script src="./js/inbodyFat.js?ver=?"></script>
+          <script src="./js/inbodyFat.js?ver=1"></script>
 				</div>
 			</div>
 			<div class="carousel-item">
 				<div style="width:100%">
 					<canvas id="inbodyKg"></canvas>
-          <script src="./js/inbodyKg.js?ver=?"></script>
+          <script src="./js/inbodyKg.js?ver=1"></script>
 				</div>
 			</div>
 			<div class="carousel-item">
 				<div style="width:100%">
 					<canvas id="inbodyBmi"></canvas>
-          <script src="./js/inbodyBmi.js?ver=?"></script>
+          <script src="./js/inbodyBmi.js?ver=1"></script>
 				</div>
 			</div>
 		</div>
@@ -153,29 +150,29 @@
 
 
   <br><br><br><br>
-	<nav class="navbar fixed-bottom navd">
-		<a href="index.php">
-			<div class="navIcons" style="text-align:center;" >
-				<br/>
-				<i class="navIcon fas fa-home navdi" id="navHome" aria-hidden="true"></i>
-				<p class="navName navdp"> Home </p>
-			</div>
-		</a>
-		<a href="recommend.php">
-			<div class="navIcons" style="text-align:center;">
-				<br/>
-				<i class="navIcon fas fa-utensils navdi" id="navDiet" aria-hidden="true"></i>
-				<p class="navName navdp"> Diet </p>
-			</div>
-		</a>
-		<a href="static.php">
-			<div  class="navIcons" style="text-align:center;">
-				<br/>
-				<i class="navIcon far fa-chart-bar navdi" id="navChart" aria-hidden="true" ></i>
-				<p class="navName navdp"> Chart </p>
-			</div>
-		</a>
-	</nav>
+  <nav class="navbar fixed-bottom navd">
+    <a href="index.php">
+      <div class="navIcons" style="text-align:center;">
+        <br />
+        <i class="navIcon fas fa-home navdi" id="navHome" aria-hidden="true"></i>
+        <p class="navName navdp"> Home </p>
+      </div>
+    </a>
+    <a href="recommend.php">
+      <div class="navIcons" style="text-align:center;">
+        <br />
+        <i class="navIcon fas fa-utensils navdi" id="navDiet" aria-hidden="true"></i>
+        <p class="navName navdp"> Diet </p>
+      </div>
+    </a>
+    <a href="static.php">
+      <div class="navIcons" style="text-align:center;">
+        <br />
+        <i class="navIcon far fa-chart-bar navdi" id="navChart" aria-hidden="true" style="color:#8DA5BD;"></i>
+        <p class="navName navdp" style="color:#8DA5BD;"> Chart </p>
+      </div>
+    </a>
+  </nav>
   <script>
 
     var user_check = '<?php echo $user[user_check_inbody] ?>';
@@ -186,6 +183,10 @@
     else {
       document.getElementById('carouselExampleCaptions').style.display = 'block';
     }
+
+    $('.carousel').carousel({
+      touch: true
+    })
   </script>
 
 </body>

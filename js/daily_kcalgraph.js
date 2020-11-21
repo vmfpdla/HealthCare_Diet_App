@@ -80,21 +80,31 @@ var ctx = document.getElementById("daily_kcal").getContext('2d');
 					fontSize: 30
 				}
 			},
-						maintainAspectRatio: true, // default value. false일 경우 포함된 div의 크기에 맞춰서 그려짐.
-						scales: {
-							xAxes: [{
-								ticks:{
-									fontColor : 'rgba(12, 13, 13, 1)',
-									fontSize : 30
-								},
+			maintainAspectRatio: true, // default value. false일 경우 포함된 div의 크기에 맞춰서 그려짐.
+			scales:
+			{
+				xAxes:
+				[
+					{
+						ticks:
+						{
+							fontColor : 'rgba(12, 13, 13, 1)',
+							fontSize : 30
+						},
 
-							}],
-							yAxes: [{
-								ticks: {
-									beginAtZero:false,
-									fontSize : 30
-								}
-							}]
+					}
+				],
+				yAxes:
+				[
+					{
+						ticks:
+						{
+							beginAtZero:false,
+							fontSize : 30
 						}
 					}
-		});
+				]
+			}
+		}
+	}
+);

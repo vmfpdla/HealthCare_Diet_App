@@ -1,3 +1,22 @@
+<?php
+
+  require_once("./dbconn.php");
+
+  $user_id = 1; # 1번 가져왔다고 가정
+
+  $sql = "SELECT * FROM user WHERE user_id='$user_id'";
+  $result = $conn->query($sql);
+  if ($result->num_rows > 0) { // 여러줄 가져오는 경우
+
+    while($row = $result->fetch_assoc()) {
+      $user = $row;
+    }
+  } else {
+    echo "유저 접속 오류";
+  }
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +26,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./css/jaehyun.css?ver=1">
+  <link rel="stylesheet" href="./css/jaehyun.css?ver=3">
   <!-- 아이콘 -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/v4-shims.css">
@@ -24,7 +43,13 @@
 
 </head>
 <body>
-
+  <nav class="navbar fixed-top">
+    <p class="navp">SmartPT</p>
+    <a href="usermodify.php">
+      <i class="fa fa-user-circle navi" style="color:#8DA5BD;"></i>
+    </a>
+  </nav>
+  <br><br><br>
 
 	<form style="width:80%; margin: 10% auto;" method="post" action="form_usermodify.php">
 		<div>
@@ -38,18 +63,18 @@
 				</div>
 				<div class="form-group col-md-6" >
 					<label for="inputNumber">나이</label>
-					<input type="number" min="1" max="100" class="form-control" id="inputAge" name="inputAge" placeholder="age ( 세 )">
+					<input type="number" min="1" max="100" class="form-control" id="inputAge" name="inputAge" placeholder="<?php echo $user['user_age'];?>">
 				</div>
 			</div>
 			<br>
 			<div class="form-row">
 				<div class="form-group col-md-6">
 					<label for="inputHeight">키</label>
-					<input type="number" min="100" max="250" class="form-control" id="inputHeight" name="inputHeight" placeholder="height ( cm )">
+					<input type="number" min="100" max="250" class="form-control" id="inputHeight" name="inputHeight" placeholder="<?php echo $user['user_height'];?>">
 				</div>
 				<div class="form-group col-md-6">
 					<label for="inputWeight">체중</label>
-					<input type="number" min="10" max="200" class="form-control" id="inputWeight" name="inputWeight" placeholder="weight ( Kg )">
+					<input type="number" min="10" max="200" class="form-control" id="inputWeight" name="inputWeight" placeholder="<?php echo $user['user_weight'];?>">
 				</div>
 			</div>
 			<br>
@@ -57,7 +82,6 @@
 				<div class="form-group col-md-13">
 					<label for="inputExercise">운동 빈도</label>
 					<select id="inputExercise" name="inputExercise" class="form-control">
-						<option selected>Choose...</option>
 						<option value=1>따로 운동하지 않는다</option>
 						<option value=1.12>일상활동 + 30~60 분 꾸준한 운동을 한다</option>
 						<option value=1.27>일상활동 + 60 분 이상 꾸준한 운동을 한다</option>
@@ -73,7 +97,7 @@
 					</div>
 					<br>
 
-					<input type="number" class="form-control" id="inputCalory" name="inputCalory" placeholder="Calory ( Kcal )" readonly>
+					<input type="number" class="form-control" id="inputCalory" name="inputCalory" placeholder="<?php echo $user['user_goal'];?>" readonly>
 					<br>
 					<h3 style="color:gray;">[ 하루 권장 칼로리 ] 표준체중(kg) X 활동지수</h3>
 					<h3 style="color:gray;">[ 다이어트 식단 칼로리 ] 여성 : 800 - 1200 Kcal , 남성 : 1200 - 1400 Kcal</h3>
@@ -94,8 +118,30 @@
 	</form>
 
 
-	<br><br>
-
+	<br><br><br><br>
+    <nav class="navbar fixed-bottom navd">
+      <a href="index.php">
+        <div class="navIcons" style="text-align:center;">
+          <br />
+          <i class="navIcon fas fa-home navdi" id="navHome" aria-hidden="true"></i>
+          <p class="navName navdp"> Home </p>
+        </div>
+      </a>
+      <a href="recommend.php">
+        <div class="navIcons" style="text-align:center;">
+          <br />
+          <i class="navIcon fas fa-utensils navdi" id="navDiet" aria-hidden="true"></i>
+          <p class="navName navdp"> Diet </p>
+        </div>
+      </a>
+      <a href="static.php">
+        <div class="navIcons" style="text-align:center;">
+          <br />
+          <i class="navIcon far fa-chart-bar navdi" id="navChart" aria-hidden="true"></i>
+          <p class="navName navdp"> Chart </p>
+        </div>
+      </a>
+    </nav>
 	<script>
 		function changeCalory(sel){
 			if(sel=='권장칼로리')
@@ -108,12 +154,13 @@
 			}
 		}
 
-		$("#inputGender,#inputAge,#inputWeight,#inputHeight,#inputExercise").on("propertychange change keyup paste input", function() {
+		$("#inputGender,#inputAge,#inputWeight,#inputHeight,#inputExercise,#inputMiscale").on("propertychange change keyup paste input", function() {
 			var gender =$('#inputGender').val();
 			var age =$('#inputAge').val();
 			var exercise  =$('#inputExercise').val();
 			var weight  =$('#inputWeight').val();
 			var height  =$('#inputHeight').val() *0.01;
+			var miscale =$('#inputMiscale').val();
 			var kcal =0;
 
 			if(gender==0) //남자면
@@ -129,6 +176,22 @@
 				$('#inputCalory').val(kcal);
 			}
 		});
+
+		var ori_gender ='<?php echo $user['user_gender'];?>';
+		var ori_exercise ='<?php echo $user['user_check_exercise'];?>';
+		var ori_miscale =='<?php echo $user['user_check_inbody'];?>';
+
+		if(ori_gender == 0 ) $('#inputGender').val('0').prop("selected",true);
+		else $('#inputGender').val('1').prop("selected",true);
+
+		if(ori_exercise == 1) $('#inputExercise').val('1').prop("selected",true);
+		else if(ori_exercise == 2) $('#inputExercise').val('1.12').prop("selected",true);
+		else if(ori_exercise == 3) $('#inputExercise').val('1.25').prop("selected",true);
+		else $('#inputExercise').val('1.45').prop("selected",true);
+
+		if(ori_miscale == 0) $('#inputMiscale').val('0').prop("selected",true);
+		else $('#inputMiscale').val('1').prop("selected",true);
+
 	</script>
 
 

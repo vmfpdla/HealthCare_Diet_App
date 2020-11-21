@@ -29,21 +29,41 @@ var ctx = document.getElementById('inbodyKg').getContext('2d'); var chart = new 
 					backgroundColor: 'transparent',
 					borderColor: 'red',
 					data: weight_arr,
-					backgroundColor: [
-          "#f38b4a",
-          "#56d798",
-          "#ff8397",
-          "#6970d5"
-        ],
+
 				}
 			]
-		}, // 옵션
+		},
 		options: {
 			legend: {
 				labels: {
-					fontColor: "red",
-					fontSize: 18
+					fontColor: "black",
+					fontSize: 30
 				}
-			}
+			},
+			maintainAspectRatio: true, // default value. false일 경우 포함된 div의 크기에 맞춰서 그려짐.
+			scales:
+			{
+				xAxes:
+				[
+					{
+						ticks:
+						{
+							fontColor : 'rgba(12, 13, 13, 1)',
+							fontSize : 25
+						},
 
-		} });
+					}
+				],
+				yAxes:
+				[
+					{
+						ticks:
+						{
+							beginAtZero:false,
+							fontSize : 30
+						}
+					}
+				]
+			}
+		}
+	 });

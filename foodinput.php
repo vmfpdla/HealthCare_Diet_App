@@ -35,7 +35,7 @@ font-size:30px;
   <script type="text/javascript">
 
     $(document).ready(function() {
-      clickTd();      
+      clickTd();
       $("#keyword").keyup(function() {
         var k = $(this).val();
         $("#user-table > tbody > tr").hide();
@@ -44,10 +44,10 @@ font-size:30px;
         $(temp).parent().show();
       })
     })
-    
-    
 
-    
+
+
+
     function clickTd(){
       $("#user-table tr").click(function(){
         var text = $(this).text();
@@ -100,9 +100,9 @@ font-size:30px;
           </div>
           <input type="number" class="form-control hi" name="serving" placeholder="Serving" aria-label="Username" aria-describedby="basic-addon1">
 	</div>
-	
-	
-	<input type="number" name="eaten_time" placeholder="아침:1 점심:2 저녁:3"> 
+
+
+	<input type="number" name="eaten_time" placeholder="아침:1 점심:2 저녁:3">
 <button type="submit"> 제출 </button>
       </form>
 </div>
