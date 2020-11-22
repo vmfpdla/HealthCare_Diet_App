@@ -98,23 +98,36 @@
     <p style="font-size:100px; color:#f38181;"> 데이터가 없어요! </p>
 	</div>
 
-	<br><br><br>
-	<div style="width:95%; margin-left:20px;">
-		<canvas id="daily_kcal"></canvas>
+  <div id="carouselExampleCaptions1" class="carousel slide" data-ride="carousel">
+		<div class="carousel-inner">
+			<div class="carousel-item active">
+				<div style="width:100%">
+					<canvas id="daily_kcal"></canvas>
+          <script src="./js/daily_kcalgraph.js?ver=1"></script>
+				</div>
+			</div>
+			<div class="carousel-item">
+				<div style="width:100%">
+					<canvas id="week_kcal"></canvas>
+          <script src="./js/week_kcalgraph.js?ver=1"></script>
+				</div>
+			</div>
+			<div class="carousel-item">
+				<div style="width:100%">
+					<canvas id="month_kcal"></canvas>
+          <script src="./js/month_kcalgraph.js?ver=1"></script>
+				</div>
+			</div>
+		</div>
+    <a class="carousel-control-prev" href="#carouselExampleCaptions1" role="button" data-slide="prev">
+     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+     <span class="sr-only">Previous</span>
+    </a>
+     <a class="carousel-control-next" href="#carouselExampleCaptions1" role="button" data-slide="next">
+       <span class="carousel-control-next-icon" aria-hidden="true"></span>
+       <span class="sr-only">Next</span>
+     </a>
 	</div>
-	<script src="./js/daily_kcalgraph.js?ver=?"></script>
-
-	<br><br><br>
-	<div style="width:95%; margin-left:20px;" >
-		<canvas id="week_kcal"></canvas>
-	</div>
-	<script src="./js/week_kcalgraph.js?ver=3"></script>
-
-	<br><br><br>
-	<div style="width:95%; margin-left:20px;">
-		<canvas id="month_kcal"></canvas>
-	</div>
-	<script src="./js/month_kcalgraph.js?ver=?"></script>
 
 	<br><br><br>
 	<div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
@@ -182,9 +195,10 @@
   </nav>
   <script>
 
-    var user_check = '<?php echo $user[user_check_inbody] ?>';
+    var user_check = '<?php echo $user['user_check_inbody'];?>';
     var is_data_kcal = '<?php echo json_encode($dailyKcal);?>';
     var is_data_inbody = '<?php echo json_encode($inbody);?>';
+
 
     if (user_check == 0) {
       document.getElementById('carouselExampleCaptions').style.display = 'none';
