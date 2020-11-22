@@ -134,8 +134,13 @@ require_once("./dbconn.php");
   <br><br><br>
   <div style="margin-left:50px;">
     <div style="margin-bottom:50px;">
-      <p style="font-size:80px; float:left;">오늘의 운동</p>
-      <a href="band://"><i class="fas fa-spinner" style="font-size:70px; color:#D8D8D8; margin-top:20px; margin-left:50px;"></i></a>
+      <p style="font-size:80px; float:left; margin-top:10px;">오늘의 운동</p>
+      <div>
+        <a href="band://">
+          <i class="fa fa-refresh fa-fw" style="font-size:60px; color:#BDBDBD; margin-top:20px; margin-left:50px;"></i>
+          <p style="margin-left:380px; font-size:40px; color:#BDBDBD;">미밴드</p>
+        </a>
+      </div>
     </div>
     <p class="text-muted" style="font-size:70px;">Today's exercise</p>
   </div>
