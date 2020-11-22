@@ -1,4 +1,4 @@
-package com.example.smartpt.MiScale;
+package com.example.smartpt.bluetooth;
 
 import android.app.Activity;
 import android.bluetooth.BluetoothDevice;
@@ -7,7 +7,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -15,10 +14,9 @@ import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.RelativeSizeSpan;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -32,7 +30,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.smartpt.R;
-import com.example.smartpt.bluetooth.BluetoothCommunication;
+import com.example.smartpt.SmartPT;
 import com.welie.blessed.BluetoothCentral;
 import com.welie.blessed.BluetoothCentralCallback;
 import com.welie.blessed.BluetoothPeripheral;
@@ -82,12 +80,7 @@ public class BluetoothSettingsFragment extends Fragment {
         }
         super.onResume();
     }
-//
-//    @Override
-//    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-//        menu.clear();
-//    }
-//
+
     private static final String formatDeviceName(String name, String address) {
         if (name.isEmpty() || address.isEmpty()) {
             return "-";
@@ -105,7 +98,6 @@ public class BluetoothSettingsFragment extends Fragment {
             onDeviceFound(scanResult);
         }
     };
-
 
     private void startBluetoothDiscovery() {
         deviceListView.removeAllViews();
@@ -158,12 +150,13 @@ public class BluetoothSettingsFragment extends Fragment {
         BluetoothDeviceView deviceView = new BluetoothDeviceView(getContext());
         deviceView.setDeviceName(formatDeviceName(bleScanResult.getDevice()));
 
-        BluetoothCommunication btDevice = com.example.smartpt.bluetooth.BluetoothFactory.createDeviceDriver(getContext(), device.getName());
+        BluetoothCommunication btDevice = BluetoothFactory.createDeviceDriver(getContext(), device.getName());
         if (btDevice != null) {
             Timber.d("Found supported device %s (driver: %s)",
                     formatDeviceName(device), btDevice.driverName());
             deviceView.setDeviceAddress(device.getAddress());
             deviceView.setSummaryText(btDevice.driverName());
+            deviceView.setEnabled(true);
         }
         else {
             Timber.d("Found unsupported device %s",
@@ -258,8 +251,9 @@ public class BluetoothSettingsFragment extends Fragment {
         public void onClick(View view) {
             BluetoothDevice device = foundDevices.get(getDeviceAddress());
 
-            com.example.smartpt.SmartPT.getInstance().setDevice(device.getName(), device.getAddress());
-            com.example.smartpt.SmartPT.getInstance().setUserId(1);
+            SmartPT.getInstance().setDevice(device.getName(), device.getAddress());
+            SmartPT.getInstance().setUserId(1);
+            Log.d("SmartPT" , "Saved Bluetooth device " + device.getName() + " with address " + device.getAddress());
             Timber.d("Saved Bluetooth device " + device.getName() + " with address " + device.getAddress());
 
             stopBluetoothDiscovery();

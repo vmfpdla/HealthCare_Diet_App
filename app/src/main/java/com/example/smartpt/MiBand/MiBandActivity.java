@@ -43,14 +43,16 @@ import java.util.concurrent.TimeUnit;
 
 public class MiBandActivity extends AppCompatActivity {
 
-    public static final String TAG = "StepCounter";
-    private static final int PERMISSION_ALL = 1;
-    private static final int REQUEST_OAUTH_REQUEST_CODE = 0x1001;
+    public static final String TAG = "SmartPT";
+    private static final int PERMISSION_ALL = 0x1001;
+    private static final int REQUEST_OAUTH_REQUEST_CODE = 0x1002;
 
     static String[] categories = {"Walking", "Running", "Nothing", "Others"};
     private static float[] calories = {0, 0, 0, 0};
     private static float[] distances = {0, 0, 0, 0};
     private static int[] minutes = {0, 0, 0, 0};
+    private static float[] move = {0, 0, 0, 0};
+    private static float[] power = {0, 0, 0, 0};
     private int calorie = 0;
     private long step = 0;
     private int distance = 0;
@@ -77,10 +79,12 @@ public class MiBandActivity extends AppCompatActivity {
         if((ContextCompat.checkSelfPermission(this, PERMISSIONS[0]) != PackageManager.PERMISSION_GRANTED) ||
                 (ContextCompat.checkSelfPermission(this, PERMISSIONS[1]) != PackageManager.PERMISSION_GRANTED)){
             ActivityCompat.requestPermissions(this, PERMISSIONS, PERMISSION_ALL);
-            Log.e(TAG, "허가안됐음");
+            Log.e(TAG, "권한 없음");
         }
         //권한있음
-        else{}
+        else{
+            Log.e(TAG, "권한 있음");
+        }
     }
 
     @Override
@@ -121,9 +125,10 @@ public class MiBandActivity extends AppCompatActivity {
     public void initializeHealth() {
         fitnessOptions =
                 FitnessOptions.builder()
-//                        .addDataType(DataType.TYPE_STEP_COUNT_CUMULATIVE)
                         .addDataType(DataType.TYPE_CALORIES_EXPENDED)
-                        .addDataType(DataType.TYPE_STEP_COUNT_DELTA)
+//                        .addDataType(DataType.TYPE_STEP_COUNT_DELTA)
+                        .addDataType(DataType.TYPE_MOVE_MINUTES)
+                        .addDataType(DataType.TYPE_POWER_SAMPLE)
                         .addDataType(DataType.TYPE_ACTIVITY_SEGMENT)
                         .addDataType(DataType.TYPE_DISTANCE_DELTA)
                         .build();
@@ -309,7 +314,10 @@ public class MiBandActivity extends AppCompatActivity {
         cal.set(Calendar.HOUR_OF_DAY, 00);
         cal.set(Calendar.MINUTE, 0);
         cal.set(Calendar.SECOND, 0);
+//        cal.add(Calendar.DAY_OF_YEAR, -16);
         long startTime = cal.getTimeInMillis();
+//        cal.add(Calendar.DAY_OF_YEAR, 1);
+//        endTime = cal.getTimeInMillis();
 
         SimpleDateFormat format = new SimpleDateFormat("yyyy년 MM월dd일 HH시mm분ss초");
         Log.i(TAG, "Range Start" + format.format(startTime));
@@ -320,6 +328,8 @@ public class MiBandActivity extends AppCompatActivity {
                         .aggregate(DataType.TYPE_ACTIVITY_SEGMENT)
                         .aggregate(DataType.TYPE_CALORIES_EXPENDED)
                         .aggregate(DataType.TYPE_DISTANCE_DELTA)
+                        .aggregate(DataType.TYPE_MOVE_MINUTES)
+                        .aggregate(DataType.TYPE_POWER_SAMPLE)
                         .bucketByActivityType(1, TimeUnit.MILLISECONDS)
                         .setTimeRange(startTime, endTime, TimeUnit.MILLISECONDS)
                         .build();
@@ -340,9 +350,7 @@ public class MiBandActivity extends AppCompatActivity {
                                 //Log.e(TAG, "NO PROBLEM");
                                 printData(dataReadResponse);
                                 storeBandData();
-                                SmartPT smartPT = SmartPT.getInstance();
-                                String s = smartPT.getBandData().toString();
-                                Log.d(TAG, s);
+                                connectToServer();
                             }
                         })
                 .addOnFailureListener(
@@ -354,6 +362,12 @@ public class MiBandActivity extends AppCompatActivity {
                         });
     }
 
+    private void connectToServer() {
+        SmartPT smartPT = SmartPT.getInstance();
+        BandData bandData = smartPT.getBandData();
+        //bandData의 크기5calories, distances, minutes
+    }
+
     void storeBandData(){
         BandData bandData = new BandData();
         bandData.distances = distances;
@@ -361,6 +375,7 @@ public class MiBandActivity extends AppCompatActivity {
         bandData.minutes = minutes;
         SmartPT smartPT = SmartPT.getInstance();
         smartPT.setBandData(bandData);
+        Log.d(TAG, bandData.toString());
     }
 
     static void dumpDataSet(DataSet dataSet, String activity) {
@@ -382,6 +397,9 @@ public class MiBandActivity extends AppCompatActivity {
             //거리
             else if(dp.getDataType().equals(DataType.TYPE_DISTANCE_DELTA))
                 setActivityDis(activity, dp.getValue(Field.FIELD_DISTANCE).asFloat());
+            //운동시간
+            else if(dp.getDataType().equals(DataType.TYPE_MOVE_MINUTES))
+                setActivitymov(activity, dp.getValue(Field.FIELD_DURATION).asInt());
             //시간
             else
                 setActivityMin(dp.getValue(Field.FIELD_ACTIVITY).asInt(), dp.getValue(Field.FIELD_DURATION).asInt());
@@ -413,9 +431,9 @@ public class MiBandActivity extends AppCompatActivity {
 
     private static int getCategory(int activity){
         if(activity == 7)
-            return 0;//Running
+            return 0;//Walking
         else if(activity == 8)
-            return 1;//Walking
+            return 1;//Running
         else if(activity == 3)
             return 2;//Nothing
         else
@@ -436,7 +454,6 @@ public class MiBandActivity extends AppCompatActivity {
         int c = getCategory(category);
         minutes[c] += millisecond/1000/60;
         for(int i=0;i<4;i++){
-//            Log.i(TAG, "활동 : "+categories[i] +"분 : "+ activity_min[i]);
             Log.i(TAG, "활동 : "+categories[i] +"분 : "+ minutes[i]);
         }
     }
@@ -444,7 +461,6 @@ public class MiBandActivity extends AppCompatActivity {
         int c = getCategory(activity);
         calories[c] += calorie;
         for(int i=0;i<4;i++){
-//            Log.i(TAG, "활동 : "+categories[i] +"칼로리 : "+ activity_cal[i]);
             Log.i(TAG, "활동 : "+categories[i] +"칼로리 : "+ calories[i]);
         }
     }
@@ -456,4 +472,11 @@ public class MiBandActivity extends AppCompatActivity {
         }
     }
 
+    private static void setActivitymov(String activity, float distance){
+        int c = getCategory(activity);
+        move[c] += distance;
+        for(int i=0;i<4;i++){
+            Log.i(TAG, "활동 : "+categories[i] +"무브 : "+ move[i]);
+        }
+    }
 }

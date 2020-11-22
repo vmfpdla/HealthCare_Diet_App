@@ -17,9 +17,13 @@
 package com.example.smartpt.bluetooth;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
+import androidx.core.content.ContextCompat;
+
+import com.example.smartpt.MiScale.MiScaleActivity;
 import com.example.smartpt.MiScale.ScaleData;
 import com.example.smartpt.SmartPT;
 import com.example.smartpt.bluetooth.lib.MiScaleLib;
@@ -172,40 +176,29 @@ public class BluetoothMiScale2 extends BluetoothCommunication {
 
                 // Is the year plausible? Check if the year is in the range of 20 years...
                 if (validateDate(date_time, 20)) {
-//                    final ScaleUser scaleUser = OpenScale.getInstance().getSelectedScaleUser();
-//                    ScaleMeasurement scaleBtData = new ScaleMeasurement();
+                    SmartPT smartPT = SmartPT.getInstance();
 
-//                    scaleBtData.weight = Converters.toKilogram(weight, {0,0,0});
                     scaleBtData.weight = weight;
-//                    scaleBtData.setWeight(Converters.toKilogram(weight, scaleUser.getScaleUnit()));
-//                    scaleBtData.setDateTime(date_time);
-
                     int sex;
-
-//                    if (scaleUser.getGender() == Converters.Gender.MALE) {
-//                        sex = 1;
-//                    } else {
-//                        sex = 0;
-//                    }
-                    sex = 0;
+                    if(smartPT.getUserSex() == SmartPT.MALE){
+                        sex = 1;
+                    }else{
+                        sex = 0;
+                    }
 
                     if (impedance != 0.0f) {
-//                        MiScaleLib miScaleLib = new MiScaleLib(sex, scaleUser.getAge(), scaleUser.getBodyHeight());
-                        MiScaleLib miScaleLib = new MiScaleLib(sex, 24, 158);
-//
-//                        scaleBtData.setWater(miScaleLib.getWater(weight, impedance));
-//                        scaleBtData.setVisceralFat(miScaleLib.getVisceralFat(weight));
-//                        scaleBtData.setFat(miScaleLib.getBodyFat(weight, impedance));
-//                        scaleBtData.setMuscle((100.0f / scaleBtData.getWeight()) * miScaleLib.getMuscle(weight, impedance)); // convert muscle in kg to percent
-//                        scaleBtData.setBone(miScaleLib.getBoneMass(weight, impedance));
+                        MiScaleLib miScaleLib = new MiScaleLib(sex, smartPT.getUserAge(), smartPT.getUserHeight());
 
+                        float heightM = (float)(smartPT.getUserHeight())/100;
+                        scaleBtData.bmi = weight/(heightM*heightM);
                         scaleBtData.fat = miScaleLib.getBodyFat(weight, impedance);
                         scaleBtData.water = miScaleLib.getWater(weight, impedance);
                         scaleBtData.muscle = (100.0f / 100) * miScaleLib.getMuscle(weight, impedance); // convert muscle in kg to percent
                         scaleBtData.bone = (miScaleLib.getBoneMass(weight, impedance));
                         scaleBtData.visceralFat = (miScaleLib.getVisceralFat(weight));
-                        SmartPT smartPT = SmartPT.getInstance();
                         smartPT.setScaleData(scaleBtData);
+                        Intent intent = new Intent(this.context, MiScaleActivity.class);
+                        this.context.startActivity(intent);
                     } else {
                         Timber.d("Impedance value is zero");
                     }

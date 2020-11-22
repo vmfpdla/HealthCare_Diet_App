@@ -1,4 +1,4 @@
-package com.example.smartpt.MiScale;
+package com.example.smartpt.bluetooth;
 
 import android.Manifest;
 import android.app.AlertDialog;
@@ -27,7 +27,7 @@ public class PermissionHelper {
         BluetoothAdapter btAdapter = bluetoothManager.getAdapter();
 
         if(btAdapter == null || !btAdapter.isEnabled()){
-            Toast.makeText(fragment.getContext(), "Bluetooth disable", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(fragment.getContext(), "Bluetooth disable", Toast.LENGTH_SHORT).show();
 
             if (btAdapter != null) {
                 Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);

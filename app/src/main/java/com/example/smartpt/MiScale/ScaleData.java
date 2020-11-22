@@ -17,6 +17,7 @@ public class ScaleData extends Application {
     public String comment;
     public float bone;
     public float visceralFat;
+    public float bmi;
 
     public ScaleData()
     {
@@ -31,6 +32,7 @@ public class ScaleData extends Application {
         hip = -1.0f;
         bone = -1.0f;
         visceralFat = -1.0f;
+        bmi = -1.0f;
         comment = new String();
     }
 

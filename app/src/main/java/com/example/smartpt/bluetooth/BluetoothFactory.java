@@ -26,10 +26,10 @@ public class BluetoothFactory {
         final String name = deviceName.toLowerCase(Locale.US);
 
         if (name.equals("MI_SCALE".toLowerCase(Locale.US)) || name.equals("MI SCALE2".toLowerCase(Locale.US))) {
-            return new com.example.smartpt.bluetooth.BluetoothMiScale(context);
+            return new BluetoothMiScale(context);
         }
         if (name.equals("MIBCS".toLowerCase(Locale.US)) || name.equals("MIBFS".toLowerCase(Locale.US))) {
-            return new com.example.smartpt.bluetooth.BluetoothMiScale2(context);
+            return new BluetoothMiScale2(context);
         }
 
         return null;

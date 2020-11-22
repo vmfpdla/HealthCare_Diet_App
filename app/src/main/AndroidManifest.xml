@@ -3,15 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.smartpt">
 
-
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
-
     <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-
 
     <application
         android:name=".Application"
@@ -22,29 +19,25 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
         android:usesCleartextTraffic="true">
-
-        <meta-data
-            android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3940256099942544~3347511713"/>
-
-        <activity android:name=".post">
-
-
-        </activity>
-        <activity android:name=".CameraActivity"></activity>
-        <activity android:name=".MiBand.MiBandActivity">
-        </activity>
-        <activity android:name=".MiScale.MiScaleActivity">
+        <activity android:name=".bluetooth.BluetoothStatusActivity"></activity>
+        <activity android:name=".bluetooth.BluetoothActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SubActivity" />
-        <activity android:name=".MainActivity">
 
-        </activity>
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3940256099942544~3347511713" />
+
+        <activity android:name=".post" />
+        <activity android:name=".CameraActivity" />
+        <activity android:name=".MiBand.MiBandActivity"></activity>
+        <activity android:name=".MiScale.MiScaleActivity" />
+        <activity android:name=".SubActivity" />
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>
