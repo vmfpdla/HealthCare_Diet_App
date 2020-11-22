@@ -1,13 +1,13 @@
 <?php
   require_once("./dbconn.php");
-
+  session_start();
+  $user_id = $_SESSION['id'];
   $i=0;
   $j=0;
   $dailyKcal; // 일별 섭취 칼로리
   $inbody;
   $today = date("Y-m-d");
   $user;
-
 
   $sql = "SELECT * FROM user WHERE user_id='$user_id'";
   $result = $conn->query($sql);
