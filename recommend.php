@@ -1,3 +1,4 @@
+
 <?php
 session_start();
 require_once("./dbconn.php");
@@ -141,11 +142,10 @@ else //echo "0 results";
    </a>
  </nav>
 
-<br>
-<a href="scale://">HI@</a>
+
  <br><br>
  <div clas="container" style="text-align: center;">
-  <i class="fa fa-spoon titlei" aria-hidden="true"></i>
+
   <p class="title">Diet</p>
 </div>
 <br><br>  
@@ -154,44 +154,9 @@ else //echo "0 results";
     <br><br>
     <div style="text-align:center" data-toggle="modal" data-target="#exampleModal" >
       <p style="margin-right:20px; font-size:40px;" > 칼로리 </p>
-      <div class="progress" style="height:30px;" >
-        <div class="progress-bar bg-success" id="progress_kcal" role="progressbar" style="width:  <?php echo $kcal/$user['user_goal']*100;?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-      </div>
-      <p style="font-size:30px;"><?php echo $kcal."/".$user['user_goal'];?></p>
-      <div id="notification_div" style="position:absolute; right:10%; width:200px; ">
-        <i class="fas fa-exclamation-circle misi" style="font-size:30px;"></i>
-        <p style="font-size:20px; ">총 <?php echo ($kcal-$user['user_goal']);?> Kcal 초과</p>
-      </div>
+      
     </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-      <div class="modal-dialog" >
-        <div class="modal-content" style="width:600px; height:600px; display:table;" >
-          <div style="text-align:center;">
-            <br>
-            <h1 class="modal-title" id="exampleModalLabel">추천운동</h1>
-            <p style="font-size:50px;"><?php echo ($kcal-$user['user_goal']);?> kcal</p>
-          </div>
-          <div class="modal-body">
-            <div class="card exercise-card" style="float:left; width:200px; height:300px; margin-left:50px;">
-              <div class="card-body">
-                <img src="./walking.png"  width="70" height="70"/>
-                <p style="font-size:60px; margin-bottom:0; color:#f38181;"><?php echo  $recommend_walking;?></p>
-                <p style="font-size:35px; color:gray;">Min</p>
-              </div>
-            </div>
-            <div class="card exercise-card" style=" width:200px; height:300px;">
-              <div class="card-body">
-                <img src="./running.png"  width="70" height="70"/>
-                <p style="font-size:60px; margin-bottom:0; color:#f38181;"><?php echo $recommend_running;?></p>
-                <p style="font-size:35px; color:gray;">Min</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
 
 
@@ -199,24 +164,18 @@ else //echo "0 results";
     <div class="carprofat">
       <div style="float:left; width:150px; text-align:center; margin:0 70px;">
         <p style="font-size:40px;"> 탄수화물 </p>
-        <div class="progress" >
-          <div class="progress-bar bg-info" role="progressbar" style="width: <?php echo $car/$maxcar*100;?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"> </div>
-        </div>
-        <p style="font-size:30px;"><?php echo $car."/".$maxcar;?></p>
+       
+        <p style="font-size:30px;"><?php echo $car;?></p>
       </div>
       <div style="float:left; width:150px; text-align:center; margin-right: 70px;">
         <p style="font-size:40px;"> 단백질 </p>
-        <div class="progress" >
-          <div class="progress-bar bg-info" role="progressbar" style="width: <?php echo $pro/$maxpro*100;?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"> </div>
-        </div>
-        <p style="font-size:30px;"><?php echo $pro."/".$maxpro;?></p>
+        
+        <p style="font-size:30px;"><?php echo $pro;?></p>
       </div>
       <div style="float:left; width:150px; text-align:center;">
         <p style="font-size:40px;"> 지방 </p>
-        <div class="progress" >
-          <div class="progress-bar bg-info" role="progressbar" style="width: <?php echo $fat/$maxfat*100;?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
-        <p style="font-size:30px;"><?php echo $fat."/".$maxfat;?></p>
+        
+        <p style="font-size:30px;"><?php echo $fat;?></p>
       </div>
     </div>
   </div>
