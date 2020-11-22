@@ -5,7 +5,7 @@
   $today = date("Y-m-d");
 
   $inbody_weight = $_POST[''];
-  $inbody_muscle = $_POST['']
+  $inbody_muscle = $_POST[''];
   $inbody_bmi = $_POST[''];
   $inbody_fat = $_POST[''];
 
@@ -27,7 +27,7 @@
   		Header("Location:./static.php");
   	}
   	else {
-  		echo "미스케일 정보 업데이트 오류 !"
+  		echo "미스케일 정보 업데이트 오류 !";
   	}
   }
   else{ // 없었던 경우 insert
@@ -36,7 +36,7 @@
   		Header("Location:./static.php");
   	}
   	else {
-  		echo "미스케일 정보 인서트 오류 !"
+  		echo "미스케일 정보 인서트 오류 !";
   	}
   }
 
@@ -67,7 +67,6 @@
   integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
   crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-  <script src="./js/nav.js"></script>
 </head>
 
 <body>
