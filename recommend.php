@@ -25,10 +25,13 @@ else {
   echo "유저 접속 오류";
 }
 //
-$maxcar = $user['user_goal'] * 0.65;
-$maxfat =$user['user_goal'] * 0.2;
-$maxpro =$user['user_goal'] * 0.15;
+$maxcar = $user['user_goal']* 0.65* 0.25;
+$maxfat =$user['user_goal'] *0.2* 0.1;
+$maxpro =$user['user_goal'] *0.15* 0.25;
 
+$maxcar=(int)$maxcar;
+$maxfat=(int)$maxfat;
+$maxpro=(int)$maxpro;
 // 오늘 먹은 음식 조회
 $sql1 = "SELECT * FROM eatenfood INNER JOIN foodinfo on eatenfood.food_id = foodinfo.food_id WHERE user_id='$user_id' and eaten_day='$today'";
 $result1 = $conn->query($sql1);
