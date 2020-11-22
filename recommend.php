@@ -269,9 +269,9 @@ else{
         
       </div>
 
-      
-      <div style="margin:50px 50px;  width:15%;">
-        <p style="width: 100%;"> <?php
+
+
+      <?php
         if($is_morning==1){
           $morning_kcal =0;
           $morning_car =0;
@@ -289,20 +289,12 @@ else{
               $morning_car =  $morning_car+$row['food_car']*$row['eaten_serving'];
               $morning_pro =  $morning_pro+$row['food_pro']*$row['eaten_serving'];
               $morning_fat =  $morning_fat+$row['food_fat']*$row['eaten_serving'];
-              if($row['eaten_serving']==0){
-                echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(0.5 인분)";
-                echo nl2br("\n\n");
-              }
-              else{
-                echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(".$row['eaten_serving']." 인분)";
-                echo nl2br("\n\n");
-              }
+             
             }
           }
         }
-        ?></p>
+        ?>
 
-      </div>
     
 
       <div style="margin:20px 30px;" class="smallbar">
@@ -331,7 +323,30 @@ else{
       </div>
 
 
+      
+      <div style="margin:50px 50px;  width:15%;">
+        <p style="width: 100%;"> <?php
+        if($is_morning==1){
+          while($row = $result3->fetch_assoc()) {
+            if ($row['eaten_serving']==0){
+             
+            }
+            else{
+              
+              if($row['eaten_serving']==0){
+                echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(0.5 인분)";
+                echo nl2br("\n\n");
+              }
+              else{
+                echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(".$row['eaten_serving']." 인분)";
+                echo nl2br("\n\n");
+              }
+            }
+          }
+        }
+        ?></p>
 
+      </div>
     </div>
 
 
