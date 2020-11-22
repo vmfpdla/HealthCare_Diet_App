@@ -1,6 +1,5 @@
 <?php
 session_start();
-$user_id = $_SESSION['id'];
 require_once("./dbconn.php");
 
 $today = date("Y-m-d");
@@ -9,6 +8,7 @@ $car =0; // 탄수화물
 $fat =0; // 지방
 $pro =0; // 단백질
 
+$user_id=$_SESSION['id'];
 $sql = "SELECT * FROM user WHERE user_id='$user_id'";
 $result = $conn->query($sql);
 
@@ -96,7 +96,7 @@ else //echo "0 results";
   function myFunction() {
   // Declare variables
   var input, table, tr, td, i, txtValue,tv,iv,count;
-
+  
   input = document.getElementById("myInput");
   table = document.getElementById("user-table");
   tr = table.getElementsByTagName("tr");
@@ -105,9 +105,9 @@ else //echo "0 results";
   // Loop through all table rows, and hide those who don't match the search query
   for (i = 1; i < tr.length; i++) {
     td = tr[i].getElementsByTagName("td")[5];
-    tv=(parseInt(($(td).html())));
+    tv=(parseInt(($(td).html())));  
     iv=(parseInt($(input).val()));
-    count=0;
+    count=0; 
     if((iv>=tv)){
       tr[i].style.display = "";
       count=count+1;
@@ -139,15 +139,16 @@ else //echo "0 results";
    </a>
  </nav>
 
-
-
-
+<br>
+<a href="band://">HI</a>
+<br>
+<a href="scale://">HI@</a>
  <br><br>
  <div clas="container" style="text-align: center;">
   <i class="fa fa-spoon titlei" aria-hidden="true"></i>
   <p class="title">Diet</p>
 </div>
-<br><br>
+<br><br>  
 <div class="card nutrients-card" style="margin:0 100px; height:500px;">
   <div class="card-body">
     <br><br>
@@ -293,11 +294,11 @@ else{
       <div class="card-body" id="camera_1" style="text-align: center; height:120px;">
         <a href="app://1"><button class="btn btn-secondary"id="btn1">음식입력</button></a>
         <!--  <button type="submit"> <i class="fas fa-utensils cardi" style="font-size:100px;"aria-hidden="true"></i></button>-->
-
+        
       </div>
 
-
-
+      
+      
       <div style="float:left; margin:50px 50px;  width:15%;">
         <p style="width: 100%;"> <?php
         if($is_morning==1){
@@ -420,7 +421,7 @@ else{
 
       <div style="margin:20px 30px; float:left; width:60%; " class="smallbar">
         <div style="text-align : center;">
-
+          
           <br><br>
           <div style="text-align:center" data-toggle="modal" data-target="#exampleModal" >
             <p style="font-size:40px;" > 칼로리 </p>
@@ -508,10 +509,10 @@ else{
       }
       ?></p>
     </div>
-
+ 
        <div style="margin:20px 30px; float:left; width:60%; " class="smallbar">
         <div style="text-align : center;">
-
+          
           <br><br>
           <div style="text-align:center" data-toggle="modal" data-target="#exampleModal" >
             <p style="font-size:40px;" > 칼로리 </p>
@@ -599,7 +600,7 @@ else{
       $jb_conn = mysqli_connect( 'localhost', 'root', 'toor', 'smartpt' );
 
 
-      mysqli_query($jb_conn, "set session character_set_connection=utf8;");
+      mysqli_query($jb_conn, "set session character_set_connection=utf8;"); 
 
       mysqli_query($jb_conn, "set session character_set_results=utf8;");
 
@@ -658,7 +659,7 @@ if($arr_diet[$j][5]>$arr_diet[$j+1][5]){
     $arr_diet[$j+1]=$temp;
 }
 }
-}
+} 
 #for($i=0;$i<count($arr_diet);$i++){
 #echo '<tr><td>' . $arr_diet[$i][0]. '</td><td>'. $arr_diet[$i][1] . '</td><td>' .$arr_diet[$i][2]. '</td><td>'. $arr_diet[$i][3] .'</td><td>'. $arr_diet[$i][4] .'</td><td>'. $arr_diet[$i][5] .'</td></tr>';
 #}

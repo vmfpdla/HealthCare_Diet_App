@@ -1,7 +1,10 @@
 <?php
+session_start();
 
-  require_once("./dbconn.php");
-  session_start();
+require_once("./dbconn.php");
+	if(!isset($_SESSION['code'])){
+		$_SESSION['code']=$_GET['code'];
+	}
   $user_code = $_SESSION['code'];
 
   $today = date("Y-m-d");
@@ -25,7 +28,7 @@
       $_SESSION['id'] = $user_id;
     }
   } else {
-    Header("Location:./userinsert.php");
+    Header("Location:./userinsert.php",$_SESSION['code']);
   }
 
   $maxcar = $user['user_goal'] * 0.65;
@@ -131,7 +134,7 @@
   <div style="margin-left:50px;">
     <div style="margin-bottom:50px;">
       <p style="font-size:80px; float:left;">오늘의 운동</p>
-      <a href="#"><i class="fas fa-spinner" style="font-size:70px; color:#D8D8D8; margin-top:20px; margin-left:50px;"></i></a>
+      <a href="band://"><i class="fas fa-spinner" style="font-size:70px; color:#D8D8D8; margin-top:20px; margin-left:50px;"></i></a>
     </div>
     <p class="text-muted" style="font-size:70px;">Today's exercise</p>
   </div>

@@ -1,7 +1,23 @@
 <?php
+
+session_start();
+echo "success";
   require_once("./dbconn.php");
-	session_start();
-  $user_id=$_SESSION['id'];
+$user_code=$_GET['code'];
+  $sql8 = "SELECT * FROM user WHERE user_code='$user_code'";
+  $result8 = $conn->query($sql8);
+    if ($result8->num_rows > 0) { // 여러줄 가져오는 경우
+
+	        while($row = $result8->fetch_assoc()) {
+			      $user_id = $row['user_id'];
+			            $_SESSION['id'] = $user_id;
+			          }
+
+		  }
+
+
+
+	$user_id=$_SESSION['id'];
   $today = date("Y-m-d");
 
   $walk_cal = $_POST['walk_cal'];
@@ -14,7 +30,6 @@
 
   $walk_flag;
   $run_flag;
-
   // 걷기정보
   $sql = "SELECT * FROM doexercise WHERE user_id='$user_id' AND exercise_id=1 AND doexercise_day='$today'"; // 오늘 걷기값이 이미 있는경우
   $result = $conn->query($sql);
@@ -29,19 +44,17 @@
   {
     $sql1= "UPDATE doexercise SET doexercise_calory ='$walk_cal', doexercise_minute='$walk_min', doexercise_distance='$walk_dist' WHERE user_id='$user_id' AND exercise_id=1 and doexercise_day='$today'";
     if (mysqli_query($conn, $sql1)) {
-  		Header("Location:./index.php");
+  	#	Header("Location:./index.php");
   	}
   	else {
-  		echo "미밴드  걷기 정보 업데이트 오류 !";
   	}
   }
   else{ // 없었던 경우 insert
     $sql4 = "INSERT INTO doexercise(user_id,exercise_id,doexercise_day,doexercise_calory,doexercise_minute,doexercise_distance) values ('$user_id',1,'$today','$walk_cal','$walk_min','$walk_dist')";
   	if (mysqli_query($conn, $sql4)) {
-  		Header("Location:./index.php");
+  	#	Header("Location:./index.php");
   	}
   	else {
-  		echo "미밴드 걷기 정보 인서트 오류 !";
   	}
   }
 
@@ -59,22 +72,21 @@
   {
     $sql3= "UPDATE doexercise SET doexercise_calory ='$run_cal', doexercise_minute='$run_min', doexercise_distance='$run_dist' WHERE user_id='$user_id' AND exercise_id=2 and doexercise_day='$today'";
     if (mysqli_query($conn, $sql3)) {
-  		Header("Location:./index.php");
+  	#	Header("Location:./index.php");
   	}
   	else {
-  		echo "미밴드  달리기 정보 업데이트 오류 !";
   	}
   }
   else{ // 없었던 경우 insert
     $sql5 = "INSERT INTO doexercise(user_id,exercise_id,doexercise_day,doexercise_calory,doexercise_minute,doexercise_distance) values ('$user_id',2,'$today','$run_cal','$run_min','$run_dist')";
   	if (mysqli_query($conn, $sql5)) {
-  		Header("Location:./index.php");
+  	#	Header("Location:./index.php");
   	}
   	else {
-  		echo "미밴드 달리기 정보 인서트 오류 !";
   	}
   }
 	$conn->close();
+
 ?>
 
 <!DOCTYPE html>
