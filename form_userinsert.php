@@ -18,10 +18,11 @@
 
   $sql = "INSERT INTO user(user_code,user_gender,user_age,user_height,user_weight,user_goal,user_check_inbody,user_check_exercise) values ('$user_code','$gender','$age','$height','$weight','$kcal','$miscale','$exercise')";
 	if (mysqli_query($conn, $sql)) {
-		Header("Location:./userinsert.php");
+		Header("Location:update://s$gender&h$height#w$weight^");
+		
 	}
 	else {
-		Header("Location:update://");
+		Header("Location:./userinsert.php");
 	}
 
 	$conn->close();
