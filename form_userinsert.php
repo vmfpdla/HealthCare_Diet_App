@@ -9,7 +9,6 @@
   $exercise = $_POST['inputExercise'];
   $miscale = $_POST['inputMiscale'];
   $kcal = $_POST['inputCalory'];
-	$flag;
 
   $user_code = $_SESSION['code'];
 
@@ -17,11 +16,13 @@
   else if($exercise==1.25) $exercise=3;
   else if($exercise==1.45) $exercise=4;
 
-  $sql = "INSERT INTO user(user_code,user_gender,user_age,user_height,user_weight,user_goal,user_check_inbody,user_check_exercise) values ('$user_code','$user_gender','$user_age','$user_height','$user_weight','$kcal','$miscale','$exercise')";
+  $sql = "INSERT INTO user(user_code,user_gender,user_age,user_height,user_weight,user_goal,user_check_inbody,user_check_exercise) values ('$user_code','$gender','$age','$height','$weight','$kcal','$miscale','$exercise')";
 	if (mysqli_query($conn, $sql)) {
-		$flag=1;
+		Header("Location:./userinsert.php");
 	}
-	else { $flag=0; }
+	else {
+		Header("Location:./index.php");
+	}
 
 	$conn->close();
 
@@ -60,16 +61,4 @@
 
 <body>
 </body>
-<script>
-  var flag = Number('<?php echo $flag?>');
-
-  if(flag==1){
-    alert("정보입력이 완료되었습니다");
-		location.href="index.php";
-  }
-  else{
-		alert("정보입력에 실패했습니다. 다시 시도해주세요");
-		location.href="userinsert.php";
-  }
-</script>
 </html>
