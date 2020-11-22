@@ -16,7 +16,7 @@ session_start();
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 		<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
-	  <link rel="stylesheet" href="./css/jaehyun.css?ver=2">
+	  <link rel="stylesheet" href="./css/jaehyun.css?ver=3">
   <!-- 폰트 -->
   <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&display=swap" rel="stylesheet">
   <!-- 아이콘 -->
@@ -48,8 +48,8 @@ session_start();
 				<label for="inputNumber">나이</label>
 				<input type="number" min="1" max="100" class="form-control" id="inputAge" name="inputAge" placeholder="age ( 세 )" required>
 			</div>
-
 		</div>
+		<br><br>
 		<div class="form-row">
 			<div class="form-group col-md-6">
 				<label for="inputHeight">키</label>
@@ -60,6 +60,7 @@ session_start();
 				<input type="number" min="10" max="200" class="form-control" id="inputWeight" name="inputWeight" placeholder="weight ( Kg )" required>
 			</div>
 		</div>
+		<br><br>
 		<div class="form-group">
 			<label for="inputExercise">운동 빈도</label>
 			<select id="inputExercise" name="inputExercise" class="form-control">
@@ -69,19 +70,21 @@ session_start();
 				<option value=1.45>일상활동 + 60 분 무난한 운동 + 60 분 과격한 운동을 한다</option>
 			</select>
 		</div>
+		<br><br>
 		<div class="form-group">
-			<label >하루 섭취칼로리 설정</label>
-			<div class="btn-group btn-group-toggle" data-toggle="buttons" style="margin-left:30px; margin-top:-10px;">
-				<button class="btn btn-outline-secondary" type="button" name="calory_type" value="권장칼로리" onclick="changeCalory(this.value)">권장칼로리</button>
-				<button class="btn btn-outline-secondary" type="button" name="calory_type" value="직접 입력" onclick="changeCalory(this.value)"/> 직접 입력</button>
+			<label style="font-size:70px;">하루 섭취칼로리 설정</label>
+			<div class="btn-group btn-group-toggle" data-toggle="buttons" style="margin-left:30px; margin-top:-30px;">
+				<button class="btn btn-outline-secondary" style="font-size:30px;"type="button" name="calory_type" value="권장칼로리" onclick="changeCalory(this.value)">권장칼로리</button>
+				<button class="btn btn-outline-secondary" style="font-size:30px;"type="button" name="calory_type" value="직접 입력" onclick="changeCalory(this.value)"/> 직접 입력</button>
 			</div>
 			<br>
 
-			<input type="number" class="form-control" id="inputCalory" name="inputCalory" placeholder="Calory ( Kcal )" readonly required>
+			<input type="number" class="form-control" id="inputCalory" name="inputCalory" placeholder="Calorie ( Kcal )" readonly required>
+			<br>
 			<h3 style="color:gray;">[ 하루 권장 칼로리 ] 표준체중(kg) X 활동지수</h3>
 			<h3 style="color:gray;">[ 다이어트 식단 칼로리 ] 여성 : 800 - 1200 Kcal , 남성 : 1200 - 1400 Kcal</h3>
 		</div>
-
+		<br><br>
 		<div class="form-row">
 			<div class="form-group col-md-12">
 				<label for="inputState">미스케일 사용여부</label>
@@ -93,8 +96,8 @@ session_start();
 			</div>
 		</div>
 
-
-		<button type="submit" class="btn btn-primary" style="width:150px; height:70px; float:right; font-size:30px;">정보입력</button>
+		<br><br>
+		<button type="submit" class="btn btn-primary" style="width:200px; height:100px; float:right; font-size:50px;">정보입력</button>
 	</form>
 
 

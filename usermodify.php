@@ -65,7 +65,7 @@
 					<input type="number" min="1" max="100" class="form-control" id="inputAge" name="inputAge" placeholder="<?php echo $user['user_age'];?>" required>
 				</div>
 			</div>
-			<br>
+			<br><br>
 			<div class="form-row">
 				<div class="form-group col-md-6">
 					<label for="inputHeight">키</label>
@@ -76,7 +76,7 @@
 					<input type="number" min="10" max="200" class="form-control" id="inputWeight" name="inputWeight" placeholder="<?php echo $user['user_weight'];?>" required>
 				</div>
 			</div>
-			<br>
+			<br><br>
 			<div >
 				<div class="form-group col-md-13">
 					<label for="inputExercise">운동 빈도</label>
@@ -87,12 +87,12 @@
 						<option value=1.45>일상활동 + 60 분 무난한 운동 + 60 분 과격한 운동을 한다</option>
 					</select>
 				</div>
-				<br>
+				<br><br>
 				<div class="form-group col-md-13">
-					<label >하루 섭취칼로리 설정</label>
-					<div class="btn-group btn-group-toggle" data-toggle="buttons" style="margin-left:30px; margin-top:-10px;">
-						<button class="btn btn-outline-secondary" type="button" name="calory_type" value="권장칼로리" onclick="changeCalory(this.value)">권장칼로리</button>
-						<button class="btn btn-outline-secondary" type="button" name="calory_type" value="직접 입력" onclick="changeCalory(this.value)"/> 직접 입력</button>
+					<label style="font-size:70px;">하루 섭취칼로리 설정</label>
+					<div class="btn-group btn-group-toggle" data-toggle="buttons" style="margin-left:30px; margin-top:-30px;">
+						<button class="btn btn-outline-secondary" style="font-size:30px;" type="button" name="calory_type" value="권장칼로리" onclick="changeCalory(this.value)">권장칼로리</button>
+						<button class="btn btn-outline-secondary" style="font-size:30px;" type="button" name="calory_type" value="직접 입력" onclick="changeCalory(this.value)"/> 직접 입력</button>
 					</div>
 					<br>
 
@@ -103,10 +103,10 @@
 
 				</div>
 			</div>
-			<br>
+			<br><br>
 			<div class="form-group col-md-">
 				<label for="inputState" style="float:left; margin-right:50px;">미스케일 사용여부</label>
-        <button class="btn btn-outline-secondary" style="margin-top:10px;"type="button" name="miscale_type" value="change" onclick="changeMiscale()">미스케일 기기 수정</button>
+        <button class="btn btn-outline-secondary" style="font-size:30px; margin-top:25px;" type="button" name="miscale_type" value="change" onclick="changeMiscale()">미스케일 기기 수정</button>
 
 				<select id="inputMiscale" name="inputMiscale" class="form-control">
 					<option value=1>Yes</option>
