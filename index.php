@@ -32,9 +32,13 @@ require_once("./dbconn.php");
     Header("Location:./userinsert.php",$_SESSION['code']);
   }
 
-  $maxcar = $user['user_goal'] * 0.65 * 0.25;
+  $maxcar =$user['user_goal'] * 0.65 * 0.25;
 	$maxfat =$user['user_goal'] * 0.2 * 0.1;
 	$maxpro =$user['user_goal'] * 0.15 * 0.25;
+
+  $maxcar = (int)($maxcar);
+  $maxfat = (int)($maxfat);
+  $maxpro = (int)($maxpro);
 
   $sql1 = "SELECT * FROM doexercise INNER JOIN exerciseinfo on doexercise.exercise_id = exerciseInfo.exercise_id WHERE user_id='$user_id' and doexercise_day='$today'";
   $result1 = $conn->query($sql1);
