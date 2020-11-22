@@ -80,15 +80,20 @@
       echo json_encode($dailyKcal);
     ?>
   </div>
-  <div id="dailyinbodyarray"  style="display:none">
+  <div id="dailyinbodyarray" style="display:none">
     <?php
       echo json_encode($inbody);
     ?>
   </div>
 	<nav class="navbar fixed-top">
 		<p class="navp">SmartPT</p>
-		<a href=""><i class="fas fa-sync" style="font-size:70px; color:#D8D8D8; margin-right:30px;"></i></a>
+		<a href=""><i class="fa fa-refresh fa-fw" style="font-size:70px; color:#D8D8D8; margin-right:30px;"></i></a>
 	</nav>
+  <div id="is_data_none" style="margin: 0 auto; text-align:center; width:80%;">
+    <br><br><br><br><br><br>
+    <i class="fas fa-sad-tear fa-border" style="font-size:200px; color:#f38181;"></i>
+    <p style="font-size:100px; color:#f38181;"> 데이터가 없어요! </p>
+	</div>
 
 	<br><br><br>
 	<div style="width:95%; margin-left:20px;">
@@ -175,12 +180,18 @@
   <script>
 
     var user_check = '<?php echo $user[user_check_inbody] ?>';
+    var is_data_kcal = '<?php echo json_encode($dailyKcal);?>';
+    var is_data_inbody = '<?php echo json_encode($inbody);?>';
 
     if (user_check == 0) {
       document.getElementById('carouselExampleCaptions').style.display = 'none';
     }
     else {
       document.getElementById('carouselExampleCaptions').style.display = 'block';
+    }
+
+    if(is_data_kcal==null && is_data_inbody==null){
+      document.getElementById('is_data_none').style.display = 'none';
     }
 
     $('.carousel').carousel({
