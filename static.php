@@ -1,7 +1,7 @@
 <?php
   require_once("./dbconn.php");
   session_start();
-  //$user_id = $_SESSION['id'] ;
+  $user_id = $_SESSION['id'] ;
   $user_id=1;
   $i=0;
   $j=0;
@@ -204,6 +204,8 @@
     $('.carousel').carousel({
       touch: true
     })
+
+
   </script>
 
 </body>

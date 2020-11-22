@@ -3,7 +3,6 @@
 	require_once("./dbconn.php");
 	session_start();
   $user_id = $_SESSION['id'];
-
   $gender = $_POST['inputGender'];
   $age = $_POST['inputAge'];
   $weight = $_POST['inputWeight'];

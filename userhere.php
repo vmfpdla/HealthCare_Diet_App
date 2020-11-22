@@ -2,8 +2,8 @@
 
   require_once("./dbconn.php");
   session_start();
-  $user_code =  $_POST['userId']; //수정해야함!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  $is_user = $_POST['isNew'];//수정해야함!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  $user_code = $_POST['userId'];
+  $is_user = $_POST['isNew'];
 
   if($is_user==1) // 기존 유저인 경우
   {

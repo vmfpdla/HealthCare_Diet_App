@@ -1,10 +1,10 @@
 <?php
 
   require_once("./dbconn.php");
-  session_star();
-  $user_id = $_SESSION['id'] ;
+  session_start();
+  $user_code = $_SESSION['code'];
+
   $today = date("Y-m-d");
-  
   $walking;
   $running;
   $kcal = 0; //칼로리
@@ -16,15 +16,16 @@
   $recommend_walking;
   $recommend_running;
 
-  $sql = "SELECT * FROM user WHERE user_id='$user_id'";
+  $sql = "SELECT * FROM user WHERE user_code='$user_code'";
   $result = $conn->query($sql);
   if ($result->num_rows > 0) { // 여러줄 가져오는 경우
 
     while($row = $result->fetch_assoc()) {
-      $user = $row;
+      $user_id = $row['user_id'];
+      $_SESSION['id'] = $user_id;
     }
   } else {
-    echo "유저 접속 오류";
+    Header("Location:./userinsert.php");
   }
 
   $maxcar = $user['user_goal'] * 0.65;
@@ -104,7 +105,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./css/jaehyun.css?ver=3">
+  <link rel="stylesheet" href="./css/jaehyun.css?ver=5">
   <!-- 아이콘 -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/v4-shims.css">
@@ -127,10 +128,12 @@
     </a>
   </nav>
   <br><br><br>
-
   <div style="margin-left:50px;">
-    <p style="font-size:80px;">오늘의 운동</p>
-    <p class="mb-2 text-muted" style="font-size:70px;">Today's exercise</p>
+    <div style="margin-bottom:50px;">
+      <p style="font-size:80px; float:left;">오늘의 운동</p>
+      <a href="#"><i class="fas fa-spinner" style="font-size:70px; color:#D8D8D8; margin-top:20px; margin-left:50px;"></i></a>
+    </div>
+    <p class="text-muted" style="font-size:70px;">Today's exercise</p>
   </div>
   <br>
   <div class="card exercise-card" style="float:left; margin:0 100px;">

@@ -1,9 +1,8 @@
 <?php
 
   require_once("./dbconn.php");
-  session_star();
-  $user_id = $_SESSION['id'] ;
-
+  session_start();
+  $user_id = $_SESSION['id'];
   $sql = "SELECT * FROM user WHERE user_id='$user_id'";
   $result = $conn->query($sql);
   if ($result->num_rows > 0) { // 여러줄 가져오는 경우
@@ -106,13 +105,14 @@
 			</div>
 			<br>
 			<div class="form-group col-md-">
-				<label for="inputState">미스케일 사용여부</label>
+				<label for="inputState" style="float:left; margin-right:50px;">미스케일 사용여부</label>
+        <button class="btn btn-outline-secondary" style="margin-top:10px;"type="button" name="miscale_type" value="change" onclick="changeMiscale()">미스케일 기기 수정</button>
+
 				<select id="inputMiscale" name="inputMiscale" class="form-control">
 					<option value=1>Yes</option>
 					<option value=0>No</option>
 				</select>
 			</div>
-
 			<button type="submit" class="btn btn-primary" style="width:150px; height:70px; float:right; font-size:30px;">정보변경</button>
 	</div>
 	</form>
@@ -136,7 +136,7 @@
       </a>
       <a href="static.php">
         <div class="navIcons" style="text-align:center;">
-          <br />
+          <br/>
           <i class="navIcon far fa-chart-bar navdi" id="navChart" aria-hidden="true"></i>
           <p class="navName navdp"> Chart </p>
         </div>
@@ -153,6 +153,10 @@
 				document.getElementById('inputCalory').readOnly = false;
 			}
 		}
+
+    window.changeMiscale = function(){ // 블루투스 다시 연결하는 페이지로 넘겨줘야함 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+    }
 
 		$("#inputGender,#inputAge,#inputWeight,#inputHeight,#inputExercise,#inputMiscale").on("propertychange change keyup paste input", function() {
 			var gender =$('#inputGender').val();

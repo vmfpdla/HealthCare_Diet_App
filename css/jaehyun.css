@@ -54,6 +54,10 @@ i.navdi{
 	font-size:30px;
 }
 
+a:hover{
+	text-decoration: none;
+}
+
 /* main 아래 그래프 속성 */
 .gmainp{
 	float:left; width: 20%;text-align: center;

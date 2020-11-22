@@ -20,16 +20,6 @@
   $sql = "INSERT INTO user(user_code,user_gender,user_age,user_height,user_weight,user_goal,user_check_inbody,user_check_exercise) values ('$user_code','$user_gender','$user_age','$user_height','$user_weight','$kcal','$miscale','$exercise')";
 	if (mysqli_query($conn, $sql)) {
 		$flag=1;
-
-		$sql1 = "SELECT * FROM user WHERE user_code='$user_code'";
-	  $result1 = $conn->query($sql1);
-
-	  if ($result1->num_rows > 0) { // 여러줄 가져오는 경우
-
-	    while($row1 = $result1->fetch_assoc()) {
-	      $_SESSION['id']=$row1['user_id'];
-	    }
-	  }
 	}
 	else { $flag=0; }
 
