@@ -154,10 +154,9 @@ else //echo "0 results";
     <br><br>
     <div style="text-align:center" data-toggle="modal" data-target="#exampleModal" >
       <p style="margin-right:20px; font-size:40px;" > 칼로리 </p>
+      <p style="font-size:30px;"><?php echo $kcal;?></p>
       
     </div>
-
-
 
 
     <br><br><br>
