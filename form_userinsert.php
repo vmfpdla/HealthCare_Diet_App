@@ -21,7 +21,7 @@
 		Header("Location:./userinsert.php");
 	}
 	else {
-		Header("Location:./index.php");
+		Header("Location:update://");
 	}
 
 	$conn->close();

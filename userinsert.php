@@ -1,3 +1,8 @@
+<?php
+session_start();
+	//$_SESSION['code']=123456789;
+	echo $_SESSION['code'];
+?>
 <!DOCTYPE html>
 <html>
 <head>
