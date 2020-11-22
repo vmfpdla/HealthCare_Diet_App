@@ -193,7 +193,7 @@
       document.getElementById('carouselExampleCaptions').style.display = 'block';
     }
 
-    if(is_data_kcal==null && is_data_inbody==null){
+    if(is_data_kcal!=null || is_data_inbody !=null){
       document.getElementById('is_data_none').style.display = 'none';
     }
 
