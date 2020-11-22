@@ -266,9 +266,42 @@ else{
         
       </div>
 
+    
+
+      <div style="margin:20px 30px;" class="smallbar">
+        <div style="text-align : center; float:left;">
+
+          <br><br>
+          <div style="text-align:center" data-toggle="modal" data-target="#exampleModal" >
+            <p style="font-size:40px;" > 칼로리 <?php echo $morning_kcal;?></p>
+           
+            <p style="font-size:30px;"></p>
+          </div>
+
+
+
+          <br>
+
+          <div class="carprofat" style="text-align:center; float:left;">
+            <div style="float:left; width:18%; text-align:center; margin:0px 10px 0 100px;">
+              <p style="font-size:20px;"> 탄수화물 <?php echo $morning_car;?></p>
+              
+            </div>
+            <div style="float:left; width:18%; text-align:center; margin-right: 10px;">
+              <p style="font-size:20px;"> 단백질 <?php echo $morning_pro;?></p>
+              
+            </div>
+            <div style="float:left; width:18%; text-align:center;">
+              <p style="font-size:20px;"> 지방 <?php echo $morning_fat;?></p>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+
+        
       
-      
-      <div style="float:left; margin:50px 50px;  width:15%;">
+      <div style="margin:50px 50px;  width:15%;">
         <p style="width: 100%;"> <?php
         if($is_morning==1){
           $morning_kcal =0;
@@ -300,40 +333,6 @@ else{
         }
         ?></p>
 
-      </div>
-
-      <div style="margin:20px 30px; float:left; width:60%; " class="smallbar">
-        <div style="text-align : center;">
-
-          <br><br>
-          <div style="text-align:center" data-toggle="modal" data-target="#exampleModal" >
-            <p style="font-size:40px;" > 칼로리 </p>
-           
-            <p style="font-size:30px;"><?php echo $morning_kcal;?></p>
-          </div>
-
-
-
-          <br>
-
-          <div class="carprofat" style="text-align:center;">
-            <div style="float:left; width:18%; text-align:center; margin:0px 10px 0 100px;">
-              <p style="font-size:20px;"> 탄수화물 </p>
-              
-              <p style="font-size:20px;"><?php echo $morning_car;?></p>
-            </div>
-            <div style="float:left; width:18%; text-align:center; margin-right: 10px;">
-              <p style="font-size:20px;"> 단백질 </p>
-              
-              <p style="font-size:20px;"><?php echo $morning_pro;?></p>
-            </div>
-            <div style="float:left; width:18%; text-align:center;">
-              <p style="font-size:20px;"> 지방 </p>
-              
-              <p style="font-size:20px;"><?php echo $morning_fat;?></p>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
 
@@ -468,9 +467,8 @@ else{
           
           <br><br>
           <div style="text-align:center" data-toggle="modal" data-target="#exampleModal" >
-            <p style="font-size:40px;" > 칼로리 </p>
+            <p style="font-size:40px;" > 칼로리 <?php echo $dinner_kcal;?> </p>
             
-            <p style="font-size:30px;"><?php echo $dinner_kcal;?></p>
           </div>
 
 
@@ -479,9 +477,9 @@ else{
 
           <div class="carprofat" style="text-align:center;">
             <div style="float:left; width:18%; text-align:center; margin:0px 10px 0 100px;">
-              <p style="font-size:20px;"> 탄수화물 </p>
+              <p style="font-size:20px;"> 탄수화물 <?php echo $dinner_car;?> </p>
               
-              <p style="font-size:20px;"><?php echo $dinner_car;?></p>
+              <p style="font-size:20px;"></p>
             </div>
             <div style="float:left; width:18%; text-align:center; margin-right: 10px;">
               <p style="font-size:20px;"> 단백질 </p>
