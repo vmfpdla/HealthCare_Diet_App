@@ -142,10 +142,10 @@ else //echo "0 results";
    </a>
  </nav>
 
+<br>
 
- <br><br>
  <div clas="container" style="text-align: center;">
-
+  
   <p class="title">Diet</p>
 </div>
 <br><br>  
@@ -154,27 +154,38 @@ else //echo "0 results";
     <br><br>
     <div style="text-align:center" data-toggle="modal" data-target="#exampleModal" >
       <p style="margin-right:20px; font-size:40px;" > 칼로리 </p>
-      <p style="font-size:30px;"><?php echo $kcal;?></p>
+      <div class="progress" style="height:30px;" >
+        <div class="progress-bar bg-success" id="progress_kcal" role="progressbar" style="width:  <?php echo $kcal/$user['user_goal']*100;?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <p style="font-size:30px;"><?php echo $kcal."/".$user['user_goal'];?></p>
       
     </div>
+
+    
 
 
     <br><br><br>
     <div class="carprofat">
       <div style="float:left; width:150px; text-align:center; margin:0 70px;">
         <p style="font-size:40px;"> 탄수화물 </p>
-       
-        <p style="font-size:30px;"><?php echo $car;?></p>
+        <div class="progress" >
+          <div class="progress-bar bg-info" role="progressbar" style="width: <?php echo $car/$maxcar*100;?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"> </div>
+        </div>
+        <p style="font-size:30px;"><?php echo $car."/".$maxcar;?></p>
       </div>
       <div style="float:left; width:150px; text-align:center; margin-right: 70px;">
         <p style="font-size:40px;"> 단백질 </p>
-        
-        <p style="font-size:30px;"><?php echo $pro;?></p>
+        <div class="progress" >
+          <div class="progress-bar bg-info" role="progressbar" style="width: <?php echo $pro/$maxpro*100;?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"> </div>
+        </div>
+        <p style="font-size:30px;"><?php echo $pro."/".$maxpro;?></p>
       </div>
       <div style="float:left; width:150px; text-align:center;">
         <p style="font-size:40px;"> 지방 </p>
-        
-        <p style="font-size:30px;"><?php echo $fat;?></p>
+        <div class="progress" >
+          <div class="progress-bar bg-info" role="progressbar" style="width: <?php echo $fat/$maxfat*100;?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        <p style="font-size:30px;"><?php echo $fat."/".$maxfat;?></p>
       </div>
     </div>
   </div>
@@ -297,10 +308,8 @@ else{
           <br><br>
           <div style="text-align:center" data-toggle="modal" data-target="#exampleModal" >
             <p style="font-size:40px;" > 칼로리 </p>
-            <div class="progress" style="height:30px;" >
-              <div class="progress-bar bg-success" id="progress_kcal" role="progressbar" style="width:  <?php echo $morning_kcal/$user['user_goal']*100;?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <p style="font-size:30px;"><?php echo $morning_kcal."/".$user['user_goal'];?></p>
+           
+            <p style="font-size:30px;"><?php echo $morning_kcal;?></p>
           </div>
 
 
@@ -310,24 +319,18 @@ else{
           <div class="carprofat" style="text-align:center;">
             <div style="float:left; width:18%; text-align:center; margin:0px 10px 0 100px;">
               <p style="font-size:20px;"> 탄수화물 </p>
-              <div class="progress" >
-                <div class="progress-bar bg-info" role="progressbar" style="width: <?php echo $morning_car/$maxcar*100;?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"> </div>
-              </div>
-              <p style="font-size:20px;"><?php echo $morning_car."/".$maxcar;?></p>
+              
+              <p style="font-size:20px;"><?php echo $morning_car;?></p>
             </div>
             <div style="float:left; width:18%; text-align:center; margin-right: 10px;">
               <p style="font-size:20px;"> 단백질 </p>
-              <div class="progress" >
-                <div class="progress-bar bg-info" role="progressbar" style="width: <?php echo $morning_pro/$maxpro*100;?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"> </div>
-              </div>
-              <p style="font-size:20px;"><?php echo $morning_pro."/".$maxpro;?></p>
+              
+              <p style="font-size:20px;"><?php echo $morning_pro;?></p>
             </div>
             <div style="float:left; width:18%; text-align:center;">
               <p style="font-size:20px;"> 지방 </p>
-              <div class="progress" >
-                <div class="progress-bar bg-info" role="progressbar" style="width: <?php echo $morning_fat/$maxfat*100;?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-              <p style="font-size:20px;"><?php echo $morning_fat."/".$maxfat;?></p>
+              
+              <p style="font-size:20px;"><?php echo $morning_fat;?></p>
             </div>
           </div>
         </div>
@@ -383,10 +386,8 @@ else{
           <br><br>
           <div style="text-align:center" data-toggle="modal" data-target="#exampleModal" >
             <p style="font-size:40px;" > 칼로리 </p>
-            <div class="progress" style="height:30px;" >
-              <div class="progress-bar bg-success" id="progress_kcal" role="progressbar" style="width:  <?php echo $lunch_kcal/$user['user_goal']*100;?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <p style="font-size:30px;"><?php echo $lunch_kcal."/".$user['user_goal'];?></p>
+           
+            <p style="font-size:30px;"><?php echo $lunch_kcal;?></p>
           </div>
 
 
@@ -396,24 +397,18 @@ else{
           <div class="carprofat" style="text-align:center;">
             <div style="float:left; width:18%; text-align:center; margin:0px 10px 0 100px;">
               <p style="font-size:20px;"> 탄수화물 </p>
-              <div class="progress" >
-                <div class="progress-bar bg-info" role="progressbar" style="width: <?php echo $lunch_car/$maxcar*100;?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"> </div>
-              </div>
-              <p style="font-size:20px;"><?php echo $lunch_car."/".$maxcar;?></p>
+              
+              <p style="font-size:20px;"><?php echo $lunch_car;?></p>
             </div>
             <div style="float:left; width:18%; text-align:center; margin-right: 10px;">
               <p style="font-size:20px;"> 단백질 </p>
-              <div class="progress" >
-                <div class="progress-bar bg-info" role="progressbar" style="width: <?php echo $lunch_pro/$maxpro*100;?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"> </div>
-              </div>
-              <p style="font-size:20px;"><?php echo $lunch_pro."/".$maxpro;?></p>
+              
+              <p style="font-size:20px;"><?php echo $lunch_pro;?></p>
             </div>
             <div style="float:left; width:18%; text-align:center;">
               <p style="font-size:20px;"> 지방 </p>
-              <div class="progress" >
-                <div class="progress-bar bg-info" role="progressbar" style="width: <?php echo $lunch_fat/$maxfat*100;?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-              <p style="font-size:20px;"><?php echo $lunch_fat."/".$maxfat;?></p>
+              
+              <p style="font-size:20px;"><?php echo $lunch_fat;?></p>
             </div>
           </div>
         </div>
@@ -474,10 +469,8 @@ else{
           <br><br>
           <div style="text-align:center" data-toggle="modal" data-target="#exampleModal" >
             <p style="font-size:40px;" > 칼로리 </p>
-            <div class="progress" style="height:30px;" >
-              <div class="progress-bar bg-success" id="progress_kcal" role="progressbar" style="width:  <?php echo $dinner_kcal/$user['user_goal']*100;?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <p style="font-size:30px;"><?php echo $dinner_kcal."/".$user['user_goal'];?></p>
+            
+            <p style="font-size:30px;"><?php echo $dinner_kcal;?></p>
           </div>
 
 
@@ -487,24 +480,18 @@ else{
           <div class="carprofat" style="text-align:center;">
             <div style="float:left; width:18%; text-align:center; margin:0px 10px 0 100px;">
               <p style="font-size:20px;"> 탄수화물 </p>
-              <div class="progress" >
-                <div class="progress-bar bg-info" role="progressbar" style="width: <?php echo $dinner_car/$maxcar*100;?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"> </div>
-              </div>
-              <p style="font-size:20px;"><?php echo $dinner_car."/".$maxcar;?></p>
+              
+              <p style="font-size:20px;"><?php echo $dinner_car;?></p>
             </div>
             <div style="float:left; width:18%; text-align:center; margin-right: 10px;">
               <p style="font-size:20px;"> 단백질 </p>
-              <div class="progress" >
-                <div class="progress-bar bg-info" role="progressbar" style="width: <?php echo $dinner_pro/$maxpro*100;?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"> </div>
-              </div>
-              <p style="font-size:20px;"><?php echo $dinner_pro."/".$maxpro;?></p>
+              
+              <p style="font-size:20px;"><?php echo $dinner_pro;?></p>
             </div>
             <div style="float:left; width:18%; text-align:center;">
               <p style="font-size:20px;"> 지방 </p>
-              <div class="progress" >
-                <div class="progress-bar bg-info" role="progressbar" style="width: <?php echo $dinner_fat/$maxfat*100;?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-              <p style="font-size:20px;"><?php echo $dinner_fat."/".$maxfat;?></p>
+             
+              <p style="font-size:20px;"><?php echo $dinner_fat;?></p>
             </div>
           </div>
         </div>
