@@ -20,6 +20,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.util.Log;
 
 import androidx.core.content.ContextCompat;
 
@@ -147,7 +148,10 @@ public class BluetoothMiScale2 extends BluetoothCommunication {
             final boolean isCattyUnit = isBitSet(ctrlByte1, 6);
             final boolean isImpedance = isBitSet(ctrlByte1, 1);
 
+            Log.d("SmartPT", "-1");
             if (isStabilized && !isWeightRemoved && !isDateInvalid) {
+
+                Log.d("SmartPT", "0");
                 ScaleData scaleBtData = new ScaleData();
 
                 final int year = ((data[3] & 0xFF) << 8) | (data[2] & 0xFF);
@@ -197,8 +201,16 @@ public class BluetoothMiScale2 extends BluetoothCommunication {
                         scaleBtData.bone = (miScaleLib.getBoneMass(weight, impedance));
                         scaleBtData.visceralFat = (miScaleLib.getVisceralFat(weight));
                         smartPT.setScaleData(scaleBtData);
-                        Intent intent = new Intent(this.context, MiScaleActivity.class);
-                        this.context.startActivity(intent);
+
+//
+                        Log.d("SmartPT", "1");
+                        if(smartPT.getWeightChange()){
+                            Intent intent = new Intent(this.context, MiScaleActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            this.context.startActivity(intent);
+                            Log.d("SmartPT", "2");
+                            smartPT.setWeightChange(false);
+                        }
                     } else {
                         Timber.d("Impedance value is zero");
                     }

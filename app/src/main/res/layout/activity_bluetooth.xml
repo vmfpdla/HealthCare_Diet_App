@@ -8,12 +8,31 @@
     android:gravity="center_horizontal"
     tools:context=".bluetooth.BluetoothActivity">
 
-<!--    <ImageView-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:id="@+id/blt_iv"-->
-<!--        >-->
-<!--    </ImageView>-->
+    <TextView
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/device_name_tv"
+        android:textSize="20dp"
+        android:text="등록된 기기 이름: ">
+    </TextView>
+    <TextView
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/device_add_tv"
+        android:textSize="20dp"
+        android:text="등록된 기기 주소: ">
+    </TextView>
+
+    <ImageView
+        android:scaleType="fitCenter"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:id="@+id/blt_iv">
+    </ImageView>
 
     <FrameLayout
         android:layout_width="match_parent"

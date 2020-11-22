@@ -34,8 +34,10 @@
 
         <activity android:name=".post" />
         <activity android:name=".CameraActivity" />
-        <activity android:name=".MiBand.MiBandActivity"></activity>
-        <activity android:name=".MiScale.MiScaleActivity" />
+        <activity android:name=".MiBand.MiBandActivity">
+        </activity>
+        <activity android:name=".MiScale.MiScaleActivity">
+        </activity>
         <activity android:name=".SubActivity" />
         <activity android:name=".MainActivity" />
     </application>

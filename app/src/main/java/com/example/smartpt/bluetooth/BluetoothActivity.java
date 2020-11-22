@@ -14,6 +14,7 @@ import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.smartpt.MiScale.MiScaleActivity;
@@ -25,8 +26,9 @@ import timber.log.Timber;
 
 public class BluetoothActivity extends AppCompatActivity {
 
-
     private Context context;
+
+    private TextView nameTv, addTv;
 
     private static final int ENABLE_BLUETOOTH_REQUEST = 102;
     private static final int REQUEST_ENABLE_BT = 0;
@@ -38,7 +40,7 @@ public class BluetoothActivity extends AppCompatActivity {
     private SmartPT smartPT = SmartPT.getInstance();
     private int btState;
 
-//    private ImageView bltIv;
+    private ImageView bltIv;
 
     //    private static Button bluetoothStatus;
     private static boolean firstAppStart = true;
@@ -52,6 +54,8 @@ public class BluetoothActivity extends AppCompatActivity {
         checkUser();
         initializeLayout();
         initializeBluetooth();
+//        Intent intent = new Intent(context, MiScaleActivity.class);
+//        startActivity(intent);
     }
 
     private void initializeBluetooth() {
@@ -62,57 +66,69 @@ public class BluetoothActivity extends AppCompatActivity {
             Log.d("bluetooth", "Bluetooth is not available");
         } else if (firstAppStart) {
             Log.d("bluetooth", "Bluetooth is available-first");
-//            invokeConnectToBluetoothDevice();
+            invokeConnectToBluetoothDevice();
             firstAppStart = false;
         } else {
             Log.d("bluetooth", "Bluetooth is available");
         }
 
+//        invokeConnectToBluetoothDevice();
         final BluetoothAdapter bluetoothAdapter = bluetoothManager.getAdapter();
         if (bluetoothAdapter.isEnabled()) {
             btState = BT_ON;
-//            bltIv.setImageResource(R.drawable.ic_bt_on);
+            bltIv.setImageResource(R.drawable.ic_bt_on);
         }
-//        else if(){
-//
-//        }
         else {
             btState = BT_OFF;
-//            bltIv.setImageResource(R.drawable.ic_bl_disabled);
+            bltIv.setImageResource(R.drawable.ic_bl_disabled);
         }
         if (btState == BT_OFF) {
 //                    showToast("Turning on bluetooth");
-//                    bltIv.setImageResource(R.drawable.ic_bt_on);
+                    bltIv.setImageResource(R.drawable.ic_bt_on);
                     btState = BT_ON;
                     Intent intent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
                     startActivityForResult(intent, REQUEST_ENABLE_BT);
         }
-//        bltIv.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (btState == BT_OFF) {
-////                    showToast("Turning on bluetooth");
-////                    bltIv.setImageResource(R.drawable.ic_bt_on);
-//                    btState = BT_ON;
-//                    Intent intent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-//                    startActivityForResult(intent, REQUEST_ENABLE_BT);
-//                } else {
-//                    bluetoothAdapter.disable();
-//                    btState = BT_OFF;
-////                    showToast("Turning bluetooth off");
-////                    bltIv.setImageResource(R.drawable.ic_bl_disabled);
-//                }
-//            }
-//        });
+        bltIv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (btState == BT_OFF) {
+//                    showToast("Turning on bluetooth");
+                    bltIv.setImageResource(R.drawable.ic_bt_on);
+                    btState = BT_ON;
+                    Intent intent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+                    startActivityForResult(intent, REQUEST_ENABLE_BT);
+                }
+                else if(btState == BT_ON){
+                    bltIv.setImageResource(R.drawable.ic_bt_searching);
+                    btState = BT_SEARCHING;
+                    smartPT.setWeightChange(true);
+                    Log.d("SmartPT", "바꿈");
+                    invokeConnectToBluetoothDevice();
+
+//                    Intent intent = new Intent(this.context, MiScaleActivity.class);
+//                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                    this.context.startActivity(intent);
+                }
+                else {
+                    bluetoothAdapter.disable();
+                    btState = BT_OFF;
+//                    showToast("Turning bluetooth off");
+                    bltIv.setImageResource(R.drawable.ic_bl_disabled);
+                }
+            }
+        });
     }
 
     private void initializeLayout() {
+
+
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fm.beginTransaction();
         fragmentTransaction.add(R.id.fragment, new BluetoothSettingsFragment());
         fragmentTransaction.commit();
 
-//        bltIv = findViewById(R.id.blt_iv);
+        bltIv = findViewById(R.id.blt_iv);
 
     }
 
@@ -127,6 +143,8 @@ public class BluetoothActivity extends AppCompatActivity {
 //            Log.d("SmartPT", "NO User");
 //            return;
 //        }
+        smartPT.setDevice(PreferenceManager.getDeviceName(context), PreferenceManager.getDeviceAddress(context));
+        Log.d("SmartPT", smartPT.getDeviceName()+smartPT.getDeviceAddress());
         String deviceName = smartPT.getDeviceName();
         String hwAddress = smartPT.getDeviceAddress();
         Log.d("SmartPT", "dd");
@@ -137,17 +155,24 @@ public class BluetoothActivity extends AppCompatActivity {
         }
 
         BluetoothManager bluetoothManager = (BluetoothManager) getSystemService(BLUETOOTH_SERVICE);
+//        Log.d("SmartPT", "11");
         if (!bluetoothManager.getAdapter().isEnabled()) {
-//            bltIv.setImageResource(R.drawable.ic_bl_disabled);
+
+//            Log.d("SmartPT", "12");
+            bltIv.setImageResource(R.drawable.ic_bl_disabled);
             Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
             startActivityForResult(enableBtIntent, ENABLE_BLUETOOTH_REQUEST);
             return;
         }
 
+
+//        Log.d("SmartPT", "13");
         Toast.makeText(getApplicationContext(), "info_bluetooth_try_connection" + " " + deviceName, Toast.LENGTH_SHORT).show();
 //        bltIv.setImageResource(R.drawable.ic_bt_searching);
 
         if (!smartPT.connectToBluetoothDevice(deviceName, hwAddress, callbackBtHandler)) {
+
+//            Log.d("SmartPT", "14");
             Toast.makeText(getApplicationContext(), deviceName + " " + "label_bt_device_no_support", Toast.LENGTH_SHORT).show();
         }
     }
@@ -160,7 +185,7 @@ public class BluetoothActivity extends AppCompatActivity {
 
             switch (btStatus) {
                 case RETRIEVE_SCALE_DATA:
-                    com.example.smartpt.SmartPT smartPT = com.example.smartpt.SmartPT.getInstance();
+                    SmartPT smartPT = SmartPT.getInstance();
 //
 //                    if (prefs.getBoolean("mergeWithLastMeasurement", true)) {
 //                        if (!openScale.isScaleMeasurementListEmpty()) {
@@ -226,9 +251,9 @@ public class BluetoothActivity extends AppCompatActivity {
         if (requestCode == ENABLE_BLUETOOTH_REQUEST) {
             if (resultCode == RESULT_OK) {
                 invokeConnectToBluetoothDevice();
-                Toast.makeText(this, "Bluetooth " + "_is_enable", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(this, "Bluetooth " + "_is_enable", Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(this, "Bluetooth " + "_is_not_enable", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(this, "Bluetooth " + "_is_not_enable", Toast.LENGTH_SHORT).show();
             }
             return;
         }

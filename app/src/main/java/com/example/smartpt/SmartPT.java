@@ -14,6 +14,8 @@ public class SmartPT {
     public static boolean DEBUG_MODE = false;
     public static int MALE = 0;
     public static int FEMALE = 1;
+    public static int NEW = 0;
+    public static int NOT_NEW = 1;
 
 
 //    public static final String DATABASE_NAME = "smartpt.db";
@@ -29,6 +31,8 @@ public class SmartPT {
     private int userSex;
     private int userAge;
     private int userId;
+    private boolean isNew;
+    private boolean weightChange;
     private BluetoothCommunication btDeviceDriver;
 
     private Context context;
@@ -36,6 +40,7 @@ public class SmartPT {
     private SmartPT(Context context) {
         this.context = context;
         btDeviceDriver = null;
+
         deviceAddress = "address : Null";
         deviceName = "name : Null";
         userId = -1;
@@ -44,8 +49,16 @@ public class SmartPT {
         userSex = -1;
         scaleData = null;
         bandData = null;
+        isNew = true;
+        weightChange = true;
     }
 
+    public void setWeightChange(boolean b){
+        weightChange = b;
+    }
+    public boolean getWeightChange(){
+        return weightChange;
+    }
     public void setDevice(String name, String address){
         deviceName = name;
         deviceAddress = address;

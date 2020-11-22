@@ -24,6 +24,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.smartpt.PreferenceManager;
 import com.example.smartpt.R;
 import com.example.smartpt.SmartPT;
+import com.example.smartpt.bluetooth.BluetoothActivity;
 import com.example.smartpt.bluetooth.BluetoothSettingsFragment;
 
 import java.lang.reflect.Array;
@@ -48,6 +49,8 @@ public class MiScaleActivity extends AppCompatActivity {
 //        scaleData.fat = 4;
 //        smartPT.setScaleData(scaleData);
         initiateTextView();
+//        Intent intent = new Intent(this, BluetoothActivity.class);
+//        startActivity(intent);
 
     }
 

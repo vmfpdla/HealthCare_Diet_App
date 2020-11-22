@@ -28,7 +28,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
+import com.example.smartpt.PreferenceManager;
 import com.example.smartpt.R;
 import com.example.smartpt.SmartPT;
 import com.welie.blessed.BluetoothCentral;
@@ -51,6 +53,7 @@ public class BluetoothSettingsFragment extends Fragment {
     private ProgressBar progressBar;
     private Handler progressHandler;
     private BluetoothCentral central;
+    private Context mContext;
 
     @Nullable
     @Override
@@ -247,16 +250,21 @@ public class BluetoothSettingsFragment extends Fragment {
             deviceIcon.setEnabled(status);
         }
 
+
         @Override
         public void onClick(View view) {
             BluetoothDevice device = foundDevices.get(getDeviceAddress());
 
             SmartPT.getInstance().setDevice(device.getName(), device.getAddress());
+            Log.d("SmartPT", device.getName() + device.getAddress());
+            PreferenceManager.setDeviceName(mContext, device.getName());
+            PreferenceManager.setDeviceAddress(mContext, device.getAddress());
             SmartPT.getInstance().setUserId(1);
             Log.d("SmartPT" , "Saved Bluetooth device " + device.getName() + " with address " + device.getAddress());
             Timber.d("Saved Bluetooth device " + device.getName() + " with address " + device.getAddress());
 
             stopBluetoothDiscovery();
+            getActivity().onBackPressed();
         }
     }
 
@@ -271,6 +279,12 @@ public class BluetoothSettingsFragment extends Fragment {
         }
 
         super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        mContext = context;
     }
 
     @Override
