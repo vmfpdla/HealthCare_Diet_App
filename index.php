@@ -32,9 +32,9 @@ require_once("./dbconn.php");
     Header("Location:./userinsert.php",$_SESSION['code']);
   }
 
-  $maxcar = $user['user_goal'] * 0.65;
-	$maxfat =$user['user_goal'] * 0.2;
-	$maxpro =$user['user_goal'] * 0.15;
+  $maxcar = $user['user_goal'] * 0.65 * 0.25;
+	$maxfat =$user['user_goal'] * 0.2 * 0.1;
+	$maxpro =$user['user_goal'] * 0.15 * 0.25;
 
   $sql1 = "SELECT * FROM doexercise INNER JOIN exerciseinfo on doexercise.exercise_id = exerciseInfo.exercise_id WHERE user_id='$user_id' and doexercise_day='$today'";
   $result1 = $conn->query($sql1);
@@ -74,7 +74,7 @@ require_once("./dbconn.php");
   if ($result2 -> num_rows>0) { // 여러줄 가져오는 경우
 
   while($row = $result2->fetch_assoc()) {
-    if($row['eaten_serving']==0){ # 0인분인경우
+    if($row['eaten_serving']==0){ # 1/2인분인경우
       $kcal = $kcal + $row['eaten_calory'];
       $car = $car + $row['food_car']*0.5;
       $fat = $fat + $row['food_fat']*0.5;
