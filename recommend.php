@@ -1,7 +1,9 @@
 <?php
 session_start();
 require_once("./dbconn.php");
-
+$sex=50;
+$height=40;
+$weight=30;
 $today = date("Y-m-d");
 $kcal = 0; //칼로리
 $car =0; // 탄수화물
@@ -134,13 +136,11 @@ else //echo "0 results";
 <body>
   <nav class="navbar fixed-top">
     <p class="navp">SmartPT</p>
-    <a href="userInsert3.html">
+    <a href="usermodify.php">
      <i class="fa fa-user-circle navi"></i>
    </a>
  </nav>
 
-<br>
-<a href="band://">HI</a>
 <br>
 <a href="scale://">HI@</a>
  <br><br>
