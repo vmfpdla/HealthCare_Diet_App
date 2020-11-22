@@ -5,11 +5,11 @@
   $today = date("Y-m-d");
 
   $walk_cal = $_POST['walk_cal'];
-  $walk_dist = $_POST['walk_dist']
+  $walk_dist = $_POST['walk_dist'];
   $walk_min = $_POST['walk_min'];
 
   $run_cal = $_POST['run_cal'];
-  $run_dist = $_POST['run_dist']
+  $run_dist = $_POST['run_dist'];
   $run_min = $_POST['run_min'];
 
   $walk_flag;
@@ -32,7 +32,7 @@
   		Header("Location:./index.php");
   	}
   	else {
-  		echo "미밴드  걷기 정보 업데이트 오류 !"
+  		echo "미밴드  걷기 정보 업데이트 오류 !";
   	}
   }
   else{ // 없었던 경우 insert
@@ -41,7 +41,7 @@
   		Header("Location:./index.php");
   	}
   	else {
-  		echo "미밴드 걷기 정보 인서트 오류 !"
+  		echo "미밴드 걷기 정보 인서트 오류 !";
   	}
   }
 
@@ -62,7 +62,7 @@
   		Header("Location:./index.php");
   	}
   	else {
-  		echo "미밴드  달리기 정보 업데이트 오류 !"
+  		echo "미밴드  달리기 정보 업데이트 오류 !";
   	}
   }
   else{ // 없었던 경우 insert
@@ -71,7 +71,7 @@
   		Header("Location:./index.php");
   	}
   	else {
-  		echo "미밴드 달리기 정보 인서트 오류 !"
+  		echo "미밴드 달리기 정보 인서트 오류 !";
   	}
   }
 	$conn->close();
