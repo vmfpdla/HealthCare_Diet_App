@@ -16,10 +16,10 @@
   else if($exercise==1.25) $exercise=3;
   else if($exercise==1.45) $exercise=4;
 
-  $sql = "UPDATE user SET user_gender='$user_gender',
-                          user_age='$user_age',
-                          user_height='$user_height',
-                          user_weight='$user_weight',
+  $sql = "UPDATE user SET user_gender='$gender',
+                          user_age='$age',
+                          user_height='$height',
+                          user_weight='$weight',
                           user_goal='$kcal',
                           user_check_inbody='$miscale',
                           user_check_exercise='$exercise'
