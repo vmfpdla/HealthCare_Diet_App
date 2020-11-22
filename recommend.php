@@ -274,8 +274,7 @@ else{
           <br><br>
           <div style="text-align:center" data-toggle="modal" data-target="#exampleModal" >
             <p style="font-size:40px;" > 칼로리 <?php echo $morning_kcal;?></p>
-           
-            <p style="font-size:30px;"></p>
+                       
           </div>
 
 
@@ -283,15 +282,15 @@ else{
           <br>
 
           <div class="carprofat" style="text-align:center; float:left;">
-            <div style="float:left; width:18%; text-align:center; margin:0px 10px 0 100px;">
+            <div style="float:left; text-align:center; margin:0px 10px 0 100px;">
               <p style="font-size:20px;"> 탄수화물 <?php echo $morning_car;?></p>
               
             </div>
-            <div style="float:left; width:18%; text-align:center; margin-right: 10px;">
+            <div style="float:left; text-align:center; margin-right: 10px;">
               <p style="font-size:20px;"> 단백질 <?php echo $morning_pro;?></p>
-              
+            
             </div>
-            <div style="float:left; width:18%; text-align:center;">
+            <div style="float:left;text-align:center;">
               <p style="font-size:20px;"> 지방 <?php echo $morning_fat;?></p>
               
             </div>
@@ -299,7 +298,7 @@ else{
         </div>
       </div>
 
-        
+
       
       <div style="margin:50px 50px;  width:15%;">
         <p style="width: 100%;"> <?php
