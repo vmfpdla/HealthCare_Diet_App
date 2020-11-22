@@ -1,7 +1,8 @@
 <?php
   require_once("./dbconn.php");
-  $user_id = 1; # 1번 가져왔다고 가정
-
+  session_start();
+  //$user_id = $_SESSION['id'] ;
+  $user_id=1;
   $i=0;
   $j=0;
   $dailyKcal; // 일별 섭취 칼로리
@@ -88,26 +89,42 @@
   </div>
 	<nav class="navbar fixed-top">
 		<p class="navp">SmartPT</p>
-		<a href=""><i class="fas fa-sync" style="font-size:70px; color:#D8D8D8; margin-right:30px;"></i></a>
+		<a href=""><i class="fas fa-spinner " style="font-size:70px; color:#D8D8D8; margin-right:30px;"></i></a>
+
+    <!-- <i class="fas fa-spinner fa-10x fa-spin"></i> -->
 	</nav>
 
 	<br><br><br>
-	<div style="width:95%; margin-left:20px;">
-		<canvas id="daily_kcal"></canvas>
+  <div id="carouselExampleCaptions1" class="carousel slide" data-ride="carousel">
+		<div class="carousel-inner">
+			<div class="carousel-item active">
+				<div style="width:95%; margin-left:20px;">
+					<canvas id="daily_kcal"></canvas>
+          <script src="./js/daily_kcalgraph.js?ver=1"></script>
+				</div>
+			</div>
+			<div class="carousel-item">
+				<div style="width:95%; margin-left:20px;">
+					<canvas id="week_kcal"></canvas>
+          <script src="./js/week_kcalgraph.js?ver=1"></script>
+				</div>
+			</div>
+			<div class="carousel-item">
+				<div style="width:95%; margin-left:20px;">
+					<canvas id="month_kcal"></canvas>
+          <script src="./js/month_kcalgraph.js?ver=1"></script>
+				</div>
+			</div>
+		</div>
+    <a class="carousel-control-prev" href="#carouselExampleCaptions1" role="button" data-slide="prev">
+     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+     <span class="sr-only">Previous</span>
+    </a>
+     <a class="carousel-control-next" href="#carouselExampleCaptions1" role="button" data-slide="next">
+       <span class="carousel-control-next-icon" aria-hidden="true"></span>
+       <span class="sr-only">Next</span>
+     </a>
 	</div>
-	<script src="./js/daily_kcalgraph.js?ver=?"></script>
-
-	<br><br><br>
-	<div style="width:95%; margin-left:20px;" >
-		<canvas id="week_kcal"></canvas>
-	</div>
-	<script src="./js/week_kcalgraph.js?ver=3"></script>
-
-	<br><br><br>
-	<div style="width:95%; margin-left:20px;">
-		<canvas id="month_kcal"></canvas>
-	</div>
-	<script src="./js/month_kcalgraph.js?ver=?"></script>
 
 	<br><br><br>
 	<div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">

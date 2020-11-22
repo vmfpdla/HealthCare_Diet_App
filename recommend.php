@@ -1,9 +1,6 @@
-<<<<<<< HEAD
-
-=======
->>>>>>> e86c04cd4ebf68e7be0681c7e98b78ea4dab288f
 <?php
-
+session_start();
+$user_id = $_SESSION['id'];
 require_once("./dbconn.php");
 
 $today = date("Y-m-d");
@@ -12,8 +9,6 @@ $car =0; // 탄수화물
 $fat =0; // 지방
 $pro =0; // 단백질
 
-
-$user_id = 1; # 1번 가져왔다고 가정
 $sql = "SELECT * FROM user WHERE user_id='$user_id'";
 $result = $conn->query($sql);
 
@@ -93,7 +88,7 @@ else //echo "0 results";
 
 </style>
 
-<link rel="stylesheet" href="./css/jaehyun.css?ver=3">
+<link rel="stylesheet" href="./css/jaehyun.css?ver=2">
 
 </script>
 
@@ -296,34 +291,13 @@ else{
     <div class="tab-pane fade show active" id="breakfast" role="tabpanel" aria-labelledby="home-tab">
 
       <div class="card-body" id="camera_1" style="text-align: center; height:120px;">
-<<<<<<< HEAD
-          <a href="app://"><button class="btn btn-secondary"id="btn1">음식입력</button></a>
-          <!--  <button type="submit"> <i class="fas fa-utensils cardi" style="font-size:100px;"aria-hidden="true"></i></button>-->
-
-      </div>
-
-
-        <div style="float:left; margin:50px 50px;  width:15%;">
-          <p style="width: 100%;"> <?php
-          if($is_morning==1){
-            $morning_kcal =0;
-            $morning_car =0;
-            $morning_pro =0;
-            $morning_fat =0;
-            while($row = $result3->fetch_assoc()) {
-              if ($row['eaten_serving']==0){
-                $morning_kcal = $morning_kcal+$row['food_calory']*0.5;
-                $morning_car = $morning_car+$row['food_car']*0.5;
-                $morning_pro = $morning_pro+$row['food_pro']*0.5;
-                $morning_fat = $morning_fat+$row['food_fat']*0.5;
-=======
         <a href="app://1"><button class="btn btn-secondary"id="btn1">음식입력</button></a>
         <!--  <button type="submit"> <i class="fas fa-utensils cardi" style="font-size:100px;"aria-hidden="true"></i></button>-->
-        
+
       </div>
 
-      
-      
+
+
       <div style="float:left; margin:50px 50px;  width:15%;">
         <p style="width: 100%;"> <?php
         if($is_morning==1){
@@ -346,7 +320,6 @@ else{
               if($row['eaten_serving']==0){
                 echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(0.5 인분)";
                 echo nl2br("\n\n");
->>>>>>> e86c04cd4ebf68e7be0681c7e98b78ea4dab288f
               }
               else{
                 echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(".$row['eaten_serving']." 인분)";
@@ -411,51 +384,6 @@ else{
 
       </div>
 
-<<<<<<< HEAD
-      <div class="progress rounded-pill" style="height:20px;">
-        <div class="progress-bar progress-bar-striped bg-info progress-bar-animated" role="progressbar"
-        style="width:  <?php echo $morning_fat/1500*100;?>%" aria-valuenow="10" aria-valuemin="0"
-        aria-valuemax="100">
-        <p class="pr" style="padding-top:15px;"> <?php echo $morning_fat ." / 1500" ?> </p>
-         </div>
-       </div>
-      </div>
-
-       </div>
-    </div>
-
-
-    <div class="tab-pane fade" id="lunch" role="tabpanel" aria-labelledby="profile-tab">
-        <div class="card-body" id="camera_2" style="text-align: center;">
-
-      <a href="app://"><button class="btn btn-secondary"id="btn1">음식입력</button></a>
-      <!--  <button type="submit"> <i class="fas fa-utensils cardi" style="font-size:100px;"aria-hidden="true"></i></button>-->
-
-  </div>
-
-    <div style="float:left; margin:50px 50px;  width:15%;">
-      <p style="width: 100%;"> <?php
-      if($is_lunch==1){
-        $lunch_kcal =0;
-        $lunch_car =0;
-        $lunch_pro =0;
-        $lunch_fat =0;
-        while($row = $result4->fetch_assoc()) {
-          if ($row['eaten_serving']==0){
-            $lunch_kcal = $lunch_kcal+$row['food_calory']*0.5;
-            $lunch_car = $lunch_car+$row['food_car']*0.5;
-            $lunch_pro = $lunch_pro+$row['food_pro']*0.5;
-            $lunch_fat = $lunch_fat+$row['food_fat']*0.5;
-          }
-          else{
-            $lunch_kcal = $lunch_kcal+$row['food_calory']*$row['eaten_serving'];
-            $lunch_car =  $lunch_car+$row['food_car']*$row['eaten_serving'];
-            $lunch_pro =  $lunch_pro+$row['food_pro']*$row['eaten_serving'];
-            $lunch_fat =  $lunch_fat+$row['food_fat']*$row['eaten_serving'];
-            if($row['eaten_serving']==0){
-              echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(0.5 인분)";
-              echo nl2br("\n\n");
-=======
       <div style="float:left; margin:50px 50px;  width:15%;">
         <p style="width: 100%;"> <?php
         if($is_lunch==1){
@@ -469,7 +397,6 @@ else{
               $lunch_car = $lunch_car+$row['food_car']*0.5;
               $lunch_pro = $lunch_pro+$row['food_pro']*0.5;
               $lunch_fat = $lunch_fat+$row['food_fat']*0.5;
->>>>>>> e86c04cd4ebf68e7be0681c7e98b78ea4dab288f
             }
             else{
               $lunch_kcal = $lunch_kcal+$row['food_calory']*$row['eaten_serving'];
@@ -493,7 +420,7 @@ else{
 
       <div style="margin:20px 30px; float:left; width:60%; " class="smallbar">
         <div style="text-align : center;">
-          
+
           <br><br>
           <div style="text-align:center" data-toggle="modal" data-target="#exampleModal" >
             <p style="font-size:40px;" > 칼로리 </p>
@@ -537,31 +464,6 @@ else{
 </div>
 
 
-<<<<<<< HEAD
-<br><br>
-
-<div class="container" style="font-weight: bold;">
-  <div class="container" style="float:left; width:20%;">
-    <p class="pr" align="left;"> 지 </p>
-
-  </div>
-
-  <div class="progress rounded-pill" style="height:20px;">
-    <div class="progress-bar progress-bar-striped bg-info progress-bar-animated" role="progressbar"
-    style="width:  <?php echo $lunch_fat/1500*100;?>%" aria-valuenow="10" aria-valuemin="0"
-    aria-valuemax="100">
-    <p class="pr" style="padding-top:15px;"> <?php echo $lunch_fat ." / 1500" ?> </p>
-  </div>
-        </div>
-            </div>
-        </div>
-
-
-    </div>
-
-
-=======
->>>>>>> e86c04cd4ebf68e7be0681c7e98b78ea4dab288f
 
 <div class="tab-pane fade" id="dinner" role="tabpanel" aria-labelledby="contact-tab">
 
@@ -606,10 +508,10 @@ else{
       }
       ?></p>
     </div>
- 
+
        <div style="margin:20px 30px; float:left; width:60%; " class="smallbar">
         <div style="text-align : center;">
-          
+
           <br><br>
           <div style="text-align:center" data-toggle="modal" data-target="#exampleModal" >
             <p style="font-size:40px;" > 칼로리 </p>
@@ -650,28 +552,6 @@ else{
       </div>
 
 
-<<<<<<< HEAD
-  <br><br>
-
-      <div class="container" style="font-weight: bold;">
-        <div class="container" style="float:left; width:20%;">
-      <p class="pr" align="left;"> 지 </p>
-        </div>
-        <div class="progress rounded-pill" style="height:20px;">
-         <div class="progress-bar progress-bar-striped bg-info progress-bar-animated" role="progressbar"
-      style="width: <?php echo $dinner_fat/1500*100;?>%" aria-valuenow="10" aria-valuemin="0"
-      aria-valuemax="100">
-      <p class="pr" style="padding-top:15px;"> <?php echo $dinner_fat ." / 1500" ?> </p>
-        </div>
-      </div>
-       </div>
-
-       </div>
-
-
-
-=======
->>>>>>> e86c04cd4ebf68e7be0681c7e98b78ea4dab288f
 
 </div>
 </div>
@@ -800,26 +680,32 @@ if($arr_diet[$j][5]>$arr_diet[$j+1][5]){
 
 <nav class="navbar fixed-bottom navd">
   <a href="index.php">
-    <div class="navIcons" style="text-align:center;">
-      <br />
-      <i class="navIcon fas fa-home navdi" id="navHome" aria-hidden="true" ></i>
-      <p class="navName navdp"> Home </p>
-    </div>
-  </a>
-  <a href="recommend.php">
-    <div class="navIcons" style="text-align:center;">
-      <br />
-      <i class="navIcon fas fa-utensils navdi" id="navDiet" aria-hidden="true" style="color:#8DA5BD;"></i>
-      <p class="navName navdp" style="color:#8DA5BD;"> Diet </p>
-    </div>
-  </a>
-  <a href="static.php">
-    <div class="navIcons" style="text-align:center;">
-      <br />
-      <i class="navIcon far fa-chart-bar navdi" id="navChart" aria-hidden="true"></i>
-      <p class="navName navdp"> Chart </p>
-    </div>
-  </a>
+   <div class="navIcons" style="text-align:center;">
+    <br/>
+    <i class="navIcon fas fa-home navdi" id="navHome" aria-hidden="true"></i>
+    <p class="navName navdp">
+     Home
+   </p>
+ </div>
+</a>
+<a href="recommend.php">
+  <div class="navIcons" style="text-align:center;">
+    <br/>
+    <i class="navIcon fas fa-utensils navdi" id="navDiet" aria-hidden="true"></i>
+    <p class="navName navdp">
+      Diet
+    </p>
+  </div>
+</a>
+<a href="static.php">
+  <div class="navIcons" style="text-align:center;">
+    <br/>
+    <i class="navIcon far fa-chart-bar navdi" id="navChart" aria-hidden="true"></i>
+    <p class="navName navdp">
+      Chart
+    </p>
+  </div>
+</a>
 </nav>
 </body>
 </html>

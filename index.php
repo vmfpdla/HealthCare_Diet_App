@@ -1,10 +1,10 @@
 <?php
 
   require_once("./dbconn.php");
-
-  $user_id = 1; # 1번 가져왔다고 가정
+  session_star();
+  $user_id = $_SESSION['id'] ;
   $today = date("Y-m-d");
-
+  
   $walking;
   $running;
   $kcal = 0; //칼로리

@@ -1,7 +1,9 @@
 <?php
 
 	require_once("./dbconn.php");
-  $user_id=1;
+	session_start();
+  $user_id = $_SESSION['id'];
+
   $gender = $_POST['inputGender'];
   $age = $_POST['inputAge'];
   $weight = $_POST['inputWeight'];
@@ -10,8 +12,6 @@
   $miscale = $_POST['inputMiscale'];
   $kcal = $_POST['inputCalory'];
  	$flag=0;
-
-  $user_code = abc; # 1번 가져왔다고 가정
 
   if($exercise==1.12) $exercise=2;
   else if($exercise==1.25) $exercise=3;
@@ -26,12 +26,8 @@
                           user_check_exercise='$exercise'
 											WHERE user_id='$user_id'";
 
-	if (mysqli_query($conn, $sql)) { $flag=1; }
+	if (mysqli_query($conn, $sql)) { $flag=1; } // 성공 시 flag =1;
 	else { $flag=0; }
-
-
-
-
 	$conn->close();
 
 ?>

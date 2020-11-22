@@ -1,8 +1,8 @@
 <?php
 
   require_once("./dbconn.php");
-
-  $user_id = 1; # 1번 가져왔다고 가정
+  session_star();
+  $user_id = $_SESSION['id'] ;
 
   $sql = "SELECT * FROM user WHERE user_id='$user_id'";
   $result = $conn->query($sql);
@@ -63,18 +63,18 @@
 				</div>
 				<div class="form-group col-md-6" >
 					<label for="inputNumber">나이</label>
-					<input type="number" min="1" max="100" class="form-control" id="inputAge" name="inputAge" placeholder="<?php echo $user['user_age'];?>">
+					<input type="number" min="1" max="100" class="form-control" id="inputAge" name="inputAge" placeholder="<?php echo $user['user_age'];?>" required>
 				</div>
 			</div>
 			<br>
 			<div class="form-row">
 				<div class="form-group col-md-6">
 					<label for="inputHeight">키</label>
-					<input type="number" min="100" max="250" class="form-control" id="inputHeight" name="inputHeight" placeholder="<?php echo $user['user_height'];?>">
+					<input type="number" min="100" max="250" class="form-control" id="inputHeight" name="inputHeight" placeholder="<?php echo $user['user_height'];?>" required>
 				</div>
 				<div class="form-group col-md-6">
 					<label for="inputWeight">체중</label>
-					<input type="number" min="10" max="200" class="form-control" id="inputWeight" name="inputWeight" placeholder="<?php echo $user['user_weight'];?>">
+					<input type="number" min="10" max="200" class="form-control" id="inputWeight" name="inputWeight" placeholder="<?php echo $user['user_weight'];?>" required>
 				</div>
 			</div>
 			<br>
@@ -97,7 +97,7 @@
 					</div>
 					<br>
 
-					<input type="number" class="form-control" id="inputCalory" name="inputCalory" placeholder="<?php echo $user['user_goal'];?>" readonly>
+					<input type="number" class="form-control" id="inputCalory" name="inputCalory" placeholder="<?php echo $user['user_goal'];?>" readonly required>
 					<br>
 					<h3 style="color:gray;">[ 하루 권장 칼로리 ] 표준체중(kg) X 활동지수</h3>
 					<h3 style="color:gray;">[ 다이어트 식단 칼로리 ] 여성 : 800 - 1200 Kcal , 남성 : 1200 - 1400 Kcal</h3>
