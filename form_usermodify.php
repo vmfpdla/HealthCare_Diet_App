@@ -10,7 +10,6 @@
   $exercise = $_POST['inputExercise'];
   $miscale = $_POST['inputMiscale'];
   $kcal = $_POST['inputCalory'];
- 	$flag=0;
 
   if($exercise==1.12) $exercise=2;
   else if($exercise==1.25) $exercise=3;
@@ -25,8 +24,12 @@
                           user_check_exercise='$exercise'
 											WHERE user_id='$user_id'";
 
-	if (mysqli_query($conn, $sql)) { $flag=1; } // 성공 시 flag =1;
-	else { $flag=0; }
+	if (mysqli_query($conn, $sql)) {
+		Header("Location:./index.php");
+	} // 성공 시 flag =1;
+	else {
+		Header("Location:./usermodify.php");
+	}
 	$conn->close();
 
 ?>
@@ -59,16 +62,4 @@
 
 <body>
 </body>
-<script>
-  var flag = Number('<?php echo $flag?>');
-
-  if(flag==1){
-    alert("수정이 완료되었습니다");
-		location.href="index.php";
-  }
-  else{
-		alert("수정에 실패했습니다. 다시 시도해주세요");
-		location.href="usermodify.php";
-  }
-</script>
 </html>

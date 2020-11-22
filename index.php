@@ -18,7 +18,7 @@ require_once("./dbconn.php");
   $running_calory;
   $recommend_walking;
   $recommend_running;
-
+  $user;
   $sql = "SELECT * FROM user WHERE user_code='$user_code'";
   $result = $conn->query($sql);
   if ($result->num_rows > 0) { // 여러줄 가져오는 경우
@@ -26,6 +26,7 @@ require_once("./dbconn.php");
     while($row = $result->fetch_assoc()) {
       $user_id = $row['user_id'];
       $_SESSION['id'] = $user_id;
+      $user = $row;
     }
   } else {
     Header("Location:./userinsert.php",$_SESSION['code']);

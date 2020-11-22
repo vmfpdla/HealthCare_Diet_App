@@ -24,19 +24,19 @@
   {
     $sql1= "UPDATE inbody SET inbody_weight ='$inbody_weight', inbody_muscle='$inbody_muscle', inbody_bmi='$inbody_bmi', inbody_fat='$inbody_fat' WHERE user_id='$user_id' and inbody_day='$today'";
     if (mysqli_query($conn, $sql1)) {
-  		Header("Location:./static.php");
+  		#Header("Location:./static.php");
   	}
   	else {
-  		echo "미스케일 정보 업데이트 오류 !";
+  		#echo "미스케일 정보 업데이트 오류 !";
   	}
   }
   else{ // 없었던 경우 insert
     $sql2 = "INSERT INTO inbody(user_id,inbody_weight,inbody_muscle,inbody_bmi,inbody_fat,inbody_day) values ('$user_id','$inbody_weight','$inbody_muscle','$inbody_bmi','$inbody_fat','$today')";
   	if (mysqli_query($conn, $sql2)) {
-  		Header("Location:./static.php");
+  		#Header("Location:./static.php");
   	}
   	else {
-  		echo "미스케일 정보 인서트 오류 !";
+  		#echo "미스케일 정보 인서트 오류 !";
   	}
   }
 
