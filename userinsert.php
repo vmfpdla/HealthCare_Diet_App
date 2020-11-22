@@ -35,31 +35,29 @@
 			<div class="form-group col-md-6">
 				<label for="inputGender">성별</label>
 				<select id="inputGender" name="inputGender" class="form-control">
-
 					<option value=0>Male</option>
 					<option value=1>Female</option>
 				</select>
 			</div>
 			<div class="form-group col-md-6">
 				<label for="inputNumber">나이</label>
-				<input type="number" min="0" max="100" class="form-control" id="inputAge" name="inputAge" placeholder="age ( 세 )">
+				<input type="number" min="1" max="100" class="form-control" id="inputAge" name="inputAge" placeholder="age ( 세 )" required>
 			</div>
 
 		</div>
 		<div class="form-row">
 			<div class="form-group col-md-6">
 				<label for="inputHeight">키</label>
-				<input type="number" min="100" max="250" class="form-control" id="inputHeight" name="inputHeight" placeholder="height ( cm )">
+				<input type="number" min="100" max="250" class="form-control" id="inputHeight" name="inputHeight" placeholder="height ( cm )" required>
 			</div>
 			<div class="form-group col-md-6">
 				<label for="inputWeight">체중</label>
-				<input type="number" min="10" max="150" class="form-control" id="inputWeight" name="inputWeight" placeholder="weight ( Kg )">
+				<input type="number" min="10" max="200" class="form-control" id="inputWeight" name="inputWeight" placeholder="weight ( Kg )" required>
 			</div>
 		</div>
 		<div class="form-group">
 			<label for="inputExercise">운동 빈도</label>
 			<select id="inputExercise" name="inputExercise" class="form-control">
-
 				<option value=1>따로 운동하지 않는다</option>
 				<option value=1.12>일상활동 + 30~60 분 꾸준한 운동을 한다</option>
 				<option value=1.27>일상활동 + 60 분 이상 꾸준한 운동을 한다</option>
@@ -74,7 +72,7 @@
 			</div>
 			<br>
 
-			<input type="number" class="form-control" id="inputCalory" name="inputCalory" placeholder="Calory ( Kcal )" readonly>
+			<input type="number" class="form-control" id="inputCalory" name="inputCalory" placeholder="Calory ( Kcal )" readonly required>
 			<h3 style="color:gray;">[ 하루 권장 칼로리 ] 표준체중(kg) X 활동지수</h3>
 			<h3 style="color:gray;">[ 다이어트 식단 칼로리 ] 여성 : 800 - 1200 Kcal , 남성 : 1200 - 1400 Kcal</h3>
 		</div>
