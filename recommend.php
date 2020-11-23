@@ -309,21 +309,21 @@ else{
                        </div>
           
             <div style="float: right;">
-            <div style="float:left; text-align:center; margin:0px 10px 0 100px;">
+            <div style="float:left; text-align:center; margin:20px 10px 0 100px;">
               <p style="font-size:20px;"> 탄수화물 <?php echo $morning_car;
                if ($morning_kcal==0){
               echo 0;
             }?></p>
               
             </div>
-            <div style="float:left; text-align:center; margin-right: 10px;">
+            <div style="float:left; text-align:center; margin-top: 20px; margin-right: 10px;">
               <p style="font-size:20px;"> 단백질 <?php echo $morning_pro;
                if ($morning_kcal==0){
               echo 0;
             }?></p>
             
             </div>
-            <div style="float:left;text-align:center;">
+            <div style="float:left;text-align:center; margin-top: 20px;">
               <p style="font-size:20px;"> 지방 <?php echo $morning_fat;
                if ($morning_kcal==0){
               echo 0;
