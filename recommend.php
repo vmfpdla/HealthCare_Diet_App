@@ -302,21 +302,35 @@ else{
 
           <br><br>
           <div style=" text-align:center" data-toggle="modal" data-target="#exampleModal" >
-            <p style="font-size:40px; float: left;" > 칼로리 <?php echo $morning_kcal;?></p>
-                       
+            <div style="float: left;">
+            <p style="font-size:40px;" > 칼로리 <?php echo $morning_kcal;
+            if ($morning_kcal==0){
+              echo 0;
+            }?></p>
+                       </div>
           
-
+            <div style="float: right;">
             <div style="float:left; text-align:center; margin:0px 10px 0 100px;">
-              <p style="font-size:20px;"> 탄수화물 <?php echo $morning_car;?></p>
+              <p style="font-size:20px;"> 탄수화물 <?php echo $morning_car;
+               if ($morning_kcal==0){
+              echo 0;
+            }?></p>
               
             </div>
             <div style="float:left; text-align:center; margin-right: 10px;">
-              <p style="font-size:20px;"> 단백질 <?php echo $morning_pro;?></p>
+              <p style="font-size:20px;"> 단백질 <?php echo $morning_pro;
+               if ($morning_kcal==0){
+              echo 0;
+            }?></p>
             
             </div>
             <div style="float:left;text-align:center;">
-              <p style="font-size:20px;"> 지방 <?php echo $morning_fat;?></p>
+              <p style="font-size:20px;"> 지방 <?php echo $morning_fat;
+               if ($morning_kcal==0){
+              echo 0;
+            }?></p>
             </div>
+          </div>
           </div>
         
         </div>
@@ -329,10 +343,16 @@ else{
         if($is_morning==1){
           while($row = $result3->fetch_assoc()) {
             if ($row['eaten_serving']==0){
-             
+              $morning_kcal = $morning_kcal+$row['food_calory']*0.5;
+              $morning_car = $morning_car+$row['food_car']*0.5;
+              $morning_pro = $morning_pro+$row['food_pro']*0.5;
+              $morning_fat = $morning_fat+$row['food_fat']*0.5;
             }
             else{
-              
+              $morning_kcal = $morning_kcal+$row['food_calory']*$row['eaten_serving'];
+              $morning_car =  $morning_car+$row['food_car']*$row['eaten_serving'];
+              $morning_pro =  $morning_pro+$row['food_pro']*$row['eaten_serving'];
+              $morning_fat =  $morning_fat+$row['food_fat']*$row['eaten_serving'];
               if($row['eaten_serving']==0){
                 echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(0.5 인분)";
                 echo nl2br("\n\n");
