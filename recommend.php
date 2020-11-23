@@ -299,11 +299,10 @@ else{
 
       <div style="margin:20px 30px;" class="smallbar">
         <div style="text-align : center;">
-
-          <br><br>
-          <div style=" text-align:center" data-toggle="modal" data-target="#exampleModal" >
-            <div style="float: left;">
-            <p style="font-size:40px;" > 칼로리 <?php echo $morning_kcal;
+          <br>
+          <div style=" text-align:center;" data-toggle="modal" data-target="#exampleModal" >
+            <div style="float: left;padding-bottom:3px;">
+            <p style="font-size:40px; " > 칼로리 <?php echo $morning_kcal;
             if ($morning_kcal==0){
               echo 0;
             }?></p>
