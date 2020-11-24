@@ -59,14 +59,16 @@ $_SESSION['code']=$_GET['code'];
 
     
     function clickTd(){
-      $("#user-table tr").click(function(){
-        var tr = $(this).val();
-        var td=tr.childern(5n+1);
-        alert('선택한 음식번호 : '+$(td);
-
-        document.getElementById("foodnum").value=$(td);
-      });
-
+	    $("#user-table tr").click(function(){
+		
+		    var tdArr = new Array();
+		    var tr = $(this);
+		    var td = tr.children();
+		    var val=$(td[0]).html();
+		   // alert(val);
+		    alert('선택한 음식번호 : '+val);
+		    document.getElementById("foodnum").value=val;
+	    });
     }
 
 
@@ -114,7 +116,6 @@ $_SESSION['code']=$_GET['code'];
       </form>
     </div>
 
-
 <div class="box">
     <table class="table table-hover " id="user-table" style=" width:100%;margin-top: 30px;">
       <thead >
@@ -156,6 +157,5 @@ $_SESSION['code']=$_GET['code'];
       </tbody>
     </table>
 </div>
-
   </body>
   </html>
