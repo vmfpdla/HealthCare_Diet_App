@@ -310,7 +310,7 @@ else{
             
             <div style="float: right;">
               <div style="float:left; text-align:center; margin:20px 10px 0 100px;">
-                <p style="font-size:30px;"> 탄 </p><p style="font-size:30px;" class="text-info"><?php echo $morning_car;
+                <p style="font-size:30px; float:left;"> 탄 </p><p style="font-size:30px;float:left;" class="text-info"><?php echo $morning_car;
                 if ($morning_kcal==0){
                   echo 0;
                 }?></p>
