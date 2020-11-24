@@ -343,11 +343,11 @@ else{
       if($is_morning==1){
         while($row = $result3->fetch_assoc()){
           if($row['eaten_serving']==0){
-            echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(0.5 인분)";
+            echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."(0.5 인분)";
             echo nl2br("\n\n");
           }
           else{
-            echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(".$row['eaten_serving']." 인분)";
+            echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."(".$row['eaten_serving']." 인분)";
             echo nl2br("\n\n");
           } 
         }
@@ -440,11 +440,11 @@ else{
       if($is_lunch==1){
         while($row = $result4->fetch_assoc()){
           if($row['eaten_serving']==0){
-            echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(0.5 인분)";
+            echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."(0.5 인분)";
             echo nl2br("\n\n");
           }
           else{
-            echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(".$row['eaten_serving']." 인분)";
+            echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."(".$row['eaten_serving']." 인분)";
             echo nl2br("\n\n");
           } 
         }
@@ -539,11 +539,11 @@ else{
       if($is_dinner==1){
         while($row = $result5->fetch_assoc()){
           if($row['eaten_serving']==0){
-            echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(0.5 인분)";
+            echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."(0.5 인분)";
             echo nl2br("\n\n");
           }
           else{
-            echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(".$row['eaten_serving']." 인분)";
+            echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."(".$row['eaten_serving']." 인분)";
             echo nl2br("\n\n");
           } 
         }
