@@ -60,9 +60,11 @@ $_SESSION['code']=$_GET['code'];
     
     function clickTd(){
       $("#user-table tr").click(function(){
-        var text = $(this).text();
-        alert('선택한 음식번호 : '+text[0]);
-        document.getElementById("foodnum").value=text[0];
+	      var tr = $(this);
+	      var td=tr.childern(5n+1);
+        alert('선택한 음식번호 : '+$(this));
+
+        document.getElementById("foodnum").value=$(this);
       });
 
     }
@@ -114,14 +116,14 @@ $_SESSION['code']=$_GET['code'];
 
 
 <div class="box">
-    <table class="table table-hover " id="user-table" style="margin-top: 30px;">
+    <table class="table table-hover " id="user-table" style=" width:100%;margin-top: 30px;">
       <thead >
         <tr>
           <th>번호</th>
           <th>음식이름</th>
-          <th>탄수화물</th>
-          <th>단백질</th>
-          <th>지방</th>
+          <th>탄</th>
+          <th>단</th>
+          <th>지</th>
           <th>칼로리</th>
         </tr>
       </thead>
