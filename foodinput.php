@@ -60,11 +60,11 @@ $_SESSION['code']=$_GET['code'];
     
     function clickTd(){
       $("#user-table tr").click(function(){
-	      var tr = $(this);
-	      var td=tr.childern(5n+1);
-        alert('선택한 음식번호 : '+$(this));
+        var tr = $(this).val();
+        var td=tr.childern(5n+1);
+        alert('선택한 음식번호 : '+$(td);
 
-        document.getElementById("foodnum").value=$(this);
+        document.getElementById("foodnum").value=$(td);
       });
 
     }
