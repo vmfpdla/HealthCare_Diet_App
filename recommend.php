@@ -310,21 +310,21 @@ else{
             
             <div style="float: right;">
               <div style="float:left; text-align:center; margin:20px 10px 0 100px;">
-                <p style="font-size:20px;"> 탄수화물 <?php echo $morning_car;
+                <p style="font-size:30px;"> 탄 <?php echo $morning_car;
                 if ($morning_kcal==0){
                   echo 0;
                 }?></p>
                 
               </div>
               <div style="float:left; text-align:center; margin-top: 20px; margin-right: 10px;">
-                <p style="font-size:20px;"> 단백질 <?php echo $morning_pro;
+                <p style="font-size:30px;"> 단 <?php echo $morning_pro;
                 if ($morning_kcal==0){
                   echo 0;
                 }?></p>
                 
               </div>
               <div style="float:left;text-align:center; margin-top: 20px;">
-                <p style="font-size:20px;"> 지방 <?php echo $morning_fat;
+                <p style="font-size:30px;"> 지 <?php echo $morning_fat;
                 if ($morning_kcal==0){
                   echo 0;
                 }?></p>
@@ -337,8 +337,8 @@ else{
 
 
       
-      <div style="margin:50px 50px;  width:15%;">
-      <p style="width: 100%; "> <?php
+      <div style="text-align:center;">
+      <p style="width: 100%; font-size: 30px; "> hi<?php
       $result3=$conn->query($sql3);
       if($is_morning==1){
         while($row = $result3->fetch_assoc()){
@@ -407,21 +407,21 @@ else{
             
             <div style="float: right;">
               <div style="float:left; text-align:center; margin:20px 10px 0 100px;">
-                <p style="font-size:20px;"> 탄수화물 <?php echo $lunch_car;
+                <p style="font-size:30px;"> 탄 <?php echo $lunch_car;
                 if ($lunch_kcal==0){
                   echo 0;
                 }?></p>
                 
               </div>
               <div style="float:left; text-align:center; margin-top: 20px; margin-right: 10px;">
-                <p style="font-size:20px;"> 단백질 <?php echo $lunch_pro;
+                <p style="font-size:30px;"> 단 <?php echo $lunch_pro;
                 if ($lunch_kcal==0){
                   echo 0;
                 }?></p>
                 
               </div>
               <div style="float:left;text-align:center; margin-top: 20px;">
-                <p style="font-size:20px;"> 지방 <?php echo $lunch_fat;
+                <p style="font-size:30px;"> 지 <?php echo $lunch_fat;
                 if ($lunch_kcal==0){
                   echo 0;
                 }?></p>
@@ -434,8 +434,8 @@ else{
 
 
       
-      <div style="margin:50px 50px;  width:15%;">
-        <p style="width: 100%;"> <?php
+      <div style="text-align: center;">
+        <p style="width: 100%; font-size: 30px;"> <?php
       $result4=$conn->query($sql4);
       if($is_lunch==1){
         while($row = $result4->fetch_assoc()){
@@ -506,21 +506,21 @@ else{
             
             <div style="float: right;">
               <div style="float:left; text-align:center; margin:20px 10px 0 100px;">
-                <p style="font-size:20px;"> 탄수화물 <?php echo $dinner_car;
+                <p style="font-size:30px;"> 탄 <?php echo $dinner_car;
                 if ($dinner_kcal==0){
                   echo 0;
                 }?></p>
                 
               </div>
               <div style="float:left; text-align:center; margin-top: 20px; margin-right: 10px;">
-                <p style="font-size:20px;"> 단백질 <?php echo $dinner_pro;
+                <p style="font-size:30px;"> 단 <?php echo $dinner_pro;
                 if ($dinner_kcal==0){
                   echo 0;
                 }?></p>
                 
               </div>
               <div style="float:left;text-align:center; margin-top: 20px;">
-                <p style="font-size:20px;"> 지방 <?php echo $dinner_fat;
+                <p style="font-size:30px;"> 지 <?php echo $dinner_fat;
                 if ($dinner_kcal==0){
                   echo 0;
                 }?></p>
@@ -533,8 +533,8 @@ else{
 
 
       
-      <div style="margin:50px 50px;  width:15%;">
-        <p style="width: 100%;"> <?php
+      <div style="text-align: center;">
+        <p style="width: 100%; font-size: 30px;"> <?php
       $result5=$conn->query($sql5);
       if($is_dinner==1){
         while($row = $result5->fetch_assoc()){
