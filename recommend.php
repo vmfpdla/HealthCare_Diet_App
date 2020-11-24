@@ -339,19 +339,19 @@ else{
       
       <div style="margin:50px 50px;  width:15%;">
       <p style="width: 100%; "> <?php
-			$result3=$conn->query($sql3);
-			if($is_morning==1){
-				while($row = $result3->fetch_assoc()){
-					if($row['eaten_serving']==0){
-						echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(0.5 인분)";
-						echo nl2br("\n\n");
-					}
-					else{
-						echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(".$row['eaten_serving']." 인분)";
-						echo nl2br("\n\n");
-					} 
-				}
-			}
+      $result3=$conn->query($sql3);
+      if($is_morning==1){
+        while($row = $result3->fetch_assoc()){
+          if($row['eaten_serving']==0){
+            echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(0.5 인분)";
+            echo nl2br("\n\n");
+          }
+          else{
+            echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(".$row['eaten_serving']." 인분)";
+            echo nl2br("\n\n");
+          } 
+        }
+      }
 ?> 
         
         </p>
@@ -374,7 +374,7 @@ else{
         $lunch_car =0;
         $lunch_pro =0;
         $lunch_fat =0;
-        while($row = $result3->fetch_assoc()) {
+        while($row = $result4->fetch_assoc()) {
           if ($row['eaten_serving']==0){
             $lunch_kcal = $lunch_kcal+$row['food_calory']*0.5;
             $lunch_car = $lunch_car+$row['food_car']*0.5;
@@ -436,31 +436,20 @@ else{
       
       <div style="margin:50px 50px;  width:15%;">
         <p style="width: 100%;"> <?php
-        if($is_lunch==1){
-          while($row = $result3->fetch_assoc()) {
-            if ($row['eaten_serving']==0){
-              $lunch_kcal = $lunch_kcal+$row['food_calory']*0.5;
-              $lunch_car = $lunch_car+$row['food_car']*0.5;
-              $lunch_pro = $lunch_pro+$row['food_pro']*0.5;
-              $lunch_fat = $lunch_fat+$row['food_fat']*0.5;
-            }
-            else{
-              $lunch_kcal = $lunch_kcal+$row['food_calory']*$row['eaten_serving'];
-              $lunch_car =  $lunch_car+$row['food_car']*$row['eaten_serving'];
-              $lunch_pro =  $lunch_pro+$row['food_pro']*$row['eaten_serving'];
-              $lunch_fat =  $lunch_fat+$row['food_fat']*$row['eaten_serving'];
-              if($row['eaten_serving']==0){
-                echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(0.5 인분)";
-                echo nl2br("\n\n");
-              }
-              else{
-                echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(".$row['eaten_serving']." 인분)";
-                echo nl2br("\n\n");
-              }
-            }
+      $result4=$conn->query($sql4);
+      if($is_lunch==1){
+        while($row = $result4->fetch_assoc()){
+          if($row['eaten_serving']==0){
+            echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(0.5 인분)";
+            echo nl2br("\n\n");
           }
+          else{
+            echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(".$row['eaten_serving']." 인분)";
+            echo nl2br("\n\n");
+          } 
         }
-        ?></p>
+      }
+?> </p>
 
       </div>
 
@@ -484,7 +473,7 @@ else{
         $dinner_car =0;
         $dinner_pro =0;
         $dinner_fat =0;
-        while($row = $result3->fetch_assoc()) {
+        while($row = $result5->fetch_assoc()) {
           if ($row['eaten_serving']==0){
             $dinner_kcal = $dinner_kcal+$row['food_calory']*0.5;
             $dinner_car = $dinner_car+$row['food_car']*0.5;
@@ -546,31 +535,20 @@ else{
       
       <div style="margin:50px 50px;  width:15%;">
         <p style="width: 100%;"> <?php
-        if($is_dinner==1){
-          while($row = $result3->fetch_assoc()) {
-            if ($row['eaten_serving']==0){
-              $dinner_kcal = $dinner_kcal+$row['food_calory']*0.5;
-              $dinner_car = $dinner_car+$row['food_car']*0.5;
-              $dinner_pro = $dinner_pro+$row['food_pro']*0.5;
-              $dinner_fat = $dinner_fat+$row['food_fat']*0.5;
-            }
-            else{
-              $dinner_kcal = $dinner_kcal+$row['food_calory']*$row['eaten_serving'];
-              $dinner_car =  $dinner_car+$row['food_car']*$row['eaten_serving'];
-              $dinner_pro =  $dinner_pro+$row['food_pro']*$row['eaten_serving'];
-              $dinner_fat =  $dinner_fat+$row['food_fat']*$row['eaten_serving'];
-              if($row['eaten_serving']==0){
-                echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(0.5 인분)";
-                echo nl2br("\n\n");
-              }
-              else{
-                echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(".$row['eaten_serving']." 인분)";
-                echo nl2br("\n\n");
-              }
-            }
+      $result5=$conn->query($sql5);
+      if($is_dinner==1){
+        while($row = $result5->fetch_assoc()){
+          if($row['eaten_serving']==0){
+            echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(0.5 인분)";
+            echo nl2br("\n\n");
           }
+          else{
+            echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal"."<br>(".$row['eaten_serving']." 인분)";
+            echo nl2br("\n\n");
+          } 
         }
-        ?></p>
+      }
+?> </p>
 
       </div>
 
