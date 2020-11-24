@@ -1,3 +1,8 @@
+<?php 
+session_start();
+
+$_SESSION['code']=$_GET['code'];
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,7 +40,7 @@ font-size:30px;
   <script type="text/javascript">
 
     $(document).ready(function() {
-      clickTd();
+      clickTd();      
       $("#keyword").keyup(function() {
         var k = $(this).val();
         $("#user-table > tbody > tr").hide();
@@ -44,10 +49,10 @@ font-size:30px;
         $(temp).parent().show();
       })
     })
+    
+    
 
-
-
-
+    
     function clickTd(){
       $("#user-table tr").click(function(){
         var text = $(this).text();
@@ -83,11 +88,11 @@ font-size:30px;
   </div>
 <br>
   <div class="row row-cols-3">
-    <form method="post" action="updatefoodinput.php">
+    <form method="post" action="updatefoodinput2.php">
       <div class="input-group col">
 
         <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon1">음식 번호</span>
+          <span class="input-group-text" id="basic-addon1"> 번호</span>
         </div>
         <input type="text" class="form-control hi" name="foodnum" id="foodnum" placeholder="Food Number" aria-label="Username" aria-describedby="basic-addon1">
 
@@ -100,15 +105,9 @@ font-size:30px;
           </div>
           <input type="number" class="form-control hi" name="serving" placeholder="Serving" aria-label="Username" aria-describedby="basic-addon1">
 	</div>
-<<<<<<< HEAD
-
-
-	<input type="number" name="eaten_time" placeholder="아침:1 점심:2 저녁:3">
-=======
 	
 	
 	<input type="hidden" name="eaten_time" value="<?php echo $_GET["eaten_time"];?>"> 
->>>>>>> e86c04cd4ebf68e7be0681c7e98b78ea4dab288f
 <button type="submit"> 제출 </button>
       </form>
 </div>
@@ -116,7 +115,7 @@ font-size:30px;
     <table class="table table-hover" id="user-table">
       <thead >
         <tr>
-          <th>음식번호</th>
+          <th>번호</th>
           <th>음식이름</th>
           <th>탄수화물</th>
           <th>단백질</th>
@@ -129,8 +128,7 @@ font-size:30px;
         <?php
         #   header('Content-Type:text/html; charset=UTF-8');
 
-
-
+	
         $jb_conn = mysqli_connect( 'localhost', 'root', 'toor', 'smartpt' );
 
 
