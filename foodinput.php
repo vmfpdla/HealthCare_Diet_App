@@ -22,6 +22,11 @@ $_SESSION['code']=$_GET['code'];
 
 
   <style type="text/css">
+      .box {
+    height:1000px;
+    overflow-y:scroll;
+  }
+
 
     #container {width: 960px; margin: 0 auto;}
     #container #input-form {text-align: center;}
@@ -72,13 +77,8 @@ font-size:30px;
 
 <body>
 
-  <div id="container">
 
-
-
-
-
-
+  <div class="box" id="container">
     <div class="input-group mb-3">
       <div class="input-group-prepend">
         <span class="input-group-text hi" id="basic-addon1">음식이름</span>
@@ -104,13 +104,17 @@ font-size:30px;
             <span class="input-group-text " id="basic-addon1">음식 인분</span>
           </div>
           <input type="number" class="form-control hi" name="serving" placeholder="Serving" aria-label="Username" aria-describedby="basic-addon1">
-	</div>
-	
-	
-	<input type="hidden" name="eaten_time" value="<?php echo $_GET["eaten_time"];?>"> 
+  </div>
+  
+  
+  <input type="hidden" name="eaten_time" value="<?php echo $_GET["eaten_time"];?>"> 
 <button type="submit"> 제출 </button>
       </form>
 </div>
+
+<br>
+<br>
+<br>
 
     <table class="table table-hover" id="user-table">
       <thead >
@@ -128,7 +132,7 @@ font-size:30px;
         <?php
         #   header('Content-Type:text/html; charset=UTF-8');
 
-	
+  
         $jb_conn = mysqli_connect( 'localhost', 'root', 'toor', 'smartpt' );
 
 
