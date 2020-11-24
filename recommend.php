@@ -335,7 +335,7 @@ else{
         </div>
       </div>
 
-
+<br>
       
       <div style="text-align:center; margin-top: 70px;">
       <p style="width: 100%; font-size: 30px; "><?php
@@ -432,7 +432,7 @@ else{
         </div>
       </div>
 
-
+<br>
       
       <div style="text-align: center; margin-top: 70px;">
         <p style="width: 100%; font-size: 30px;"> <?php
@@ -530,7 +530,7 @@ else{
           
         </div>
       </div>
-
+<br>
 
       
       <div style="text-align: center; margin-top: 70px;">
