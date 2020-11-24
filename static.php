@@ -88,8 +88,8 @@
 	<nav class="navbar fixed-top">
 		<p class="navp">SmartPT</p>
 		<a href="" style="margin-top:20px;">
-      <i class="fa fa-refresh fa-fw" style="font-size:70px; color:#BDBDBD; margin-right:30px;"></i>
-      <p style="font-size:40px; color:#BDBDBD; margin-left:-15px;">미스케일</p>
+      <a href="scale://"><i class="fa fa-refresh fa-fw" style="font-size:70px; color:#BDBDBD; margin-right:30px;"></i>
+      <p style="font-size:40px; color:#BDBDBD; margin-left:-15px;">미스케일</p></a>
     </a>
 	</nav>
   <div id="is_data_none" style="margin: 0 auto; text-align:center; width:80%;">
