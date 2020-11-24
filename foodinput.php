@@ -22,24 +22,24 @@ $_SESSION['code']=$_GET['code'];
 
 
   <style type="text/css">
-      .box {
-    height:1000px;
-    overflow-y:scroll;
-  }
+    .box {
+      height:1000px;
+      overflow-y:scroll;
+    }
 
 
     #container {width: 960px; margin: 0 auto;}
     #container #input-form {text-align: center;}
     #user-table {margin: 0 auto; text-align: center;}
     #input-form {margin-top: 10px; margin-bottom: 10px;}
-span{
-font-size:30px;
-}
+    span{
+      font-size:30px;
+    }
 
 
-.hi{
-font-size:30px;
-}
+    .hi{
+      font-size:30px;
+    }
   </style>
 
   <script type="text/javascript">
@@ -69,7 +69,7 @@ font-size:30px;
 
 
   </script>
-<link rel="stylesheet" href="./css/jaehyun.css?ver=2">
+  <link rel="stylesheet" href="./css/jaehyun.css?ver=2">
 
 </head>
 
@@ -86,7 +86,7 @@ font-size:30px;
       <input type="text" class="form-control hi" id="keyword" placeholder="Food Name" aria-label="Username" aria-describedby="basic-addon1">
     </div>
   </div>
-<br>
+  <br>
   <div class="row row-cols-3">
     <form method="post" action="updatefoodinput2.php">
       <div class="input-group col">
@@ -104,19 +104,17 @@ font-size:30px;
             <span class="input-group-text " id="basic-addon1">음식 인분</span>
           </div>
           <input type="number" class="form-control hi" name="serving" placeholder="Serving" aria-label="Username" aria-describedby="basic-addon1">
-  </div>
-  
-  
-  <input type="hidden" name="eaten_time" value="<?php echo $_GET["eaten_time"];?>"> 
-<button type="submit"> 제출 </button>
+        </div>
+
+
+        <input type="hidden" name="eaten_time" value="<?php echo $_GET["eaten_time"];?>"> 
+        <button type="submit"> 제출 </button>
       </form>
-</div>
+    </div>
 
-<br>
-<br>
-<br>
 
-    <table class="table table-hover" id="user-table">
+
+    <table class="table table-hover" id="user-table" style="margin-top: 30px;">
       <thead >
         <tr>
           <th>번호</th>
@@ -132,7 +130,7 @@ font-size:30px;
         <?php
         #   header('Content-Type:text/html; charset=UTF-8');
 
-  
+
         $jb_conn = mysqli_connect( 'localhost', 'root', 'toor', 'smartpt' );
 
 
@@ -150,12 +148,12 @@ font-size:30px;
 
 
         while( $jb_row = mysqli_fetch_array( $jb_result ) ) {
-        echo '<tr><td>' . $jb_row[ 'food_id' ] . '</td><td>'. $jb_row[ 'food_name' ] . '</td><td>' . $jb_row[ 'food_car' ] . '</td><td>'. $jb_row[ 'food_pro' ] .'</td><td>'. $jb_row[ 'food_fat' ] .'</td><td>'. $jb_row[ 'food_calory' ] .'</td></tr>';
-      }
-      ?>
-    </tbody>
-  </table>
+          echo '<tr><td>' . $jb_row[ 'food_id' ] . '</td><td>'. $jb_row[ 'food_name' ] . '</td><td>' . $jb_row[ 'food_car' ] . '</td><td>'. $jb_row[ 'food_pro' ] .'</td><td>'. $jb_row[ 'food_fat' ] .'</td><td>'. $jb_row[ 'food_calory' ] .'</td></tr>';
+        }
+        ?>
+      </tbody>
+    </table>
 
 
-</body>
-</html>
+  </body>
+  </html>
