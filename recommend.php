@@ -310,21 +310,21 @@ else{
             
             <div style="float: right;">
               <div style="float:left; text-align:center; margin:20px 10px 0 100px;">
-                <p style="font-size:30px; float:left;"> 탄 </p><p style="font-size:30px;float:left;" class="text-info"><?php echo $morning_car;
+                <p style="font-size:30px; float:left; margin-right: 7px;"> 탄 </p><p style="font-size:30px;float:left;" class="text-info"><?php echo $morning_car;
                 if ($morning_kcal==0){
                   echo 0;
                 }?></p>
                 
               </div>
               <div style="float:left; text-align:center; margin-top: 20px; margin-right: 10px;">
-                <p style="font-size:30px;"> 단</p> <p style="font-size:30px;" class="text-info"><?php echo $morning_pro;
+                <p style="font-size:30px;float:left; margin-right: 7px;"> 단</p> <p style="font-size:30px;float:left;" class="text-info"><?php echo $morning_pro;
                 if ($morning_kcal==0){
                   echo 0;
                 }?></p>
                 
               </div>
               <div style="float:left;text-align:center; margin-top: 20px;">
-                <p style="font-size:30px;"> 지</p><p style="font-size:30px;" class="text-info"> <?php echo $morning_fat;
+                <p style="font-size:30px; float:left; margin-right: 7px;"> 지</p><p style="font-size:30px; float:left;" class="text-info"> <?php echo $morning_fat;
                 if ($morning_kcal==0){
                   echo 0;
                 }?></p>
@@ -335,6 +335,7 @@ else{
         </div>
       </div>
 
+<br>
 <br>
       
       <div style="text-align:center; margin-top: 70px;">
@@ -407,21 +408,21 @@ else{
             
             <div style="float: right;">
               <div style="float:left; text-align:center; margin:20px 10px 0 100px;">
-                <p style="font-size:30px;"> 탄 </p><p style="font-size:30px;" class="text-info"><?php echo $lunch_car;
+                <p style="font-size:30px; float:left; margin-right: 7px;"> 탄 </p><p style="font-size:30px;float:left;" class="text-info"><?php echo $lunch_car;
                 if ($lunch_kcal==0){
                   echo 0;
                 }?></p>
                 
               </div>
               <div style="float:left; text-align:center; margin-top: 20px; margin-right: 10px;">
-                <p style="font-size:30px;"> 단</p><p style="font-size:30px;" class="text-info"> <?php echo $lunch_pro;
+                <p style="font-size:30px; float:left; margin-right: 7px;"> 단</p><p style="font-size:30px;float:left;" class="text-info"> <?php echo $lunch_pro;
                 if ($lunch_kcal==0){
                   echo 0;
                 }?></p>
                 
               </div>
               <div style="float:left;text-align:center; margin-top: 20px;">
-                <p style="font-size:30px;"> 지 </p><p style="font-size:30px;" class="text-info"><?php echo $lunch_fat;
+                <p style="font-size:30px; float:left; margin-right: 7px;"> 지 </p><p style="font-size:30px; float:left;" class="text-info"><?php echo $lunch_fat;
                 if ($lunch_kcal==0){
                   echo 0;
                 }?></p>
@@ -432,6 +433,7 @@ else{
         </div>
       </div>
 
+<br>
 <br>
       
       <div style="text-align: center; margin-top: 70px;">
@@ -506,21 +508,21 @@ else{
             
             <div style="float: right;">
               <div style="float:left; text-align:center; margin:20px 10px 0 100px;">
-                <p style="font-size:30px;"> 탄 </p><p style="font-size:30px;" class="text-info"><?php echo $dinner_car;
+                <p style="font-size:30px; float:left; margin-right: 7px;"> 탄 </p><p style="font-size:30px;float:left;" class="text-info"><?php echo $dinner_car;
                 if ($dinner_kcal==0){
                   echo 0;
                 }?></p>
                 
               </div>
               <div style="float:left; text-align:center; margin-top: 20px; margin-right: 10px;">
-                <p style="font-size:30px;"> 단</p><p style="font-size:30px;" class="text-info"> <?php echo $dinner_pro;
+                <p style="font-size:30px; float:left; margin-right: 7px;"> 단</p><p style="font-size:30px;float:left;" class="text-info"> <?php echo $dinner_pro;
                 if ($dinner_kcal==0){
                   echo 0;
                 }?></p>
                 
               </div>
               <div style="float:left;text-align:center; margin-top: 20px;">
-                <p style="font-size:30px;"> 지</p><p style="font-size:30px;" class="text-info"> <?php echo $dinner_fat;
+                <p style="font-size:30px; float:left; margin-right: 7px;"> 지</p><p style="font-size:30px; float:left;" class="text-info"> <?php echo $dinner_fat;
                 if ($dinner_kcal==0){
                   echo 0;
                 }?></p>
@@ -530,6 +532,7 @@ else{
           
         </div>
       </div>
+<br>
 <br>
 
       
