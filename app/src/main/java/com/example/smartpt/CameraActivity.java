@@ -39,9 +39,7 @@ public class CameraActivity extends AppCompatActivity {
     private Classifier classifier;
 
     private Executor executor = Executors.newSingleThreadExecutor();
-    private TextView textViewResult;
     private Button btnDetectObject, btnSearch, btnFood1,btnFood2,btnFood3;
-    private ImageView imageViewResult;
     private CameraView cameraView;
     private String id1,id2,id3;
     private RadioButton btnRadio1,btnRadio2,btnRadio3;
@@ -53,15 +51,16 @@ public class CameraActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera);
         cameraView = findViewById(R.id.cameraView);
-        imageViewResult = findViewById(R.id.imageViewResult);
-        textViewResult = findViewById(R.id.textViewResult);
-        textViewResult.setMovementMethod(new ScrollingMovementMethod());
-
         Intent gintent = getIntent();
 
         final int data=gintent.getIntExtra("data",1);
 
 
+        final ContentValues values = new ContentValues();
+        final Context appContext = this.getApplicationContext();
+
+        int id = PreferenceManager.getID(appContext);
+        final String url = "https://smartpt.ml/updatefoodinput.php?code="+id;
         btnRadio1 = findViewById(R.id.radio0);
         btnRadio2 = findViewById(R.id.radio1);
         btnRadio3 = findViewById(R.id.radio2);
@@ -92,7 +91,6 @@ public class CameraActivity extends AppCompatActivity {
 
                 bitmap = Bitmap.createScaledBitmap(bitmap, INPUT_SIZE, INPUT_SIZE, false);
 
-                imageViewResult.setImageBitmap(bitmap);
 
                 List<Classifier.Recognition> results = classifier.recognizeImage(bitmap);
 
@@ -149,6 +147,7 @@ public class CameraActivity extends AppCompatActivity {
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent myIntent = new Intent(getApplicationContext(), inputfood.class);
                 myIntent.putExtra("data",data);
                 startActivity(myIntent);
@@ -164,9 +163,6 @@ public class CameraActivity extends AppCompatActivity {
 
         initTensorFlowAndLoadModel();
 
-        final ContentValues values = new ContentValues();
-        final Context appContext = this.getApplicationContext();
-        final String url = "https://smartpt.ml/updatefoodinput.php";
 
 
         btnFood1.setOnClickListener(new View.OnClickListener() {
@@ -179,15 +175,14 @@ public class CameraActivity extends AppCompatActivity {
                 else if(btnRadio3.isChecked())
                     amount=3;
 
-                btnFood1.setText(""+amount);
 
-                values.put("foodid", id1);
-                values.put("eaten_time",data);
-                values.put("serving",amount);
+                values.put("foodnum", Integer.parseInt(id1)+1);
+                values.put("eaten_time",Integer.parseInt(String.valueOf(data)));
+                values.put("serving",Integer.parseInt(String.valueOf(amount)));
                 NetworkTask networkTask = new NetworkTask(url, values, appContext, Opcode.LoginRequest, "POST");
                 networkTask.execute();
-                Intent myIntent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(myIntent);
+                //Intent myIntent = new Intent(getApplicationContext(), MainActivity.class);
+                //startActivity(myIntent);
             }
         });
         btnFood2.setOnClickListener(new View.OnClickListener() {
@@ -202,7 +197,7 @@ public class CameraActivity extends AppCompatActivity {
 
                 btnFood2.setText(id2);
 
-                values.put("foodid", id2);
+                values.put("foodnum", Integer.parseInt(id2)+1);
                 values.put("eaten_time",data);
                 values.put("serving",amount);
                 NetworkTask networkTask = new NetworkTask(url, values, appContext, Opcode.LoginRequest, "POST");
@@ -223,7 +218,7 @@ public class CameraActivity extends AppCompatActivity {
 
                 btnFood3.setText(id3);
 
-                values.put("foodid", id3);
+                values.put("foodnum", Integer.parseInt(id3)+1);
                 values.put("eaten_time",data);
                 values.put("serving",amount);
                 NetworkTask networkTask = new NetworkTask(url, values, appContext, Opcode.LoginRequest, "POST");

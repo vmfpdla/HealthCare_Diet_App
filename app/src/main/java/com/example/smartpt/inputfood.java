@@ -38,8 +38,8 @@ public class inputfood extends AppCompatActivity {
         mWebSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN); // 컨텐츠 사이즈 맞추기
         mWebSettings.setCacheMode(WebSettings.LOAD_NO_CACHE); // 브라우저 캐시 허용 여부
         mWebSettings.setDomStorageEnabled(true); // 로컬저장소 허용 여부
-
-        mWebView.loadUrl("https://smartpt.ml/foodinput.php?eaten_time="+data); // 웹뷰에 표시할 웹사이트 주소, 웹뷰 시작
+        int id = PreferenceManager.getID(mContext);
+        mWebView.loadUrl("https://smartpt.ml/foodinput.php?eaten_time="+data+"&code="+id); // 웹뷰에 표시할 웹사이트 주소, 웹뷰 시작
         mWebView.setWebViewClient(new inputfood.WebViewClientClass());
     }
     private class WebViewClientClass extends WebViewClient{

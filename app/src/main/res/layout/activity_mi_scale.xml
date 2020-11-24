@@ -6,50 +6,131 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center_horizontal"
+    android:background="#8DA5BD"
     tools:context=".MiScale.MiScaleActivity">
 
-    <TextView
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/device_name_tv"
-        android:text="Device name: Empty">
-    </TextView>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/device_address_tv"
-        android:text="Device address: Empty">
-    </TextView>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/blt_btn"
-        android:text="Bluetooth">
-    </Button>
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/blt_iv"
-        >
-    </ImageView>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Inbody"
-        android:id="@+id/inbody_btn">
-    </Button>
-
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_weight="1"
-        android:id="@+id/fragment">
-    </FrameLayout>
+        android:layout_margin="40px"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        android:background="@drawable/round_square">
+        <TextView
+            android:id="@+id/kg_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="50 Kg"
+            android:textSize="80sp"
+            android:layout_gravity="center_vertical">
+        </TextView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:background="#8DA5BD"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_marginBottom="20dp">
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/round_square"
+            android:orientation="vertical"
+            android:layout_marginLeft="40px"
+            android:layout_marginRight="40px"
+            >
+            <TextView
+                android:paddingLeft="20px"
+                android:gravity="center_vertical"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/bmi_tv"
+                android:textSize="35sp"
+                android:layout_margin="30px"
+                android:text="BMI : "></TextView>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/round_square"
+            android:orientation="vertical"
+            android:layout_marginLeft="40px"
+            android:layout_marginRight="40px"
+            android:layout_marginTop="20px"
+            >
+            <TextView
+                android:paddingLeft="20px"
+                android:gravity="center_vertical"
+                android:layout_weight="1"
+                android:background="#FFFFFF"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/water_tv"
+                android:textSize="35sp"
+                android:layout_margin="30px"
+                android:text="수분량 : "></TextView>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/round_square"
+            android:orientation="vertical"
+            android:layout_marginLeft="40px"
+            android:layout_marginRight="40px"
+            android:layout_marginTop="20px"
+            >
+            <TextView
+                android:paddingLeft="20px"
+                android:gravity="center_vertical"
+                android:layout_weight="1"
+                android:background="#FFFFFF"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/muscle_tv"
+                android:textSize="35sp"
+                android:layout_margin="30px"
+                android:text="근육량 : "></TextView>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/round_square"
+            android:orientation="vertical"
+            android:layout_marginLeft="40px"
+            android:layout_marginRight="40px"
+            android:layout_marginTop="20px"
+            >
+            <TextView
+                android:paddingLeft="20px"
+                android:gravity="center_vertical"
+                android:layout_weight="1"
+                android:background="#FFFFFF"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/fat_tv"
+                android:textSize="35sp"
+                android:layout_margin="30px"
+                android:text="지방량 : "></TextView>
+        </LinearLayout>
+
+
+
+
+
+
+    </LinearLayout>
+
 
 </LinearLayout>
 

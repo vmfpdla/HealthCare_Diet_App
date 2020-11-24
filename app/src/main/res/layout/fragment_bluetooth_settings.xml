@@ -7,8 +7,9 @@
     <TextView
         android:id="@+id/txtSearching"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
+        android:layout_height="55px"
+        android:textSize="30px"
+        android:background="#000000"
         android:gravity="center"
         android:paddingBottom="10px"
         android:text="bluetooth searching"

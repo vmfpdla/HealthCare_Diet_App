@@ -15,8 +15,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 import com.example.smartpt.MainActivity;
+import com.example.smartpt.PreferenceManager;
 import com.example.smartpt.R;
 
+import com.example.smartpt.SmartPT;
+import com.example.smartpt.StartActivity;
 import com.example.smartpt.post;
 
 
@@ -46,6 +49,7 @@ public class NetworkTask extends AsyncTask<Void, Void, String> {
         this.context = context;
         this.opcode = opcode;
         this.type = type;
+
     }
 
 
@@ -72,30 +76,56 @@ public class NetworkTask extends AsyncTask<Void, Void, String> {
                     public void run() {
                         if (result.contains("success")) {
                             Intent intent = new Intent(context, MainActivity.class);
-                            intent.addFlags(FLAG_ACTIVITY_NEW_TASK);
-                            Toast.makeText(context, result, Toast.LENGTH_SHORT).show();
-                            context.startActivity(intent);
+                            //intent.addFlags(FLAG_ACTIVITY_NEW_TASK);
+                            //Toast.makeText(context, result, Toast.LENGTH_SHORT).show();
+                            context.startActivity(intent.addFlags(FLAG_ACTIVITY_NEW_TASK));
                         } else {
-                            Toast.makeText(context, "login failed!", Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(context, "login failed!", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
+                break;
+            case miscaleRequest:
+                handler.postDelayed(new Runnable() {
+                    public void run() {
+                        if (result.contains("success")) {
+                            Intent intent = new Intent(context, MainActivity.class);
+                            //intent.addFlags(FLAG_ACTIVITY_NEW_TASK);
+                            Toast.makeText(context, result, Toast.LENGTH_SHORT).show();
+                            context.startActivity(intent.addFlags(FLAG_ACTIVITY_NEW_TASK));
+                        } else {
+                            //Toast.makeText(context, "login failed!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                },5000);
                 break;
             case RegisterRequest:
                 handler.post(new Runnable() {
                     public void run() {
-                        Intent intent = new Intent(context, post.class);
-                        intent.addFlags(FLAG_ACTIVITY_NEW_TASK);
-                        if (!result.contains("error message : ")) {
-                            Toast.makeText(context, "register success!", Toast.LENGTH_SHORT).show();
-                            context.startActivity(intent);
-                        } else {
-                            Toast.makeText(context, "register failed!", Toast.LENGTH_SHORT).show();
+                        if (result.contains("none")) {
+                            boolean isFirst = PreferenceManager.getIsFirst(context);
+                            isFirst= false;
+                            PreferenceManager.setIsFirst(context, isFirst);
+                            Intent intent = new Intent(context, MainActivity.class);
+                            //Toast.makeText(context, result, Toast.LENGTH_SHORT).show();
+                            context.startActivity(intent.addFlags(FLAG_ACTIVITY_NEW_TASK));
+                        }
+                        else if (result.contains("fail")) {
+                            boolean isFirst = PreferenceManager.getIsFirst(context);
+                            isFirst= false;
+                            PreferenceManager.setIsFirst(context, isFirst);
+                            Intent intent = new Intent(context, MainActivity.class);
+                            //Toast.makeText(context, result, Toast.LENGTH_SHORT).show();
+                            context.startActivity(intent.addFlags(FLAG_ACTIVITY_NEW_TASK));
+                        }
+                        else {
+                            Intent intent = new Intent(context, StartActivity.class);
+                            //Toast.makeText(context, "failed!", Toast.LENGTH_SHORT).show();
+                            context.startActivity(intent.addFlags(FLAG_ACTIVITY_NEW_TASK));
                         }
                     }
                 });
                 break;
-
 
         }
     }
