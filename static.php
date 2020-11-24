@@ -31,7 +31,7 @@
     }
   }
 
-  //
+
   $sql2= "SELECT * FROM inbody WHERE user_id='$user_id' ORDER BY ABS(DATEDIFF(NOW(),inbody_day)) LIMIT 5";
   $result2 = $conn->query($sql2);
 
@@ -88,8 +88,8 @@
 	<nav class="navbar fixed-top">
 		<p class="navp">SmartPT</p>
 		<a href="" style="margin-top:20px;">
-      <i class="fa fa-refresh fa-fw" style="font-size:70px; color:#BDBDBD; margin-right:30px;"></i>
-      <p style="font-size:40px; color:#BDBDBD; margin-left:-15px;">미스케일</p>
+      <a href="scale://"><i class="fa fa-refresh fa-fw" style="font-size:70px; color:#BDBDBD; margin-right:30px;"></i>
+      <p style="font-size:40px; color:#BDBDBD; margin-left:-15px;">미스케일</p></a>
     </a>
 	</nav>
   <div id="is_data_none" style="margin: 0 auto; text-align:center; width:80%;">
@@ -199,6 +199,7 @@
     var is_data_kcal = '<?php echo json_encode($dailyKcal);?>';
     var is_data_inbody = '<?php echo json_encode($inbody);?>';
 
+    var isEmpty = function(value){ if( value == "" || value == null || value == undefined || ( value != null && typeof value == "object" && !Object.keys(value).length ) ){ return true }else{ return false } };
 
     if (user_check == 0) {
       document.getElementById('carouselExampleCaptions').style.display = 'none';
@@ -207,8 +208,10 @@
       document.getElementById('carouselExampleCaptions').style.display = 'block';
     }
 
-    if(is_data_kcal!=null || is_data_inbody !=null){
-      document.getElementById('is_data_none').style.display = 'none';
+
+
+    if(isEmpty(is_data_kcal)!= false || isEmpty(is_data_inbody)!= false ){
+      document.getElementById('is_data_none').style.display ='none';
     }
 
     $('.carousel').carousel({
