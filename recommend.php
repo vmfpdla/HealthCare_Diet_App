@@ -337,8 +337,8 @@ else{
 
 
       
-      <div style="text-align:center;">
-      <p style="width: 100%; font-size: 30px; "> hi<?php
+      <div style="text-align:center; margin-top: 70px;">
+      <p style="width: 100%; font-size: 30px; "><?php
       $result3=$conn->query($sql3);
       if($is_morning==1){
         while($row = $result3->fetch_assoc()){
@@ -434,7 +434,7 @@ else{
 
 
       
-      <div style="text-align: center;">
+      <div style="text-align: center; margin-top: 70px;">
         <p style="width: 100%; font-size: 30px;"> <?php
       $result4=$conn->query($sql4);
       if($is_lunch==1){
@@ -533,7 +533,7 @@ else{
 
 
       
-      <div style="text-align: center;">
+      <div style="text-align: center; margin-top: 70px;">
         <p style="width: 100%; font-size: 30px;"> <?php
       $result5=$conn->query($sql5);
       if($is_dinner==1){
