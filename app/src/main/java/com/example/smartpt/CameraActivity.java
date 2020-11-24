@@ -72,6 +72,16 @@ public class CameraActivity extends AppCompatActivity {
         btnSearch = findViewById(R.id.btnSearch);
         btnDetectObject = findViewById(R.id.btnDetectObject);
 
+        btnFood1.setVisibility(btnFood1.INVISIBLE);
+        btnFood2.setVisibility(btnFood2.INVISIBLE);
+        btnFood3.setVisibility(btnFood3.INVISIBLE);
+
+        btnSearch.setVisibility(btnSearch.INVISIBLE);
+
+        btnRadio1.setVisibility(btnRadio1.INVISIBLE);
+        btnRadio2.setVisibility(btnRadio2.INVISIBLE);
+        btnRadio3.setVisibility(btnRadio3.INVISIBLE);
+
         cameraView.addCameraKitListener(new CameraKitEventListener() {
 
             @Override
