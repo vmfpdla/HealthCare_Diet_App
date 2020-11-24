@@ -13,7 +13,10 @@ dailyinbodyarray.sort(function(a, b) { // 오름차순
     return a.inbody_day < b.inbody_day ? -1 : a.inbody_day > b.inbody_day ? 1 : 0;
 });
 
-for(var i=0;i<5;i++)
+if(dailyinbodyarray.length<5){
+	   for(var i=1;i<5;i++) date_arr[i] = '';
+}
+for(var i=0;i<dailyinbodyarray.length;i++)
 {
 	date_arr[i] = dailyinbodyarray[i].inbody_day;
 	bmi_arr[i]=dailyinbodyarray[i].inbody_bmi;
