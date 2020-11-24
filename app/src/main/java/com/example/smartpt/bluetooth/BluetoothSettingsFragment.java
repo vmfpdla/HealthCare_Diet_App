@@ -106,7 +106,7 @@ public class BluetoothSettingsFragment extends Fragment {
         deviceListView.removeAllViews();
         foundDevices.clear();
 
-        central = new BluetoothCentral(getContext(), bluetoothCentralCallback, new Handler(Looper.getMainLooper()));
+        central = new BluetoothCentral(mContext, bluetoothCentralCallback, new Handler(Looper.getMainLooper()));
         central.scanForPeripherals();
 
         txtSearching.setVisibility(View.VISIBLE);
@@ -124,7 +124,7 @@ public class BluetoothSettingsFragment extends Fragment {
                 txtSearching.setText("블루투스 검색 완료");
                 progressBar.setVisibility(View.GONE);
 
-                BluetoothDeviceView notSupported = new BluetoothDeviceView(getContext());
+                BluetoothDeviceView notSupported = new BluetoothDeviceView(mContext);
                 notSupported.setSummaryText("지원되는 기기가 없습니다.");
                 notSupported.setEnabled(false);
                 deviceListView.addView(notSupported);
@@ -150,10 +150,10 @@ public class BluetoothSettingsFragment extends Fragment {
             return;
         }
 
-        BluetoothDeviceView deviceView = new BluetoothDeviceView(getContext());
+        BluetoothDeviceView deviceView = new BluetoothDeviceView(mContext);
         deviceView.setDeviceName(formatDeviceName(bleScanResult.getDevice()));
 
-        BluetoothCommunication btDevice = BluetoothFactory.createDeviceDriver(getContext(), device.getName());
+        BluetoothCommunication btDevice = BluetoothFactory.createDeviceDriver(mContext, device.getName());
         if (btDevice != null) {
             Timber.d("Found supported device %s (driver: %s)",
                     formatDeviceName(device), btDevice.driverName());
@@ -296,7 +296,7 @@ public class BluetoothSettingsFragment extends Fragment {
                         startBluetoothDiscovery();
                     }
                 } else {
-                    Toast.makeText(getContext(), "허가가 필요합니다.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mContext, "허가가 필요합니다.", Toast.LENGTH_SHORT).show();
                 }
                 break;
             }

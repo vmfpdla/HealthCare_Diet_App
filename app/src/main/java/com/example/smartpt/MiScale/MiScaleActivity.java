@@ -80,13 +80,14 @@ public class MiScaleActivity extends AppCompatActivity {
             }
             kgTv.setText(Float.toString(scaleData.weight)+ " Kg");
             bmiTv.setText("BMI : "+Float.toString(scaleData.bmi)+status);
-            waterTv.setText("수분량 : "+Float.toString(scaleData.water));
-            muscleTv.setText("근육량 : "+Float.toString(scaleData.muscle));
-            fatTv.setText("지방량 : "+Float.toString(scaleData.fat));
+            waterTv.setText("체수분 : "+Float.toString(scaleData.water) + "%");
+            muscleTv.setText("근육량 : "+Float.toString(scaleData.muscle) + "%");
+            fatTv.setText("체지방 : "+Float.toString(scaleData.fat) + "%");
             connectToServer(scaleData);
         }
         else{
-            finish();
+            Log.d("SmartPT", "끝내기");
+//            finish();
         }
     }
 

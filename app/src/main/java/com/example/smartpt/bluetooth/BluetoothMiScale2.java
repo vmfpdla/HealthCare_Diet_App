@@ -194,12 +194,21 @@ public class BluetoothMiScale2 extends BluetoothCommunication {
                         MiScaleLib miScaleLib = new MiScaleLib(sex, smartPT.getUserAge(), smartPT.getUserHeight());
 
                         float heightM = (float)(smartPT.getUserHeight())/100;
-                        scaleBtData.bmi = weight/(heightM*heightM);
-                        scaleBtData.fat = miScaleLib.getBodyFat(weight, impedance);
-                        scaleBtData.water = miScaleLib.getWater(weight, impedance);
-                        scaleBtData.muscle = (100.0f / 100) * miScaleLib.getMuscle(weight, impedance); // convert muscle in kg to percent
-                        scaleBtData.bone = (miScaleLib.getBoneMass(weight, impedance));
-                        scaleBtData.visceralFat = (miScaleLib.getVisceralFat(weight));
+                        float x;
+                        x = weight/(heightM*heightM);
+                        x = Math.round(x*100);
+                        scaleBtData.bmi = x/100;
+                        x = miScaleLib.getBodyFat(weight, impedance);
+                        x = Math.round(x*100);
+                        scaleBtData.fat = x/100;
+                        x = miScaleLib.getWater(weight, impedance);
+                        x = Math.round(x*100);
+                        scaleBtData.water = x/100;
+                        x = (100.0f / 100) * miScaleLib.getMuscle(weight, impedance); // convert muscle in kg to percent
+                        x = Math.round(x*100);
+                        scaleBtData.muscle = x/100;
+//                        scaleBtData.bone = (miScaleLib.getBoneMass(weight, impedance));
+//                        scaleBtData.visceralFat = (miScaleLib.getVisceralFat(weight));
                         smartPT.setScaleData(scaleBtData);
 
 //

@@ -13,6 +13,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,7 +29,7 @@ public class BluetoothActivity extends AppCompatActivity {
 
     private Context context;
 
-    private TextView nameTv, addTv;
+    private TextView nameTv, addTv, explainTv;
 
     private static final int ENABLE_BLUETOOTH_REQUEST = 102;
     private static final int REQUEST_ENABLE_BT = 0;
@@ -96,8 +97,8 @@ public class BluetoothActivity extends AppCompatActivity {
 //                    showToast("Turning on bluetooth");
                     bltIv.setImageResource(R.drawable.ic_bt_on);
                     btState = BT_ON;
-                    Intent intent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-                    startActivityForResult(intent, REQUEST_ENABLE_BT);
+//                    Intent intent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+//                    startActivityForResult(intent, REQUEST_ENABLE_BT);
                 }
                 else if(btState == BT_ON){
                     bltIv.setImageResource(R.drawable.ic_bt_searching);
@@ -110,11 +111,12 @@ public class BluetoothActivity extends AppCompatActivity {
 //                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 //                    this.context.startActivity(intent);
                 }
+
                 else {
-                    bluetoothAdapter.disable();
-                    btState = BT_OFF;
+//                    bluetoothAdapter.disable();
+                    btState = BT_ON;
 //                    showToast("Turning bluetooth off");
-                    bltIv.setImageResource(R.drawable.ic_bl_disabled);
+                    bltIv.setImageResource(R.drawable.ic_bt_on);
                 }
             }
         });
@@ -129,7 +131,38 @@ public class BluetoothActivity extends AppCompatActivity {
         fragmentTransaction.commit();
 
         bltIv = findViewById(R.id.blt_iv);
+        nameTv = findViewById(R.id.device_name_tv);
+        addTv = findViewById(R.id.device_add_tv);
+        explainTv = findViewById(R.id.explain_tv);
+        String name, add;
+        name = PreferenceManager.getDeviceName(context);
+        add = PreferenceManager.getDeviceAddress(context);
+        if(name.equals("empty") || add.equals("empty")){
+            nameTv.setText("등록된 기기가 없습니다.");
+            addTv.setText("등록된 기기가 없습니다.");
+            explainTv.setText("기기를 등록해 주세요");
+        }
+        else{
+            nameTv.setText("등록된 기기 이름 : " + name);
+            addTv.setText("등록된 기기 주소 : " + add);
+            explainTv.setText("1. 블루투스 버튼을 클릭하여 기기와 연결합니다. \n" +
+                    "2. 몸무게 측정후 블루투스를 다시 연결상태로 변경합니다. \n");
+        }
 
+//        checkBt = findViewById(R.id.check_btn);
+//        checkBt.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if(smartPT.getScaleData() == null){
+//                    showToast("몸무게를 측정해주세요.");
+//                }
+//                else{
+//                    Intent intent = new Intent(context, MiScaleActivity.class);
+//                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                    context.startActivity(intent);
+//                }
+//            }
+//        });
     }
 
     private void showToast(String msg) {
@@ -167,7 +200,7 @@ public class BluetoothActivity extends AppCompatActivity {
 
 
 //        Log.d("SmartPT", "13");
-        Toast.makeText(getApplicationContext(), "info_bluetooth_try_connection" + " " + deviceName, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "블루투스 연결을 시도합니다: " + " " + deviceName, Toast.LENGTH_SHORT).show();
 //        bltIv.setImageResource(R.drawable.ic_bt_searching);
 
         if (!smartPT.connectToBluetoothDevice(deviceName, hwAddress, callbackBtHandler)) {
@@ -198,17 +231,17 @@ public class BluetoothActivity extends AppCompatActivity {
                     break;
                 case INIT_PROCESS:
 //                    setBluetoothStatusIcon(R.drawable.ic_bluetooth_connection_success);
-                    Toast.makeText(getApplicationContext(), "info_bluetooth_init", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "블루투스를 시작합니다.", Toast.LENGTH_SHORT).show();
                     Timber.d("Bluetooth initializing");
                     break;
                 case CONNECTION_LOST:
 //                    setBluetoothStatusIcon(R.drawable.ic_bluetooth_connection_lost);
-                    Toast.makeText(getApplicationContext(), "info_bluetooth_connection_lost", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "블루투스 연결이 종료되었습니다.", Toast.LENGTH_SHORT).show();
                     Timber.d("Bluetooth connection lost");
                     break;
                 case NO_DEVICE_FOUND:
 //                    setBluetoothStatusIcon(R.drawable.ic_bluetooth_connection_lost);
-                    Toast.makeText(getApplicationContext(), "info_bluetooth_no_device", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "연결된 장치가 없습니다.", Toast.LENGTH_SHORT).show();
                     Timber.e("No Bluetooth device found");
                     break;
                 case CONNECTION_RETRYING:
@@ -217,18 +250,19 @@ public class BluetoothActivity extends AppCompatActivity {
                     Timber.e("No Bluetooth device found retrying");
                     break;
                 case CONNECTION_ESTABLISHED:
+                    bltIv.setImageResource(R.drawable.ic_bt_connected);
 //                    setBluetoothStatusIcon(R.drawable.ic_bluetooth_connection_success);
-                    Toast.makeText(getApplicationContext(), "info_bluetooth_connection_successful", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "블루투스 연결이 완료되었습니다.", Toast.LENGTH_SHORT).show();
                     Timber.d("Bluetooth connection successful established");
                     break;
                 case CONNECTION_DISCONNECT:
 //                    setBluetoothStatusIcon(R.drawable.ic_bluetooth_connection_lost);
-                    Toast.makeText(getApplicationContext(), "info_bluetooth_connection_disconnected", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "블루투스 연결이 종료되었습니다.", Toast.LENGTH_SHORT).show();
                     Timber.d("Bluetooth connection successful disconnected");
                     break;
                 case UNEXPECTED_ERROR:
 //                    setBluetoothStatusIcon(R.drawable.ic_bluetooth_connection_lost);
-                    Toast.makeText(getApplicationContext(), "info_bluetooth_connection_error" + ": " + msg.obj, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "블루투스 연결에 오류가 있습니다." + ": " + msg.obj, Toast.LENGTH_SHORT).show();
                     Timber.e("Bluetooth unexpected error: %s", msg.obj);
                     break;
                 case SCALE_MESSAGE:

@@ -24,7 +24,6 @@
         android:textSize="20dp"
         android:text="등록된 기기 주소: ">
     </TextView>
-
     <ImageView
         android:scaleType="fitCenter"
         android:layout_gravity="center"
@@ -33,6 +32,23 @@
         android:layout_margin="20dp"
         android:id="@+id/blt_iv">
     </ImageView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+<!--        <Button-->
+<!--            android:id="@+id/check_btn"-->
+<!--            android:layout_weight="1"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="확인하기"></Button>-->
+    </LinearLayout>
+    <TextView
+        android:id="@+id/explain_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    </TextView>
 
     <FrameLayout
         android:layout_width="match_parent"
