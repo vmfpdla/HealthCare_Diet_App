@@ -78,7 +78,7 @@ $_SESSION['code']=$_GET['code'];
 <body>
 
 
-  <div class="box" id="container">
+  <div id="container">
     <div class="input-group mb-3">
       <div class="input-group-prepend">
         <span class="input-group-text hi" id="basic-addon1">음식이름</span>
@@ -86,7 +86,7 @@ $_SESSION['code']=$_GET['code'];
       <input type="text" class="form-control hi" id="keyword" placeholder="Food Name" aria-label="Username" aria-describedby="basic-addon1">
     </div>
   </div>
-  <br>
+<br>
   <div class="row row-cols-3">
     <form method="post" action="updatefoodinput2.php">
       <div class="input-group col">
@@ -113,8 +113,8 @@ $_SESSION['code']=$_GET['code'];
     </div>
 
 
-
-    <table class="table table-hover" id="user-table" style="margin-top: 30px;">
+<div class="box">
+    <table class="table table-hover " id="user-table" style="margin-top: 30px;">
       <thead >
         <tr>
           <th>번호</th>
@@ -153,7 +153,7 @@ $_SESSION['code']=$_GET['code'];
         ?>
       </tbody>
     </table>
-
+</div>
 
   </body>
   </html>
