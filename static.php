@@ -18,7 +18,6 @@
       $user=$row;
     }
   }
-
   // 음식 칼로리 불러오기
   $sql1 = "SELECT * FROM eatenfood WHERE user_id='$user_id' ORDER BY eaten_day";
   $result1 = $conn->query($sql1);
@@ -135,25 +134,25 @@
 			<div class="carousel-item active">
 				<div style="width:100%">
 					<canvas id="inbodyMuscle"></canvas>
-          <script src="./js/inbodyMuscle.js?ver=1"></script>
+          <script src="./js/inbodyMuscle.js?ver=4"></script>
 				</div>
 			</div>
 			<div class="carousel-item">
 				<div style="width:100%">
 					<canvas id="inbodyFat"></canvas>
-          <script src="./js/inbodyFat.js?ver=1"></script>
+          <script src="./js/inbodyFat.js?ver=4"></script>
 				</div>
 			</div>
 			<div class="carousel-item">
 				<div style="width:100%">
 					<canvas id="inbodyKg"></canvas>
-          <script src="./js/inbodyKg.js?ver=1"></script>
+          <script src="./js/inbodyKg.js?ver=4"></script>
 				</div>
 			</div>
 			<div class="carousel-item">
 				<div style="width:100%">
 					<canvas id="inbodyBmi"></canvas>
-          <script src="./js/inbodyBmi.js?ver=1"></script>
+          <script src="./js/inbodyBmi.js?ver=4"></script>
 				</div>
 			</div>
 		</div>
@@ -200,7 +199,6 @@
     var is_data_inbody = '<?php echo json_encode($inbody);?>';
 
     var isEmpty = function(value){ if( value == "" || value == null || value == undefined || ( value != null && typeof value == "object" && !Object.keys(value).length ) ){ return true }else{ return false } };
-
     if (user_check == 0) {
       document.getElementById('carouselExampleCaptions').style.display = 'none';
     }
@@ -208,9 +206,7 @@
       document.getElementById('carouselExampleCaptions').style.display = 'block';
     }
 
-
-
-    if(isEmpty(is_data_kcal)!= false || isEmpty(is_data_inbody)!= false ){
+    if(isEmpty(is_data_kcal)!= true || isEmpty(is_data_inbody)!= true ){
       document.getElementById('is_data_none').style.display ='none';
     }
 
