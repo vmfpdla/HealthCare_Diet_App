@@ -77,7 +77,7 @@ crossorigin="anonymous"></script>
 <body>
 
   <div clas="container" style="text-align: center;">
-  
+
     <p class="title">Static</p>
   </div>
   <br>
@@ -206,7 +206,18 @@ crossorigin="anonymous"></script>
   var is_data_kcal = '<?php echo json_encode($dailyKcal);?>';
   var is_data_inbody = '<?php echo json_encode($inbody);?>';
 
-  var isEmpty = function(value){ if( value == "" || value == null || value == undefined || ( value != null && typeof value == "object" && !Object.keys(value).length ) ){ return true }else{ return false } };
+  var isEmpty = function(value){
+    if( value == "" || value == "null" || value == undefined || ( value != null && typeof value == "object" && !Object.keys(value).length ) )
+    {
+      return true
+    }
+    else{
+       return false
+    }
+  };
+
+  alert(isEmpty(is_data_kcal));
+  alert(isEmpty(is_data_inbody));
   if (user_check == 0) {
     document.getElementById('carouselExampleCaptions').style.display = 'none';
   }
@@ -214,7 +225,10 @@ crossorigin="anonymous"></script>
     document.getElementById('carouselExampleCaptions').style.display = 'block';
   }
 
-  if(isEmpty(is_data_kcal)!= true || isEmpty(is_data_inbody)!= true ){
+  if(isEmpty(is_data_kcal) == true && isEmpty(is_data_inbody) == true ){
+    document.getElementById('is_data_none').style.display ='block';
+  }
+  else{
     document.getElementById('is_data_none').style.display ='none';
   }
 
