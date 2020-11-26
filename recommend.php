@@ -160,7 +160,7 @@ else //echo "0 results";
       <div class="progress" style="height:30px;" >
         <div class="progress-bar bg-success" id="progress_kcal" role="progressbar" style="width:  <?php echo $kcal/$user['user_goal']*100;?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
       </div>
-      <p style="font-size:30px;"><?php echo $kcal."/".$user['user_goal'];?></p>
+      <p style="font-size:30px;"><?php echo (int)($kcal)."/".$user['user_goal'];?></p>
       
     </div>
 
@@ -174,21 +174,21 @@ else //echo "0 results";
         <div class="progress" >
           <div class="progress-bar bg-info" role="progressbar" style="width: <?php echo $car/$maxcar*100;?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"> </div>
         </div>
-        <p style="font-size:30px;"><?php echo $car."/".$maxcar;?></p>
+        <p style="font-size:30px;"><?php echo (int)($car)."/".$maxcar;?></p>
       </div>
       <div style="float:left; width:150px; text-align:center; margin-right: 70px;">
         <p style="font-size:40px;"> 단백질 </p>
         <div class="progress" >
           <div class="progress-bar bg-info" role="progressbar" style="width: <?php echo $pro/$maxpro*100;?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"> </div>
         </div>
-        <p style="font-size:30px;"><?php echo $pro."/".$maxpro;?></p>
+        <p style="font-size:30px;"><?php echo (int)($pro)."/".$maxpro;?></p>
       </div>
       <div style="float:left; width:150px; text-align:center;">
         <p style="font-size:40px;"> 지방 </p>
         <div class="progress" >
           <div class="progress-bar bg-info" role="progressbar" style="width: <?php echo $fat/$maxfat*100;?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
         </div>
-        <p style="font-size:30px;"><?php echo $fat."/".$maxfat;?></p>
+        <p style="font-size:30px;"><?php echo (int)($fat)."/".$maxfat;?></p>
       </div>
     </div>
   </div>
@@ -302,7 +302,7 @@ else{
           <br>
           <div style=" text-align:center;" data-toggle="modal" data-target="#exampleModal" >
             <div style="float: left;padding-bottom:3px;">
-              <p style="font-size:40px; " > 칼로리 <?php echo $morning_kcal;
+              <p style="font-size:40px; " > 칼로리 <?php echo (int)($morning_kcal);
               if ($morning_kcal==0){
                 echo 0;
               }?></p>
@@ -310,21 +310,21 @@ else{
             
             <div style="float: right;">
               <div style="float:left; text-align:center; margin:20px 10px 0 100px;">
-                <p style="font-size:30px; float:left; margin-right: 7px;"> 탄 </p><p style="font-size:30px;float:left;" class="text-info"><?php echo $morning_car;
+                <p style="font-size:30px; float:left; margin-right: 7px;"> 탄 </p><p style="font-size:30px;float:left;" class="text-info"><?php echo (int)($morning_car);
                 if ($morning_kcal==0){
                   echo 0;
                 }?></p>
                 
               </div>
               <div style="float:left; text-align:center; margin-top: 20px; margin-right: 10px;">
-                <p style="font-size:30px;float:left; margin-right: 7px;"> 단</p> <p style="font-size:30px;float:left;" class="text-info"><?php echo $morning_pro;
+                <p style="font-size:30px;float:left; margin-right: 7px;"> 단</p> <p style="font-size:30px;float:left;" class="text-info"><?php echo (int)($morning_pro);
                 if ($morning_kcal==0){
                   echo 0;
                 }?></p>
                 
               </div>
               <div style="float:left;text-align:center; margin-top: 20px;">
-                <p style="font-size:30px; float:left; margin-right: 7px;"> 지</p><p style="font-size:30px; float:left;" class="text-info"> <?php echo $morning_fat;
+                <p style="font-size:30px; float:left; margin-right: 7px;"> 지</p><p style="font-size:30px; float:left;" class="text-info"> <?php echo (int)($morning_fat);
                 if ($morning_kcal==0){
                   echo 0;
                 }?></p>
@@ -344,11 +344,11 @@ else{
       if($is_morning==1){
         while($row = $result3->fetch_assoc()){
           if($row['eaten_serving']==0){
-            echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal "."(0.5 인분)";
+            echo $row['food_name'] ."  ". (int)($row['food_calory'])*$row['eaten_serving']."  Kcal "."(0.5 인분)";
             echo nl2br("\n\n");
           }
           else{
-            echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal "."(".$row['eaten_serving']." 인분)";
+            echo $row['food_name'] ."  ". (int)($row['food_calory'])*$row['eaten_serving']."  Kcal "."(".$row['eaten_serving']." 인분)";
             echo nl2br("\n\n");
           } 
         }
@@ -400,7 +400,7 @@ else{
           <br>
           <div style=" text-align:center;" data-toggle="modal" data-target="#exampleModal" >
             <div style="float: left;padding-bottom:3px;">
-              <p style="font-size:40px; " > 칼로리 <?php echo $lunch_kcal;
+              <p style="font-size:40px; " > 칼로리 <?php echo (int)($lunch_kcal);
               if ($lunch_kcal==0){
                 echo 0;
               }?></p>
@@ -408,21 +408,21 @@ else{
             
             <div style="float: right;">
               <div style="float:left; text-align:center; margin:20px 10px 0 100px;">
-                <p style="font-size:30px; float:left; margin-right: 7px;"> 탄 </p><p style="font-size:30px;float:left;" class="text-info"><?php echo $lunch_car;
+                <p style="font-size:30px; float:left; margin-right: 7px;"> 탄 </p><p style="font-size:30px;float:left;" class="text-info"><?php echo (int)($lunch_car);
                 if ($lunch_kcal==0){
                   echo 0;
                 }?></p>
                 
               </div>
               <div style="float:left; text-align:center; margin-top: 20px; margin-right: 10px;">
-                <p style="font-size:30px; float:left; margin-right: 7px;"> 단</p><p style="font-size:30px;float:left;" class="text-info"> <?php echo $lunch_pro;
+                <p style="font-size:30px; float:left; margin-right: 7px;"> 단</p><p style="font-size:30px;float:left;" class="text-info"> <?php echo (int)($lunch_pro);
                 if ($lunch_kcal==0){
                   echo 0;
                 }?></p>
                 
               </div>
               <div style="float:left;text-align:center; margin-top: 20px;">
-                <p style="font-size:30px; float:left; margin-right: 7px;"> 지 </p><p style="font-size:30px; float:left;" class="text-info"><?php echo $lunch_fat;
+                <p style="font-size:30px; float:left; margin-right: 7px;"> 지 </p><p style="font-size:30px; float:left;" class="text-info"><?php echo (int)($lunch_fat);
                 if ($lunch_kcal==0){
                   echo 0;
                 }?></p>
@@ -442,11 +442,11 @@ else{
       if($is_lunch==1){
         while($row = $result4->fetch_assoc()){
           if($row['eaten_serving']==0){
-            echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal "."(0.5 인분)";
+            echo $row['food_name'] ."  ". (int)($row['food_calory'])*$row['eaten_serving']."  Kcal "."(0.5 인분)";
             echo nl2br("\n\n");
           }
           else{
-            echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal "."(".$row['eaten_serving']." 인분)";
+            echo $row['food_name'] ."  ". (int)($row['food_calory'])*$row['eaten_serving']."  Kcal "."(".$row['eaten_serving']." 인분)";
             echo nl2br("\n\n");
           } 
         }
@@ -500,7 +500,7 @@ else{
           <br>
           <div style=" text-align:center;" data-toggle="modal" data-target="#exampleModal" >
             <div style="float: left;padding-bottom:3px;">
-              <p style="font-size:40px; " > 칼로리 <?php echo $dinner_kcal;
+              <p style="font-size:40px; " > 칼로리 <?php echo (int)($dinner_kcal);
               if ($dinner_kcal==0){
                 echo 0;
               }?></p>
@@ -508,21 +508,21 @@ else{
             
             <div style="float: right;">
               <div style="float:left; text-align:center; margin:20px 10px 0 100px;">
-                <p style="font-size:30px; float:left; margin-right: 7px;"> 탄 </p><p style="font-size:30px;float:left;" class="text-info"><?php echo $dinner_car;
+                <p style="font-size:30px; float:left; margin-right: 7px;"> 탄 </p><p style="font-size:30px;float:left;" class="text-info"><?php echo (int)($dinner_car);
                 if ($dinner_kcal==0){
                   echo 0;
                 }?></p>
                 
               </div>
               <div style="float:left; text-align:center; margin-top: 20px; margin-right: 10px;">
-                <p style="font-size:30px; float:left; margin-right: 7px;"> 단</p><p style="font-size:30px;float:left;" class="text-info"> <?php echo $dinner_pro;
+                <p style="font-size:30px; float:left; margin-right: 7px;"> 단</p><p style="font-size:30px;float:left;" class="text-info"> <?php echo (int)($dinner_pro);
                 if ($dinner_kcal==0){
                   echo 0;
                 }?></p>
                 
               </div>
               <div style="float:left;text-align:center; margin-top: 20px;">
-                <p style="font-size:30px; float:left; margin-right: 7px;"> 지</p><p style="font-size:30px; float:left;" class="text-info"> <?php echo $dinner_fat;
+                <p style="font-size:30px; float:left; margin-right: 7px;"> 지</p><p style="font-size:30px; float:left;" class="text-info"> <?php echo (int)($dinner_fat);
                 if ($dinner_kcal==0){
                   echo 0;
                 }?></p>
@@ -542,11 +542,11 @@ else{
       if($is_dinner==1){
         while($row = $result5->fetch_assoc()){
           if($row['eaten_serving']==0){
-            echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal "."(0.5 인분)";
+            echo $row['food_name'] ."  ". (int)($row['food_calory'])*$row['eaten_serving']."  Kcal "."(0.5 인분)";
             echo nl2br("\n\n");
           }
           else{
-            echo $row['food_name'] ."  ". $row['food_calory']*$row['eaten_serving']."  Kcal "."(".$row['eaten_serving']." 인분)";
+            echo $row['food_name'] ."  ". (int)($row['food_calory'])*$row['eaten_serving']."  Kcal "."(".$row['eaten_serving']." 인분)";
             echo nl2br("\n\n");
           } 
         }
