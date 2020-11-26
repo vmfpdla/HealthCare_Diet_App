@@ -139,10 +139,10 @@ require_once("./dbconn.php");
   <div style="margin-left:50px;">
     <div style="margin-bottom:50px;">
        <div clas="container" style="text-align: center;">
-         <p class="title" style="float:center;">오늘의 운동
+         <p class="title" style="float:center; ">오늘의 운동
        
         <a href="band://">
-          <i class="fa fa-refresh fa-fw" style="font-size:60px; color:#BDBDBD;"></i>
+          <i class="fa fa-refresh fa-fw" style="font-size:65px; color:#BDBDBD;"></i>
         </a>
         </p>
         <p style="margin-left:370px;margin-top:-40px;font-size:40px; color:#BDBDBD;">미밴드</p>
