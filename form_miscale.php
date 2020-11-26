@@ -1,18 +1,35 @@
 <?php
+session_start();
   require_once("./dbconn.php");
-	session_start();
-  $user_id=$_SESSION['id'];
+echo "success";
+$user_code=$_GET['code'];
+$_SESSION['code']=$user_code;
+echo $user_code;
+print_r($_POST);
+$sql8 = "SELECT * FROM user WHERE user_code='$user_code'";
+  $result5 = $conn->query($sql8);
+
+if ($result5->num_rows > 0) { // 여러줄 가져오는 경우
+	  while($row = $result5->fetch_assoc()) {
+			    $user_id = $row['user_id'];
+			    $_SESSION['id'] = $user_id;
+		    }
+  }
+
+echo "userid= ".$user_id."!";
+
+//  $user_id=$_SESSION['id'];
   $today = date("Y-m-d");
 
-  $inbody_weight = $_POST[''];
-  $inbody_muscle = $_POST[''];
-  $inbody_bmi = $_POST[''];
-  $inbody_fat = $_POST[''];
-
+  $inbody_weight = $_POST['weight'];
+  $inbody_muscle = $_POST['muscle'];
+  $inbody_bmi = $_POST['bmi'];
+  $inbody_fat = $_POST['fat'];
   $flag;
-
+  echo $inbody_weight . " " . $inbody_muscle . " " . $inbody_bmi . " " . $inbody_fat. "fin";
   $sql = "SELECT * FROM inbody WHERE user_id='$user_id' AND inbody_day='$today'"; // 오늘 이미 인바디 측정한경우
   $result = $conn->query($sql);
+  $flag=0;
   if($row = $result->fetch_assoc()) {
     $flag=1; // 오늘 미밴드에 업데이트가 이미 되어있는 경우 -> update
   }
@@ -31,7 +48,7 @@
   	}
   }
   else{ // 없었던 경우 insert
-    $sql2 = "INSERT INTO inbody(user_id,inbody_weight,inbody_muscle,inbody_bmi,inbody_fat,inbody_day) values ('$user_id','$inbody_weight','$inbody_muscle','$inbody_bmi','$inbody_fat','$today')";
+    $sql2 = "INSERT INTO inbody(user_id,inbody_weight,inbody_muscle,inbody_bmi,inbody_fat,inbody_day) VALUES ('$user_id','$inbody_weight','$inbody_muscle','$inbody_bmi','$inbody_fat','$today')";
   	if (mysqli_query($conn, $sql2)) {
   		#Header("Location:./static.php");
   	}

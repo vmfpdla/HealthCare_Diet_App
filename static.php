@@ -86,7 +86,7 @@ crossorigin="anonymous"></script>
     echo json_encode($dailyKcal);
   ?>
 </div>
-<br>
+<br><br>
 <div id="dailyinbodyarray" style="display:none">
   <?php
     echo json_encode($inbody);

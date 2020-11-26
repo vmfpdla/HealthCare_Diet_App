@@ -25,7 +25,7 @@
 											WHERE user_id='$user_id'";
 
 	if (mysqli_query($conn, $sql)) {
-		Header("Location:update://s$gender&h$height#w$weight^");
+		Header("Location:update://s$gender&h$height#q$age!");
 	} // 성공 시 flag =1;
 	else {
 		Header("Location:./usermodify.php");

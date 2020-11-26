@@ -1,5 +1,5 @@
 $(function() {
-  $('.navIcons').hover(function() {
+  $('.navIcons').click(function() {
     $(this).children('.navIcon').css('color', '#8DA5BD');
     $(this).children('.navName').css('color', '#8DA5BD');
   }, function() {

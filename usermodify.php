@@ -96,7 +96,7 @@
 					</div>
 					<br>
 
-					<input type="number" class="form-control" id="inputCalory" name="inputCalory" placeholder="<?php echo $user['user_goal'];?>" readonly required>
+					<input type="number" min="100" max="3000"class="form-control" id="inputCalory" name="inputCalory" placeholder="<?php echo $user['user_goal'];?>" readonly required>
 					<br>
 					<h3 style="color:gray;">[ 하루 권장 칼로리 ] 표준체중(kg) X 활동지수</h3>
 					<h3 style="color:gray;">[ 다이어트 식단 칼로리 ] 여성 : 800 - 1200 Kcal , 남성 : 1200 - 1400 Kcal</h3>
