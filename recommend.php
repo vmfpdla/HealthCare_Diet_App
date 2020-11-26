@@ -158,7 +158,8 @@ else //echo "0 results";
     <div style="text-align:center" data-toggle="modal" data-target="#exampleModal" >
       <p style="margin-right:20px; font-size:40px;" > 칼로리 </p>
       <div class="progress" style="height:30px;" >
-        <div class="progress-bar bg-success" id="progress_kcal" role="progressbar" style="width:  <?php echo $kcal/$user['user_goal']*100;?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+	<div class="progress-bar <?php if($kcal<$user['user_goal']){
+echo "bg-success";}else echo "bg-danger";?>" id="progress_kcal" role="progressbar" style="width:  <?php echo $kcal/$user['user_goal']*100;?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
       </div>
       <p style="font-size:30px;"><?php echo (int)($kcal)."/".$user['user_goal'];?></p>
       
