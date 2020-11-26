@@ -151,7 +151,7 @@ else //echo "0 results";
   
   <p class="title">Diet</p>
 </div>
-<br><br>  
+<br>
 <div class="card nutrients-card" style="margin:0 100px; height:500px;">
   <div class="card-body">
     <br><br>
