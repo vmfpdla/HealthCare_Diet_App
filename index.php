@@ -152,7 +152,7 @@ require_once("./dbconn.php");
         <p style="font-size:40px; color:gray;">Kcal</p>
         <div>
           <p style="font-size:30px; float:left; margin-left:40px;"><?php echo (int)($walking['doexercise_minute']);?> min</p>
-          <p style="font-size:30px; "><?php echo (int)($walking['doexercise_distance']);?> km</p>
+          <p style="font-size:30px; "><?php echo (int)($walking['doexercise_distance']);?> m</p>
        </div>
     </div>
   </div>
@@ -164,7 +164,7 @@ require_once("./dbconn.php");
         <p style="font-size:40px; color:gray;">Kcal</p>
         <div>
           <p style="font-size:30px; float:left; margin-left:40px;"><?php echo (int)($running['doexercise_minute']);?> min</p>
-          <p style="font-size:30px; "><?php echo (int)($running['doexercise_distance']);?> km</p>
+          <p style="font-size:30px; "><?php echo (int)($running['doexercise_distance']);?> m</p>
         </div>
     </div>
   </div>
