@@ -2,9 +2,9 @@
 session_start();
 
 require_once("./dbconn.php");
-  if(!isset($_SESSION['code'])){
-    $_SESSION['code']=$_GET['code'];
-  }
+	if(!isset($_SESSION['code'])){
+		$_SESSION['code']=$_GET['code'];
+	}
   $user_code = $_SESSION['code'];
 
   $today = date("Y-m-d");
@@ -14,8 +14,8 @@ require_once("./dbconn.php");
   $car =0; // 탄수화물
   $fat =0; // 지방
   $pro =0; // 단백질
-  $walking_calory;
-  $running_calory;
+  $walking_calory = 3;
+  $running_calory = 6 ;
   $recommend_walking;
   $recommend_running;
   $user;
@@ -33,16 +33,15 @@ require_once("./dbconn.php");
   }
 
   $maxcar =$user['user_goal'] * 0.65 * 0.25;
-  $maxfat =$user['user_goal'] * 0.2 * 0.1;
-  $maxpro =$user['user_goal'] * 0.15 * 0.25;
+	$maxfat =$user['user_goal'] * 0.2 * 0.1;
+	$maxpro =$user['user_goal'] * 0.15 * 0.25;
 
   $maxcar = (int)($maxcar);
   $maxfat = (int)($maxfat);
   $maxpro = (int)($maxpro);
 
-  $sql1 = "SELECT * FROM doexercise INNER JOIN exerciseinfo on doexercise.exercise_id = exerciseInfo.exercise_id WHERE user_id='$user_id' and doexercise_day='$today'";
+  $sql1 = "SELECT * FROM doexercise INNER JOIN exerciseinfo on doexercise.exercise_id = exerciseinfo.exercise_id WHERE user_id='$user_id' and doexercise_day='$today'";
   $result1 = $conn->query($sql1);
-
 
   if ($result1->num_rows > 0) { // 여러줄 가져오는 경우
 
@@ -50,13 +49,10 @@ require_once("./dbconn.php");
       if($row['exercise_id']==1)
       {
         $walking = $row;
-        $walking_calory = $row['exercise_calory'];
-
       }
       else if($row['exercise_id']==2)
       {
         $running = $row;
-        $running_calory = $row['exercise_calory'];
       }
     // echo $row['exercise_name'] ." / " .$row['doexercise_minute'] ."분 / ".$row['doexercise_calory']."Kcal";
     }
@@ -138,14 +134,12 @@ require_once("./dbconn.php");
   <br><br><br>
   <div style="margin-left:50px;">
     <div style="margin-bottom:50px;">
-       <div clas="container" style="text-align: center;">
-         <p class="title" style="float:center; ">오늘의 운동
-       
+      <p style="font-size:80px; float:left; margin-top:10px;">오늘의 운동</p>
+      <div>
         <a href="band://">
-          <i class="fa fa-refresh fa-fw" style="font-size:65px; color:#BDBDBD;"></i>
+          <i class="fa fa-refresh fa-fw" style="font-size:60px; color:#BDBDBD; margin-top:20px; margin-left:50px;"></i>
+          <p style="margin-left:380px; font-size:40px; color:#BDBDBD;">미밴드</p>
         </a>
-        </p>
-        <p style="margin-left:370px;margin-top:-40px;font-size:40px; color:#BDBDBD;">미밴드</p>
       </div>
     </div>
     <p class="text-muted" style="font-size:70px;">Today's exercise</p>
@@ -154,23 +148,23 @@ require_once("./dbconn.php");
   <div class="card exercise-card" style="float:left; margin:0 100px;">
     <div class="card-body">
         <img src="./walking.png"  width="100" height="100"/>
-        <p style="font-size:60px; margin-bottom:0; color:#f38181;"><?php echo (int)($walking['doexercise_calory']);?></p>
+        <p style="font-size:60px; margin-bottom:0; color:#f38181;"><?php echo $walking['doexercise_calory'];?></p>
         <p style="font-size:40px; color:gray;">Kcal</p>
         <div>
-          <p style="font-size:30px; float:left; margin-left:40px;"><?php echo (int)($walking['doexercise_minute']);?> min</p>
-          <p style="font-size:30px; "><?php echo (int)($walking['doexercise_distance']);?> km</p>
-       </div>
+          <p style="font-size:30px; float:left; margin-left:40px;"><?php echo $walking['doexercise_minute'];?> min</p>
+          <p style="font-size:30px; "><?php echo $walking['doexercise_distance'];?> km</p>
+	     </div>
     </div>
   </div>
 
   <div class="card exercise-card" style="margin-right:100px;">
     <div class="card-body">
         <img src="./running.png"  width="100" height="100"/>
-        <p style="font-size:60px; margin-bottom:0; color:#f38181;"><?php echo (int)($running['doexercise_calory']);?></p>
+        <p style="font-size:60px; margin-bottom:0; color:#f38181;"><?php echo $running['doexercise_calory'];?></p>
         <p style="font-size:40px; color:gray;">Kcal</p>
         <div>
-          <p style="font-size:30px; float:left; margin-left:40px;"><?php echo (int)($running['doexercise_minute']);?> min</p>
-          <p style="font-size:30px; "><?php echo (int)($running['doexercise_distance']);?> km</p>
+          <p style="font-size:30px; float:left; margin-left:40px;"><?php echo $running['doexercise_minute'];?> min</p>
+          <p style="font-size:30px; "><?php echo $running['doexercise_distance'];?> km</p>
         </div>
     </div>
   </div>
@@ -188,12 +182,12 @@ require_once("./dbconn.php");
       <div id="calorydiv"style="text-align:center">
         <p style="margin-right:20px; font-size:40px;" > 칼로리 </p>
         <div class="progress" style="height:30px;" >
-          <div class="progress-bar bg-success" id="progress_kcal" role="progressbar" style="width:  <?php echo (int)($kcal)/$user['user_goal']*100;?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+          <div class="progress-bar bg-success" id="progress_kcal" role="progressbar" style="width:  <?php echo $kcal/$user['user_goal']*100;?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
         </div>
-        <p style="font-size:30px;"><?php echo (int)($kcal)."/".$user['user_goal'];?></p>
+        <p style="font-size:30px;"><?php echo $kcal."/".$user['user_goal'];?></p>
         <div id="notification_div" style="position:absolute; right:10%; width:200px; ">
           <i class="fas fa-exclamation-circle misi" style="font-size:30px;"></i>
-          <p style="font-size:20px; ">총 <?php echo ((int)($kcal)-$user['user_goal']);?> Kcal 초과</p>
+          <p style="font-size:20px; ">총 <?php echo ($kcal-$user['user_goal']);?> Kcal 초과</p>
         </div>
       </div>
 
@@ -204,7 +198,7 @@ require_once("./dbconn.php");
             <div style="text-align:center;">
               <br>
               <h1 class="modal-title" id="exampleModalLabel">추천운동</h1>
-              <p style="font-size:50px;"><?php echo ((int)($kcal)-$user['user_goal']);?> kcal</p>
+              <p style="font-size:50px;"><?php echo ($kcal-$user['user_goal']);?> kcal</p>
             </div>
             <div class="modal-body">
               <div class="card exercise-card" style="float:left; width:200px; height:300px; margin-left:50px;">
@@ -235,21 +229,21 @@ require_once("./dbconn.php");
           <div class="progress" >
             <div class="progress-bar bg-info" role="progressbar" style="width: <?php echo $car/$maxcar*100;?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"> </div>
           </div>
-          <p style="font-size:25px;"><?php echo (int)($car)."/".$maxcar;?></p>
+          <p style="font-size:25px;"><?php echo $car."/".$maxcar;?></p>
         </div>
         <div style="float:left; width:150px; text-align:center; margin-right: 70px;">
           <p style="font-size:40px;"> 단백질 </p>
           <div class="progress" >
             <div class="progress-bar bg-info" role="progressbar" style="width: <?php echo $pro/$maxpro*100;?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"> </div>
           </div>
-          <p style="font-size:25px;"><?php echo (int)($pro)."/".$maxpro;?></p>
+          <p style="font-size:25px;"><?php echo $pro."/".$maxpro;?></p>
         </div>
         <div style="float:left; width:150px; text-align:center;">
           <p style="font-size:40px;"> 지방 </p>
           <div class="progress" >
             <div class="progress-bar bg-info" role="progressbar" style="width: <?php echo $fat/$maxfat*100;?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
           </div>
-          <p style="font-size:25px;"><?php echo (int)($fat)."/".$maxfat;?></p>
+          <p style="font-size:25px;"><?php echo $fat."/".$maxfat;?></p>
         </div>
       </div>
     </div>
