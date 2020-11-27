@@ -224,13 +224,15 @@ crossorigin="anonymous"></script>
     }
   };
 
-
+  alert(isEmpty(is_data_kcal));
+  alert(isEmpty(is_data_inbody));
   if (user_check == 0) {
     document.getElementById('carouselExampleCaptions').style.display = 'none';
   }
   else {
     document.getElementById('carouselExampleCaptions').style.display = 'block';
   }
+
 
   if(isEmpty(is_data_kcal) == true && isEmpty(is_data_inbody) == true ){
     document.getElementById('is_data_none').style.display ='block';

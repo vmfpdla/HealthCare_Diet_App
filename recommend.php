@@ -160,7 +160,8 @@ else //echo "0 results";
     <div style="text-align:center" data-toggle="modal" data-target="#exampleModal" >
       <p style="margin-right:20px; font-size:40px;" > 칼로리 </p>
       <div class="progress" style="height:30px;" >
-        <div class="progress-bar bg-success" id="progress_kcal" role="progressbar" style="width:  <?php echo $kcal/$user['user_goal']*100;?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+	<div class="progress-bar <?php if($kcal<$user['user_goal']){
+echo "bg-success";}else echo "bg-danger";?>" id="progress_kcal" role="progressbar" style="width:  <?php echo $kcal/$user['user_goal']*100;?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
       </div>
       <p style="font-size:30px;"><?php echo (int)($kcal)."/".$user['user_goal'];?></p>
 
@@ -353,7 +354,7 @@ else{
       if($is_morning==1){
         while($row = $result3->fetch_assoc()){
           if($row['eaten_serving']==0){
-            echo $row['food_name'] ."  ". (int)($row['food_calory'])*$row['eaten_serving']."  Kcal "."(0.5 인분)";
+            echo $row['food_name'] ."  ". (int)($row['food_calory'])*(0.5)."  Kcal "."(0.5 인분)";
             echo nl2br("\n\n");
           }
           else{
@@ -451,7 +452,7 @@ else{
       if($is_lunch==1){
         while($row = $result4->fetch_assoc()){
           if($row['eaten_serving']==0){
-            echo $row['food_name'] ."  ". (int)($row['food_calory'])*$row['eaten_serving']."  Kcal "."(0.5 인분)";
+            echo $row['food_name'] ."  ". (int)($row['food_calory'])*(0.5)."  Kcal "."(0.5 인분)";
             echo nl2br("\n\n");
           }
           else{
@@ -551,7 +552,7 @@ else{
       if($is_dinner==1){
         while($row = $result5->fetch_assoc()){
           if($row['eaten_serving']==0){
-            echo $row['food_name'] ."  ". (int)($row['food_calory'])*$row['eaten_serving']."  Kcal "."(0.5 인분)";
+            echo $row['food_name'] ."  ". (int)($row['food_calory'])*(0.5)."  Kcal "."(0.5 인분)";
             echo nl2br("\n\n");
           }
           else{
