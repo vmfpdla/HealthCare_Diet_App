@@ -224,8 +224,7 @@ crossorigin="anonymous"></script>
     }
   };
 
-  alert(isEmpty(is_data_kcal));
-  alert(isEmpty(is_data_inbody));
+
   if (user_check == 0) {
     document.getElementById('carouselExampleCaptions').style.display = 'none';
   }
