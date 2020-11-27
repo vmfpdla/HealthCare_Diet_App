@@ -25,7 +25,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./css/jaehyun.css?ver=3">
+  <link rel="stylesheet" href="./css/jaehyun.css?ver=4">
   <!-- 아이콘 -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/v4-shims.css">
@@ -89,14 +89,14 @@
 				</div>
 				<br><br>
 				<div class="form-group col-md-13">
-					<label style="font-size:70px;">하루 섭취칼로리 설정</label>
+					<label style="font-size:60px;">하루 섭취칼로리 설정</label>
 					<div class="btn-group btn-group-toggle" data-toggle="buttons" style="margin-left:30px; margin-top:-30px;">
 						<button class="btn btn-outline-secondary" style="font-size:30px;" type="button" name="calory_type" value="권장칼로리" onclick="changeCalory(this.value)">권장칼로리</button>
 						<button class="btn btn-outline-secondary" style="font-size:30px;" type="button" name="calory_type" value="직접 입력" onclick="changeCalory(this.value)"/> 직접 입력</button>
 					</div>
 					<br>
 
-					<input type="number" class="form-control" id="inputCalory" name="inputCalory" placeholder="<?php echo $user['user_goal'];?>" readonly required>
+					<input type="number" min="100" max="3000" class="form-control" id="inputCalory" name="inputCalory" placeholder="<?php echo $user['user_goal'];?>" readonly required>
 					<br>
 					<h3 style="color:gray;">[ 하루 권장 칼로리 ] 표준체중(kg) X 활동지수</h3>
 					<h3 style="color:gray;">[ 다이어트 식단 칼로리 ] 여성 : 800 - 1200 Kcal , 남성 : 1200 - 1400 Kcal</h3>
@@ -106,7 +106,7 @@
 			<br><br>
 			<div class="form-group col-md-">
 				<label for="inputState" style="float:left; margin-right:50px;">미스케일 사용여부</label>
-        <button class="btn btn-outline-secondary" style="font-size:30px; margin-top:25px;" type="button" name="miscale_type" value="change" onclick="changeMiscale()">미스케일 기기 수정</button>
+
 
 				<select id="inputMiscale" name="inputMiscale" class="form-control">
 					<option value=1>Yes</option>

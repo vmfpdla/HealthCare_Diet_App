@@ -59,16 +59,16 @@ $_SESSION['code']=$_GET['code'];
 
     
     function clickTd(){
-	    $("#user-table tr").click(function(){
-		
-		    var tdArr = new Array();
-		    var tr = $(this);
-		    var td = tr.children();
-		    var val=$(td[0]).html();
-		   // alert(val);
-		    alert('선택한 음식번호 : '+val);
-		    document.getElementById("foodnum").value=val;
-	    });
+      $("#user-table tr").click(function(){
+
+        var tdArr = new Array();
+        var tr = $(this);
+        var td = tr.children();
+        var val=$(td[0]).html();
+       // alert(val);
+       alert('선택한 음식번호 : '+val);
+       document.getElementById("foodnum").value=val;
+     });
     }
 
 
@@ -81,7 +81,10 @@ $_SESSION['code']=$_GET['code'];
 
 <body>
 
-
+  <div clas="container" style="text-align: center;">
+    <p class="title">Food Input</p>
+  </div>
+  
   <div id="container">
     <div class="input-group mb-3">
       <div class="input-group-prepend">
@@ -90,33 +93,32 @@ $_SESSION['code']=$_GET['code'];
       <input type="text" class="form-control hi" id="keyword" placeholder="Food Name" aria-label="Username" aria-describedby="basic-addon1">
     </div>
   </div>
-<br>
-  <div class="row row-cols-3">
-    <form method="post" action="updatefoodinput2.php">
-      <div class="input-group col">
+  <br>
+  
+  <form method="post" action="updatefoodinput2.php">
+    <div class="row">
 
+      <div class="input-group mb-3 col">
         <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon1"> 번호</span>
+          <span class="input-group-text hi" id="basic-addon1">번호</span>
         </div>
         <input type="text" class="form-control hi" name="foodnum" id="foodnum" placeholder="Food Number" aria-label="Username" aria-describedby="basic-addon1">
-
-
-
-
-        <div class="input-group col">
-          <div class="input-group-prepend">
-            <span class="input-group-text " id="basic-addon1">음식 인분</span>
-          </div>
-          <input type="number" class="form-control hi" name="serving" placeholder="Serving" aria-label="Username" aria-describedby="basic-addon1">
+      </div>
+      <div class="input-group mb-3 col">
+        <div class="input-group-prepend">
+          <span class="input-group-text hi" id="basic-addon1">음식인분</span>
         </div>
-
-
-        <input type="hidden" name="eaten_time" value="<?php echo $_GET["eaten_time"];?>"> 
-        <button type="submit"> 제출 </button>
-      </form>
+        <input type="number" class="form-control hi" name="serving" placeholder="Serving" aria-label="Username" aria-describedby="basic-addon1">
+      </div>
+      <input type="hidden" name="eaten_time" value="<?php echo $_GET["eaten_time"];?>">
+      <div style="width: 100%; text-align: center;">
+        <button class="btn btn-secondary" style="font-size:50px;width:80%; height: 80px;" type="submit"> 제출 </button>
+      </div>
     </div>
+  </form>
 
-<div class="box">
+
+  <div class="box">
     <table class="table table-hover " id="user-table" style=" width:100%;margin-top: 30px;">
       <thead >
         <tr>
@@ -156,6 +158,6 @@ $_SESSION['code']=$_GET['code'];
         ?>
       </tbody>
     </table>
-</div>
-  </body>
-  </html>
+  </div>
+</body>
+</html>

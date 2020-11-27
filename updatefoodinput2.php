@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once("./dbconn.php");
 
 echo "success";
@@ -9,19 +8,20 @@ echo "success";
 ##$result1 = mysqli_query($conn,$sql);
 
 ##$row = mysqli_fetch_array($result1);
-$user_code=$_GET['code'];
-$_SESSION['code']=$user_code;
-echo $user_code;
-$sql8 = "SELECT * FROM user WHERE user_code='$user_code'";
-  $result5 = $conn->query($sql8);
-  if ($result5->num_rows > 0) { // 여러줄 가져오는 경우
+session_start();
+$user_code=$_SESSION['code'];
 
-	  while($row = $result5->fetch_assoc()) {
-		     $user_id = $row['user_id'];
-		     $_SESSION['id'] = $user_id;
-	       }
+  $sql9 = "SELECT * FROM user WHERE user_code='$user_code'";
+  $result = $conn->query($sql9);
+    if ($result->num_rows > 0) { // 여러줄 가져오는 경우
 
-  }
+	        while($row = $result->fetch_assoc()) {
+			      $user_id = $row['user_id'];
+			            $_SESSION['id'] = $user_id;
+			          }
+
+		  }
+
 $food_id=$_POST["foodnum"];
 $eaten_time=$_POST["eaten_time"];
 $eaten_serving=$_POST["serving"];
@@ -54,5 +54,5 @@ $conn->close();
 
 
 
-#header("Location:goback://application");
+header("Location:goback://application");
 ?>

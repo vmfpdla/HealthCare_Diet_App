@@ -14,8 +14,8 @@ require_once("./dbconn.php");
   $car =0; // 탄수화물
   $fat =0; // 지방
   $pro =0; // 단백질
-  $walking_calory;
-  $running_calory;
+  $walking_calory = 3;
+  $running_calory = 6 ;
   $recommend_walking;
   $recommend_running;
   $user;
@@ -40,9 +40,8 @@ require_once("./dbconn.php");
   $maxfat = (int)($maxfat);
   $maxpro = (int)($maxpro);
 
-  $sql1 = "SELECT * FROM doexercise INNER JOIN exerciseinfo on doexercise.exercise_id = exerciseInfo.exercise_id WHERE user_id='$user_id' and doexercise_day='$today'";
+  $sql1 = "SELECT * FROM doexercise INNER JOIN exerciseinfo on doexercise.exercise_id = exerciseinfo.exercise_id WHERE user_id='$user_id' and doexercise_day='$today'";
   $result1 = $conn->query($sql1);
-
 
   if ($result1->num_rows > 0) { // 여러줄 가져오는 경우
 
@@ -50,13 +49,10 @@ require_once("./dbconn.php");
       if($row['exercise_id']==1)
       {
         $walking = $row;
-        $walking_calory = $row['exercise_calory'];
-
       }
       else if($row['exercise_id']==2)
       {
         $running = $row;
-        $running_calory = $row['exercise_calory'];
       }
     // echo $row['exercise_name'] ." / " .$row['doexercise_minute'] ."분 / ".$row['doexercise_calory']."Kcal";
     }
@@ -156,7 +152,7 @@ require_once("./dbconn.php");
         <p style="font-size:40px; color:gray;">Kcal</p>
         <div>
           <p style="font-size:30px; float:left; margin-left:40px;"><?php echo $walking['doexercise_minute'];?> min</p>
-          <p style="font-size:30px; "><?php echo $walking['doexercise_distance'];?> km</p>
+          <p style="font-size:30px; "><?php echo $walking['doexercise_distance'];?> m</p>
 	     </div>
     </div>
   </div>
@@ -168,7 +164,7 @@ require_once("./dbconn.php");
         <p style="font-size:40px; color:gray;">Kcal</p>
         <div>
           <p style="font-size:30px; float:left; margin-left:40px;"><?php echo $running['doexercise_minute'];?> min</p>
-          <p style="font-size:30px; "><?php echo $running['doexercise_distance'];?> km</p>
+          <p style="font-size:30px; "><?php echo $running['doexercise_distance'];?> m</p>
         </div>
     </div>
   </div>
