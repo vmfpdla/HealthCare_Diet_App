@@ -16,7 +16,7 @@ session_start();
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 		<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
-	  <link rel="stylesheet" href="./css/jaehyun.css?ver=3">
+	  <link rel="stylesheet" href="./css/jaehyun.css?ver=1">
   <!-- 폰트 -->
   <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&display=swap" rel="stylesheet">
   <!-- 아이콘 -->
@@ -72,7 +72,7 @@ session_start();
 		</div>
 		<br><br>
 		<div class="form-group">
-			<label style="font-size:70px;">하루 섭취칼로리 설정</label>
+			<label style="font-size:60px;">하루 섭취칼로리 설정</label>
 			<div class="btn-group btn-group-toggle" data-toggle="buttons" style="margin-left:30px; margin-top:-30px;">
 				<button class="btn btn-outline-secondary" style="font-size:30px;"type="button" name="calory_type" value="권장칼로리" onclick="changeCalory(this.value)">권장칼로리</button>
 				<button class="btn btn-outline-secondary" style="font-size:30px;"type="button" name="calory_type" value="직접 입력" onclick="changeCalory(this.value)"/> 직접 입력</button>
