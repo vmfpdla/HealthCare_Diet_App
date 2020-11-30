@@ -8,21 +8,26 @@ var calory_arr = new Array();
 var dailykcalarray = document.getElementById("dailykcalarray");
 dailykcalarray = dailykcalarray.innerHTML;
 dailykcalarray = JSON.parse(dailykcalarray);
-
+var flag=0;
 for(var i=0;i<7;i++)
 {
 	if(calory_arr[i]===undefined) calory_arr[i]=0;
 }
 
+var mm = start.getMonth()+1; // Jan is 0
+var yyyy = start.getFullYear();
+var lastDate = new Date(yyyy,mm,0);
+
 for(var i=0;i<7;i++)
 {
 	var dd = start.getDate()+i;
-	var mm = start.getMonth()+1; // Jan is 0
-	var yyyy = today.getFullYear();
-
 	if(dd<10){ dd = '0'+dd }
 	if(mm<10){ mm = '0'+mm }
-
+	if(dd>lastDate.getDate() && flag==0){
+		mm = mm + 1;
+		dd = 1;
+		flag=1;
+	}
 	date_arr[i] = yyyy + '-'+ mm + '-' + dd;
 	date_arr1[i] = mm + '/' + dd;
 
@@ -34,7 +39,7 @@ for(var i=0;i<7;i++)
 		}
 	}
 }
-console.log(calory_arr);
+console.log(date_arr);
 
 
 // 우선 컨텍스트를 가져옵니다.
