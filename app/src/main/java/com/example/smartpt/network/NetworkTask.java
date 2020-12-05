@@ -91,7 +91,7 @@ public class NetworkTask extends AsyncTask<Void, Void, String> {
                         if (result.contains("success")) {
                             Intent intent = new Intent(context, MainActivity.class);
                             //intent.addFlags(FLAG_ACTIVITY_NEW_TASK);
-                            Toast.makeText(context, result, Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(context, result, Toast.LENGTH_SHORT).show();
                             context.startActivity(intent.addFlags(FLAG_ACTIVITY_NEW_TASK));
                         } else {
                             //Toast.makeText(context, "login failed!", Toast.LENGTH_SHORT).show();

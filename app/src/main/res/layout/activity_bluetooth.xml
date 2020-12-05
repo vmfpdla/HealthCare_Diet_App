@@ -40,6 +40,13 @@
         android:layout_margin="20dp"
         android:id="@+id/blt_iv">
     </ImageView>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/check_btn"
+        android:text="Check">
+    </Button>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

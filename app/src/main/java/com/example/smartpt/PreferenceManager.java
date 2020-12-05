@@ -14,7 +14,22 @@ public class PreferenceManager {
     private static final int SEX = -1;
     private static final int HEIGHT = -1;
     private static final int AGE = -1;
+    private static final int WEIGHT = -1;
 
+
+
+
+    public static int getWeight(Context context){
+        SharedPreferences prefs = getPreferences(context);
+        int value = prefs.getInt("Weight", WEIGHT);
+        return value;
+    }
+    public static void setWeight(Context context, int weight){
+        SharedPreferences prefs = getPreferences(context);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putInt("Weight", weight);
+        editor.commit();
+    }
     private static SharedPreferences getPreferences(Context context){
         return context.getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE);
     }

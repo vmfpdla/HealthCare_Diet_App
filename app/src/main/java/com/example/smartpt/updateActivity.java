@@ -25,6 +25,7 @@ public class updateActivity extends AppCompatActivity {
         int sex=gintent.getIntExtra("sex",1);
         int height=gintent.getIntExtra("height",1);
         int age=gintent.getIntExtra("age",1);
+        int weight=gintent.getIntExtra("weight",1);
 
 
         /*values.put("sex",sex);
@@ -39,11 +40,14 @@ public class updateActivity extends AppCompatActivity {
         PreferenceManager.setHeight(appContext, height);
         PreferenceManager.setAge(appContext, age);
         PreferenceManager.setSex(appContext, sex);
+        PreferenceManager.setWeight(appContext,weight);
+
 
         setContentView(R.layout.activity_update);
         Log.d("fortest1 : ",Integer.toString(height));
         Log.d("fortest2 : ",Integer.toString(age));
         Log.d("fortest3 : ",Integer.toString(sex));
+        Log.d("fortest4 : ",Integer.toString(weight));
         Intent intent=new Intent(appContext.getApplicationContext(), MainActivity.class);
         startActivity(intent);
     }

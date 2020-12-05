@@ -80,10 +80,12 @@ public class MainActivity extends AppCompatActivity {
                 int sex=Integer.parseInt(url.substring(url.indexOf("s")+1,url.indexOf("&")));
                 int height=Integer.parseInt(url.substring(url.indexOf("h")+1,url.indexOf("#")));
                 int age=Integer.parseInt(url.substring(url.indexOf("q")+1,url.indexOf("!")));
+                int kg=Integer.parseInt(url.substring(url.indexOf("k")+1,url.indexOf("^")));
 
                 intent.putExtra("sex",sex);
                 intent.putExtra("height",height);
                 intent.putExtra("age",age);
+                intent.putExtra("weight",kg);
                 startActivity(intent);
                 return true;
             }

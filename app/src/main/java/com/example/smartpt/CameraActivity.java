@@ -183,7 +183,7 @@ public class CameraActivity extends AppCompatActivity {
                 else if(btnRadio2.isChecked())
                     amount=1;
                 else if(btnRadio3.isChecked())
-                    amount=3;
+                    amount=2;
 
 
                 values.put("foodnum", Integer.parseInt(id1)+1);
@@ -203,7 +203,7 @@ public class CameraActivity extends AppCompatActivity {
                 else if(btnRadio2.isChecked())
                     amount=1;
                 else if(btnRadio3.isChecked())
-                    amount=3;
+                    amount=2;
 
                 btnFood2.setText(id2);
 
@@ -224,7 +224,7 @@ public class CameraActivity extends AppCompatActivity {
                 else if(btnRadio2.isChecked())
                     amount=1;
                 else if(btnRadio3.isChecked())
-                    amount=3;
+                    amount=2;
 
                 btnFood3.setText(id3);
 
