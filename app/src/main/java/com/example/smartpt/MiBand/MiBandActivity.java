@@ -123,7 +123,7 @@ public class MiBandActivity extends AppCompatActivity {
                                             dialog.cancel();
                                         }
                                     });
-                            alertDialog.show();
+                            alertDialog.show();// for test
                         }
                     }
                 }
