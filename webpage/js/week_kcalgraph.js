@@ -29,105 +29,64 @@ for(var num = 1; num <= 6; num++) {
 		// 마지막월과 첫번째월이 다른경우 빠져나온다.
 
 		if(lastDay.getMonth() != firstDay.getMonth()) {
-
-				break;
-
+			break;
 		}
-
-
-
 		weekObj = new Object();
 
-
-
 		// 한주의 시작일은 월의 첫번째 월요일로 설정
-
-		if(firstDay.getDay() <= 1) {
-
-
-
+		if(firstDay.getDay() <= 1) 
+		{
 				// 한주의 시작일이 일요일이라면 날짜값을 하루 더해준다.
-
-				if(firstDay.getDay() == 0) { firstDay.setDate(firstDay.getDate() + 1); }
-
-
-
-				weekObj.weekStartDate =
-
-							firstDay.getFullYear().toString()+ "-"+ numberPad((firstDay.getMonth() + 1).toString(), 2)+ "-"+ numberPad(firstDay.getDate().toString() , 2);
-
+				if(firstDay.getDay() == 0) 
+				{ 
+					firstDay.setDate(firstDay.getDate() + 1); 
+				}
+				weekObj.weekStartDate = firstDay.getFullYear().toString()+ "-"+ numberPad((firstDay.getMonth() + 1).toString(), 2)+ "-"+ numberPad(firstDay.getDate().toString() , 2);
 		}
-
-
-
-		if(weekStand > thisMonthFirstWeek) {
-
-				if(firstWeekEndDate) {
-
-						if((weekStand - firstDay.getDay()) == 1) {
-
-								firstDay.setDate(firstDay.getDate() + (weekStand - firstDay.getDay()) - 1);
-
-						}
-
-						if((weekStand - firstDay.getDay()) > 1) {
-
-								firstDay.setDate(firstDay.getDate() + (weekStand - firstDay.getDay()) - 1)
-
-						}
-
-						firstWeekEndDate = false;
-
-				} else {
-
-						firstDay.setDate(firstDay.getDate() + 6);
+		if(weekStand > thisMonthFirstWeek) 
+		{
+			if(firstWeekEndDate) 
+			{
+				if((weekStand - firstDay.getDay()) == 1) 
+				{
+					firstDay.setDate(firstDay.getDate() + (weekStand - firstDay.getDay()) - 1);
 
 				}
 
-		} else {
+				if((weekStand - firstDay.getDay()) > 1) 
+				{
+					firstDay.setDate(firstDay.getDate() + (weekStand - firstDay.getDay()) - 1)
 
-				firstDay.setDate(firstDay.getDate() + (6 - firstDay.getDay()) + weekStand);
+				}
+				firstWeekEndDate = false;
 
+			} 
+			else {
+				firstDay.setDate(firstDay.getDate() + 6);
+			}
+
+		} 
+		else {
+			firstDay.setDate(firstDay.getDate() + (6 - firstDay.getDay()) + weekStand);
 		}
-
-
 
 		// 월요일로 지정한 데이터가 존재하는 경우에만 마지막 일의 데이터를 담는다.
-
-		if(typeof weekObj.weekStartDate !== "undefined") {
-
-
-
-				weekObj.weekEndDate =
-
-							firstDay.getFullYear().toString()
-
+		if(typeof weekObj.weekStartDate !== "undefined") 
+		{
+			weekObj.weekEndDate = firstDay.getFullYear().toString()
 						+ "-"
-
 						+ numberPad((firstDay.getMonth() + 1).toString(), 2)
-
 						+ "-"
-
 						+ numberPad(firstDay.getDate().toString(), 2);
-
-
-
-				weekObjArray.push(weekObj);
-
+			weekObjArray.push(weekObj);
 		}
-
-
-
 		firstDay.setDate(firstDay.getDate() + 1);
-
 }
+
 function numberPad(num, width) {
-
         num = String(num);
-
         return num.length >= width ? num : new Array(width - num.length + 1).join("0") + num;
-
-    }
+}
 
 for(var i=0;i<5;i++)
 {
